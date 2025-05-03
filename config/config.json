@@ -1,0 +1,11 @@
+{
+    "sip_server_ip": "127.0.0.1",
+    "sip_server_port": 5060,
+    "device_id": "34020000001320000001",
+    "device_password": "123456",
+    "stream_directory": "D:\\Asif Abbas (Study Data)\\Personal Data\\New folder\\gb28181-restreamer\\sample_videos",
+"rtsp_sources": [
+  "rtsp://127.0.0.1:8554/stream1"
+]
+  }
+  
