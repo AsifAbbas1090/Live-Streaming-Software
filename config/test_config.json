@@ -1,0 +1,21 @@
+{
+    "sip_server": {
+        "listen_ip": "0.0.0.0",
+        "port": 5060,
+        "realm": "3402000000",
+        "disable_auth": true,
+        "protocol": "UDP",
+        "device_id": "34020000001320000001",
+        "password": "12345678"
+    },
+    "rtsp_sources": [
+        "rtsp://localhost:8554/test"
+    ],
+    "restream_server": {
+        "listen_ip": "0.0.0.0",
+        "rtsp_port": 8555,
+        "hls_port": 8080,
+        "hls_segment_length": 2
+    },
+    "debug": true
+}

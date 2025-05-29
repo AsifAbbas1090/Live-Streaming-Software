@@ -1,0 +1,36 @@
+{
+  "sip": {
+    "device_id": "8100000046500100000032",
+    "username": "8100000046500100000032",
+    "password": "admin123",
+    "server": "ai-sip.x-stage.bull-b.com",
+    "port": 5060,
+    "local_port": 5080,
+    "prefer_tcp": true
+  },
+  "local_sip": {
+    "enabled": false,
+    "port": 5060,
+    "transport": "tcp"
+  },
+  "stream_directory": "./recordings",
+  "rtsp_sources": [],
+  "srtp": {
+    "key": "313233343536373839303132333435363132333435363738393031323334"
+  },
+  "logging": {
+    "level": "DEBUG",
+    "file": "./logs/device_registration_test.log",
+    "console": true
+  },
+  "pipeline": {
+    "format": "RGB",
+    "width": 640,
+    "height": 480,
+    "framerate": 30,
+    "buffer_size": 33554432,
+    "queue_size": 3000,
+    "sync": false,
+    "async": false
+  }
+}

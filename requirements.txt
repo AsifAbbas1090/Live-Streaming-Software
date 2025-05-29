@@ -1,0 +1,13 @@
+# GB28181 Restreamer Requirements
+
+# Core dependencies
+PyGObject>=3.40.0     # For GStreamer integration
+pycairo>=1.20.0       # Required by PyGObject
+
+# Network dependencies
+requests>=2.25.1      # For HTTP requests
+
+# Utility dependencies
+numpy>=1.20.0         # For video processing
+python-dateutil>=2.8.1  # For date handling
+opencv-python>=4.5.0  # For image processing in appsink/appsrc

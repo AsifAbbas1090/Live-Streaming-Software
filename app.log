@@ -1,0 +1,42 @@
+[2025-05-21 14:15:27] [INFO] [BOOT] Starting GB28181 Restreamer...
+[2025-05-21 14:15:27] [INFO] [CONFIG] Loaded configuration successfully.
+[2025-05-21 14:15:27] [INFO] [SCAN] Found 8 video files.
+[2025-05-21 14:15:27] [INFO] [CATALOG] 8 video files found.
+[2025-05-21 14:15:27] [INFO]   • ./recordings/2025-05-16/00-10-10.mp4
+[2025-05-21 14:15:27] [INFO]   • ./recordings/2025-05-16/14-32-14.mp4
+[2025-05-21 14:15:27] [INFO]   • ./recordings/2025-05-16/12-30-00.mp4
+[2025-05-21 14:15:27] [INFO]   • ./recordings/2025-05-16/01-20-30.mp4
+[2025-05-21 14:15:27] [INFO]   • ./recordings/2025-05-15/00-10-10.mp4
+[2025-05-21 14:15:27] [INFO]   • ./recordings/2025-05-15/14-32-14.mp4
+[2025-05-21 14:15:27] [INFO]   • ./recordings/2025-05-15/12-30-00.mp4
+[2025-05-21 14:15:27] [INFO]   • ./recordings/2025-05-15/01-20-30.mp4
+[2025-05-21 14:15:27] [INFO] [REC-MANAGER] Scanning recordings directory
+[2025-05-21 14:15:28] [INFO] [REC-MANAGER] Found 8 recording files
+[2025-05-21 14:15:28] [INFO] [REC-MANAGER] Scanning recordings directory
+[2025-05-21 14:15:29] [INFO] [REC-MANAGER] Found 8 recording files
+[2025-05-21 14:15:29] [INFO] [RECORD] Recording manager initialized
+[2025-05-21 14:15:29] [INFO] [RTSP] No RTSP sources configured
+[2025-05-21 14:15:29] [INFO] [LOCAL-SIP] Local SIP server is enabled
+[2025-05-21 14:15:29] [INFO] [LOCAL-SIP] Starting local SIP server on port 5060 using UDP
+[2025-05-21 14:15:29] [WARNING] [LOCAL-SIP] Port 5060 already in use, trying port 5061
+[2025-05-21 14:15:29] [WARNING] [LOCAL-SIP] Port 5061 already in use, trying port 5062
+[2025-05-21 14:15:29] [WARNING] [LOCAL-SIP] Port 5062 already in use, trying port 5063
+[2025-05-21 14:15:29] [INFO] [LOCAL-SIP] UDP listener started
+[2025-05-21 14:15:29] [INFO] [LOCAL-SIP] Using alternate port 5063 (original port 5060 was in use)
+[2025-05-21 14:15:29] [INFO] [LOCAL-SIP] Server started successfully on port 5063
+[2025-05-21 14:15:29] [INFO] [STATUS] Starting periodic status monitoring
+[2025-05-21 14:15:29] [INFO] [STATUS] Active streams: 0
+[2025-05-21 14:15:29] [INFO] [SIP] Starting SIP client...
+[2025-05-21 14:15:29] [INFO] [SIP] 🚀 Launching GB28181 SIP client...
+[2025-05-21 14:15:29] [INFO] [SIP] Generated catalog with 8 channels
+[2025-05-21 14:15:29] [INFO] [SIP-SENDER] Started GB28181 SIP message sender thread
+[2025-05-21 14:15:29] [INFO] [SIP] Using transport: udp
+[2025-05-21 14:15:29] [INFO] [SIP] Device ID: 81000000465001000001
+[2025-05-21 14:15:29] [INFO] [SIP] Username: 81000000465001000001
+[2025-05-21 14:15:29] [INFO] [SIP] Server: ai-sip.x-stage.bull-b.com
+[2025-05-21 14:15:29] [INFO] [SIP] Proxy: sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-21 14:15:29] [INFO] [SIP] Local port: 5080
+[2025-05-21 14:15:29] [INFO] [SIP] Killing existing pjsua process with PID 1605322
+[2025-05-21 14:15:29] [INFO] [SIP] Killing existing pjsua process with PID 1615743
+[2025-05-21 14:15:29] [INFO] [SIP] Killing existing pjsua process with PID 1621117
+[2025-05-21 14:15:29] [INFO] [SIP] Started PJSUA process with PID: 1621707

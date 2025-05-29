@@ -1,0 +1,19 @@
+{
+  "sip": {
+    "device_id": "81000000462001888888013576",
+    "username": "81000000462001888888013576",
+    "password": "admin123",
+    "server": "ai-sip.x-stage.bull-b.com",
+    "port": 5060,
+    "local_port": 5080,
+    "prefer_tcp": true
+  },
+  "local_sip": {
+    "enabled": false
+  },
+  "stream_directory": "./test_recordings",
+  "logging": {
+    "level": "DEBUG",
+    "console": true
+  }
+}

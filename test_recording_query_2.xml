@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<Message>
+  <CmdType>RecordInfo</CmdType>
+  <SN>1747352569</SN>
+  <DeviceID>34020000001320000001</DeviceID>
+  <Name>RecordInfo</Name>
+  <SumNum>3</SumNum>
+  <RecordList>
+    <Item>
+      <DeviceID>34020000001320000001</DeviceID>
+      <Name>00-10-10.mp4</Name>
+      <FilePath>/home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/00-10-10.mp4</FilePath>
+      <StartTime>20250514T234010Z</StartTime>
+      <EndTime>20250515T001010Z</EndTime>
+      <FileSize>1143464</FileSize>
+      <Secrecy>0</Secrecy>
+      <Type>time</Type>
+    </Item>
+    <Item>
+      <DeviceID>34020000001320000001</DeviceID>
+      <Name>12-30-00.mp4</Name>
+      <FilePath>/home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/12-30-00.mp4</FilePath>
+      <StartTime>20250515T120000Z</StartTime>
+      <EndTime>20250515T123000Z</EndTime>
+      <FileSize>1143464</FileSize>
+      <Secrecy>0</Secrecy>
+      <Type>time</Type>
+    </Item>
+    <Item>
+      <DeviceID>34020000001320000001</DeviceID>
+      <Name>01-20-30.mp4</Name>
+      <FilePath>/home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/01-20-30.mp4</FilePath>
+      <StartTime>20250515T005030Z</StartTime>
+      <EndTime>20250515T012030Z</EndTime>
+      <FileSize>1143464</FileSize>
+      <Secrecy>0</Secrecy>
+      <Type>time</Type>
+    </Item>
+  </RecordList>
+</Message>

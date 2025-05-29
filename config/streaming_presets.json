@@ -1,0 +1,97 @@
+{
+    "presets": {
+        "low": {
+            "description": "Low quality, low bandwidth (300-500 Kbps)",
+            "encoder": "x264enc",
+            "width": 352,
+            "height": 288,
+            "framerate": 15,
+            "bitrate": 400,
+            "keyframe_interval": 30,
+            "speed_preset": "ultrafast",
+            "profile": "baseline",
+            "tune": "zerolatency"
+        },
+        "medium": {
+            "description": "Medium quality (700-1200 Kbps)",
+            "encoder": "x264enc",
+            "width": 640,
+            "height": 480,
+            "framerate": 25,
+            "bitrate": 800,
+            "keyframe_interval": 50,
+            "speed_preset": "veryfast",
+            "profile": "main",
+            "tune": "zerolatency"
+        },
+        "high": {
+            "description": "High quality (1500-2500 Kbps)",
+            "encoder": "x264enc",
+            "width": 704,
+            "height": 576,
+            "framerate": 30,
+            "bitrate": 2000,
+            "keyframe_interval": 60,
+            "speed_preset": "medium",
+            "profile": "high",
+            "tune": "zerolatency"
+        },
+        "hd720": {
+            "description": "HD quality 720p (2.5-4 Mbps)",
+            "encoder": "x264enc",
+            "width": 1280,
+            "height": 720,
+            "framerate": 30,
+            "bitrate": 3500,
+            "keyframe_interval": 75,
+            "speed_preset": "medium",
+            "profile": "high",
+            "tune": "zerolatency"
+        },
+        "custom": {
+            "description": "Custom preset template - modify as needed",
+            "encoder": "x264enc",
+            "width": 704,
+            "height": 576,
+            "framerate": 25,
+            "bitrate": 1024,
+            "keyframe_interval": 50,
+            "speed_preset": "medium",
+            "profile": "high",
+            "tune": "zerolatency"
+        }
+    },
+    "gb28181_format_profiles": {
+        "1:1": {
+            "description": "QCIF format (GB28181)",
+            "preset": "low",
+            "width": 176,
+            "height": 144
+        },
+        "1:2": {
+            "description": "CIF format (GB28181)",
+            "preset": "medium",
+            "width": 352,
+            "height": 288
+        },
+        "1:3": {
+            "description": "4CIF format (GB28181)",
+            "preset": "high",
+            "width": 704,
+            "height": 576
+        },
+        "1:4": {
+            "description": "D1 format (GB28181)",
+            "preset": "high",
+            "width": 720,
+            "height": 576
+        },
+        "2:2": {
+            "description": "MPEG4 codec CIF (GB28181)",
+            "preset": "medium",
+            "encoder": "avenc_mpeg4",
+            "width": 352,
+            "height": 288
+        }
+    }
+}

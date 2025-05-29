@@ -1,0 +1,2 @@
+This is a dummy RTSP simulation file. No actual RTSP server could be started.
+The application will still run, but RTSP functionality will be limited.

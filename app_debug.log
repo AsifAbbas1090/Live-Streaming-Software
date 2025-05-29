@@ -1,0 +1,1398 @@
+[2025-05-23 12:00:55] [INFO] [BOOT] Starting GB28181 Restreamer...
+[2025-05-23 12:00:55] [INFO] [CONFIG] Loaded configuration successfully.
+[2025-05-23 12:00:55] [INFO] [SCAN] Scanning directory: /home/ubuntu/rstp/gb28181-restreamer/recordings
+[2025-05-23 12:00:55] [DEBUG] [SCAN] Scanning subdirectory: /home/ubuntu/rstp/gb28181-restreamer/recordings
+[2025-05-23 12:00:55] [DEBUG] [SCAN] Found subdirectories: ['2025-05-16', '2025-05-15']
+[2025-05-23 12:00:55] [DEBUG] [SCAN] Found files: []
+[2025-05-23 12:00:55] [DEBUG] [SCAN] Scanning subdirectory: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-16
+[2025-05-23 12:00:55] [DEBUG] [SCAN] Found subdirectories: []
+[2025-05-23 12:00:55] [DEBUG] [SCAN] Found files: ['00-10-10.mp4', '14-32-14.mp4', '12-30-00.mp4', '01-20-30.mp4']
+[2025-05-23 12:00:55] [DEBUG] [SCAN] Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-16/00-10-10.mp4
+[2025-05-23 12:00:55] [DEBUG] [SCAN] Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-16/14-32-14.mp4
+[2025-05-23 12:00:55] [DEBUG] [SCAN] Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-16/12-30-00.mp4
+[2025-05-23 12:00:55] [DEBUG] [SCAN] Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-16/01-20-30.mp4
+[2025-05-23 12:00:55] [DEBUG] [SCAN] Scanning subdirectory: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15
+[2025-05-23 12:00:55] [DEBUG] [SCAN] Found subdirectories: []
+[2025-05-23 12:00:55] [DEBUG] [SCAN] Found files: ['00-10-10.mp4', '14-32-14.mp4', '12-30-00.mp4', '01-20-30.mp4']
+[2025-05-23 12:00:55] [DEBUG] [SCAN] Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/00-10-10.mp4
+[2025-05-23 12:00:55] [DEBUG] [SCAN] Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/14-32-14.mp4
+[2025-05-23 12:00:55] [DEBUG] [SCAN] Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/12-30-00.mp4
+[2025-05-23 12:00:55] [DEBUG] [SCAN] Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/01-20-30.mp4
+[2025-05-23 12:00:55] [INFO] [SCAN] Found 8 video files.
+[2025-05-23 12:00:55] [INFO] [CATALOG] 8 video files found.
+[2025-05-23 12:00:55] [INFO]   • /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-16/00-10-10.mp4
+[2025-05-23 12:00:55] [INFO]   • /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-16/14-32-14.mp4
+[2025-05-23 12:00:55] [INFO]   • /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-16/12-30-00.mp4
+[2025-05-23 12:00:55] [INFO]   • /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-16/01-20-30.mp4
+[2025-05-23 12:00:55] [INFO]   • /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/00-10-10.mp4
+[2025-05-23 12:00:55] [INFO]   • /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/14-32-14.mp4
+[2025-05-23 12:00:55] [INFO]   • /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/12-30-00.mp4
+[2025-05-23 12:00:55] [INFO]   • /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/01-20-30.mp4
+[2025-05-23 12:00:55] [INFO] [STREAM] Initializing media streamer with frame processing support
+[2025-05-23 12:00:55] [INFO] [STREAM] GLib main loop started
+[2025-05-23 12:00:55] [INFO] [REC-MANAGER] Scanning recordings directory
+[2025-05-23 12:00:55] [INFO] [REC-MANAGER] Found 8 recording files
+[2025-05-23 12:00:55] [INFO] [REC-MANAGER] Scanning recordings directory
+[2025-05-23 12:00:56] [INFO] [REC-MANAGER] Found 8 recording files
+[2025-05-23 12:00:56] [INFO] [RECORD] Recording manager initialized
+[2025-05-23 12:00:56] [INFO] [RTSP] No RTSP sources configured
+[2025-05-23 12:00:56] [INFO] [STREAM] Registered frame processor: grayscale
+[2025-05-23 12:00:56] [INFO] [STREAM] Registered frame processor: edge
+[2025-05-23 12:00:56] [INFO] [STREAM] Registered frame processor: blur
+[2025-05-23 12:00:56] [INFO] [STREAM] Registered frame processor: text
+[2025-05-23 12:00:56] [INFO] [STREAM] Registered frame processors for video manipulation
+[2025-05-23 12:00:56] [INFO] [STATUS] Starting periodic status monitoring
+[2025-05-23 12:00:56] [INFO] [STATUS] Active streams: 0
+[2025-05-23 12:00:56] [INFO] [SIP] Starting SIP client...
+[2025-05-23 12:00:56] [INFO] [SIP] 🚀 Launching GB28181 SIP client...
+[2025-05-23 12:00:56] [INFO] [SCAN] Scanning directory: /home/ubuntu/rstp/gb28181-restreamer/recordings
+[2025-05-23 12:00:56] [DEBUG] [SCAN] Scanning subdirectory: /home/ubuntu/rstp/gb28181-restreamer/recordings
+[2025-05-23 12:00:56] [DEBUG] [SCAN] Found subdirectories: ['2025-05-16', '2025-05-15']
+[2025-05-23 12:00:56] [DEBUG] [SCAN] Found files: []
+[2025-05-23 12:00:56] [DEBUG] [SCAN] Scanning subdirectory: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-16
+[2025-05-23 12:00:56] [DEBUG] [SCAN] Found subdirectories: []
+[2025-05-23 12:00:56] [DEBUG] [SCAN] Found files: ['00-10-10.mp4', '14-32-14.mp4', '12-30-00.mp4', '01-20-30.mp4']
+[2025-05-23 12:00:56] [DEBUG] [SCAN] Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-16/00-10-10.mp4
+[2025-05-23 12:00:56] [DEBUG] [SCAN] Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-16/14-32-14.mp4
+[2025-05-23 12:00:56] [DEBUG] [SCAN] Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-16/12-30-00.mp4
+[2025-05-23 12:00:56] [DEBUG] [SCAN] Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-16/01-20-30.mp4
+[2025-05-23 12:00:56] [DEBUG] [SCAN] Scanning subdirectory: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15
+[2025-05-23 12:00:56] [DEBUG] [SCAN] Found subdirectories: []
+[2025-05-23 12:00:56] [DEBUG] [SCAN] Found files: ['00-10-10.mp4', '14-32-14.mp4', '12-30-00.mp4', '01-20-30.mp4']
+[2025-05-23 12:00:56] [DEBUG] [SCAN] Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/00-10-10.mp4
+[2025-05-23 12:00:56] [DEBUG] [SCAN] Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/14-32-14.mp4
+[2025-05-23 12:00:56] [DEBUG] [SCAN] Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/12-30-00.mp4
+[2025-05-23 12:00:56] [DEBUG] [SCAN] Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/01-20-30.mp4
+[2025-05-23 12:00:56] [INFO] [SCAN] Found 8 video files.
+[2025-05-23 12:00:56] [INFO] [SIP] Generated catalog with 8 channels
+[2025-05-23 12:00:56] [INFO] [SIP-SENDER] Started GB28181 SIP message sender thread
+[2025-05-23 12:00:56] [INFO] [SIP] Using transport: udp
+[2025-05-23 12:00:56] [INFO] [SIP] Device ID: 81000000465001000001
+[2025-05-23 12:00:56] [INFO] [SIP] Username: 81000000465001000001
+[2025-05-23 12:00:56] [INFO] [SIP] Server: ai-sip.x-stage.bull-b.com
+[2025-05-23 12:00:56] [INFO] [SIP] Proxy: sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:00:56] [INFO] [SIP] Local port: 5080
+[2025-05-23 12:00:56] [INFO] [SIP] Starting pjsua process (attempt 1/3)
+[2025-05-23 12:00:56] [INFO] [SIP] Started PJSUA process with PID: 2305665
+12:00:56.779           pjsua_core.c !.pjsua version 2.15-dev for Linux-6.8.4.4/x86_64/glibc-2.39 initialized
+12:00:56.780            pjsua_app.c  .Turning sound device -99 -99 ON
+12:00:56.780                 main.c  Ready: Success
+>>>>
+Account list:
+[ 0] <sip:172.31.7.94:5080>: does not register
+Online status: Online
+*[ 1] sip:81000000465001000001@ai-sip.x-stage.bull-b.com: 100/In Progress (expires=0)
+Online status: Online
+Buddy list:
+-none-
+
++=============================================================================+
+|       Call Commands:         |   Buddy, IM & Presence:  |     Account:      |
+|                              |                          |                   |
+|  m  Make new call            | +b  Add new buddy        | +a  Add new accnt.|
+|  M  Make multiple calls      | -b  Delete buddy         | -a  Delete accnt. |
+|  a  Answer call              |  i  Send IM              | !a  Modify accnt. |
+|  h  Hangup call  (ha=all)    |  s  Subscribe presence   | rr  (Re-)register |
+|  H  Hold call                |  u  Unsubscribe presence | ru  Unregister    |
+|  o Toggle call SDP offer     |  D  Subscribe dlg event  |                   |
+|                              |  Du Unsub dlg event      |                   |
+|  v  re-inVite (release hold) |  t  Toggle online status |  >  Cycle next ac.|
+|  U  send UPDATE              |  T  Set online status    |  <  Cycle prev ac.|
+| ],[ Select next/prev call    +--------------------------+-------------------+
+|  x  Xfer call                |      Media Commands:     |  Status & Config: |
+|  X  Xfer with Replaces       |                          |                   |
+|  #  Send RFC 2833 DTMF       | cl  List ports           |  d  Dump status   |
+|  *  Send DTMF with INFO      | cc  Connect port         | dd  Dump detailed |
+| rt  Send real-time text      | cd  Disconnect port      | dc  Dump config   |
+| dq  Dump curr. call quality  |  V  Adjust audio Volume  |  f  Save config   |
+|  S  Send arbitrary REQUEST   | Cp  Codec priorities     |                   |
++-----------------------------------------------------------------------------+
+|  q  QUIT      L  ReLoad       I  IP change     n  detect NAT type           |
+|  sleep MS     echo [0|1|txt]                                                |
++=============================================================================+
+You have 0 active call
+>>> 12:00:57.257            pjsua_acc.c !....sip:81000000465001000001@ai-sip.x-stage.bull-b.com: registration success, status=200 (OK), will re-register in 300 seconds
+12:00:57.322           pjsua_pres.c !..Unable to create server subscription: Bad Event [status=170489]
+12:00:57.330            pjsua_app.c !.MESSAGE from <sip:81000000462001888888@81000000>: <?xml version="1.0" encoding="GB2312"?>
+[2025-05-23 12:01:32] [INFO] [SIP] MESSAGE detected in log line, checking content...
+[2025-05-23 12:01:32] [INFO] [SIP] MESSAGE without MANSCDP+xml content or with unknown format
+[2025-05-23 12:01:32] [DEBUG] [SIP] MESSAGE preview: 12:00:56.779           pjsua_core.c !.pjsua version 2.15-dev for Linux-6.8.4.4/x86_64/glibc-2.39 initialized
+12:00:56.780            pjsua_app.c  .Turning sound device -99 -99 ON
+12:00:56.780         ...
+<Query>
+<CmdType>Catalog</CmdType>
+<SN>579513</SN>
+<DeviceID>81000000465001000001</DeviceID>
+</Query>
+[2025-05-23 12:01:32] [DEBUG] [SIP] Found XML in message
+[2025-05-23 12:01:32] [INFO] [SIP] Received catalog query
+[2025-05-23 12:01:32] [INFO] [SIP] Processing catalog query from platform
+[2025-05-23 12:01:32] [DEBUG] [SIP] Extracted XML content: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+  <CmdType>Catalog</CmdType>
+  <SN>579513</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+</Query>
+[2025-05-23 12:01:32] [DEBUG] [SIP] Query SN: 579513
+[2025-05-23 12:01:32] [DEBUG] [SIP] Using default platform ID: ai-sip.x-stage.bull-b.com
+[2025-05-23 12:01:32] [INFO] [SIP] Sending catalog with 8 channels
+[2025-05-23 12:01:32] [DEBUG] [SIP] Catalog response XML length: 4433
+[2025-05-23 12:01:32] [INFO] [SIP] Saved catalog response to catalog_response.xml
+[2025-05-23 12:01:32] [INFO] [SIP] Successfully sent catalog response with 8 channels to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP] Successfully sent catalog response with 8 channels to sip:ai-sip.x-stage.bull-b.com:5060
+(Application/MANSCDP+xml)
+[2025-05-23 12:01:32] [DEBUG] [SIP] Found XML in message
+DEBUG:gb28181-restreamer:[SIP] Found XML in message
+[2025-05-23 12:01:32] [INFO] [SIP] Received catalog query
+INFO:gb28181-restreamer:[SIP] Received catalog query
+[2025-05-23 12:01:32] [INFO] [SIP] Processing catalog query from platform
+INFO:gb28181-restreamer:[SIP] Processing catalog query from platform
+[2025-05-23 12:01:32] [DEBUG] [SIP] Extracted XML content: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+  <CmdType>Catalog</CmdType>
+  <SN>579513</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+</Query>
+DEBUG:gb28181-restreamer:[SIP] Extracted XML content: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+  <CmdType>Catalog</CmdType>
+  <SN>579513</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+</Query>
+[2025-05-23 12:01:32] [DEBUG] [SIP] Query SN: 579513
+DEBUG:gb28181-restreamer:[SIP] Query SN: 579513
+[2025-05-23 12:01:32] [DEBUG] [SIP] Using default platform ID: ai-sip.x-stage.bull-b.com
+DEBUG:gb28181-restreamer:[SIP] Using default platform ID: ai-sip.x-stage.bull-b.com
+[2025-05-23 12:01:32] [INFO] [SIP] Sending catalog with 8 channels
+INFO:gb28181-restreamer:[SIP] Sending catalog with 8 channels
+[2025-05-23 12:01:32] [DEBUG] [SIP] Catalog response XML length: 4433
+DEBUG:gb28181-restreamer:[SIP] Catalog response XML length: 4433
+[2025-05-23 12:01:32] [INFO] [SIP] Saved catalog response to catalog_response.xml
+INFO:gb28181-restreamer:[SIP] Saved catalog response to catalog_response.xml
+[2025-05-23 12:01:32] [INFO] [SIP] Successfully sent catalog response with 8 channels to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP] Successfully sent catalog response with 8 channels to sip:ai-sip.x-stage.bull-b.com:5060
+12:00:57.780            pjsua_app.c !.Turning sound device -99 -99 OFF
+[2025-05-23 12:01:32] [DEBUG] [SIP] Found XML in message
+DEBUG:gb28181-restreamer:[SIP] Found XML in message
+[2025-05-23 12:01:32] [INFO] [SIP] Received catalog query
+INFO:gb28181-restreamer:[SIP] Received catalog query
+[2025-05-23 12:01:32] [INFO] [SIP] Processing catalog query from platform
+INFO:gb28181-restreamer:[SIP] Processing catalog query from platform
+[2025-05-23 12:01:32] [DEBUG] [SIP] Extracted XML content: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+  <CmdType>Catalog</CmdType>
+  <SN>579513</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+</Query>
+DEBUG:gb28181-restreamer:[SIP] Extracted XML content: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+  <CmdType>Catalog</CmdType>
+  <SN>579513</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+</Query>
+[2025-05-23 12:01:32] [DEBUG] [SIP] Query SN: 579513
+DEBUG:gb28181-restreamer:[SIP] Query SN: 579513
+[2025-05-23 12:01:32] [DEBUG] [SIP] Using default platform ID: ai-sip.x-stage.bull-b.com
+DEBUG:gb28181-restreamer:[SIP] Using default platform ID: ai-sip.x-stage.bull-b.com
+[2025-05-23 12:01:32] [INFO] [SIP] Sending catalog with 8 channels
+INFO:gb28181-restreamer:[SIP] Sending catalog with 8 channels
+[2025-05-23 12:01:32] [DEBUG] [SIP] Catalog response XML length: 4433
+DEBUG:gb28181-restreamer:[SIP] Catalog response XML length: 4433
+[2025-05-23 12:01:32] [INFO] [SIP] Saved catalog response to catalog_response.xml
+INFO:gb28181-restreamer:[SIP] Saved catalog response to catalog_response.xml
+[2025-05-23 12:01:32] [INFO] [SIP] Successfully sent catalog response with 8 channels to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP] Successfully sent catalog response with 8 channels to sip:ai-sip.x-stage.bull-b.com:5060
+12:00:59.551           pjsua_pres.c !..Unable to create server subscription: Bad Event [status=170489]
+[2025-05-23 12:01:32] [DEBUG] [SIP] Found XML in message
+DEBUG:gb28181-restreamer:[SIP] Found XML in message
+[2025-05-23 12:01:32] [INFO] [SIP] Received catalog query
+INFO:gb28181-restreamer:[SIP] Received catalog query
+[2025-05-23 12:01:32] [INFO] [SIP] Processing catalog query from platform
+INFO:gb28181-restreamer:[SIP] Processing catalog query from platform
+[2025-05-23 12:01:32] [DEBUG] [SIP] Extracted XML content: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+  <CmdType>Catalog</CmdType>
+  <SN>579513</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+</Query>
+DEBUG:gb28181-restreamer:[SIP] Extracted XML content: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+  <CmdType>Catalog</CmdType>
+  <SN>579513</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+</Query>
+[2025-05-23 12:01:32] [DEBUG] [SIP] Query SN: 579513
+DEBUG:gb28181-restreamer:[SIP] Query SN: 579513
+[2025-05-23 12:01:32] [DEBUG] [SIP] Using default platform ID: ai-sip.x-stage.bull-b.com
+DEBUG:gb28181-restreamer:[SIP] Using default platform ID: ai-sip.x-stage.bull-b.com
+[2025-05-23 12:01:32] [INFO] [SIP] Sending catalog with 8 channels
+INFO:gb28181-restreamer:[SIP] Sending catalog with 8 channels
+[2025-05-23 12:01:32] [DEBUG] [SIP] Catalog response XML length: 4433
+DEBUG:gb28181-restreamer:[SIP] Catalog response XML length: 4433
+[2025-05-23 12:01:32] [INFO] [SIP] Saved catalog response to catalog_response.xml
+INFO:gb28181-restreamer:[SIP] Saved catalog response to catalog_response.xml
+[2025-05-23 12:01:32] [INFO] [SIP] Successfully sent catalog response with 8 channels to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP] Successfully sent catalog response with 8 channels to sip:ai-sip.x-stage.bull-b.com:5060
+12:01:01.799           pjsua_pres.c !..Unable to create server subscription: Bad Event [status=170489]
+[2025-05-23 12:01:32] [DEBUG] [SIP] Found XML in message
+DEBUG:gb28181-restreamer:[SIP] Found XML in message
+[2025-05-23 12:01:32] [INFO] [SIP] Received catalog query
+INFO:gb28181-restreamer:[SIP] Received catalog query
+[2025-05-23 12:01:32] [INFO] [SIP] Processing catalog query from platform
+INFO:gb28181-restreamer:[SIP] Processing catalog query from platform
+[2025-05-23 12:01:32] [DEBUG] [SIP] Extracted XML content: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+  <CmdType>Catalog</CmdType>
+  <SN>579513</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+</Query>
+DEBUG:gb28181-restreamer:[SIP] Extracted XML content: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+  <CmdType>Catalog</CmdType>
+  <SN>579513</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+</Query>
+[2025-05-23 12:01:32] [DEBUG] [SIP] Query SN: 579513
+DEBUG:gb28181-restreamer:[SIP] Query SN: 579513
+[2025-05-23 12:01:32] [DEBUG] [SIP] Using default platform ID: ai-sip.x-stage.bull-b.com
+DEBUG:gb28181-restreamer:[SIP] Using default platform ID: ai-sip.x-stage.bull-b.com
+[2025-05-23 12:01:32] [INFO] [SIP] Sending catalog with 8 channels
+INFO:gb28181-restreamer:[SIP] Sending catalog with 8 channels
+[2025-05-23 12:01:32] [DEBUG] [SIP] Catalog response XML length: 4433
+DEBUG:gb28181-restreamer:[SIP] Catalog response XML length: 4433
+[2025-05-23 12:01:32] [INFO] [SIP] Saved catalog response to catalog_response.xml
+INFO:gb28181-restreamer:[SIP] Saved catalog response to catalog_response.xml
+[2025-05-23 12:01:32] [INFO] [SIP] Successfully sent catalog response with 8 channels to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP] Successfully sent catalog response with 8 channels to sip:ai-sip.x-stage.bull-b.com:5060
+12:01:04.050           pjsua_pres.c !..Unable to create server subscription: Bad Event [status=170489]
+[2025-05-23 12:01:32] [DEBUG] [SIP] Found XML in message
+DEBUG:gb28181-restreamer:[SIP] Found XML in message
+[2025-05-23 12:01:32] [INFO] [SIP] Received catalog query
+INFO:gb28181-restreamer:[SIP] Received catalog query
+[2025-05-23 12:01:32] [INFO] [SIP] Processing catalog query from platform
+INFO:gb28181-restreamer:[SIP] Processing catalog query from platform
+[2025-05-23 12:01:32] [DEBUG] [SIP] Extracted XML content: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+  <CmdType>Catalog</CmdType>
+  <SN>579513</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+</Query>
+DEBUG:gb28181-restreamer:[SIP] Extracted XML content: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+  <CmdType>Catalog</CmdType>
+  <SN>579513</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+</Query>
+[2025-05-23 12:01:32] [DEBUG] [SIP] Query SN: 579513
+DEBUG:gb28181-restreamer:[SIP] Query SN: 579513
+[2025-05-23 12:01:32] [DEBUG] [SIP] Using default platform ID: ai-sip.x-stage.bull-b.com
+DEBUG:gb28181-restreamer:[SIP] Using default platform ID: ai-sip.x-stage.bull-b.com
+[2025-05-23 12:01:32] [INFO] [SIP] Sending catalog with 8 channels
+INFO:gb28181-restreamer:[SIP] Sending catalog with 8 channels
+[2025-05-23 12:01:32] [DEBUG] [SIP] Catalog response XML length: 4433
+DEBUG:gb28181-restreamer:[SIP] Catalog response XML length: 4433
+[2025-05-23 12:01:32] [INFO] [SIP] Saved catalog response to catalog_response.xml
+INFO:gb28181-restreamer:[SIP] Saved catalog response to catalog_response.xml
+[2025-05-23 12:01:32] [INFO] [SIP] Successfully sent catalog response with 8 channels to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP] Successfully sent catalog response with 8 channels to sip:ai-sip.x-stage.bull-b.com:5060
+12:01:06.285           pjsua_pres.c !..Unable to create server subscription: Bad Event [status=170489]
+[2025-05-23 12:01:32] [DEBUG] [SIP] Found XML in message
+DEBUG:gb28181-restreamer:[SIP] Found XML in message
+[2025-05-23 12:01:32] [INFO] [SIP] Received catalog query
+INFO:gb28181-restreamer:[SIP] Received catalog query
+[2025-05-23 12:01:32] [INFO] [SIP] Processing catalog query from platform
+INFO:gb28181-restreamer:[SIP] Processing catalog query from platform
+[2025-05-23 12:01:32] [DEBUG] [SIP] Extracted XML content: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+  <CmdType>Catalog</CmdType>
+  <SN>579513</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+</Query>
+DEBUG:gb28181-restreamer:[SIP] Extracted XML content: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+  <CmdType>Catalog</CmdType>
+  <SN>579513</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+</Query>
+[2025-05-23 12:01:32] [DEBUG] [SIP] Query SN: 579513
+DEBUG:gb28181-restreamer:[SIP] Query SN: 579513
+[2025-05-23 12:01:32] [DEBUG] [SIP] Using default platform ID: ai-sip.x-stage.bull-b.com
+DEBUG:gb28181-restreamer:[SIP] Using default platform ID: ai-sip.x-stage.bull-b.com
+[2025-05-23 12:01:32] [INFO] [SIP] Sending catalog with 8 channels
+INFO:gb28181-restreamer:[SIP] Sending catalog with 8 channels
+[2025-05-23 12:01:32] [DEBUG] [SIP] Catalog response XML length: 4433
+DEBUG:gb28181-restreamer:[SIP] Catalog response XML length: 4433
+[2025-05-23 12:01:32] [INFO] [SIP] Saved catalog response to catalog_response.xml
+INFO:gb28181-restreamer:[SIP] Saved catalog response to catalog_response.xml
+[2025-05-23 12:01:32] [INFO] [SIP] Successfully sent catalog response with 8 channels to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP] Successfully sent catalog response with 8 channels to sip:ai-sip.x-stage.bull-b.com:5060
+12:01:08.536           pjsua_pres.c !..Unable to create server subscription: Bad Event [status=170489]
+[2025-05-23 12:01:32] [DEBUG] [SIP] Found XML in message
+DEBUG:gb28181-restreamer:[SIP] Found XML in message
+[2025-05-23 12:01:32] [INFO] [SIP] Received catalog query
+INFO:gb28181-restreamer:[SIP] Received catalog query
+[2025-05-23 12:01:32] [INFO] [SIP] Processing catalog query from platform
+INFO:gb28181-restreamer:[SIP] Processing catalog query from platform
+[2025-05-23 12:01:32] [DEBUG] [SIP] Extracted XML content: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+  <CmdType>Catalog</CmdType>
+  <SN>579513</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+</Query>
+DEBUG:gb28181-restreamer:[SIP] Extracted XML content: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+  <CmdType>Catalog</CmdType>
+  <SN>579513</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+</Query>
+[2025-05-23 12:01:32] [DEBUG] [SIP] Query SN: 579513
+DEBUG:gb28181-restreamer:[SIP] Query SN: 579513
+[2025-05-23 12:01:32] [DEBUG] [SIP] Using default platform ID: ai-sip.x-stage.bull-b.com
+DEBUG:gb28181-restreamer:[SIP] Using default platform ID: ai-sip.x-stage.bull-b.com
+[2025-05-23 12:01:32] [INFO] [SIP] Sending catalog with 8 channels
+INFO:gb28181-restreamer:[SIP] Sending catalog with 8 channels
+[2025-05-23 12:01:32] [DEBUG] [SIP] Catalog response XML length: 4433
+DEBUG:gb28181-restreamer:[SIP] Catalog response XML length: 4433
+[2025-05-23 12:01:32] [INFO] [SIP] Saved catalog response to catalog_response.xml
+INFO:gb28181-restreamer:[SIP] Saved catalog response to catalog_response.xml
+[2025-05-23 12:01:32] [INFO] [SIP] Successfully sent catalog response with 8 channels to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP] Successfully sent catalog response with 8 channels to sip:ai-sip.x-stage.bull-b.com:5060
+12:01:10.815           pjsua_pres.c !..Unable to create server subscription: Bad Event [status=170489]
+[2025-05-23 12:01:32] [DEBUG] [SIP] Found XML in message
+DEBUG:gb28181-restreamer:[SIP] Found XML in message
+[2025-05-23 12:01:32] [INFO] [SIP] Received catalog query
+INFO:gb28181-restreamer:[SIP] Received catalog query
+[2025-05-23 12:01:32] [INFO] [SIP] Processing catalog query from platform
+INFO:gb28181-restreamer:[SIP] Processing catalog query from platform
+[2025-05-23 12:01:32] [DEBUG] [SIP] Extracted XML content: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+  <CmdType>Catalog</CmdType>
+  <SN>579513</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+</Query>
+DEBUG:gb28181-restreamer:[SIP] Extracted XML content: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+  <CmdType>Catalog</CmdType>
+  <SN>579513</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+</Query>
+[2025-05-23 12:01:32] [DEBUG] [SIP] Query SN: 579513
+DEBUG:gb28181-restreamer:[SIP] Query SN: 579513
+[2025-05-23 12:01:32] [DEBUG] [SIP] Using default platform ID: ai-sip.x-stage.bull-b.com
+DEBUG:gb28181-restreamer:[SIP] Using default platform ID: ai-sip.x-stage.bull-b.com
+[2025-05-23 12:01:32] [INFO] [SIP] Sending catalog with 8 channels
+INFO:gb28181-restreamer:[SIP] Sending catalog with 8 channels
+[2025-05-23 12:01:32] [DEBUG] [SIP] Catalog response XML length: 4433
+DEBUG:gb28181-restreamer:[SIP] Catalog response XML length: 4433
+[2025-05-23 12:01:32] [INFO] [SIP] Saved catalog response to catalog_response.xml
+INFO:gb28181-restreamer:[SIP] Saved catalog response to catalog_response.xml
+[2025-05-23 12:01:32] [INFO] [SIP] Successfully sent catalog response with 8 channels to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP] Successfully sent catalog response with 8 channels to sip:ai-sip.x-stage.bull-b.com:5060
+12:01:13.039           pjsua_pres.c !..Unable to create server subscription: Bad Event [status=170489]
+[2025-05-23 12:01:32] [DEBUG] [SIP] Found XML in message
+DEBUG:gb28181-restreamer:[SIP] Found XML in message
+[2025-05-23 12:01:32] [INFO] [SIP] Received catalog query
+INFO:gb28181-restreamer:[SIP] Received catalog query
+[2025-05-23 12:01:32] [INFO] [SIP] Processing catalog query from platform
+INFO:gb28181-restreamer:[SIP] Processing catalog query from platform
+[2025-05-23 12:01:32] [DEBUG] [SIP] Extracted XML content: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+  <CmdType>Catalog</CmdType>
+  <SN>579513</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+</Query>
+DEBUG:gb28181-restreamer:[SIP] Extracted XML content: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+  <CmdType>Catalog</CmdType>
+  <SN>579513</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+</Query>
+[2025-05-23 12:01:32] [DEBUG] [SIP] Query SN: 579513
+DEBUG:gb28181-restreamer:[SIP] Query SN: 579513
+[2025-05-23 12:01:32] [DEBUG] [SIP] Using default platform ID: ai-sip.x-stage.bull-b.com
+DEBUG:gb28181-restreamer:[SIP] Using default platform ID: ai-sip.x-stage.bull-b.com
+[2025-05-23 12:01:32] [INFO] [SIP] Sending catalog with 8 channels
+INFO:gb28181-restreamer:[SIP] Sending catalog with 8 channels
+[2025-05-23 12:01:32] [DEBUG] [SIP] Catalog response XML length: 4433
+DEBUG:gb28181-restreamer:[SIP] Catalog response XML length: 4433
+[2025-05-23 12:01:32] [INFO] [SIP] Saved catalog response to catalog_response.xml
+INFO:gb28181-restreamer:[SIP] Saved catalog response to catalog_response.xml
+[2025-05-23 12:01:32] [INFO] [SIP] Successfully sent catalog response with 8 channels to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP] Successfully sent catalog response with 8 channels to sip:ai-sip.x-stage.bull-b.com:5060
+12:01:15.263           pjsua_pres.c !..Unable to create server subscription: Bad Event [status=170489]
+[2025-05-23 12:01:32] [DEBUG] [SIP] Found XML in message
+DEBUG:gb28181-restreamer:[SIP] Found XML in message
+[2025-05-23 12:01:32] [INFO] [SIP] Received catalog query
+INFO:gb28181-restreamer:[SIP] Received catalog query
+[2025-05-23 12:01:32] [INFO] [SIP] Processing catalog query from platform
+INFO:gb28181-restreamer:[SIP] Processing catalog query from platform
+[2025-05-23 12:01:32] [DEBUG] [SIP] Extracted XML content: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+  <CmdType>Catalog</CmdType>
+  <SN>579513</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+</Query>
+DEBUG:gb28181-restreamer:[SIP] Extracted XML content: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+  <CmdType>Catalog</CmdType>
+  <SN>579513</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+</Query>
+[2025-05-23 12:01:32] [DEBUG] [SIP] Query SN: 579513
+DEBUG:gb28181-restreamer:[SIP] Query SN: 579513
+[2025-05-23 12:01:32] [DEBUG] [SIP] Using default platform ID: ai-sip.x-stage.bull-b.com
+DEBUG:gb28181-restreamer:[SIP] Using default platform ID: ai-sip.x-stage.bull-b.com
+[2025-05-23 12:01:32] [INFO] [SIP] Sending catalog with 8 channels
+INFO:gb28181-restreamer:[SIP] Sending catalog with 8 channels
+[2025-05-23 12:01:32] [DEBUG] [SIP] Catalog response XML length: 4433
+DEBUG:gb28181-restreamer:[SIP] Catalog response XML length: 4433
+[2025-05-23 12:01:32] [INFO] [SIP] Saved catalog response to catalog_response.xml
+INFO:gb28181-restreamer:[SIP] Saved catalog response to catalog_response.xml
+[2025-05-23 12:01:32] [INFO] [SIP] Successfully sent catalog response with 8 channels to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP] Successfully sent catalog response with 8 channels to sip:ai-sip.x-stage.bull-b.com:5060
+12:01:17.499           pjsua_pres.c !..Unable to create server subscription: Bad Event [status=170489]
+[2025-05-23 12:01:32] [DEBUG] [SIP] Found XML in message
+DEBUG:gb28181-restreamer:[SIP] Found XML in message
+[2025-05-23 12:01:32] [INFO] [SIP] Received catalog query
+INFO:gb28181-restreamer:[SIP] Received catalog query
+[2025-05-23 12:01:32] [INFO] [SIP] Processing catalog query from platform
+INFO:gb28181-restreamer:[SIP] Processing catalog query from platform
+[2025-05-23 12:01:32] [DEBUG] [SIP] Extracted XML content: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+  <CmdType>Catalog</CmdType>
+  <SN>579513</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+</Query>
+DEBUG:gb28181-restreamer:[SIP] Extracted XML content: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+  <CmdType>Catalog</CmdType>
+  <SN>579513</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+</Query>
+[2025-05-23 12:01:32] [DEBUG] [SIP] Query SN: 579513
+DEBUG:gb28181-restreamer:[SIP] Query SN: 579513
+[2025-05-23 12:01:32] [DEBUG] [SIP] Using default platform ID: ai-sip.x-stage.bull-b.com
+DEBUG:gb28181-restreamer:[SIP] Using default platform ID: ai-sip.x-stage.bull-b.com
+[2025-05-23 12:01:32] [INFO] [SIP] Sending catalog with 8 channels
+INFO:gb28181-restreamer:[SIP] Sending catalog with 8 channels
+[2025-05-23 12:01:32] [DEBUG] [SIP] Catalog response XML length: 4433
+DEBUG:gb28181-restreamer:[SIP] Catalog response XML length: 4433
+[2025-05-23 12:01:32] [INFO] [SIP] Saved catalog response to catalog_response.xml
+INFO:gb28181-restreamer:[SIP] Saved catalog response to catalog_response.xml
+[2025-05-23 12:01:32] [INFO] [SIP] Successfully sent catalog response with 8 channels to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP] Successfully sent catalog response with 8 channels to sip:ai-sip.x-stage.bull-b.com:5060
+12:01:19.731           pjsua_pres.c  ..Unable to create server subscription: Bad Event [status=170489]
+[2025-05-23 12:01:32] [DEBUG] [SIP] Found XML in message
+DEBUG:gb28181-restreamer:[SIP] Found XML in message
+[2025-05-23 12:01:32] [INFO] [SIP] Received catalog query
+INFO:gb28181-restreamer:[SIP] Received catalog query
+[2025-05-23 12:01:32] [INFO] [SIP] Processing catalog query from platform
+INFO:gb28181-restreamer:[SIP] Processing catalog query from platform
+[2025-05-23 12:01:32] [DEBUG] [SIP] Extracted XML content: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+  <CmdType>Catalog</CmdType>
+  <SN>579513</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+</Query>
+DEBUG:gb28181-restreamer:[SIP] Extracted XML content: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+  <CmdType>Catalog</CmdType>
+  <SN>579513</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+</Query>
+[2025-05-23 12:01:32] [DEBUG] [SIP] Query SN: 579513
+DEBUG:gb28181-restreamer:[SIP] Query SN: 579513
+[2025-05-23 12:01:32] [DEBUG] [SIP] Using default platform ID: ai-sip.x-stage.bull-b.com
+DEBUG:gb28181-restreamer:[SIP] Using default platform ID: ai-sip.x-stage.bull-b.com
+[2025-05-23 12:01:32] [INFO] [SIP] Sending catalog with 8 channels
+INFO:gb28181-restreamer:[SIP] Sending catalog with 8 channels
+[2025-05-23 12:01:32] [DEBUG] [SIP] Catalog response XML length: 4433
+DEBUG:gb28181-restreamer:[SIP] Catalog response XML length: 4433
+[2025-05-23 12:01:32] [INFO] [SIP] Saved catalog response to catalog_response.xml
+INFO:gb28181-restreamer:[SIP] Saved catalog response to catalog_response.xml
+[2025-05-23 12:01:32] [INFO] [SIP] Successfully sent catalog response with 8 channels to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP] Successfully sent catalog response with 8 channels to sip:ai-sip.x-stage.bull-b.com:5060
+12:01:21.955           pjsua_pres.c !..Unable to create server subscription: Bad Event [status=170489]
+[2025-05-23 12:01:32] [DEBUG] [SIP] Found XML in message
+DEBUG:gb28181-restreamer:[SIP] Found XML in message
+[2025-05-23 12:01:32] [INFO] [SIP] Received catalog query
+INFO:gb28181-restreamer:[SIP] Received catalog query
+[2025-05-23 12:01:32] [INFO] [SIP] Processing catalog query from platform
+INFO:gb28181-restreamer:[SIP] Processing catalog query from platform
+[2025-05-23 12:01:32] [DEBUG] [SIP] Extracted XML content: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+  <CmdType>Catalog</CmdType>
+  <SN>579513</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+</Query>
+DEBUG:gb28181-restreamer:[SIP] Extracted XML content: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+  <CmdType>Catalog</CmdType>
+  <SN>579513</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+</Query>
+[2025-05-23 12:01:32] [DEBUG] [SIP] Query SN: 579513
+DEBUG:gb28181-restreamer:[SIP] Query SN: 579513
+[2025-05-23 12:01:32] [DEBUG] [SIP] Using default platform ID: ai-sip.x-stage.bull-b.com
+DEBUG:gb28181-restreamer:[SIP] Using default platform ID: ai-sip.x-stage.bull-b.com
+[2025-05-23 12:01:32] [INFO] [SIP] Sending catalog with 8 channels
+INFO:gb28181-restreamer:[SIP] Sending catalog with 8 channels
+[2025-05-23 12:01:32] [DEBUG] [SIP] Catalog response XML length: 4433
+DEBUG:gb28181-restreamer:[SIP] Catalog response XML length: 4433
+[2025-05-23 12:01:32] [INFO] [SIP] Saved catalog response to catalog_response.xml
+INFO:gb28181-restreamer:[SIP] Saved catalog response to catalog_response.xml
+[2025-05-23 12:01:32] [INFO] [SIP] Successfully sent catalog response with 8 channels to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP] Successfully sent catalog response with 8 channels to sip:ai-sip.x-stage.bull-b.com:5060
+12:01:24.196           pjsua_pres.c !..Unable to create server subscription: Bad Event [status=170489]
+[2025-05-23 12:01:32] [DEBUG] [SIP] Found XML in message
+DEBUG:gb28181-restreamer:[SIP] Found XML in message
+[2025-05-23 12:01:32] [INFO] [SIP] Received catalog query
+INFO:gb28181-restreamer:[SIP] Received catalog query
+[2025-05-23 12:01:32] [INFO] [SIP] Processing catalog query from platform
+INFO:gb28181-restreamer:[SIP] Processing catalog query from platform
+[2025-05-23 12:01:32] [DEBUG] [SIP] Extracted XML content: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+  <CmdType>Catalog</CmdType>
+  <SN>579513</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+</Query>
+DEBUG:gb28181-restreamer:[SIP] Extracted XML content: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+  <CmdType>Catalog</CmdType>
+  <SN>579513</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+</Query>
+[2025-05-23 12:01:32] [DEBUG] [SIP] Query SN: 579513
+DEBUG:gb28181-restreamer:[SIP] Query SN: 579513
+[2025-05-23 12:01:32] [DEBUG] [SIP] Using default platform ID: ai-sip.x-stage.bull-b.com
+DEBUG:gb28181-restreamer:[SIP] Using default platform ID: ai-sip.x-stage.bull-b.com
+[2025-05-23 12:01:32] [INFO] [SIP] Sending catalog with 8 channels
+INFO:gb28181-restreamer:[SIP] Sending catalog with 8 channels
+[2025-05-23 12:01:32] [DEBUG] [SIP] Catalog response XML length: 4433
+DEBUG:gb28181-restreamer:[SIP] Catalog response XML length: 4433
+[2025-05-23 12:01:32] [INFO] [SIP] Saved catalog response to catalog_response.xml
+INFO:gb28181-restreamer:[SIP] Saved catalog response to catalog_response.xml
+[2025-05-23 12:01:32] [INFO] [SIP] Successfully sent catalog response with 8 channels to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP] Successfully sent catalog response with 8 channels to sip:ai-sip.x-stage.bull-b.com:5060
+12:01:26.431           pjsua_pres.c !..Unable to create server subscription: Bad Event [status=170489]
+[2025-05-23 12:01:32] [DEBUG] [SIP] Found XML in message
+DEBUG:gb28181-restreamer:[SIP] Found XML in message
+[2025-05-23 12:01:32] [INFO] [SIP] Received catalog query
+INFO:gb28181-restreamer:[SIP] Received catalog query
+[2025-05-23 12:01:32] [INFO] [SIP] Processing catalog query from platform
+INFO:gb28181-restreamer:[SIP] Processing catalog query from platform
+[2025-05-23 12:01:32] [DEBUG] [SIP] Extracted XML content: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+  <CmdType>Catalog</CmdType>
+  <SN>579513</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+</Query>
+DEBUG:gb28181-restreamer:[SIP] Extracted XML content: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+  <CmdType>Catalog</CmdType>
+  <SN>579513</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+</Query>
+[2025-05-23 12:01:32] [DEBUG] [SIP] Query SN: 579513
+DEBUG:gb28181-restreamer:[SIP] Query SN: 579513
+[2025-05-23 12:01:32] [DEBUG] [SIP] Using default platform ID: ai-sip.x-stage.bull-b.com
+DEBUG:gb28181-restreamer:[SIP] Using default platform ID: ai-sip.x-stage.bull-b.com
+[2025-05-23 12:01:32] [INFO] [SIP] Sending catalog with 8 channels
+INFO:gb28181-restreamer:[SIP] Sending catalog with 8 channels
+[2025-05-23 12:01:32] [DEBUG] [SIP] Catalog response XML length: 4433
+DEBUG:gb28181-restreamer:[SIP] Catalog response XML length: 4433
+[2025-05-23 12:01:32] [INFO] [SIP] Saved catalog response to catalog_response.xml
+INFO:gb28181-restreamer:[SIP] Saved catalog response to catalog_response.xml
+[2025-05-23 12:01:32] [INFO] [SIP] Successfully sent catalog response with 8 channels to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP] Successfully sent catalog response with 8 channels to sip:ai-sip.x-stage.bull-b.com:5060
+12:01:28.661           pjsua_pres.c  ..Unable to create server subscription: Bad Event [status=170489]
+[2025-05-23 12:01:32] [DEBUG] [SIP] Found XML in message
+DEBUG:gb28181-restreamer:[SIP] Found XML in message
+[2025-05-23 12:01:32] [INFO] [SIP] Received catalog query
+INFO:gb28181-restreamer:[SIP] Received catalog query
+[2025-05-23 12:01:32] [INFO] [SIP] Processing catalog query from platform
+INFO:gb28181-restreamer:[SIP] Processing catalog query from platform
+[2025-05-23 12:01:32] [DEBUG] [SIP] Extracted XML content: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+  <CmdType>Catalog</CmdType>
+  <SN>579513</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+</Query>
+DEBUG:gb28181-restreamer:[SIP] Extracted XML content: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+  <CmdType>Catalog</CmdType>
+  <SN>579513</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+</Query>
+[2025-05-23 12:01:32] [DEBUG] [SIP] Query SN: 579513
+DEBUG:gb28181-restreamer:[SIP] Query SN: 579513
+[2025-05-23 12:01:32] [DEBUG] [SIP] Using default platform ID: ai-sip.x-stage.bull-b.com
+DEBUG:gb28181-restreamer:[SIP] Using default platform ID: ai-sip.x-stage.bull-b.com
+[2025-05-23 12:01:32] [INFO] [SIP] Sending catalog with 8 channels
+INFO:gb28181-restreamer:[SIP] Sending catalog with 8 channels
+[2025-05-23 12:01:32] [DEBUG] [SIP] Catalog response XML length: 4433
+DEBUG:gb28181-restreamer:[SIP] Catalog response XML length: 4433
+[2025-05-23 12:01:32] [INFO] [SIP] Saved catalog response to catalog_response.xml
+INFO:gb28181-restreamer:[SIP] Saved catalog response to catalog_response.xml
+[2025-05-23 12:01:32] [INFO] [SIP] Successfully sent catalog response with 8 channels to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP] Successfully sent catalog response with 8 channels to sip:ai-sip.x-stage.bull-b.com:5060
+12:01:30.907           pjsua_pres.c !..Unable to create server subscription: Bad Event [status=170489]
+[2025-05-23 12:01:32] [DEBUG] [SIP] Found XML in message
+DEBUG:gb28181-restreamer:[SIP] Found XML in message
+[2025-05-23 12:01:32] [INFO] [SIP] Received catalog query
+INFO:gb28181-restreamer:[SIP] Received catalog query
+[2025-05-23 12:01:32] [INFO] [SIP] Processing catalog query from platform
+INFO:gb28181-restreamer:[SIP] Processing catalog query from platform
+[2025-05-23 12:01:32] [DEBUG] [SIP] Extracted XML content: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+  <CmdType>Catalog</CmdType>
+  <SN>579513</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+</Query>
+DEBUG:gb28181-restreamer:[SIP] Extracted XML content: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+  <CmdType>Catalog</CmdType>
+  <SN>579513</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+</Query>
+[2025-05-23 12:01:32] [DEBUG] [SIP] Query SN: 579513
+DEBUG:gb28181-restreamer:[SIP] Query SN: 579513
+[2025-05-23 12:01:32] [DEBUG] [SIP] Using default platform ID: ai-sip.x-stage.bull-b.com
+DEBUG:gb28181-restreamer:[SIP] Using default platform ID: ai-sip.x-stage.bull-b.com
+[2025-05-23 12:01:32] [INFO] [SIP] Sending catalog with 8 channels
+INFO:gb28181-restreamer:[SIP] Sending catalog with 8 channels
+[2025-05-23 12:01:32] [DEBUG] [SIP] Catalog response XML length: 4433
+DEBUG:gb28181-restreamer:[SIP] Catalog response XML length: 4433
+[2025-05-23 12:01:32] [INFO] [SIP] Saved catalog response to catalog_response.xml
+INFO:gb28181-restreamer:[SIP] Saved catalog response to catalog_response.xml
+[2025-05-23 12:01:32] [INFO] [SIP] Successfully sent catalog response with 8 channels to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP] Successfully sent catalog response with 8 channels to sip:ai-sip.x-stage.bull-b.com:5060
+12:01:32.601            pjsua_acc.c !.....sip:81000000465001000001@ai-sip.x-stage.bull-b.com: unregistration success
+[2025-05-23 12:01:32] [DEBUG] [SIP] Found XML in message
+DEBUG:gb28181-restreamer:[SIP] Found XML in message
+[2025-05-23 12:01:32] [INFO] [SIP] Received catalog query
+INFO:gb28181-restreamer:[SIP] Received catalog query
+[2025-05-23 12:01:32] [INFO] [SIP] Processing catalog query from platform
+INFO:gb28181-restreamer:[SIP] Processing catalog query from platform
+[2025-05-23 12:01:32] [DEBUG] [SIP] Extracted XML content: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+  <CmdType>Catalog</CmdType>
+  <SN>579513</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+</Query>
+DEBUG:gb28181-restreamer:[SIP] Extracted XML content: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+  <CmdType>Catalog</CmdType>
+  <SN>579513</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+</Query>
+[2025-05-23 12:01:32] [DEBUG] [SIP] Query SN: 579513
+DEBUG:gb28181-restreamer:[SIP] Query SN: 579513
+[2025-05-23 12:01:32] [DEBUG] [SIP] Using default platform ID: ai-sip.x-stage.bull-b.com
+DEBUG:gb28181-restreamer:[SIP] Using default platform ID: ai-sip.x-stage.bull-b.com
+[2025-05-23 12:01:32] [INFO] [SIP] Sending catalog with 8 channels
+INFO:gb28181-restreamer:[SIP] Sending catalog with 8 channels
+[2025-05-23 12:01:32] [DEBUG] [SIP] Catalog response XML length: 4433
+DEBUG:gb28181-restreamer:[SIP] Catalog response XML length: 4433
+[2025-05-23 12:01:32] [INFO] [SIP] Saved catalog response to catalog_response.xml
+INFO:gb28181-restreamer:[SIP] Saved catalog response to catalog_response.xml
+[2025-05-23 12:01:32] [INFO] [SIP] Successfully sent catalog response with 8 channels to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP] Successfully sent catalog response with 8 channels to sip:ai-sip.x-stage.bull-b.com:5060
+12:01:32.630                timer.c  .Dumping timer heap:
+[2025-05-23 12:01:32] [DEBUG] [SIP] Found XML in message
+DEBUG:gb28181-restreamer:[SIP] Found XML in message
+[2025-05-23 12:01:32] [INFO] [SIP] Received catalog query
+INFO:gb28181-restreamer:[SIP] Received catalog query
+[2025-05-23 12:01:32] [INFO] [SIP] Processing catalog query from platform
+INFO:gb28181-restreamer:[SIP] Processing catalog query from platform
+[2025-05-23 12:01:32] [DEBUG] [SIP] Extracted XML content: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+  <CmdType>Catalog</CmdType>
+  <SN>579513</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+</Query>
+DEBUG:gb28181-restreamer:[SIP] Extracted XML content: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+  <CmdType>Catalog</CmdType>
+  <SN>579513</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+</Query>
+[2025-05-23 12:01:32] [DEBUG] [SIP] Query SN: 579513
+DEBUG:gb28181-restreamer:[SIP] Query SN: 579513
+[2025-05-23 12:01:32] [DEBUG] [SIP] Using default platform ID: ai-sip.x-stage.bull-b.com
+DEBUG:gb28181-restreamer:[SIP] Using default platform ID: ai-sip.x-stage.bull-b.com
+[2025-05-23 12:01:32] [INFO] [SIP] Sending catalog with 8 channels
+INFO:gb28181-restreamer:[SIP] Sending catalog with 8 channels
+[2025-05-23 12:01:32] [DEBUG] [SIP] Catalog response XML length: 4433
+DEBUG:gb28181-restreamer:[SIP] Catalog response XML length: 4433
+[2025-05-23 12:01:32] [INFO] [SIP] Saved catalog response to catalog_response.xml
+INFO:gb28181-restreamer:[SIP] Saved catalog response to catalog_response.xml
+[2025-05-23 12:01:32] [INFO] [SIP] Successfully sent catalog response with 8 channels to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP] Successfully sent catalog response with 8 channels to sip:ai-sip.x-stage.bull-b.com:5060
+12:01:32.630                timer.c  .  Cur size: 0 entries, max: 3070
+[2025-05-23 12:01:32] [DEBUG] [SIP] Found XML in message
+DEBUG:gb28181-restreamer:[SIP] Found XML in message
+[2025-05-23 12:01:32] [INFO] [SIP] Received catalog query
+INFO:gb28181-restreamer:[SIP] Received catalog query
+[2025-05-23 12:01:32] [INFO] [SIP] Processing catalog query from platform
+INFO:gb28181-restreamer:[SIP] Processing catalog query from platform
+[2025-05-23 12:01:32] [DEBUG] [SIP] Extracted XML content: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+  <CmdType>Catalog</CmdType>
+  <SN>579513</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+</Query>
+DEBUG:gb28181-restreamer:[SIP] Extracted XML content: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+  <CmdType>Catalog</CmdType>
+  <SN>579513</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+</Query>
+[2025-05-23 12:01:32] [DEBUG] [SIP] Query SN: 579513
+DEBUG:gb28181-restreamer:[SIP] Query SN: 579513
+[2025-05-23 12:01:32] [DEBUG] [SIP] Using default platform ID: ai-sip.x-stage.bull-b.com
+DEBUG:gb28181-restreamer:[SIP] Using default platform ID: ai-sip.x-stage.bull-b.com
+[2025-05-23 12:01:32] [INFO] [SIP] Sending catalog with 8 channels
+INFO:gb28181-restreamer:[SIP] Sending catalog with 8 channels
+[2025-05-23 12:01:32] [DEBUG] [SIP] Catalog response XML length: 4433
+DEBUG:gb28181-restreamer:[SIP] Catalog response XML length: 4433
+[2025-05-23 12:01:32] [INFO] [SIP] Saved catalog response to catalog_response.xml
+INFO:gb28181-restreamer:[SIP] Saved catalog response to catalog_response.xml
+[2025-05-23 12:01:32] [INFO] [SIP] Successfully sent catalog response with 8 channels to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP] Successfully sent catalog response with 8 channels to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:32] [INFO] [SIP] PJSUA output handler finished
+INFO:gb28181-restreamer:[SIP] PJSUA output handler finished
+[2025-05-23 12:01:32] [WARNING] [SIP] pjsua process exited normally
+WARNING:gb28181-restreamer:[SIP] pjsua process exited normally
+[2025-05-23 12:01:32] [WARNING] [SIP] SIP client listen loop has ended
+WARNING:gb28181-restreamer:[SIP] SIP client listen loop has ended
+[2025-05-23 12:01:32] [INFO] [SIP-SENDER] Preparing to send Application/MANSCDP+xml message to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP-SENDER] Preparing to send Application/MANSCDP+xml message to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:32] [DEBUG] [SIP-SENDER] Message content length: 4433 bytes
+DEBUG:gb28181-restreamer:[SIP-SENDER] Message content length: 4433 bytes
+[2025-05-23 12:01:32] [DEBUG] [SIP-SENDER] Message preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1748001692</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>8</SumNum>
+  <DeviceLi...
+DEBUG:gb28181-restreamer:[SIP-SENDER] Message preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1748001692</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>8</SumNum>
+  <DeviceLi...
+[2025-05-23 12:01:32] [INFO] [SIP-SENDER] Sending message to sip:ai-sip.x-stage.bull-b.com:5060 using udp transport
+INFO:gb28181-restreamer:[SIP-SENDER] Sending message to sip:ai-sip.x-stage.bull-b.com:5060 using udp transport
+[2025-05-23 12:01:32] [DEBUG] [SIP-SENDER] Command: pjsua --id sip:81000000465001000001@ai-sip.x-stage.bull-b.com --registrar sip:ai-sip.x-stage.bull-b.com:5060 --realm * --username 81000000465001000001 --password admin123 --local-port 0 --null-audio --send-message sip:ai-sip.x-stage.bull-b.com:5060 --message-content-type Application/MANSCDP+xml --message-content @/tmp/gb28181_mfdyqg3b/msg_4v_bqk0e.xml
+DEBUG:gb28181-restreamer:[SIP-SENDER] Command: pjsua --id sip:81000000465001000001@ai-sip.x-stage.bull-b.com --registrar sip:ai-sip.x-stage.bull-b.com:5060 --realm * --username 81000000465001000001 --password admin123 --local-port 0 --null-audio --send-message sip:ai-sip.x-stage.bull-b.com:5060 --message-content-type Application/MANSCDP+xml --message-content @/tmp/gb28181_mfdyqg3b/msg_4v_bqk0e.xml
+[2025-05-23 12:01:33] [INFO] [SIP-SENDER] ✅ Successfully sent message to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP-SENDER] ✅ Successfully sent message to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:33] [INFO] [SIP-SENDER] Preparing to send Application/MANSCDP+xml message to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP-SENDER] Preparing to send Application/MANSCDP+xml message to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:33] [DEBUG] [SIP-SENDER] Message content length: 4433 bytes
+DEBUG:gb28181-restreamer:[SIP-SENDER] Message content length: 4433 bytes
+[2025-05-23 12:01:33] [DEBUG] [SIP-SENDER] Message preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1748001692</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>8</SumNum>
+  <DeviceLi...
+DEBUG:gb28181-restreamer:[SIP-SENDER] Message preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1748001692</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>8</SumNum>
+  <DeviceLi...
+[2025-05-23 12:01:33] [INFO] [SIP-SENDER] Sending message to sip:ai-sip.x-stage.bull-b.com:5060 using udp transport
+INFO:gb28181-restreamer:[SIP-SENDER] Sending message to sip:ai-sip.x-stage.bull-b.com:5060 using udp transport
+[2025-05-23 12:01:33] [DEBUG] [SIP-SENDER] Command: pjsua --id sip:81000000465001000001@ai-sip.x-stage.bull-b.com --registrar sip:ai-sip.x-stage.bull-b.com:5060 --realm * --username 81000000465001000001 --password admin123 --local-port 0 --null-audio --send-message sip:ai-sip.x-stage.bull-b.com:5060 --message-content-type Application/MANSCDP+xml --message-content @/tmp/gb28181_mfdyqg3b/msg_wz4x35au.xml
+DEBUG:gb28181-restreamer:[SIP-SENDER] Command: pjsua --id sip:81000000465001000001@ai-sip.x-stage.bull-b.com --registrar sip:ai-sip.x-stage.bull-b.com:5060 --realm * --username 81000000465001000001 --password admin123 --local-port 0 --null-audio --send-message sip:ai-sip.x-stage.bull-b.com:5060 --message-content-type Application/MANSCDP+xml --message-content @/tmp/gb28181_mfdyqg3b/msg_wz4x35au.xml
+[2025-05-23 12:01:34] [INFO] [SIP-SENDER] ✅ Successfully sent message to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP-SENDER] ✅ Successfully sent message to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:34] [INFO] [SIP-SENDER] Preparing to send Application/MANSCDP+xml message to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP-SENDER] Preparing to send Application/MANSCDP+xml message to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:34] [DEBUG] [SIP-SENDER] Message content length: 4433 bytes
+DEBUG:gb28181-restreamer:[SIP-SENDER] Message content length: 4433 bytes
+[2025-05-23 12:01:34] [DEBUG] [SIP-SENDER] Message preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1748001692</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>8</SumNum>
+  <DeviceLi...
+DEBUG:gb28181-restreamer:[SIP-SENDER] Message preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1748001692</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>8</SumNum>
+  <DeviceLi...
+[2025-05-23 12:01:34] [INFO] [SIP-SENDER] Sending message to sip:ai-sip.x-stage.bull-b.com:5060 using udp transport
+INFO:gb28181-restreamer:[SIP-SENDER] Sending message to sip:ai-sip.x-stage.bull-b.com:5060 using udp transport
+[2025-05-23 12:01:34] [DEBUG] [SIP-SENDER] Command: pjsua --id sip:81000000465001000001@ai-sip.x-stage.bull-b.com --registrar sip:ai-sip.x-stage.bull-b.com:5060 --realm * --username 81000000465001000001 --password admin123 --local-port 0 --null-audio --send-message sip:ai-sip.x-stage.bull-b.com:5060 --message-content-type Application/MANSCDP+xml --message-content @/tmp/gb28181_mfdyqg3b/msg_f60o8p41.xml
+DEBUG:gb28181-restreamer:[SIP-SENDER] Command: pjsua --id sip:81000000465001000001@ai-sip.x-stage.bull-b.com --registrar sip:ai-sip.x-stage.bull-b.com:5060 --realm * --username 81000000465001000001 --password admin123 --local-port 0 --null-audio --send-message sip:ai-sip.x-stage.bull-b.com:5060 --message-content-type Application/MANSCDP+xml --message-content @/tmp/gb28181_mfdyqg3b/msg_f60o8p41.xml
+[2025-05-23 12:01:35] [INFO] [SIP-SENDER] ✅ Successfully sent message to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP-SENDER] ✅ Successfully sent message to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:36] [INFO] [SIP-SENDER] Preparing to send Application/MANSCDP+xml message to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP-SENDER] Preparing to send Application/MANSCDP+xml message to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:36] [DEBUG] [SIP-SENDER] Message content length: 4433 bytes
+DEBUG:gb28181-restreamer:[SIP-SENDER] Message content length: 4433 bytes
+[2025-05-23 12:01:36] [DEBUG] [SIP-SENDER] Message preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1748001692</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>8</SumNum>
+  <DeviceLi...
+DEBUG:gb28181-restreamer:[SIP-SENDER] Message preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1748001692</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>8</SumNum>
+  <DeviceLi...
+[2025-05-23 12:01:36] [INFO] [SIP-SENDER] Sending message to sip:ai-sip.x-stage.bull-b.com:5060 using udp transport
+INFO:gb28181-restreamer:[SIP-SENDER] Sending message to sip:ai-sip.x-stage.bull-b.com:5060 using udp transport
+[2025-05-23 12:01:36] [DEBUG] [SIP-SENDER] Command: pjsua --id sip:81000000465001000001@ai-sip.x-stage.bull-b.com --registrar sip:ai-sip.x-stage.bull-b.com:5060 --realm * --username 81000000465001000001 --password admin123 --local-port 0 --null-audio --send-message sip:ai-sip.x-stage.bull-b.com:5060 --message-content-type Application/MANSCDP+xml --message-content @/tmp/gb28181_mfdyqg3b/msg_j_qvnk1c.xml
+DEBUG:gb28181-restreamer:[SIP-SENDER] Command: pjsua --id sip:81000000465001000001@ai-sip.x-stage.bull-b.com --registrar sip:ai-sip.x-stage.bull-b.com:5060 --realm * --username 81000000465001000001 --password admin123 --local-port 0 --null-audio --send-message sip:ai-sip.x-stage.bull-b.com:5060 --message-content-type Application/MANSCDP+xml --message-content @/tmp/gb28181_mfdyqg3b/msg_j_qvnk1c.xml
+[2025-05-23 12:01:37] [INFO] [SIP-SENDER] ✅ Successfully sent message to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP-SENDER] ✅ Successfully sent message to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:37] [INFO] [SIP-SENDER] Preparing to send Application/MANSCDP+xml message to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP-SENDER] Preparing to send Application/MANSCDP+xml message to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:37] [DEBUG] [SIP-SENDER] Message content length: 4433 bytes
+DEBUG:gb28181-restreamer:[SIP-SENDER] Message content length: 4433 bytes
+[2025-05-23 12:01:37] [DEBUG] [SIP-SENDER] Message preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1748001692</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>8</SumNum>
+  <DeviceLi...
+DEBUG:gb28181-restreamer:[SIP-SENDER] Message preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1748001692</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>8</SumNum>
+  <DeviceLi...
+[2025-05-23 12:01:37] [INFO] [SIP-SENDER] Sending message to sip:ai-sip.x-stage.bull-b.com:5060 using udp transport
+INFO:gb28181-restreamer:[SIP-SENDER] Sending message to sip:ai-sip.x-stage.bull-b.com:5060 using udp transport
+[2025-05-23 12:01:37] [DEBUG] [SIP-SENDER] Command: pjsua --id sip:81000000465001000001@ai-sip.x-stage.bull-b.com --registrar sip:ai-sip.x-stage.bull-b.com:5060 --realm * --username 81000000465001000001 --password admin123 --local-port 0 --null-audio --send-message sip:ai-sip.x-stage.bull-b.com:5060 --message-content-type Application/MANSCDP+xml --message-content @/tmp/gb28181_mfdyqg3b/msg_qi9ws1n6.xml
+DEBUG:gb28181-restreamer:[SIP-SENDER] Command: pjsua --id sip:81000000465001000001@ai-sip.x-stage.bull-b.com --registrar sip:ai-sip.x-stage.bull-b.com:5060 --realm * --username 81000000465001000001 --password admin123 --local-port 0 --null-audio --send-message sip:ai-sip.x-stage.bull-b.com:5060 --message-content-type Application/MANSCDP+xml --message-content @/tmp/gb28181_mfdyqg3b/msg_qi9ws1n6.xml
+[2025-05-23 12:01:38] [INFO] [SIP-SENDER] ✅ Successfully sent message to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP-SENDER] ✅ Successfully sent message to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:38] [INFO] [SIP-SENDER] Preparing to send Application/MANSCDP+xml message to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP-SENDER] Preparing to send Application/MANSCDP+xml message to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:38] [DEBUG] [SIP-SENDER] Message content length: 4433 bytes
+DEBUG:gb28181-restreamer:[SIP-SENDER] Message content length: 4433 bytes
+[2025-05-23 12:01:38] [DEBUG] [SIP-SENDER] Message preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1748001692</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>8</SumNum>
+  <DeviceLi...
+DEBUG:gb28181-restreamer:[SIP-SENDER] Message preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1748001692</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>8</SumNum>
+  <DeviceLi...
+[2025-05-23 12:01:38] [INFO] [SIP-SENDER] Sending message to sip:ai-sip.x-stage.bull-b.com:5060 using udp transport
+INFO:gb28181-restreamer:[SIP-SENDER] Sending message to sip:ai-sip.x-stage.bull-b.com:5060 using udp transport
+[2025-05-23 12:01:38] [DEBUG] [SIP-SENDER] Command: pjsua --id sip:81000000465001000001@ai-sip.x-stage.bull-b.com --registrar sip:ai-sip.x-stage.bull-b.com:5060 --realm * --username 81000000465001000001 --password admin123 --local-port 0 --null-audio --send-message sip:ai-sip.x-stage.bull-b.com:5060 --message-content-type Application/MANSCDP+xml --message-content @/tmp/gb28181_mfdyqg3b/msg_vw_ktdmq.xml
+DEBUG:gb28181-restreamer:[SIP-SENDER] Command: pjsua --id sip:81000000465001000001@ai-sip.x-stage.bull-b.com --registrar sip:ai-sip.x-stage.bull-b.com:5060 --realm * --username 81000000465001000001 --password admin123 --local-port 0 --null-audio --send-message sip:ai-sip.x-stage.bull-b.com:5060 --message-content-type Application/MANSCDP+xml --message-content @/tmp/gb28181_mfdyqg3b/msg_vw_ktdmq.xml
+[2025-05-23 12:01:39] [INFO] [SIP-SENDER] ✅ Successfully sent message to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP-SENDER] ✅ Successfully sent message to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:39] [INFO] [SIP-SENDER] Preparing to send Application/MANSCDP+xml message to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP-SENDER] Preparing to send Application/MANSCDP+xml message to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:39] [DEBUG] [SIP-SENDER] Message content length: 4433 bytes
+DEBUG:gb28181-restreamer:[SIP-SENDER] Message content length: 4433 bytes
+[2025-05-23 12:01:39] [DEBUG] [SIP-SENDER] Message preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1748001692</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>8</SumNum>
+  <DeviceLi...
+DEBUG:gb28181-restreamer:[SIP-SENDER] Message preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1748001692</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>8</SumNum>
+  <DeviceLi...
+[2025-05-23 12:01:39] [INFO] [SIP-SENDER] Sending message to sip:ai-sip.x-stage.bull-b.com:5060 using udp transport
+INFO:gb28181-restreamer:[SIP-SENDER] Sending message to sip:ai-sip.x-stage.bull-b.com:5060 using udp transport
+[2025-05-23 12:01:39] [DEBUG] [SIP-SENDER] Command: pjsua --id sip:81000000465001000001@ai-sip.x-stage.bull-b.com --registrar sip:ai-sip.x-stage.bull-b.com:5060 --realm * --username 81000000465001000001 --password admin123 --local-port 0 --null-audio --send-message sip:ai-sip.x-stage.bull-b.com:5060 --message-content-type Application/MANSCDP+xml --message-content @/tmp/gb28181_mfdyqg3b/msg_a2qqbel1.xml
+DEBUG:gb28181-restreamer:[SIP-SENDER] Command: pjsua --id sip:81000000465001000001@ai-sip.x-stage.bull-b.com --registrar sip:ai-sip.x-stage.bull-b.com:5060 --realm * --username 81000000465001000001 --password admin123 --local-port 0 --null-audio --send-message sip:ai-sip.x-stage.bull-b.com:5060 --message-content-type Application/MANSCDP+xml --message-content @/tmp/gb28181_mfdyqg3b/msg_a2qqbel1.xml
+[2025-05-23 12:01:40] [INFO] [SIP-SENDER] ✅ Successfully sent message to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP-SENDER] ✅ Successfully sent message to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:40] [INFO] [SIP-SENDER] Preparing to send Application/MANSCDP+xml message to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP-SENDER] Preparing to send Application/MANSCDP+xml message to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:40] [DEBUG] [SIP-SENDER] Message content length: 4433 bytes
+DEBUG:gb28181-restreamer:[SIP-SENDER] Message content length: 4433 bytes
+[2025-05-23 12:01:40] [DEBUG] [SIP-SENDER] Message preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1748001692</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>8</SumNum>
+  <DeviceLi...
+DEBUG:gb28181-restreamer:[SIP-SENDER] Message preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1748001692</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>8</SumNum>
+  <DeviceLi...
+[2025-05-23 12:01:40] [INFO] [SIP-SENDER] Sending message to sip:ai-sip.x-stage.bull-b.com:5060 using udp transport
+INFO:gb28181-restreamer:[SIP-SENDER] Sending message to sip:ai-sip.x-stage.bull-b.com:5060 using udp transport
+[2025-05-23 12:01:40] [DEBUG] [SIP-SENDER] Command: pjsua --id sip:81000000465001000001@ai-sip.x-stage.bull-b.com --registrar sip:ai-sip.x-stage.bull-b.com:5060 --realm * --username 81000000465001000001 --password admin123 --local-port 0 --null-audio --send-message sip:ai-sip.x-stage.bull-b.com:5060 --message-content-type Application/MANSCDP+xml --message-content @/tmp/gb28181_mfdyqg3b/msg_4lygqmnf.xml
+DEBUG:gb28181-restreamer:[SIP-SENDER] Command: pjsua --id sip:81000000465001000001@ai-sip.x-stage.bull-b.com --registrar sip:ai-sip.x-stage.bull-b.com:5060 --realm * --username 81000000465001000001 --password admin123 --local-port 0 --null-audio --send-message sip:ai-sip.x-stage.bull-b.com:5060 --message-content-type Application/MANSCDP+xml --message-content @/tmp/gb28181_mfdyqg3b/msg_4lygqmnf.xml
+[2025-05-23 12:01:41] [INFO] [SIP-SENDER] ✅ Successfully sent message to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP-SENDER] ✅ Successfully sent message to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:41] [INFO] [SIP-SENDER] Preparing to send Application/MANSCDP+xml message to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP-SENDER] Preparing to send Application/MANSCDP+xml message to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:41] [DEBUG] [SIP-SENDER] Message content length: 4433 bytes
+DEBUG:gb28181-restreamer:[SIP-SENDER] Message content length: 4433 bytes
+[2025-05-23 12:01:41] [DEBUG] [SIP-SENDER] Message preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1748001692</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>8</SumNum>
+  <DeviceLi...
+DEBUG:gb28181-restreamer:[SIP-SENDER] Message preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1748001692</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>8</SumNum>
+  <DeviceLi...
+[2025-05-23 12:01:41] [INFO] [SIP-SENDER] Sending message to sip:ai-sip.x-stage.bull-b.com:5060 using udp transport
+INFO:gb28181-restreamer:[SIP-SENDER] Sending message to sip:ai-sip.x-stage.bull-b.com:5060 using udp transport
+[2025-05-23 12:01:41] [DEBUG] [SIP-SENDER] Command: pjsua --id sip:81000000465001000001@ai-sip.x-stage.bull-b.com --registrar sip:ai-sip.x-stage.bull-b.com:5060 --realm * --username 81000000465001000001 --password admin123 --local-port 0 --null-audio --send-message sip:ai-sip.x-stage.bull-b.com:5060 --message-content-type Application/MANSCDP+xml --message-content @/tmp/gb28181_mfdyqg3b/msg_anbsqbnb.xml
+DEBUG:gb28181-restreamer:[SIP-SENDER] Command: pjsua --id sip:81000000465001000001@ai-sip.x-stage.bull-b.com --registrar sip:ai-sip.x-stage.bull-b.com:5060 --realm * --username 81000000465001000001 --password admin123 --local-port 0 --null-audio --send-message sip:ai-sip.x-stage.bull-b.com:5060 --message-content-type Application/MANSCDP+xml --message-content @/tmp/gb28181_mfdyqg3b/msg_anbsqbnb.xml
+[2025-05-23 12:01:42] [INFO] [SIP-SENDER] ✅ Successfully sent message to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP-SENDER] ✅ Successfully sent message to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:42] [INFO] [SIP-SENDER] Preparing to send Application/MANSCDP+xml message to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP-SENDER] Preparing to send Application/MANSCDP+xml message to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:42] [DEBUG] [SIP-SENDER] Message content length: 4433 bytes
+DEBUG:gb28181-restreamer:[SIP-SENDER] Message content length: 4433 bytes
+[2025-05-23 12:01:42] [DEBUG] [SIP-SENDER] Message preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1748001692</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>8</SumNum>
+  <DeviceLi...
+DEBUG:gb28181-restreamer:[SIP-SENDER] Message preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1748001692</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>8</SumNum>
+  <DeviceLi...
+[2025-05-23 12:01:42] [INFO] [SIP-SENDER] Sending message to sip:ai-sip.x-stage.bull-b.com:5060 using udp transport
+INFO:gb28181-restreamer:[SIP-SENDER] Sending message to sip:ai-sip.x-stage.bull-b.com:5060 using udp transport
+[2025-05-23 12:01:42] [DEBUG] [SIP-SENDER] Command: pjsua --id sip:81000000465001000001@ai-sip.x-stage.bull-b.com --registrar sip:ai-sip.x-stage.bull-b.com:5060 --realm * --username 81000000465001000001 --password admin123 --local-port 0 --null-audio --send-message sip:ai-sip.x-stage.bull-b.com:5060 --message-content-type Application/MANSCDP+xml --message-content @/tmp/gb28181_mfdyqg3b/msg_amxmvbld.xml
+DEBUG:gb28181-restreamer:[SIP-SENDER] Command: pjsua --id sip:81000000465001000001@ai-sip.x-stage.bull-b.com --registrar sip:ai-sip.x-stage.bull-b.com:5060 --realm * --username 81000000465001000001 --password admin123 --local-port 0 --null-audio --send-message sip:ai-sip.x-stage.bull-b.com:5060 --message-content-type Application/MANSCDP+xml --message-content @/tmp/gb28181_mfdyqg3b/msg_amxmvbld.xml
+[2025-05-23 12:01:43] [INFO] [SIP-SENDER] ✅ Successfully sent message to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP-SENDER] ✅ Successfully sent message to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:43] [INFO] [SIP-SENDER] Preparing to send Application/MANSCDP+xml message to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP-SENDER] Preparing to send Application/MANSCDP+xml message to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:43] [DEBUG] [SIP-SENDER] Message content length: 4433 bytes
+DEBUG:gb28181-restreamer:[SIP-SENDER] Message content length: 4433 bytes
+[2025-05-23 12:01:43] [DEBUG] [SIP-SENDER] Message preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1748001692</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>8</SumNum>
+  <DeviceLi...
+DEBUG:gb28181-restreamer:[SIP-SENDER] Message preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1748001692</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>8</SumNum>
+  <DeviceLi...
+[2025-05-23 12:01:43] [INFO] [SIP-SENDER] Sending message to sip:ai-sip.x-stage.bull-b.com:5060 using udp transport
+INFO:gb28181-restreamer:[SIP-SENDER] Sending message to sip:ai-sip.x-stage.bull-b.com:5060 using udp transport
+[2025-05-23 12:01:43] [DEBUG] [SIP-SENDER] Command: pjsua --id sip:81000000465001000001@ai-sip.x-stage.bull-b.com --registrar sip:ai-sip.x-stage.bull-b.com:5060 --realm * --username 81000000465001000001 --password admin123 --local-port 0 --null-audio --send-message sip:ai-sip.x-stage.bull-b.com:5060 --message-content-type Application/MANSCDP+xml --message-content @/tmp/gb28181_mfdyqg3b/msg_dnnqi1li.xml
+DEBUG:gb28181-restreamer:[SIP-SENDER] Command: pjsua --id sip:81000000465001000001@ai-sip.x-stage.bull-b.com --registrar sip:ai-sip.x-stage.bull-b.com:5060 --realm * --username 81000000465001000001 --password admin123 --local-port 0 --null-audio --send-message sip:ai-sip.x-stage.bull-b.com:5060 --message-content-type Application/MANSCDP+xml --message-content @/tmp/gb28181_mfdyqg3b/msg_dnnqi1li.xml
+[2025-05-23 12:01:44] [INFO] [SIP-SENDER] ✅ Successfully sent message to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP-SENDER] ✅ Successfully sent message to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:44] [INFO] [SIP-SENDER] Preparing to send Application/MANSCDP+xml message to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP-SENDER] Preparing to send Application/MANSCDP+xml message to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:44] [DEBUG] [SIP-SENDER] Message content length: 4433 bytes
+DEBUG:gb28181-restreamer:[SIP-SENDER] Message content length: 4433 bytes
+[2025-05-23 12:01:44] [DEBUG] [SIP-SENDER] Message preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1748001692</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>8</SumNum>
+  <DeviceLi...
+DEBUG:gb28181-restreamer:[SIP-SENDER] Message preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1748001692</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>8</SumNum>
+  <DeviceLi...
+[2025-05-23 12:01:44] [INFO] [SIP-SENDER] Sending message to sip:ai-sip.x-stage.bull-b.com:5060 using udp transport
+INFO:gb28181-restreamer:[SIP-SENDER] Sending message to sip:ai-sip.x-stage.bull-b.com:5060 using udp transport
+[2025-05-23 12:01:44] [DEBUG] [SIP-SENDER] Command: pjsua --id sip:81000000465001000001@ai-sip.x-stage.bull-b.com --registrar sip:ai-sip.x-stage.bull-b.com:5060 --realm * --username 81000000465001000001 --password admin123 --local-port 0 --null-audio --send-message sip:ai-sip.x-stage.bull-b.com:5060 --message-content-type Application/MANSCDP+xml --message-content @/tmp/gb28181_mfdyqg3b/msg_c22y33d3.xml
+DEBUG:gb28181-restreamer:[SIP-SENDER] Command: pjsua --id sip:81000000465001000001@ai-sip.x-stage.bull-b.com --registrar sip:ai-sip.x-stage.bull-b.com:5060 --realm * --username 81000000465001000001 --password admin123 --local-port 0 --null-audio --send-message sip:ai-sip.x-stage.bull-b.com:5060 --message-content-type Application/MANSCDP+xml --message-content @/tmp/gb28181_mfdyqg3b/msg_c22y33d3.xml
+[2025-05-23 12:01:45] [INFO] [SIP-SENDER] ✅ Successfully sent message to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP-SENDER] ✅ Successfully sent message to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:45] [INFO] [SIP-SENDER] Preparing to send Application/MANSCDP+xml message to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP-SENDER] Preparing to send Application/MANSCDP+xml message to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:45] [DEBUG] [SIP-SENDER] Message content length: 4433 bytes
+DEBUG:gb28181-restreamer:[SIP-SENDER] Message content length: 4433 bytes
+[2025-05-23 12:01:45] [DEBUG] [SIP-SENDER] Message preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1748001692</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>8</SumNum>
+  <DeviceLi...
+DEBUG:gb28181-restreamer:[SIP-SENDER] Message preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1748001692</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>8</SumNum>
+  <DeviceLi...
+[2025-05-23 12:01:45] [INFO] [SIP-SENDER] Sending message to sip:ai-sip.x-stage.bull-b.com:5060 using udp transport
+INFO:gb28181-restreamer:[SIP-SENDER] Sending message to sip:ai-sip.x-stage.bull-b.com:5060 using udp transport
+[2025-05-23 12:01:45] [DEBUG] [SIP-SENDER] Command: pjsua --id sip:81000000465001000001@ai-sip.x-stage.bull-b.com --registrar sip:ai-sip.x-stage.bull-b.com:5060 --realm * --username 81000000465001000001 --password admin123 --local-port 0 --null-audio --send-message sip:ai-sip.x-stage.bull-b.com:5060 --message-content-type Application/MANSCDP+xml --message-content @/tmp/gb28181_mfdyqg3b/msg_8sh0ef1b.xml
+DEBUG:gb28181-restreamer:[SIP-SENDER] Command: pjsua --id sip:81000000465001000001@ai-sip.x-stage.bull-b.com --registrar sip:ai-sip.x-stage.bull-b.com:5060 --realm * --username 81000000465001000001 --password admin123 --local-port 0 --null-audio --send-message sip:ai-sip.x-stage.bull-b.com:5060 --message-content-type Application/MANSCDP+xml --message-content @/tmp/gb28181_mfdyqg3b/msg_8sh0ef1b.xml
+[2025-05-23 12:01:47] [INFO] [SIP-SENDER] ✅ Successfully sent message to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP-SENDER] ✅ Successfully sent message to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:47] [INFO] [SIP-SENDER] Preparing to send Application/MANSCDP+xml message to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP-SENDER] Preparing to send Application/MANSCDP+xml message to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:47] [DEBUG] [SIP-SENDER] Message content length: 4433 bytes
+DEBUG:gb28181-restreamer:[SIP-SENDER] Message content length: 4433 bytes
+[2025-05-23 12:01:47] [DEBUG] [SIP-SENDER] Message preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1748001692</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>8</SumNum>
+  <DeviceLi...
+DEBUG:gb28181-restreamer:[SIP-SENDER] Message preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1748001692</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>8</SumNum>
+  <DeviceLi...
+[2025-05-23 12:01:47] [INFO] [SIP-SENDER] Sending message to sip:ai-sip.x-stage.bull-b.com:5060 using udp transport
+INFO:gb28181-restreamer:[SIP-SENDER] Sending message to sip:ai-sip.x-stage.bull-b.com:5060 using udp transport
+[2025-05-23 12:01:47] [DEBUG] [SIP-SENDER] Command: pjsua --id sip:81000000465001000001@ai-sip.x-stage.bull-b.com --registrar sip:ai-sip.x-stage.bull-b.com:5060 --realm * --username 81000000465001000001 --password admin123 --local-port 0 --null-audio --send-message sip:ai-sip.x-stage.bull-b.com:5060 --message-content-type Application/MANSCDP+xml --message-content @/tmp/gb28181_mfdyqg3b/msg_pr41sjsy.xml
+DEBUG:gb28181-restreamer:[SIP-SENDER] Command: pjsua --id sip:81000000465001000001@ai-sip.x-stage.bull-b.com --registrar sip:ai-sip.x-stage.bull-b.com:5060 --realm * --username 81000000465001000001 --password admin123 --local-port 0 --null-audio --send-message sip:ai-sip.x-stage.bull-b.com:5060 --message-content-type Application/MANSCDP+xml --message-content @/tmp/gb28181_mfdyqg3b/msg_pr41sjsy.xml
+[2025-05-23 12:01:48] [INFO] [SIP-SENDER] ✅ Successfully sent message to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP-SENDER] ✅ Successfully sent message to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:48] [INFO] [SIP-SENDER] Preparing to send Application/MANSCDP+xml message to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP-SENDER] Preparing to send Application/MANSCDP+xml message to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:48] [DEBUG] [SIP-SENDER] Message content length: 4433 bytes
+DEBUG:gb28181-restreamer:[SIP-SENDER] Message content length: 4433 bytes
+[2025-05-23 12:01:48] [DEBUG] [SIP-SENDER] Message preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1748001692</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>8</SumNum>
+  <DeviceLi...
+DEBUG:gb28181-restreamer:[SIP-SENDER] Message preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1748001692</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>8</SumNum>
+  <DeviceLi...
+[2025-05-23 12:01:48] [INFO] [SIP-SENDER] Sending message to sip:ai-sip.x-stage.bull-b.com:5060 using udp transport
+INFO:gb28181-restreamer:[SIP-SENDER] Sending message to sip:ai-sip.x-stage.bull-b.com:5060 using udp transport
+[2025-05-23 12:01:48] [DEBUG] [SIP-SENDER] Command: pjsua --id sip:81000000465001000001@ai-sip.x-stage.bull-b.com --registrar sip:ai-sip.x-stage.bull-b.com:5060 --realm * --username 81000000465001000001 --password admin123 --local-port 0 --null-audio --send-message sip:ai-sip.x-stage.bull-b.com:5060 --message-content-type Application/MANSCDP+xml --message-content @/tmp/gb28181_mfdyqg3b/msg_a41d8dt3.xml
+DEBUG:gb28181-restreamer:[SIP-SENDER] Command: pjsua --id sip:81000000465001000001@ai-sip.x-stage.bull-b.com --registrar sip:ai-sip.x-stage.bull-b.com:5060 --realm * --username 81000000465001000001 --password admin123 --local-port 0 --null-audio --send-message sip:ai-sip.x-stage.bull-b.com:5060 --message-content-type Application/MANSCDP+xml --message-content @/tmp/gb28181_mfdyqg3b/msg_a41d8dt3.xml
+[2025-05-23 12:01:49] [INFO] [SIP-SENDER] ✅ Successfully sent message to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP-SENDER] ✅ Successfully sent message to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:49] [INFO] [SIP-SENDER] Preparing to send Application/MANSCDP+xml message to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP-SENDER] Preparing to send Application/MANSCDP+xml message to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:49] [DEBUG] [SIP-SENDER] Message content length: 4433 bytes
+DEBUG:gb28181-restreamer:[SIP-SENDER] Message content length: 4433 bytes
+[2025-05-23 12:01:49] [DEBUG] [SIP-SENDER] Message preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1748001692</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>8</SumNum>
+  <DeviceLi...
+DEBUG:gb28181-restreamer:[SIP-SENDER] Message preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1748001692</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>8</SumNum>
+  <DeviceLi...
+[2025-05-23 12:01:49] [INFO] [SIP-SENDER] Sending message to sip:ai-sip.x-stage.bull-b.com:5060 using udp transport
+INFO:gb28181-restreamer:[SIP-SENDER] Sending message to sip:ai-sip.x-stage.bull-b.com:5060 using udp transport
+[2025-05-23 12:01:49] [DEBUG] [SIP-SENDER] Command: pjsua --id sip:81000000465001000001@ai-sip.x-stage.bull-b.com --registrar sip:ai-sip.x-stage.bull-b.com:5060 --realm * --username 81000000465001000001 --password admin123 --local-port 0 --null-audio --send-message sip:ai-sip.x-stage.bull-b.com:5060 --message-content-type Application/MANSCDP+xml --message-content @/tmp/gb28181_mfdyqg3b/msg_56vaxea3.xml
+DEBUG:gb28181-restreamer:[SIP-SENDER] Command: pjsua --id sip:81000000465001000001@ai-sip.x-stage.bull-b.com --registrar sip:ai-sip.x-stage.bull-b.com:5060 --realm * --username 81000000465001000001 --password admin123 --local-port 0 --null-audio --send-message sip:ai-sip.x-stage.bull-b.com:5060 --message-content-type Application/MANSCDP+xml --message-content @/tmp/gb28181_mfdyqg3b/msg_56vaxea3.xml
+[2025-05-23 12:01:50] [INFO] [SIP-SENDER] ✅ Successfully sent message to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP-SENDER] ✅ Successfully sent message to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:50] [INFO] [SIP-SENDER] Preparing to send Application/MANSCDP+xml message to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP-SENDER] Preparing to send Application/MANSCDP+xml message to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:50] [DEBUG] [SIP-SENDER] Message content length: 4433 bytes
+DEBUG:gb28181-restreamer:[SIP-SENDER] Message content length: 4433 bytes
+[2025-05-23 12:01:50] [DEBUG] [SIP-SENDER] Message preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1748001692</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>8</SumNum>
+  <DeviceLi...
+DEBUG:gb28181-restreamer:[SIP-SENDER] Message preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1748001692</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>8</SumNum>
+  <DeviceLi...
+[2025-05-23 12:01:50] [INFO] [SIP-SENDER] Sending message to sip:ai-sip.x-stage.bull-b.com:5060 using udp transport
+INFO:gb28181-restreamer:[SIP-SENDER] Sending message to sip:ai-sip.x-stage.bull-b.com:5060 using udp transport
+[2025-05-23 12:01:50] [DEBUG] [SIP-SENDER] Command: pjsua --id sip:81000000465001000001@ai-sip.x-stage.bull-b.com --registrar sip:ai-sip.x-stage.bull-b.com:5060 --realm * --username 81000000465001000001 --password admin123 --local-port 0 --null-audio --send-message sip:ai-sip.x-stage.bull-b.com:5060 --message-content-type Application/MANSCDP+xml --message-content @/tmp/gb28181_mfdyqg3b/msg_v49jmxxi.xml
+DEBUG:gb28181-restreamer:[SIP-SENDER] Command: pjsua --id sip:81000000465001000001@ai-sip.x-stage.bull-b.com --registrar sip:ai-sip.x-stage.bull-b.com:5060 --realm * --username 81000000465001000001 --password admin123 --local-port 0 --null-audio --send-message sip:ai-sip.x-stage.bull-b.com:5060 --message-content-type Application/MANSCDP+xml --message-content @/tmp/gb28181_mfdyqg3b/msg_v49jmxxi.xml
+[2025-05-23 12:01:51] [INFO] [SIP-SENDER] ✅ Successfully sent message to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP-SENDER] ✅ Successfully sent message to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:51] [INFO] [SIP-SENDER] Preparing to send Application/MANSCDP+xml message to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP-SENDER] Preparing to send Application/MANSCDP+xml message to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:51] [DEBUG] [SIP-SENDER] Message content length: 4433 bytes
+DEBUG:gb28181-restreamer:[SIP-SENDER] Message content length: 4433 bytes
+[2025-05-23 12:01:51] [DEBUG] [SIP-SENDER] Message preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1748001692</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>8</SumNum>
+  <DeviceLi...
+DEBUG:gb28181-restreamer:[SIP-SENDER] Message preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1748001692</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>8</SumNum>
+  <DeviceLi...
+[2025-05-23 12:01:51] [INFO] [SIP-SENDER] Sending message to sip:ai-sip.x-stage.bull-b.com:5060 using udp transport
+INFO:gb28181-restreamer:[SIP-SENDER] Sending message to sip:ai-sip.x-stage.bull-b.com:5060 using udp transport
+[2025-05-23 12:01:51] [DEBUG] [SIP-SENDER] Command: pjsua --id sip:81000000465001000001@ai-sip.x-stage.bull-b.com --registrar sip:ai-sip.x-stage.bull-b.com:5060 --realm * --username 81000000465001000001 --password admin123 --local-port 0 --null-audio --send-message sip:ai-sip.x-stage.bull-b.com:5060 --message-content-type Application/MANSCDP+xml --message-content @/tmp/gb28181_mfdyqg3b/msg_t2zda6mr.xml
+DEBUG:gb28181-restreamer:[SIP-SENDER] Command: pjsua --id sip:81000000465001000001@ai-sip.x-stage.bull-b.com --registrar sip:ai-sip.x-stage.bull-b.com:5060 --realm * --username 81000000465001000001 --password admin123 --local-port 0 --null-audio --send-message sip:ai-sip.x-stage.bull-b.com:5060 --message-content-type Application/MANSCDP+xml --message-content @/tmp/gb28181_mfdyqg3b/msg_t2zda6mr.xml
+[2025-05-23 12:01:52] [INFO] [SIP-SENDER] ✅ Successfully sent message to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP-SENDER] ✅ Successfully sent message to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:52] [INFO] [SIP-SENDER] Preparing to send Application/MANSCDP+xml message to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP-SENDER] Preparing to send Application/MANSCDP+xml message to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:52] [DEBUG] [SIP-SENDER] Message content length: 4433 bytes
+DEBUG:gb28181-restreamer:[SIP-SENDER] Message content length: 4433 bytes
+[2025-05-23 12:01:52] [DEBUG] [SIP-SENDER] Message preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1748001692</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>8</SumNum>
+  <DeviceLi...
+DEBUG:gb28181-restreamer:[SIP-SENDER] Message preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1748001692</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>8</SumNum>
+  <DeviceLi...
+[2025-05-23 12:01:52] [INFO] [SIP-SENDER] Sending message to sip:ai-sip.x-stage.bull-b.com:5060 using udp transport
+INFO:gb28181-restreamer:[SIP-SENDER] Sending message to sip:ai-sip.x-stage.bull-b.com:5060 using udp transport
+[2025-05-23 12:01:52] [DEBUG] [SIP-SENDER] Command: pjsua --id sip:81000000465001000001@ai-sip.x-stage.bull-b.com --registrar sip:ai-sip.x-stage.bull-b.com:5060 --realm * --username 81000000465001000001 --password admin123 --local-port 0 --null-audio --send-message sip:ai-sip.x-stage.bull-b.com:5060 --message-content-type Application/MANSCDP+xml --message-content @/tmp/gb28181_mfdyqg3b/msg_eaeku2pq.xml
+DEBUG:gb28181-restreamer:[SIP-SENDER] Command: pjsua --id sip:81000000465001000001@ai-sip.x-stage.bull-b.com --registrar sip:ai-sip.x-stage.bull-b.com:5060 --realm * --username 81000000465001000001 --password admin123 --local-port 0 --null-audio --send-message sip:ai-sip.x-stage.bull-b.com:5060 --message-content-type Application/MANSCDP+xml --message-content @/tmp/gb28181_mfdyqg3b/msg_eaeku2pq.xml
+[2025-05-23 12:01:53] [INFO] [SIP-SENDER] ✅ Successfully sent message to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP-SENDER] ✅ Successfully sent message to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:53] [INFO] [SIP-SENDER] Preparing to send Application/MANSCDP+xml message to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP-SENDER] Preparing to send Application/MANSCDP+xml message to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:53] [DEBUG] [SIP-SENDER] Message content length: 4433 bytes
+DEBUG:gb28181-restreamer:[SIP-SENDER] Message content length: 4433 bytes
+[2025-05-23 12:01:53] [DEBUG] [SIP-SENDER] Message preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1748001692</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>8</SumNum>
+  <DeviceLi...
+DEBUG:gb28181-restreamer:[SIP-SENDER] Message preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1748001692</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>8</SumNum>
+  <DeviceLi...
+[2025-05-23 12:01:53] [INFO] [SIP-SENDER] Sending message to sip:ai-sip.x-stage.bull-b.com:5060 using udp transport
+INFO:gb28181-restreamer:[SIP-SENDER] Sending message to sip:ai-sip.x-stage.bull-b.com:5060 using udp transport
+[2025-05-23 12:01:53] [DEBUG] [SIP-SENDER] Command: pjsua --id sip:81000000465001000001@ai-sip.x-stage.bull-b.com --registrar sip:ai-sip.x-stage.bull-b.com:5060 --realm * --username 81000000465001000001 --password admin123 --local-port 0 --null-audio --send-message sip:ai-sip.x-stage.bull-b.com:5060 --message-content-type Application/MANSCDP+xml --message-content @/tmp/gb28181_mfdyqg3b/msg_j9m0pt79.xml
+DEBUG:gb28181-restreamer:[SIP-SENDER] Command: pjsua --id sip:81000000465001000001@ai-sip.x-stage.bull-b.com --registrar sip:ai-sip.x-stage.bull-b.com:5060 --realm * --username 81000000465001000001 --password admin123 --local-port 0 --null-audio --send-message sip:ai-sip.x-stage.bull-b.com:5060 --message-content-type Application/MANSCDP+xml --message-content @/tmp/gb28181_mfdyqg3b/msg_j9m0pt79.xml
+[2025-05-23 12:01:54] [INFO] [SIP-SENDER] ✅ Successfully sent message to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP-SENDER] ✅ Successfully sent message to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:54] [INFO] [SIP-SENDER] Preparing to send Application/MANSCDP+xml message to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP-SENDER] Preparing to send Application/MANSCDP+xml message to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:54] [DEBUG] [SIP-SENDER] Message content length: 4433 bytes
+DEBUG:gb28181-restreamer:[SIP-SENDER] Message content length: 4433 bytes
+[2025-05-23 12:01:54] [DEBUG] [SIP-SENDER] Message preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1748001692</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>8</SumNum>
+  <DeviceLi...
+DEBUG:gb28181-restreamer:[SIP-SENDER] Message preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1748001692</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>8</SumNum>
+  <DeviceLi...
+[2025-05-23 12:01:54] [INFO] [SIP-SENDER] Sending message to sip:ai-sip.x-stage.bull-b.com:5060 using udp transport
+INFO:gb28181-restreamer:[SIP-SENDER] Sending message to sip:ai-sip.x-stage.bull-b.com:5060 using udp transport
+[2025-05-23 12:01:54] [DEBUG] [SIP-SENDER] Command: pjsua --id sip:81000000465001000001@ai-sip.x-stage.bull-b.com --registrar sip:ai-sip.x-stage.bull-b.com:5060 --realm * --username 81000000465001000001 --password admin123 --local-port 0 --null-audio --send-message sip:ai-sip.x-stage.bull-b.com:5060 --message-content-type Application/MANSCDP+xml --message-content @/tmp/gb28181_mfdyqg3b/msg_yui1zgzl.xml
+DEBUG:gb28181-restreamer:[SIP-SENDER] Command: pjsua --id sip:81000000465001000001@ai-sip.x-stage.bull-b.com --registrar sip:ai-sip.x-stage.bull-b.com:5060 --realm * --username 81000000465001000001 --password admin123 --local-port 0 --null-audio --send-message sip:ai-sip.x-stage.bull-b.com:5060 --message-content-type Application/MANSCDP+xml --message-content @/tmp/gb28181_mfdyqg3b/msg_yui1zgzl.xml
+[2025-05-23 12:01:55] [INFO] [SIP-SENDER] ✅ Successfully sent message to sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP-SENDER] ✅ Successfully sent message to sip:ai-sip.x-stage.bull-b.com:5060
+[2025-05-23 12:01:56] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-05-23 12:02:56] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-05-23 12:03:56] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-05-23 12:04:56] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-05-23 12:05:56] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-05-23 12:06:56] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-05-23 12:07:56] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-05-23 12:08:56] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-05-23 12:09:56] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-05-23 12:10:56] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-05-23 12:11:56] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-05-23 12:12:56] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-05-23 12:13:56] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-05-23 12:14:56] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-05-23 12:15:56] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-05-23 12:16:56] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-05-23 12:17:56] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-05-23 12:18:56] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-05-23 12:19:56] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-05-23 12:20:56] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-05-23 12:21:56] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-05-23 12:22:56] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-05-23 12:23:56] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-05-23 12:24:56] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-05-23 12:25:56] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-05-23 12:26:56] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-05-23 12:27:56] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-05-23 12:28:56] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-05-23 12:29:56] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-05-23 12:30:56] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-05-23 12:31:56] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-05-23 12:32:56] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-05-23 12:33:56] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-05-23 12:34:56] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-05-23 12:35:56] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-05-23 12:36:57] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-05-23 12:37:57] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-05-23 12:38:57] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-05-23 12:39:57] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-05-23 12:40:57] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-05-23 12:41:57] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-05-23 12:42:57] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
