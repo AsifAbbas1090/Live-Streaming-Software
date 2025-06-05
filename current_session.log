@@ -1,0 +1,847 @@
+[2025-06-04 20:12:10] [INFO] [BOOT] Starting GB28181 Restreamer...
+[2025-06-04 20:12:10] [INFO] [CONFIG] Loaded configuration successfully.
+[2025-06-04 20:12:10] [INFO] [CATALOG] Performing quick video scan (full scan will happen in background)...
+[2025-06-04 20:12:10] [INFO] [CATALOG] Quick scan found 9 sample video files
+[2025-06-04 20:12:10] [INFO]   • 00-10-10.mp4
+[2025-06-04 20:12:10] [INFO]   • 14-32-14.mp4
+[2025-06-04 20:12:10] [INFO]   • 12-30-00.mp4
+[2025-06-04 20:12:10] [INFO]   • 01-20-30.mp4
+[2025-06-04 20:12:10] [INFO]   • filename_1996.mp4
+[2025-06-04 20:12:10] [INFO]   ... and 4 more videos
+[2025-06-04 20:12:10] [INFO] [STREAM] Initializing media streamer with frame processing support
+[2025-06-04 20:12:10] [INFO] [STREAM] GLib main loop started
+[2025-06-04 20:12:10] [INFO] [RTSP] No RTSP sources configured
+[2025-06-04 20:12:10] [INFO] [STREAM] Registered frame processor: grayscale
+[2025-06-04 20:12:10] [INFO] [STREAM] Registered frame processor: edge
+[2025-06-04 20:12:10] [INFO] [STREAM] Registered frame processor: blur
+[2025-06-04 20:12:10] [INFO] [STREAM] Registered frame processor: text
+[2025-06-04 20:12:10] [INFO] [STREAM] Registered frame processors for video manipulation
+[2025-06-04 20:12:10] [INFO] [SIP] Starting SIP client with priority (recording scan will happen in background)...
+[2025-06-04 20:12:10] [INFO] [SIP] Determined local IP: 172.31.7.94
+[2025-06-04 20:12:10] [INFO] [SIP] 🚀 Launching GB28181 SIP client...
+[2025-06-04 20:12:10] [INFO] [SIP] 🔧 Generating device catalog (thread-safe)...
+[2025-06-04 20:12:10] [INFO] [SIP] SIP client started in background thread
+[2025-06-04 20:12:10] [INFO] [SCAN] 📁 Scanning directory: /home/ubuntu/rstp/gb28181-restreamer/recordings
+[2025-06-04 20:12:10] [DEBUG] [SCAN] 📂 Scanning subdirectory: /home/ubuntu/rstp/gb28181-restreamer/recordings
+[2025-06-04 20:12:10] [DEBUG] [SCAN] 📁 Found 2 subdirectories: ['2025-05-16', '2025-05-15']
+[2025-06-04 20:12:10] [DEBUG] [SCAN] 📄 Found 0 files
+[2025-06-04 20:12:10] [DEBUG] [SCAN] 📂 Scanning subdirectory: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-16
+[2025-06-04 20:12:10] [DEBUG] [SCAN] 📁 Found 0 subdirectories: []
+[2025-06-04 20:12:10] [DEBUG] [SCAN] 📄 Found 4 files
+[2025-06-04 20:12:10] [DEBUG] [SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-16/00-10-10.mp4
+[2025-06-04 20:12:10] [INFO] [SCAN] Found video: 00-10-10.mp4
+[2025-06-04 20:12:10] [DEBUG] [SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-16/14-32-14.mp4
+[2025-06-04 20:12:10] [INFO] [SCAN] Found video: 14-32-14.mp4
+[2025-06-04 20:12:10] [DEBUG] [SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-16/12-30-00.mp4
+[2025-06-04 20:12:10] [INFO] [SCAN] Found video: 12-30-00.mp4
+[2025-06-04 20:12:10] [DEBUG] [SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-16/01-20-30.mp4
+[2025-06-04 20:12:10] [INFO] [SCAN] Found video: 01-20-30.mp4
+[2025-06-04 20:12:10] [DEBUG] [SCAN] 📂 Scanning subdirectory: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15
+[2025-06-04 20:12:10] [DEBUG] [SCAN] 📁 Found 0 subdirectories: []
+[2025-06-04 20:12:10] [DEBUG] [SCAN] 📄 Found 10 files
+[2025-06-04 20:12:10] [DEBUG] [SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/filename_1996.mp4
+[2025-06-04 20:12:10] [INFO] [SCAN] Found video: filename_1996.mp4
+[2025-06-04 20:12:10] [DEBUG] [SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/filename_1997.mp4
+[2025-06-04 20:12:10] [INFO] [SCAN] Found video: filename_1997.mp4
+[2025-06-04 20:12:10] [DEBUG] [SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/filename_1992.mp4
+[2025-06-04 20:12:10] [INFO] [SCAN] Found video: filename_1992.mp4
+[2025-06-04 20:12:10] [DEBUG] [SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/filename_1995.mp4
+[2025-06-04 20:12:10] [INFO] [SCAN] Found video: filename_1995.mp4
+[2025-06-04 20:12:10] [DEBUG] [SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/filename_1993.mp4
+[2025-06-04 20:12:10] [INFO] [SCAN] Found video: filename_1993.mp4
+[2025-06-04 20:12:10] [DEBUG] [SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/filename_1991.mp4
+[2025-06-04 20:12:10] [INFO] [SCAN] Found video: filename_1991.mp4
+[2025-06-04 20:12:10] [DEBUG] [SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/filename_1994.mp4
+[2025-06-04 20:12:10] [INFO] [SCAN] ... (limiting log output, found many more videos)
+[2025-06-04 20:12:10] [DEBUG] [SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/filename_1998.mp4
+[2025-06-04 20:12:10] [DEBUG] [SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/filename_1999.mp4
+[2025-06-04 20:12:10] [DEBUG] [SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/filename_2000.mp4
+[2025-06-04 20:12:10] [INFO] [SCAN] 📊 Scan complete: Found 14 video files out of 14 total files
+[2025-06-04 20:12:10] [INFO] [SIP] Found 14 video files for catalog
+[2025-06-04 20:12:10] [INFO] [SIP] Creating channels from 14 video files
+[2025-06-04 20:12:10] [INFO] [SIP] ✅ Generated device catalog with 14 channels
+[2025-06-04 20:12:10] [DEBUG] [SIP] Channel 1: 810000004650131000001 - 00-10-10
+[2025-06-04 20:12:10] [DEBUG] [SIP] Channel 2: 810000004650131000002 - 14-32-14
+[2025-06-04 20:12:10] [DEBUG] [SIP] Channel 3: 810000004650131000003 - 12-30-00
+[2025-06-04 20:12:10] [DEBUG] [SIP] ... and 11 more channels
+[2025-06-04 20:12:10] [INFO] [SIP] Using transport: udp
+[2025-06-04 20:12:10] [INFO] [SIP] Device ID: 81000000465001000001
+[2025-06-04 20:12:10] [INFO] [SIP] Username: 81000000465001000001
+[2025-06-04 20:12:10] [INFO] [SIP] Server: ai-sip.x-stage.bull-b.com
+[2025-06-04 20:12:10] [INFO] [SIP] Proxy: sip:ai-sip.x-stage.bull-b.com:5060
+[2025-06-04 20:12:10] [INFO] [SIP] Local port: 5080
+[2025-06-04 20:12:10] [INFO] [SIP] Starting pjsua process (attempt 1/3)
+[2025-06-04 20:12:10] [INFO] [SIP] Started PJSUA process with PID: 3176852
+[2025-06-04 20:12:10] [INFO] [SIP] 🔍 Starting PJSUA output monitoring...
+20:12:10.513         sip_endpoint.c !.Module "mod-pjsua-log" registered
+20:12:10.513         sip_endpoint.c  .Module "mod-tsx-layer" registered
+20:12:10.513         sip_endpoint.c  .Module "mod-stateful-util" registered
+20:12:10.513         sip_endpoint.c  .Module "mod-ua" registered
+20:12:10.513         sip_endpoint.c  .Module "mod-100rel" registered
+20:12:10.513         sip_endpoint.c  .Module "mod-pjsua" registered
+20:12:10.513         sip_endpoint.c  .Module "mod-invite" registered
+20:12:10.513                  pjlib  ..select() I/O Queue created (0x60fe4489a7f8)
+20:12:10.520         sip_endpoint.c  .Module "mod-evsub" registered
+20:12:10.520         sip_endpoint.c  .Module "mod-presence" registered
+20:12:10.520         sip_endpoint.c  .Module "mod-dlg_even" registered
+20:12:10.520         sip_endpoint.c  .Module "mod-mwi" registered
+20:12:10.520         sip_endpoint.c  .Module "mod-refer" registered
+20:12:10.520         sip_endpoint.c  .Module "mod-pjsua-pres" registered
+20:12:10.520         sip_endpoint.c  .Module "mod-pjsua-im" registered
+20:12:10.520         sip_endpoint.c  .Module "mod-pjsua-options" registered
+20:12:10.520           pjsua_core.c  .4 SIP worker threads created
+20:12:10.520           pjsua_core.c  .pjsua version 2.15-dev for Linux-6.8.4.4/x86_64/glibc-2.39 initialized
+20:12:10.520           pjsua_core.c  .PJSUA state changed: CREATED --> INIT
+20:12:10.520         sip_endpoint.c  Module "mod-default-handler" registered
+20:12:10.520           conference.c  .Add port 1 (ringback) queued
+20:12:10.520           conference.c  .Add port 2 (ring) queued
+20:12:10.520           pjsua_core.c  SIP UDP socket reachable at 172.31.7.94:5080
+20:12:10.520      udp0x60fe448f8790  SIP UDP transport started, published address is 172.31.7.94:5080
+20:12:10.520            pjsua_acc.c  Adding account: id=<sip:172.31.7.94:5080>
+20:12:10.520            pjsua_acc.c  .Account <sip:172.31.7.94:5080> added with id 0
+20:12:10.520            pjsua_acc.c  Modifying account 0
+20:12:10.521            pjsua_acc.c  Acc 0: setting online status to 1..
+20:12:10.521            pjsua_acc.c  Adding account: id=sip:81000000465001000001@ai-sip.x-stage.bull-b.com
+20:12:10.521            pjsua_acc.c  .Account sip:81000000465001000001@ai-sip.x-stage.bull-b.com added with id 1
+20:12:10.521            pjsua_acc.c  .Acc 1: setting registration..
+20:12:10.521            pjsua_acc.c  ..Contact for acc 1 updated: <sip:81000000465001000001@172.31.7.94:5080;ob>
+20:12:10.521           pjsua_core.c  ...TX 645 bytes Request msg REGISTER/cseq=37178 (tdta0x60fe448fe2b0) to UDP 203.142.93.131:5060:
+[2025-06-04 20:12:10] [DEBUG] [SIP] SIP traffic: 20:12:10.521           pjsua_core.c  ...TX 645 bytes Request msg REGISTER/cseq=37178 (tdta0x60fe448fe2b0) to UDP 203.142.93.131:5060:
+REGISTER sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+Via: SIP/2.0/UDP 172.31.7.94:5080;rport;branch=z9hG4bKPj6c8bc0d5-33bf-4eab-8f82-a237839ea2ec
+Max-Forwards: 70
+From: <sip:81000000465001000001@ai-sip.x-stage.bull-b.com>;tag=35de92c6-43f5-4fec-aea7-fcd3717bf4dd
+To: <sip:81000000465001000001@ai-sip.x-stage.bull-b.com>
+Call-ID: 7dcd080e-8aca-4c16-b9b6-63b8b445601b
+CSeq: 37178 REGISTER
+User-Agent: PJSUA/v2.15-dev Linux-6.8.4.4 x86_64 glibc-2.39
+Contact: <sip:81000000465001000001@172.31.7.94:5080;ob>
+Expires: 120
+Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+[2025-06-04 20:12:10] [INFO] [SIP] 🔍 DEBUG: MESSAGE line detected: Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+Content-Length:  0
+
+
+--end msg--
+20:12:10.521            pjsua_acc.c  ..Acc 1: Registration sent
+20:12:10.521            pjsua_acc.c  Acc 1: setting online status to 1..
+[2025-06-04 20:12:10] [DEBUG] [SIP] Processed 50 lines from PJSUA
+20:12:10.521            pjsua_aud.c  Setting null sound device..
+20:12:10.521            pjsua_app.c  .Turning sound device -99 -99 ON
+[2025-06-04 20:12:10] [DEBUG] [SIP] 🔍 DEBUG: pjsua_app.c line: 20:12:10.521            pjsua_app.c  .Turning sound device -99 -99 ON
+20:12:10.521            pjsua_aud.c  .Opening null sound device..
+20:12:10.521           pjsua_core.c  PJSUA state changed: INIT --> STARTING
+20:12:10.521         sip_endpoint.c  .Module "mod-unsolicited-mwi" registered
+20:12:10.521           pjsua_core.c  .PJSUA state changed: STARTING --> RUNNING
+20:12:10.521                 main.c  Ready: Success
+>>>>
+Account list:
+[ 0] <sip:172.31.7.94:5080>: does not register
+Online status: Online
+*[ 1] sip:81000000465001000001@ai-sip.x-stage.bull-b.com: 100/In Progress (expires=0)
+Online status: Online
+Buddy list:
+-none-
+
++=============================================================================+
+|       Call Commands:         |   Buddy, IM & Presence:  |     Account:      |
+|                              |                          |                   |
+|  m  Make new call            | +b  Add new buddy        | +a  Add new accnt.|
+|  M  Make multiple calls      | -b  Delete buddy         | -a  Delete accnt. |
+|  a  Answer call              |  i  Send IM              | !a  Modify accnt. |
+|  h  Hangup call  (ha=all)    |  s  Subscribe presence   | rr  (Re-)register |
+|  H  Hold call                |  u  Unsubscribe presence | ru  Unregister    |
+|  o Toggle call SDP offer     |  D  Subscribe dlg event  |                   |
+|                              |  Du Unsub dlg event      |                   |
+|  v  re-inVite (release hold) |  t  Toggle online status |  >  Cycle next ac.|
+|  U  send UPDATE              |  T  Set online status    |  <  Cycle prev ac.|
+| ],[ Select next/prev call    +--------------------------+-------------------+
+|  x  Xfer call                |      Media Commands:     |  Status & Config: |
+|  X  Xfer with Replaces       |                          |                   |
+|  #  Send RFC 2833 DTMF       | cl  List ports           |  d  Dump status   |
+|  *  Send DTMF with INFO      | cc  Connect port         | dd  Dump detailed |
+| rt  Send real-time text      | cd  Disconnect port      | dc  Dump config   |
+| dq  Dump curr. call quality  |  V  Adjust audio Volume  |  f  Save config   |
+|  S  Send arbitrary REQUEST   | Cp  Codec priorities     |                   |
++-----------------------------------------------------------------------------+
+|  q  QUIT      L  ReLoad       I  IP change     n  detect NAT type           |
+|  sleep MS     echo [0|1|txt]                                                |
++=============================================================================+
+You have 0 active call
+>>> 20:12:10.540           conference.c !.Added port 1 (ringback), port count=2
+20:12:10.540           conference.c  .Added port 2 (ring), port count=3
+20:12:10.739           pjsua_core.c !.RX 528 bytes Response msg 401/REGISTER/cseq=37178 (rdata0x60fe448fa218) from UDP 203.142.93.131:5060:
+[2025-06-04 20:12:11] [DEBUG] [SIP] SIP traffic: 20:12:10.739           pjsua_core.c !.RX 528 bytes Response msg 401/REGISTER/cseq=37178 (rdata0x60fe448fa218) from UDP 203.142.93.131:5060:
+SIP/2.0 401 Unauthorized
+[2025-06-04 20:12:11] [DEBUG] [SIP] SIP response: SIP/2.0 401 Unauthorized
+CSeq: 37178 REGISTER
+Call-ID: 7dcd080e-8aca-4c16-b9b6-63b8b445601b
+From: <sip:81000000465001000001@ai-sip.x-stage.bull-b.com>;tag=35de92c6-43f5-4fec-aea7-fcd3717bf4dd
+To: <sip:81000000465001000001@ai-sip.x-stage.bull-b.com>
+Via: SIP/2.0/UDP 172.31.7.94:5080;rport=5080;branch=z9hG4bKPj6c8bc0d5-33bf-4eab-8f82-a237839ea2ec;received=13.50.108.195
+[2025-06-04 20:12:11] [DEBUG] [SIP] Processed 100 lines from PJSUA
+WWW-Authenticate: Digest realm="81000000",qop="auth",nonce="414d51ffc67b7aac46180554df5c22a1",algorithm=MD5
+User-Agent: WVP-Pro
+Content-Length: 0
+
+
+--end msg--
+20:12:10.739           pjsua_core.c  ....TX 930 bytes Request msg REGISTER/cseq=37179 (tdta0x60fe448fe2b0) to UDP 203.142.93.131:5060:
+[2025-06-04 20:12:11] [DEBUG] [SIP] SIP traffic: 20:12:10.739           pjsua_core.c  ....TX 930 bytes Request msg REGISTER/cseq=37179 (tdta0x60fe448fe2b0) to UDP 203.142.93.131:5060:
+REGISTER sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+Via: SIP/2.0/UDP 13.50.108.195:5080;rport;branch=z9hG4bKPj7455968b-9011-41e7-855c-d7d8dc2b8e53
+Max-Forwards: 70
+From: <sip:81000000465001000001@ai-sip.x-stage.bull-b.com>;tag=35de92c6-43f5-4fec-aea7-fcd3717bf4dd
+To: <sip:81000000465001000001@ai-sip.x-stage.bull-b.com>
+Call-ID: 7dcd080e-8aca-4c16-b9b6-63b8b445601b
+CSeq: 37179 REGISTER
+User-Agent: PJSUA/v2.15-dev Linux-6.8.4.4 x86_64 glibc-2.39
+Contact: <sip:81000000465001000001@172.31.7.94:5080;ob>
+Expires: 120
+Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+[2025-06-04 20:12:11] [INFO] [SIP] 🔍 DEBUG: MESSAGE line detected: Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+Authorization: Digest username="81000000465001000001", realm="81000000", nonce="414d51ffc67b7aac46180554df5c22a1", uri="sip:ai-sip.x-stage.bull-b.com:5060", response="9996fd253f065073c74a90bec40e1879", algorithm=MD5, cnonce="6806b457580943bb924422f1c3043d2c", qop=auth, nc=00000001
+Content-Length:  0
+
+
+--end msg--
+20:12:10.960           pjsua_core.c !.RX 513 bytes Response msg 200/REGISTER/cseq=37179 (rdata0x746078001d78) from UDP 203.142.93.131:5060:
+[2025-06-04 20:12:11] [DEBUG] [SIP] SIP traffic: 20:12:10.960           pjsua_core.c !.RX 513 bytes Response msg 200/REGISTER/cseq=37179 (rdata0x746078001d78) from UDP 203.142.93.131:5060:
+SIP/2.0 200 OK
+[2025-06-04 20:12:11] [DEBUG] [SIP] SIP response: SIP/2.0 200 OK
+CSeq: 37179 REGISTER
+Call-ID: 7dcd080e-8aca-4c16-b9b6-63b8b445601b
+From: <sip:81000000465001000001@ai-sip.x-stage.bull-b.com>;tag=35de92c6-43f5-4fec-aea7-fcd3717bf4dd
+To: <sip:81000000465001000001@ai-sip.x-stage.bull-b.com>
+Via: SIP/2.0/UDP 13.50.108.195:5080;rport=5080;branch=z9hG4bKPj7455968b-9011-41e7-855c-d7d8dc2b8e53;received=13.50.108.195
+Date: 2025-06-05T04:12:10.841
+Contact: <sip:81000000465001000001@172.31.7.94:5080;ob>
+Expires: 120
+User-Agent: WVP-Pro
+Content-Length: 0
+
+
+--end msg--
+20:12:10.960            pjsua_acc.c  ....SIP outbound status for acc 1 is not active
+20:12:10.960            pjsua_acc.c  ....Service-Route updated for acc 1 with 0 URI(s)
+20:12:10.960            pjsua_acc.c  ....sip:81000000465001000001@ai-sip.x-stage.bull-b.com: registration success, status=200 (OK), will re-register in 120 seconds
+[2025-06-04 20:12:11] [INFO] [SIP] ✅ Registration completed successfully
+[2025-06-04 20:12:11] [INFO] [SIP] 💓 Starting dedicated heartbeat thread for WVP platform
+[2025-06-04 20:12:11] [INFO] [SIP] 💓 Heartbeat worker started - will send keepalive every 15s to prevent WVP timeout
+[2025-06-04 20:12:11] [INFO] [SIP] 💓 Sending scheduled heartbeat to WVP platform
+[2025-06-04 20:12:11] [INFO] [SIP] 💓 Sending WVP-compatible keepalive (SN: 67931) to prevent heartbeat timeout
+[2025-06-04 20:12:11] [DEBUG] [SIP] 💓 Sending keepalive UDP packet (683 bytes) to ai-sip.x-stage.bull-b.com:5060
+[2025-06-04 20:12:11] [INFO] [SIP] 💓 Sending immediate heartbeat after registration to update WVP keepaliveTime
+[2025-06-04 20:12:11] [DEBUG] [SIP] ✅ Keepalive UDP transmission successful: 683 bytes
+[2025-06-04 20:12:11] [INFO] [SIP] 🚀 Sending proactive catalog notification for immediate frontend visibility
+[2025-06-04 20:12:11] [INFO] [SIP] ✅ Keepalive sent successfully - device should stay online
+20:12:10.960            pjsua_acc.c  ....Keep-alive timer started for acc 1, destination:203.142.93.131:5060, interval:13s
+[2025-06-04 20:12:11] [DEBUG] [SIP] Keep-alive message
+20:12:11.255           pjsua_core.c !.RX 580 bytes Request msg MESSAGE/cseq=587 (rdata0x746070000b98) from UDP 203.142.93.131:5060:
+[2025-06-04 20:12:11] [INFO] [SIP] 🔍 DEBUG: MESSAGE line detected: 20:12:11.255           pjsua_core.c !.RX 580 bytes Request msg MESSAGE/cseq=587 (rdata0x746070000b98) from UDP 203.142.93.131:5060:
+[2025-06-04 20:12:11] [INFO] [SIP] 🎯 Direct PJSUA XML capture - detected MESSAGE line: 20:12:11.255           pjsua_core.c !.RX 580 bytes Request msg MESSAGE/cseq=587 (rdata0x746070000b98) from UDP 203.142.93.131:5060:
+MESSAGE sip:81000000465001000001@13.50.108.195:5080 SIP/2.0
+[2025-06-04 20:12:11] [INFO] [SIP] 🔍 DEBUG: MESSAGE line detected: MESSAGE sip:81000000465001000001@13.50.108.195:5080 SIP/2.0
+[2025-06-04 20:12:11] [DEBUG] [SIP] 🔍 XML line analysis: 'MESSAGE sip:81000000465001000001@13.50.108.195:5080 SIP/2.0' - is_xml: False
+[2025-06-04 20:12:11] [DEBUG] [SIP] 🚫 Skipping non-XML line: 'MESSAGE sip:81000000465001000001@13.50.108.195:5080 SIP/2.0'
+Call-ID: 9545e16d2247f466960d406995f872b7@0.0.0.0
+[2025-06-04 20:12:11] [DEBUG] [SIP] 🔍 XML line analysis: 'Call-ID: 9545e16d2247f466960d406995f872b7@0.0.0.0' - is_xml: False
+[2025-06-04 20:12:11] [DEBUG] [SIP] 🚫 Skipping non-XML line: 'Call-ID: 9545e16d2247f466960d406995f872b7@0.0.0.0'
+CSeq: 587 MESSAGE
+[2025-06-04 20:12:11] [INFO] [SIP] 🔍 DEBUG: MESSAGE line detected: CSeq: 587 MESSAGE
+[2025-06-04 20:12:11] [DEBUG] [SIP] 🔍 XML line analysis: 'CSeq: 587 MESSAGE' - is_xml: False
+[2025-06-04 20:12:11] [DEBUG] [SIP] 🚫 Skipping non-XML line: 'CSeq: 587 MESSAGE'
+From: <sip:81000000462001888888@81000000>;tag=ca2a683f34e8494ebc2ede2bc3af0b38
+[2025-06-04 20:12:11] [DEBUG] [SIP] 🔍 XML line analysis: 'From: <sip:81000000462001888888@81000000>;tag=ca2a683f34e8494ebc2ede2bc3af0b38' - is_xml: False
+[2025-06-04 20:12:11] [DEBUG] [SIP] 🚫 Skipping non-XML line: 'From: <sip:81000000462001888888@81000000>;tag=ca2a683f34e8494ebc2ede2bc3af0b38'
+[2025-06-04 20:12:11] [WARNING] [SIP] ⚠️ XML collection abandoned - no XML collected
+To: <sip:81000000465001000001@13.50.108.195:5080>
+Via: SIP/2.0/UDP 0.0.0.0:5060;branch=z9hG4bK7426917640;rport
+Max-Forwards: 70
+[2025-06-04 20:12:11] [DEBUG] [SIP] Processed 150 lines from PJSUA
+User-Agent: WVP-Pro
+Content-Type: Application/MANSCDP+xml
+Content-Length: 154
+
+<?xml version="1.0" encoding="GB2312"?>
+<Query>
+<CmdType>Catalog</CmdType>
+<SN>566835</SN>
+<DeviceID>81000000465001000001</DeviceID>
+</Query>
+
+--end msg--
+20:12:11.256           pjsua_core.c  ..TX 347 bytes Response msg 200/MESSAGE/cseq=587 (tdta0x746074000c20) to UDP 203.142.93.131:5060:
+[2025-06-04 20:12:11] [INFO] [SIP] 🔍 DEBUG: MESSAGE line detected: 20:12:11.256           pjsua_core.c  ..TX 347 bytes Response msg 200/MESSAGE/cseq=587 (tdta0x746074000c20) to UDP 203.142.93.131:5060:
+[2025-06-04 20:12:11] [DEBUG] [SIP] SIP traffic: 20:12:11.256           pjsua_core.c  ..TX 347 bytes Response msg 200/MESSAGE/cseq=587 (tdta0x746074000c20) to UDP 203.142.93.131:5060:
+SIP/2.0 200 OK
+[2025-06-04 20:12:11] [DEBUG] [SIP] SIP response: SIP/2.0 200 OK
+Via: SIP/2.0/UDP 0.0.0.0:5060;rport=5060;received=203.142.93.131;branch=z9hG4bK7426917640
+Call-ID: 9545e16d2247f466960d406995f872b7@0.0.0.0
+[2025-06-04 20:12:11] [INFO] [SIP] 🔄 Proactive registration renewal for WVP platform - preventing device offline
+[2025-06-04 20:12:12] [INFO] [RECORD] Starting recording manager (this will scan files in background)...
+[2025-06-04 20:12:12] [INFO] [REC-MANAGER] Starting asynchronous recording scan
+[2025-06-04 20:12:12] [INFO] [REC-MANAGER] Starting async scan with CPU throttling for better SIP performance
+[2025-06-04 20:12:12] [INFO] [REC-MANAGER] Scanning recordings directory with CPU throttling
+[2025-06-04 20:12:12] [INFO] [RECORD] Recording manager initialized with async scanning
+[2025-06-04 20:12:12] [INFO] [RECORD] Initial scan status: 0 files cached, scanning=True
+[2025-06-04 20:12:12] [INFO] [STATUS] Starting periodic status monitoring
+[2025-06-04 20:12:12] [INFO] [MAIN] Monitoring SIP client health...
+[2025-06-04 20:12:12] [INFO] [STATUS] Active streams: 0
+[2025-06-04 20:12:12] [INFO] [STATUS] Recording scan in progress: 0 files found
+[2025-06-04 20:12:13] [INFO] [SIP] 💓 Sending WVP-compatible keepalive (SN: 67933) to prevent heartbeat timeout
+[2025-06-04 20:12:13] [DEBUG] [SIP] 💓 Sending keepalive UDP packet (683 bytes) to ai-sip.x-stage.bull-b.com:5060
+[2025-06-04 20:12:13] [DEBUG] [SIP] ✅ Keepalive UDP transmission successful: 683 bytes
+[2025-06-04 20:12:13] [INFO] [SIP] ✅ Keepalive sent successfully - device should stay online
+[2025-06-04 20:12:13] [INFO] [REC-MANAGER] Processing file 10: filename_1991.mp4
+[2025-06-04 20:12:14] [INFO] [REC-MANAGER] Scan complete: 14 total files, 14 processed, 0 skipped
+[2025-06-04 20:12:14] [INFO] [SIP] 🚀 Sending proactive catalog notification for immediate frontend visibility
+[2025-06-04 20:12:14] [WARNING] [SIP] ⚠️ Large proactive notification (10999 bytes) - limiting channels
+[2025-06-04 20:12:14] [INFO] [SIP] 📦 Limited proactive notification to parent device + 1 channels (total: 2 items)
+[2025-06-04 20:12:14] [INFO] [SIP] 📤 Sending WVP-compatible proactive catalog with parent device + 1 channels (SN: 948314)
+[2025-06-04 20:12:14] [INFO] [SIP] 📊 Final proactive notification size: 2062 bytes
+[2025-06-04 20:12:14] [DEBUG] [SIP] Saved response XML to catalog_response_948314.xml
+[2025-06-04 20:12:14] [INFO] [SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 948314):
+[2025-06-04 20:12:14] [INFO] [SIP]   • Message size: 2486 bytes
+[2025-06-04 20:12:14] [INFO] [SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+[2025-06-04 20:12:14] [INFO] [SIP]   • Encoding: UTF-8
+[2025-06-04 20:12:14] [INFO] [SIP]   • XML <Item> count: 2
+[2025-06-04 20:12:14] [INFO] [SIP]   • XML SumNum: 2
+[2025-06-04 20:12:14] [INFO] [SIP] ✅ XML integrity verified before transmission
+[2025-06-04 20:12:14] [WARNING] [SIP] ⚠️ Large UDP packet: 2486 bytes (may fragment)
+[2025-06-04 20:12:14] [DEBUG] [SIP] 📨 Message headers:
+[2025-06-04 20:12:14] [DEBUG] [SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+[2025-06-04 20:12:14] [DEBUG] [SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:5080;rport;branch=z9hG4bK-1749067934
+[2025-06-04 20:12:14] [DEBUG] [SIP]   3: Max-Forwards: 70
+[2025-06-04 20:12:14] [DEBUG] [SIP]   4: From: <sip:81000000465001000001@172.31.7.94:5080>;tag=tag1749067934
+[2025-06-04 20:12:14] [DEBUG] [SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+[2025-06-04 20:12:14] [DEBUG] [SIP]   6: Call-ID: catalog-948314-1749067934
+[2025-06-04 20:12:14] [DEBUG] [SIP]   7: CSeq: 9408 MESSAGE
+[2025-06-04 20:12:14] [DEBUG] [SIP]   8: Contact: <sip:172.31.7.94:5080>
+[2025-06-04 20:12:14] [DEBUG] [SIP]   9: User-Agent: GB28181-Restreamer/1.0
+[2025-06-04 20:12:14] [DEBUG] [SIP]   10: Content-Type: Application/MANSCDP+xml
+[2025-06-04 20:12:14] [DEBUG] [SIP]   ... and 66 more lines
+[2025-06-04 20:12:14] [INFO] [SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+[2025-06-04 20:12:14] [INFO] [SIP] ✅ UDP transmission SUCCESSFUL: 2486/2486 bytes
+[2025-06-04 20:12:14] [WARNING] [SIP] 📡 Large message sent - WVP platform may need time to reassemble
+[2025-06-04 20:12:14] [INFO] [SIP] 📤 Catalog response (SN: 948314) delivered successfully
+[2025-06-04 20:12:14] [INFO] [SIP]   • Contains 2 devices
+[2025-06-04 20:12:14] [INFO] [SIP]   • Total size: 2486 bytes
+[2025-06-04 20:12:14] [INFO] [SIP]   • WVP platform should process this within 30 seconds
+[2025-06-04 20:12:14] [INFO] [SIP] ✅ File-based catalog response sent successfully (SN: 948314)
+[2025-06-04 20:12:14] [INFO] [SIP] ✅ WVP-compatible proactive catalog notification sent - frontend should show parent device + channels immediately
+[2025-06-04 20:12:26] [INFO] [SIP] 💓 Sending scheduled heartbeat to WVP platform
+[2025-06-04 20:12:26] [INFO] [SIP] 💓 Sending WVP-compatible keepalive (SN: 67946) to prevent heartbeat timeout
+[2025-06-04 20:12:26] [DEBUG] [SIP] 💓 Sending keepalive UDP packet (683 bytes) to ai-sip.x-stage.bull-b.com:5060
+[2025-06-04 20:12:26] [DEBUG] [SIP] ✅ Keepalive UDP transmission successful: 683 bytes
+[2025-06-04 20:12:26] [INFO] [SIP] ✅ Keepalive sent successfully - device should stay online
+[2025-06-04 20:12:41] [INFO] [SIP] 💓 Sending scheduled heartbeat to WVP platform
+[2025-06-04 20:12:41] [INFO] [SIP] 💓 Sending WVP-compatible keepalive (SN: 67961) to prevent heartbeat timeout
+[2025-06-04 20:12:41] [DEBUG] [SIP] 💓 Sending keepalive UDP packet (683 bytes) to ai-sip.x-stage.bull-b.com:5060
+[2025-06-04 20:12:41] [DEBUG] [SIP] ✅ Keepalive UDP transmission successful: 683 bytes
+[2025-06-04 20:12:41] [INFO] [SIP] ✅ Keepalive sent successfully - device should stay online
+[2025-06-04 20:12:56] [INFO] [SIP] 💓 Sending scheduled heartbeat to WVP platform
+[2025-06-04 20:12:56] [INFO] [SIP] 💓 Sending WVP-compatible keepalive (SN: 67976) to prevent heartbeat timeout
+[2025-06-04 20:12:56] [DEBUG] [SIP] 💓 Sending keepalive UDP packet (683 bytes) to ai-sip.x-stage.bull-b.com:5060
+[2025-06-04 20:12:56] [DEBUG] [SIP] ✅ Keepalive UDP transmission successful: 683 bytes
+[2025-06-04 20:12:56] [INFO] [SIP] ✅ Keepalive sent successfully - device should stay online
+[2025-06-04 20:13:11] [INFO] [SIP] 💓 Sending scheduled heartbeat to WVP platform
+[2025-06-04 20:13:11] [INFO] [SIP] 💓 Sending WVP-compatible keepalive (SN: 67991) to prevent heartbeat timeout
+[2025-06-04 20:13:11] [DEBUG] [SIP] 💓 Sending keepalive UDP packet (683 bytes) to ai-sip.x-stage.bull-b.com:5060
+[2025-06-04 20:13:11] [DEBUG] [SIP] ✅ Keepalive UDP transmission successful: 683 bytes
+[2025-06-04 20:13:11] [INFO] [SIP] ✅ Keepalive sent successfully - device should stay online
+[2025-06-04 20:13:12] [INFO] [STATUS] Active streams: 0
+[2025-06-04 20:13:12] [INFO] [STATUS] Recording scan complete: 14 files cached
+[2025-06-04 20:13:26] [INFO] [SIP] 💓 Sending scheduled heartbeat to WVP platform
+[2025-06-04 20:13:26] [INFO] [SIP] 💓 Sending WVP-compatible keepalive (SN: 68006) to prevent heartbeat timeout
+[2025-06-04 20:13:26] [DEBUG] [SIP] 💓 Sending keepalive UDP packet (684 bytes) to ai-sip.x-stage.bull-b.com:5060
+[2025-06-04 20:13:26] [DEBUG] [SIP] ✅ Keepalive UDP transmission successful: 684 bytes
+[2025-06-04 20:13:26] [INFO] [SIP] ✅ Keepalive sent successfully - device should stay online
+[2025-06-04 20:13:26] [WARNING] [SIP] 🔄 Registration approaching expiry in 45s - will renew soon
+[2025-06-04 20:13:27] [WARNING] [SIP] 🔄 Registration approaching expiry in 44s - will renew soon
+[2025-06-04 20:13:28] [WARNING] [SIP] 🔄 Registration approaching expiry in 43s - will renew soon
+[2025-06-04 20:13:29] [WARNING] [SIP] 🔄 Registration approaching expiry in 42s - will renew soon
+[2025-06-04 20:13:30] [WARNING] [SIP] 🔄 Registration approaching expiry in 41s - will renew soon
+[2025-06-04 20:13:31] [WARNING] [SIP] 🔄 Registration approaching expiry in 40s - will renew soon
+[2025-06-04 20:13:32] [WARNING] [SIP] 🔄 Registration approaching expiry in 39s - will renew soon
+[2025-06-04 20:13:33] [WARNING] [SIP] 🔄 Registration approaching expiry in 38s - will renew soon
+[2025-06-04 20:13:34] [WARNING] [SIP] 🔄 Registration approaching expiry in 37s - will renew soon
+[2025-06-04 20:13:35] [WARNING] [SIP] 🔄 Registration approaching expiry in 36s - will renew soon
+[2025-06-04 20:13:36] [WARNING] [SIP] 🔄 Registration approaching expiry in 35s - will renew soon
+[2025-06-04 20:13:37] [WARNING] [SIP] 🔄 Registration approaching expiry in 34s - will renew soon
+[2025-06-04 20:13:38] [WARNING] [SIP] 🔄 Registration approaching expiry in 33s - will renew soon
+[2025-06-04 20:13:39] [WARNING] [SIP] 🔄 Registration approaching expiry in 32s - will renew soon
+[2025-06-04 20:13:40] [WARNING] [SIP] 🔄 Registration approaching expiry in 31s - will renew soon
+[2025-06-04 20:13:41] [INFO] [SIP] 💓 Sending scheduled heartbeat to WVP platform
+[2025-06-04 20:13:41] [INFO] [SIP] 💓 Sending WVP-compatible keepalive (SN: 68021) to prevent heartbeat timeout
+[2025-06-04 20:13:41] [DEBUG] [SIP] 💓 Sending keepalive UDP packet (684 bytes) to ai-sip.x-stage.bull-b.com:5060
+[2025-06-04 20:13:41] [DEBUG] [SIP] ✅ Keepalive UDP transmission successful: 684 bytes
+[2025-06-04 20:13:41] [INFO] [SIP] ✅ Keepalive sent successfully - device should stay online
+[2025-06-04 20:13:41] [INFO] [SIP] 🔄 Proactive registration renewal for WVP platform - preventing device offline
+[2025-06-04 20:13:56] [INFO] [SIP] 💓 Sending scheduled heartbeat to WVP platform
+[2025-06-04 20:13:56] [INFO] [SIP] 💓 Sending WVP-compatible keepalive (SN: 68036) to prevent heartbeat timeout
+[2025-06-04 20:13:56] [DEBUG] [SIP] 💓 Sending keepalive UDP packet (684 bytes) to ai-sip.x-stage.bull-b.com:5060
+[2025-06-04 20:13:56] [DEBUG] [SIP] ✅ Keepalive UDP transmission successful: 684 bytes
+[2025-06-04 20:13:56] [INFO] [SIP] ✅ Keepalive sent successfully - device should stay online
+[2025-06-04 20:14:11] [INFO] [SIP] 💓 Sending scheduled heartbeat to WVP platform
+[2025-06-04 20:14:11] [INFO] [SIP] 💓 Sending WVP-compatible keepalive (SN: 68051) to prevent heartbeat timeout
+[2025-06-04 20:14:11] [DEBUG] [SIP] 💓 Sending keepalive UDP packet (684 bytes) to ai-sip.x-stage.bull-b.com:5060
+[2025-06-04 20:14:11] [DEBUG] [SIP] ✅ Keepalive UDP transmission successful: 684 bytes
+[2025-06-04 20:14:11] [INFO] [SIP] ✅ Keepalive sent successfully - device should stay online
+[2025-06-04 20:14:12] [INFO] [STATUS] Active streams: 0
+[2025-06-04 20:14:12] [INFO] [STATUS] Recording scan complete: 14 files cached
+[2025-06-04 20:14:26] [INFO] [SIP] 💓 Sending scheduled heartbeat to WVP platform
+[2025-06-04 20:14:26] [INFO] [SIP] 💓 Sending WVP-compatible keepalive (SN: 68066) to prevent heartbeat timeout
+[2025-06-04 20:14:26] [DEBUG] [SIP] 💓 Sending keepalive UDP packet (684 bytes) to ai-sip.x-stage.bull-b.com:5060
+[2025-06-04 20:14:26] [DEBUG] [SIP] ✅ Keepalive UDP transmission successful: 684 bytes
+[2025-06-04 20:14:26] [INFO] [SIP] ✅ Keepalive sent successfully - device should stay online
+[2025-06-04 20:14:41] [INFO] [SIP] 💓 Sending scheduled heartbeat to WVP platform
+[2025-06-04 20:14:41] [INFO] [SIP] 💓 Sending WVP-compatible keepalive (SN: 68081) to prevent heartbeat timeout
+[2025-06-04 20:14:41] [DEBUG] [SIP] 💓 Sending keepalive UDP packet (684 bytes) to ai-sip.x-stage.bull-b.com:5060
+[2025-06-04 20:14:41] [DEBUG] [SIP] ✅ Keepalive UDP transmission successful: 684 bytes
+[2025-06-04 20:14:41] [INFO] [SIP] ✅ Keepalive sent successfully - device should stay online
+[2025-06-04 20:14:56] [INFO] [SIP] 💓 Sending scheduled heartbeat to WVP platform
+[2025-06-04 20:14:56] [INFO] [SIP] 💓 Sending WVP-compatible keepalive (SN: 68096) to prevent heartbeat timeout
+[2025-06-04 20:14:56] [DEBUG] [SIP] 💓 Sending keepalive UDP packet (684 bytes) to ai-sip.x-stage.bull-b.com:5060
+[2025-06-04 20:14:56] [DEBUG] [SIP] ✅ Keepalive UDP transmission successful: 684 bytes
+[2025-06-04 20:14:56] [INFO] [SIP] ✅ Keepalive sent successfully - device should stay online
+[2025-06-04 20:14:56] [WARNING] [SIP] 🔄 Registration approaching expiry in 45s - will renew soon
+[2025-06-04 20:14:57] [WARNING] [SIP] 🔄 Registration approaching expiry in 44s - will renew soon
+[2025-06-04 20:14:58] [WARNING] [SIP] 🔄 Registration approaching expiry in 43s - will renew soon
+[2025-06-04 20:14:59] [WARNING] [SIP] 🔄 Registration approaching expiry in 42s - will renew soon
+[2025-06-04 20:15:00] [WARNING] [SIP] 🔄 Registration approaching expiry in 41s - will renew soon
+[2025-06-04 20:15:01] [WARNING] [SIP] 🔄 Registration approaching expiry in 40s - will renew soon
+[2025-06-04 20:15:02] [WARNING] [SIP] 🔄 Registration approaching expiry in 39s - will renew soon
+[2025-06-04 20:15:03] [WARNING] [SIP] 🔄 Registration approaching expiry in 38s - will renew soon
+[2025-06-04 20:15:04] [WARNING] [SIP] 🔄 Registration approaching expiry in 37s - will renew soon
+[2025-06-04 20:15:05] [WARNING] [SIP] 🔄 Registration approaching expiry in 36s - will renew soon
+[2025-06-04 20:15:06] [WARNING] [SIP] 🔄 Registration approaching expiry in 35s - will renew soon
+[2025-06-04 20:15:07] [WARNING] [SIP] 🔄 Registration approaching expiry in 34s - will renew soon
+[2025-06-04 20:15:08] [WARNING] [SIP] 🔄 Registration approaching expiry in 33s - will renew soon
+[2025-06-04 20:15:09] [WARNING] [SIP] 🔄 Registration approaching expiry in 32s - will renew soon
+[2025-06-04 20:15:10] [WARNING] [SIP] 🔄 Registration approaching expiry in 31s - will renew soon
+[2025-06-04 20:15:11] [INFO] [SIP] 💓 Sending scheduled heartbeat to WVP platform
+[2025-06-04 20:15:11] [INFO] [SIP] 💓 Sending WVP-compatible keepalive (SN: 68111) to prevent heartbeat timeout
+[2025-06-04 20:15:11] [DEBUG] [SIP] 💓 Sending keepalive UDP packet (684 bytes) to ai-sip.x-stage.bull-b.com:5060
+[2025-06-04 20:15:11] [DEBUG] [SIP] ✅ Keepalive UDP transmission successful: 684 bytes
+[2025-06-04 20:15:11] [INFO] [SIP] ✅ Keepalive sent successfully - device should stay online
+[2025-06-04 20:15:11] [INFO] [SIP] 🔄 Proactive registration renewal for WVP platform - preventing device offline
+[2025-06-04 20:15:12] [INFO] [STATUS] Active streams: 0
+[2025-06-04 20:15:12] [INFO] [STATUS] Recording scan complete: 14 files cached
+[2025-06-04 20:15:26] [INFO] [SIP] 💓 Sending scheduled heartbeat to WVP platform
+[2025-06-04 20:15:26] [INFO] [SIP] 💓 Sending WVP-compatible keepalive (SN: 68126) to prevent heartbeat timeout
+[2025-06-04 20:15:26] [DEBUG] [SIP] 💓 Sending keepalive UDP packet (684 bytes) to ai-sip.x-stage.bull-b.com:5060
+[2025-06-04 20:15:26] [DEBUG] [SIP] ✅ Keepalive UDP transmission successful: 684 bytes
+[2025-06-04 20:15:26] [INFO] [SIP] ✅ Keepalive sent successfully - device should stay online
+[2025-06-04 20:15:41] [INFO] [SIP] 💓 Sending scheduled heartbeat to WVP platform
+[2025-06-04 20:15:41] [INFO] [SIP] 💓 Sending WVP-compatible keepalive (SN: 68141) to prevent heartbeat timeout
+[2025-06-04 20:15:41] [DEBUG] [SIP] 💓 Sending keepalive UDP packet (684 bytes) to ai-sip.x-stage.bull-b.com:5060
+[2025-06-04 20:15:41] [DEBUG] [SIP] ✅ Keepalive UDP transmission successful: 684 bytes
+[2025-06-04 20:15:41] [INFO] [SIP] ✅ Keepalive sent successfully - device should stay online
+[2025-06-04 20:15:56] [INFO] [SIP] 💓 Sending scheduled heartbeat to WVP platform
+[2025-06-04 20:15:56] [INFO] [SIP] 💓 Sending WVP-compatible keepalive (SN: 68156) to prevent heartbeat timeout
+[2025-06-04 20:15:56] [DEBUG] [SIP] 💓 Sending keepalive UDP packet (684 bytes) to ai-sip.x-stage.bull-b.com:5060
+[2025-06-04 20:15:56] [DEBUG] [SIP] ✅ Keepalive UDP transmission successful: 684 bytes
+[2025-06-04 20:15:56] [INFO] [SIP] ✅ Keepalive sent successfully - device should stay online
+From: <sip:81000000462001888888@81000000>;tag=ca2a683f34e8494ebc2ede2bc3af0b38
+To: <sip:81000000465001000001@13.50.108.195>;tag=z9hG4bK7426917640
+CSeq: 587 MESSAGE
+[2025-06-04 20:16:01] [INFO] [SIP] 🔍 DEBUG: MESSAGE line detected: CSeq: 587 MESSAGE
+Content-Length:  0
+
+
+--end msg--
+20:12:11.256            pjsua_app.c  .MESSAGE from <sip:81000000462001888888@81000000>: <?xml version="1.0" encoding="GB2312"?>
+[2025-06-04 20:16:01] [INFO] [SIP] 🔍 DEBUG: MESSAGE line detected: 20:12:11.256            pjsua_app.c  .MESSAGE from <sip:81000000462001888888@81000000>: <?xml version="1.0" encoding="GB2312"?>
+[2025-06-04 20:16:01] [DEBUG] [SIP] 🔍 DEBUG: pjsua_app.c line: 20:12:11.256            pjsua_app.c  .MESSAGE from <sip:81000000462001888888@81000000>: <?xml version="1.0" encoding="GB2312"?>
+[2025-06-04 20:16:01] [INFO] [SIP] 🎯 Direct PJSUA XML capture - detected MESSAGE line: 20:12:11.256            pjsua_app.c  .MESSAGE from <sip:81000000462001888888@81000000>: <?xml version="1.0" encoding="GB2312"?>
+[2025-06-04 20:16:01] [DEBUG] [SIP] 📝 Found XML on MESSAGE line: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+[2025-06-04 20:16:01] [DEBUG] [SIP] 🔍 XML line analysis: '<Query>' - is_xml: True
+[2025-06-04 20:16:01] [DEBUG] [SIP] 📝 Added XML line (2 total): <Query>
+<CmdType>Catalog</CmdType>
+[2025-06-04 20:16:01] [DEBUG] [SIP] 🔍 XML line analysis: '<CmdType>Catalog</CmdType>' - is_xml: True
+[2025-06-04 20:16:01] [DEBUG] [SIP] 📝 Added XML line (3 total): <CmdType>Catalog</CmdType>
+<SN>566835</SN>
+[2025-06-04 20:16:01] [DEBUG] [SIP] 🔍 XML line analysis: '<SN>566835</SN>' - is_xml: True
+[2025-06-04 20:16:01] [DEBUG] [SIP] 📝 Added XML line (4 total): <SN>566835</SN>
+<DeviceID>81000000465001000001</DeviceID>
+[2025-06-04 20:16:01] [DEBUG] [SIP] 🔍 XML line analysis: '<DeviceID>81000000465001000001</DeviceID>' - is_xml: True
+[2025-06-04 20:16:01] [DEBUG] [SIP] 📝 Added XML line (5 total): <DeviceID>81000000465001000001</DeviceID>
+[2025-06-04 20:16:01] [INFO] [SIP] ✅ PJSUA XML collection complete (forced): 141 characters
+[2025-06-04 20:16:01] [DEBUG] [SIP] Complete XML: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+<CmdType>Catalog</CmdType>
+<SN>566835</SN>
+<DeviceID>81000000465001000001</DeviceID>
+</Query>
+[2025-06-04 20:16:01] [INFO] [SIP] ✅ Processing XML content (141 bytes)
+[2025-06-04 20:16:01] [DEBUG] [SIP] XML content preview: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+<CmdType>Catalog</CmdType>
+<SN>566835</SN>
+<DeviceID>81000000465001000001</DeviceID>
+</Query>...
+[2025-06-04 20:16:01] [INFO] [SIP] ✅ Successfully parsed Query message with CmdType: Catalog
+[2025-06-04 20:16:01] [INFO] [SIP] 📂 Processing Catalog query - will send device catalog
+[2025-06-04 20:16:01] [INFO] [SIP] 🔍 Processing catalog query from platform (thread-safe)
+[2025-06-04 20:16:01] [DEBUG] [SIP] Extracted raw Catalog XML: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+<CmdType>Catalog</CmdType>
+<SN>566835</SN>
+<DeviceID>81000000465001000001</DeviceID>
+</Query>...
+[2025-06-04 20:16:01] [INFO] ✅ Valid catalog query confirmed (SN: 566835), processing...
+[2025-06-04 20:16:01] [INFO] [SIP] Using cached catalog with 14 video channels
+[2025-06-04 20:16:01] [INFO] [SIP] 🏗️ Building WVP-compatible catalog response:
+[2025-06-04 20:16:01] [INFO] [SIP]   • Parent Device: 81000000465001000001 (GB28181-Restreamer)
+[2025-06-04 20:16:01] [INFO] [SIP]   • Child Channels: 14
+[2025-06-04 20:16:01] [INFO] [SIP]   • Total Items: 15
+[2025-06-04 20:16:01] [INFO] [SIP]   • Estimated size: 10999 bytes
+[2025-06-04 20:16:01] [WARNING] [SIP] ⚠️ Large response (10999 bytes) - limiting channels for UDP safety
+[2025-06-04 20:16:01] [INFO] [SIP] 📦 Limited to parent device + 1 channels (total: 2 items)
+[2025-06-04 20:16:01] [INFO] [SIP] 📊 Final WVP-compatible catalog response:
+[2025-06-04 20:16:01] [INFO] [SIP]   • Message size: 2048 bytes
+[2025-06-04 20:16:01] [INFO] [SIP]   • SumNum: 2
+[2025-06-04 20:16:01] [INFO] [SIP]   • DeviceList Num: 2
+[2025-06-04 20:16:01] [INFO] [SIP]   • Structure: 1 Parent Device + 1 Channels
+[2025-06-04 20:16:01] [INFO] [SIP] 📂 Generated catalog response with 14 channels
+[2025-06-04 20:16:01] [DEBUG] [SIP] 💾 Saved response to catalog_response_sn_566835.xml
+[2025-06-04 20:16:01] [INFO] [SIP] ✅ Sending catalog response to WVP platform
+[2025-06-04 20:16:01] [INFO] [SIP] 📤 Sending catalog response (SN: 566835) via file-based method
+[2025-06-04 20:16:01] [DEBUG] [SIP] Saved response XML to catalog_response_566835.xml
+[2025-06-04 20:16:01] [INFO] [SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 566835):
+[2025-06-04 20:16:01] [INFO] [SIP]   • Message size: 2472 bytes
+[2025-06-04 20:16:01] [INFO] [SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+[2025-06-04 20:16:01] [INFO] [SIP]   • Encoding: UTF-8
+[2025-06-04 20:16:01] [INFO] [SIP]   • XML <Item> count: 2
+[2025-06-04 20:16:01] [INFO] [SIP]   • XML SumNum: 2
+[2025-06-04 20:16:01] [INFO] [SIP] ✅ XML integrity verified before transmission
+[2025-06-04 20:16:01] [WARNING] [SIP] ⚠️ Large UDP packet: 2472 bytes (may fragment)
+[2025-06-04 20:16:01] [DEBUG] [SIP] 📨 Message headers:
+[2025-06-04 20:16:01] [DEBUG] [SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+[2025-06-04 20:16:01] [DEBUG] [SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:5080;rport;branch=z9hG4bK-1749068161
+[2025-06-04 20:16:01] [DEBUG] [SIP]   3: Max-Forwards: 70
+[2025-06-04 20:16:01] [DEBUG] [SIP]   4: From: <sip:81000000465001000001@172.31.7.94:5080>;tag=tag1749068161
+[2025-06-04 20:16:01] [DEBUG] [SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+[2025-06-04 20:16:01] [DEBUG] [SIP]   6: Call-ID: catalog-566835-1749068161
+[2025-06-04 20:16:01] [DEBUG] [SIP]   7: CSeq: 7891 MESSAGE
+[2025-06-04 20:16:01] [DEBUG] [SIP]   8: Contact: <sip:172.31.7.94:5080>
+[2025-06-04 20:16:01] [DEBUG] [SIP]   9: User-Agent: GB28181-Restreamer/1.0
+[2025-06-04 20:16:01] [DEBUG] [SIP]   10: Content-Type: Application/MANSCDP+xml
+[2025-06-04 20:16:01] [DEBUG] [SIP]   ... and 66 more lines
+[2025-06-04 20:16:01] [INFO] [SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+[2025-06-04 20:16:01] [INFO] [SIP] ✅ UDP transmission SUCCESSFUL: 2472/2472 bytes
+[2025-06-04 20:16:01] [WARNING] [SIP] 📡 Large message sent - WVP platform may need time to reassemble
+[2025-06-04 20:16:01] [INFO] [SIP] 📤 Catalog response (SN: 566835) delivered successfully
+[2025-06-04 20:16:01] [INFO] [SIP]   • Contains 2 devices
+[2025-06-04 20:16:01] [INFO] [SIP]   • Total size: 2472 bytes
+[2025-06-04 20:16:01] [INFO] [SIP]   • WVP platform should process this within 30 seconds
+[2025-06-04 20:16:01] [INFO] [SIP] ✅ File-based catalog response sent successfully (SN: 566835)
+[2025-06-04 20:16:01] [INFO] [SIP] ✅ Catalog response sent successfully
+</Query>
+(Application/MANSCDP+xml)
+20:12:11.521            pjsua_aud.c !Closing sound device after idle for 1 second(s)
+20:12:11.521            pjsua_app.c  .Turning sound device -99 -99 OFF
+[2025-06-04 20:16:01] [DEBUG] [SIP] 🔍 DEBUG: pjsua_app.c line: 20:12:11.521            pjsua_app.c  .Turning sound device -99 -99 OFF
+20:12:11.521            pjsua_aud.c  .Closing null sound device..
+20:14:05.960           pjsua_core.c !.TX 647 bytes Request msg REGISTER/cseq=37180 (tdta0x746074000c20) to UDP 203.142.93.131:5060:
+[2025-06-04 20:16:01] [DEBUG] [SIP] SIP traffic: 20:14:05.960           pjsua_core.c !.TX 647 bytes Request msg REGISTER/cseq=37180 (tdta0x746074000c20) to UDP 203.142.93.131:5060:
+REGISTER sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+Via: SIP/2.0/UDP 13.50.108.195:5080;rport;branch=z9hG4bKPj91d0f204-2c3d-4693-bd14-093af7f296e3
+Max-Forwards: 70
+From: <sip:81000000465001000001@ai-sip.x-stage.bull-b.com>;tag=e80507ad-8fcb-46c5-94cd-bc9a30e22430
+To: <sip:81000000465001000001@ai-sip.x-stage.bull-b.com>
+Call-ID: 7dcd080e-8aca-4c16-b9b6-63b8b445601b
+CSeq: 37180 REGISTER
+User-Agent: PJSUA/v2.15-dev Linux-6.8.4.4 x86_64 glibc-2.39
+Contact: <sip:81000000465001000001@172.31.7.94:5080;ob>
+Expires: 120
+Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+[2025-06-04 20:16:01] [INFO] [SIP] 🔍 DEBUG: MESSAGE line detected: Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+Content-Length:  0
+
+
+--end msg--
+20:14:06.197           pjsua_core.c  .RX 513 bytes Response msg 200/REGISTER/cseq=37180 (rdata0x746074004728) from UDP 203.142.93.131:5060:
+[2025-06-04 20:16:01] [DEBUG] [SIP] Processed 200 lines from PJSUA
+[2025-06-04 20:16:01] [DEBUG] [SIP] SIP traffic: 20:14:06.197           pjsua_core.c  .RX 513 bytes Response msg 200/REGISTER/cseq=37180 (rdata0x746074004728) from UDP 203.142.93.131:5060:
+SIP/2.0 200 OK
+[2025-06-04 20:16:01] [DEBUG] [SIP] SIP response: SIP/2.0 200 OK
+CSeq: 37180 REGISTER
+Call-ID: 7dcd080e-8aca-4c16-b9b6-63b8b445601b
+From: <sip:81000000465001000001@ai-sip.x-stage.bull-b.com>;tag=e80507ad-8fcb-46c5-94cd-bc9a30e22430
+To: <sip:81000000465001000001@ai-sip.x-stage.bull-b.com>
+Via: SIP/2.0/UDP 13.50.108.195:5080;rport=5080;branch=z9hG4bKPj91d0f204-2c3d-4693-bd14-093af7f296e3;received=13.50.108.195
+Date: 2025-06-05T04:14:06.078
+Contact: <sip:81000000465001000001@172.31.7.94:5080;ob>
+Expires: 120
+User-Agent: WVP-Pro
+Content-Length: 0
+
+
+--end msg--
+20:14:06.197            pjsua_acc.c  ....SIP outbound status for acc 1 is not active
+20:14:06.197            pjsua_acc.c  ....Service-Route updated for acc 1 with 0 URI(s)
+20:14:06.197            pjsua_acc.c  ....sip:81000000465001000001@ai-sip.x-stage.bull-b.com: registration success, status=200 (OK), will re-register in 120 seconds
+[2025-06-04 20:16:01] [INFO] [SIP] ✅ Registration completed successfully
+[2025-06-04 20:16:01] [INFO] [SIP] 💓 Sending immediate heartbeat after registration to update WVP keepaliveTime
+[2025-06-04 20:16:01] [INFO] [SIP] 🚀 Sending proactive catalog notification for immediate frontend visibility
+20:14:06.197            pjsua_acc.c  ....Keep-alive timer started for acc 1, destination:203.142.93.131:5060, interval:14s
+[2025-06-04 20:16:01] [DEBUG] [SIP] Keep-alive message
+20:14:06.346           pjsua_core.c !.RX 580 bytes Request msg MESSAGE/cseq=588 (rdata0x746074003f08) from UDP 203.142.93.131:5060:
+[2025-06-04 20:16:01] [INFO] [SIP] 🔍 DEBUG: MESSAGE line detected: 20:14:06.346           pjsua_core.c !.RX 580 bytes Request msg MESSAGE/cseq=588 (rdata0x746074003f08) from UDP 203.142.93.131:5060:
+[2025-06-04 20:16:01] [INFO] [SIP] 🎯 Direct PJSUA XML capture - detected MESSAGE line: 20:14:06.346           pjsua_core.c !.RX 580 bytes Request msg MESSAGE/cseq=588 (rdata0x746074003f08) from UDP 203.142.93.131:5060:
+MESSAGE sip:81000000465001000001@13.50.108.195:5080 SIP/2.0
+[2025-06-04 20:16:01] [INFO] [SIP] 🔍 DEBUG: MESSAGE line detected: MESSAGE sip:81000000465001000001@13.50.108.195:5080 SIP/2.0
+[2025-06-04 20:16:01] [DEBUG] [SIP] 🔍 XML line analysis: 'MESSAGE sip:81000000465001000001@13.50.108.195:5080 SIP/2.0' - is_xml: False
+[2025-06-04 20:16:01] [DEBUG] [SIP] 🚫 Skipping non-XML line: 'MESSAGE sip:81000000465001000001@13.50.108.195:5080 SIP/2.0'
+Call-ID: b65255a684cab0836b1c4a8f9226528c@0.0.0.0
+[2025-06-04 20:16:01] [DEBUG] [SIP] 🔍 XML line analysis: 'Call-ID: b65255a684cab0836b1c4a8f9226528c@0.0.0.0' - is_xml: False
+[2025-06-04 20:16:01] [DEBUG] [SIP] 🚫 Skipping non-XML line: 'Call-ID: b65255a684cab0836b1c4a8f9226528c@0.0.0.0'
+CSeq: 588 MESSAGE
+[2025-06-04 20:16:01] [INFO] [SIP] 🔍 DEBUG: MESSAGE line detected: CSeq: 588 MESSAGE
+[2025-06-04 20:16:01] [DEBUG] [SIP] 🔍 XML line analysis: 'CSeq: 588 MESSAGE' - is_xml: False
+[2025-06-04 20:16:01] [DEBUG] [SIP] 🚫 Skipping non-XML line: 'CSeq: 588 MESSAGE'
+From: <sip:81000000462001888888@81000000>;tag=ac801cee68074c51a9a9848ad20c086e
+[2025-06-04 20:16:01] [DEBUG] [SIP] 🔍 XML line analysis: 'From: <sip:81000000462001888888@81000000>;tag=ac801cee68074c51a9a9848ad20c086e' - is_xml: False
+[2025-06-04 20:16:01] [DEBUG] [SIP] 🚫 Skipping non-XML line: 'From: <sip:81000000462001888888@81000000>;tag=ac801cee68074c51a9a9848ad20c086e'
+[2025-06-04 20:16:01] [WARNING] [SIP] ⚠️ XML collection abandoned - no XML collected
+To: <sip:81000000465001000001@13.50.108.195:5080>
+Via: SIP/2.0/UDP 0.0.0.0:5060;branch=z9hG4bK5866681235;rport
+Max-Forwards: 70
+User-Agent: WVP-Pro
+Content-Type: Application/MANSCDP+xml
+Content-Length: 154
+
+<?xml version="1.0" encoding="GB2312"?>
+<Query>
+<CmdType>Catalog</CmdType>
+<SN>814757</SN>
+<DeviceID>81000000465001000001</DeviceID>
+</Query>
+
+--end msg--
+20:14:06.346           pjsua_core.c  ..TX 347 bytes Response msg 200/MESSAGE/cseq=588 (tdta0x746078001e00) to UDP 203.142.93.131:5060:
+[2025-06-04 20:16:01] [INFO] [SIP] 🔍 DEBUG: MESSAGE line detected: 20:14:06.346           pjsua_core.c  ..TX 347 bytes Response msg 200/MESSAGE/cseq=588 (tdta0x746078001e00) to UDP 203.142.93.131:5060:
+[2025-06-04 20:16:01] [DEBUG] [SIP] SIP traffic: 20:14:06.346           pjsua_core.c  ..TX 347 bytes Response msg 200/MESSAGE/cseq=588 (tdta0x746078001e00) to UDP 203.142.93.131:5060:
+SIP/2.0 200 OK
+[2025-06-04 20:16:01] [DEBUG] [SIP] SIP response: SIP/2.0 200 OK
+Via: SIP/2.0/UDP 0.0.0.0:5060;rport=5060;received=203.142.93.131;branch=z9hG4bK5866681235
+Call-ID: b65255a684cab0836b1c4a8f9226528c@0.0.0.0
+From: <sip:81000000462001888888@81000000>;tag=ac801cee68074c51a9a9848ad20c086e
+To: <sip:81000000465001000001@13.50.108.195>;tag=z9hG4bK5866681235
+CSeq: 588 MESSAGE
+[2025-06-04 20:16:01] [INFO] [SIP] 🔍 DEBUG: MESSAGE line detected: CSeq: 588 MESSAGE
+Content-Length:  0
+
+
+--end msg--
+20:14:06.346            pjsua_app.c  .MESSAGE from <sip:81000000462001888888@81000000>: <?xml version="1.0" encoding="GB2312"?>
+[2025-06-04 20:16:01] [DEBUG] [SIP] Processed 250 lines from PJSUA
+[2025-06-04 20:16:01] [INFO] [SIP] 🔍 DEBUG: MESSAGE line detected: 20:14:06.346            pjsua_app.c  .MESSAGE from <sip:81000000462001888888@81000000>: <?xml version="1.0" encoding="GB2312"?>
+[2025-06-04 20:16:01] [DEBUG] [SIP] 🔍 DEBUG: pjsua_app.c line: 20:14:06.346            pjsua_app.c  .MESSAGE from <sip:81000000462001888888@81000000>: <?xml version="1.0" encoding="GB2312"?>
+[2025-06-04 20:16:01] [INFO] [SIP] 🎯 Direct PJSUA XML capture - detected MESSAGE line: 20:14:06.346            pjsua_app.c  .MESSAGE from <sip:81000000462001888888@81000000>: <?xml version="1.0" encoding="GB2312"?>
+[2025-06-04 20:16:01] [DEBUG] [SIP] 📝 Found XML on MESSAGE line: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+[2025-06-04 20:16:01] [DEBUG] [SIP] 🔍 XML line analysis: '<Query>' - is_xml: True
+[2025-06-04 20:16:01] [DEBUG] [SIP] 📝 Added XML line (2 total): <Query>
+<CmdType>Catalog</CmdType>
+[2025-06-04 20:16:01] [DEBUG] [SIP] 🔍 XML line analysis: '<CmdType>Catalog</CmdType>' - is_xml: True
+[2025-06-04 20:16:01] [DEBUG] [SIP] 📝 Added XML line (3 total): <CmdType>Catalog</CmdType>
+<SN>814757</SN>
+[2025-06-04 20:16:01] [DEBUG] [SIP] 🔍 XML line analysis: '<SN>814757</SN>' - is_xml: True
+[2025-06-04 20:16:01] [DEBUG] [SIP] 📝 Added XML line (4 total): <SN>814757</SN>
+<DeviceID>81000000465001000001</DeviceID>
+[2025-06-04 20:16:01] [DEBUG] [SIP] 🔍 XML line analysis: '<DeviceID>81000000465001000001</DeviceID>' - is_xml: True
+[2025-06-04 20:16:01] [DEBUG] [SIP] 📝 Added XML line (5 total): <DeviceID>81000000465001000001</DeviceID>
+[2025-06-04 20:16:01] [INFO] [SIP] ✅ PJSUA XML collection complete (forced): 141 characters
+[2025-06-04 20:16:01] [DEBUG] [SIP] Complete XML: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+<CmdType>Catalog</CmdType>
+<SN>814757</SN>
+<DeviceID>81000000465001000001</DeviceID>
+</Query>
+[2025-06-04 20:16:01] [INFO] [SIP] ✅ Processing XML content (141 bytes)
+[2025-06-04 20:16:01] [DEBUG] [SIP] XML content preview: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+<CmdType>Catalog</CmdType>
+<SN>814757</SN>
+<DeviceID>81000000465001000001</DeviceID>
+</Query>...
+[2025-06-04 20:16:01] [INFO] [SIP] ✅ Successfully parsed Query message with CmdType: Catalog
+[2025-06-04 20:16:01] [INFO] [SIP] 📂 Processing Catalog query - will send device catalog
+[2025-06-04 20:16:01] [INFO] [SIP] 🔍 Processing catalog query from platform (thread-safe)
+[2025-06-04 20:16:01] [DEBUG] [SIP] Extracted raw Catalog XML: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+<CmdType>Catalog</CmdType>
+<SN>814757</SN>
+<DeviceID>81000000465001000001</DeviceID>
+</Query>...
+[2025-06-04 20:16:01] [INFO] ✅ Valid catalog query confirmed (SN: 814757), processing...
+[2025-06-04 20:16:01] [INFO] [SIP] ⏱️ Rate limiting: delaying catalog response by 0.4s to prevent spam
+[2025-06-04 20:16:01] [INFO] [SIP] Using cached catalog with 14 video channels
+[2025-06-04 20:16:01] [INFO] [SIP] 🏗️ Building WVP-compatible catalog response:
+[2025-06-04 20:16:01] [INFO] [SIP]   • Parent Device: 81000000465001000001 (GB28181-Restreamer)
+[2025-06-04 20:16:01] [INFO] [SIP]   • Child Channels: 14
+[2025-06-04 20:16:01] [INFO] [SIP]   • Total Items: 15
+[2025-06-04 20:16:01] [INFO] [SIP]   • Estimated size: 10999 bytes
+[2025-06-04 20:16:01] [WARNING] [SIP] ⚠️ Large response (10999 bytes) - limiting channels for UDP safety
+[2025-06-04 20:16:01] [INFO] [SIP] 📦 Limited to parent device + 1 channels (total: 2 items)
+[2025-06-04 20:16:01] [INFO] [SIP] 📊 Final WVP-compatible catalog response:
+[2025-06-04 20:16:01] [INFO] [SIP]   • Message size: 2048 bytes
+[2025-06-04 20:16:01] [INFO] [SIP]   • SumNum: 2
+[2025-06-04 20:16:01] [INFO] [SIP]   • DeviceList Num: 2
+[2025-06-04 20:16:01] [INFO] [SIP]   • Structure: 1 Parent Device + 1 Channels
+[2025-06-04 20:16:01] [INFO] [SIP] 📂 Generated catalog response with 14 channels
+[2025-06-04 20:16:01] [DEBUG] [SIP] 💾 Saved response to catalog_response_sn_814757.xml
+[2025-06-04 20:16:01] [INFO] [SIP] ✅ Sending catalog response to WVP platform
+[2025-06-04 20:16:01] [INFO] [SIP] 📤 Sending catalog response (SN: 814757) via file-based method
+[2025-06-04 20:16:01] [DEBUG] [SIP] Saved response XML to catalog_response_814757.xml
+[2025-06-04 20:16:01] [INFO] [SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 814757):
+[2025-06-04 20:16:01] [INFO] [SIP]   • Message size: 2472 bytes
+[2025-06-04 20:16:01] [INFO] [SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+[2025-06-04 20:16:01] [INFO] [SIP]   • Encoding: UTF-8
+[2025-06-04 20:16:01] [INFO] [SIP]   • XML <Item> count: 2
+[2025-06-04 20:16:01] [INFO] [SIP]   • XML SumNum: 2
+[2025-06-04 20:16:01] [INFO] [SIP] ✅ XML integrity verified before transmission
+[2025-06-04 20:16:01] [WARNING] [SIP] ⚠️ Large UDP packet: 2472 bytes (may fragment)
+[2025-06-04 20:16:01] [DEBUG] [SIP] 📨 Message headers:
+[2025-06-04 20:16:01] [DEBUG] [SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+[2025-06-04 20:16:01] [DEBUG] [SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:5080;rport;branch=z9hG4bK-1749068161
+[2025-06-04 20:16:01] [DEBUG] [SIP]   3: Max-Forwards: 70
+[2025-06-04 20:16:01] [DEBUG] [SIP]   4: From: <sip:81000000465001000001@172.31.7.94:5080>;tag=tag1749068161
+[2025-06-04 20:16:01] [DEBUG] [SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+[2025-06-04 20:16:01] [DEBUG] [SIP]   6: Call-ID: catalog-814757-1749068161
+[2025-06-04 20:16:01] [DEBUG] [SIP]   7: CSeq: 5838 MESSAGE
+[2025-06-04 20:16:01] [DEBUG] [SIP]   8: Contact: <sip:172.31.7.94:5080>
+[2025-06-04 20:16:01] [DEBUG] [SIP]   9: User-Agent: GB28181-Restreamer/1.0
+[2025-06-04 20:16:01] [DEBUG] [SIP]   10: Content-Type: Application/MANSCDP+xml
+[2025-06-04 20:16:01] [DEBUG] [SIP]   ... and 66 more lines
+[2025-06-04 20:16:01] [INFO] [SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+[2025-06-04 20:16:01] [INFO] [SIP] ✅ UDP transmission SUCCESSFUL: 2472/2472 bytes
+[2025-06-04 20:16:01] [WARNING] [SIP] 📡 Large message sent - WVP platform may need time to reassemble
+[2025-06-04 20:16:01] [INFO] [SIP] 📤 Catalog response (SN: 814757) delivered successfully
+[2025-06-04 20:16:01] [INFO] [SIP]   • Contains 2 devices
+[2025-06-04 20:16:01] [INFO] [SIP]   • Total size: 2472 bytes
+[2025-06-04 20:16:01] [INFO] [SIP]   • WVP platform should process this within 30 seconds
+[2025-06-04 20:16:01] [INFO] [SIP] ✅ File-based catalog response sent successfully (SN: 814757)
+[2025-06-04 20:16:01] [INFO] [SIP] ✅ Catalog response sent successfully
+</Query>
+(Application/MANSCDP+xml)
+[2025-06-04 20:16:03] [INFO] [SIP] 💓 Sending WVP-compatible keepalive (SN: 68163) to prevent heartbeat timeout
+[2025-06-04 20:16:03] [DEBUG] [SIP] 💓 Sending keepalive UDP packet (684 bytes) to ai-sip.x-stage.bull-b.com:5060
+[2025-06-04 20:16:03] [DEBUG] [SIP] ✅ Keepalive UDP transmission successful: 684 bytes
+[2025-06-04 20:16:03] [INFO] [SIP] ✅ Keepalive sent successfully - device should stay online
+[2025-06-04 20:16:04] [INFO] [SIP] 🚀 Sending proactive catalog notification for immediate frontend visibility
+[2025-06-04 20:16:04] [WARNING] [SIP] ⚠️ Large proactive notification (10999 bytes) - limiting channels
+[2025-06-04 20:16:04] [INFO] [SIP] 📦 Limited proactive notification to parent device + 1 channels (total: 2 items)
+[2025-06-04 20:16:04] [INFO] [SIP] 📤 Sending WVP-compatible proactive catalog with parent device + 1 channels (SN: 897956)
+[2025-06-04 20:16:04] [INFO] [SIP] 📊 Final proactive notification size: 2062 bytes
+[2025-06-04 20:16:04] [DEBUG] [SIP] Saved response XML to catalog_response_897956.xml
+[2025-06-04 20:16:04] [INFO] [SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 897956):
+[2025-06-04 20:16:04] [INFO] [SIP]   • Message size: 2486 bytes
+[2025-06-04 20:16:04] [INFO] [SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+[2025-06-04 20:16:04] [INFO] [SIP]   • Encoding: UTF-8
+[2025-06-04 20:16:04] [INFO] [SIP]   • XML <Item> count: 2
+[2025-06-04 20:16:04] [INFO] [SIP]   • XML SumNum: 2
+[2025-06-04 20:16:04] [INFO] [SIP] ✅ XML integrity verified before transmission
+[2025-06-04 20:16:04] [WARNING] [SIP] ⚠️ Large UDP packet: 2486 bytes (may fragment)
+[2025-06-04 20:16:04] [DEBUG] [SIP] 📨 Message headers:
+[2025-06-04 20:16:04] [DEBUG] [SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+[2025-06-04 20:16:04] [DEBUG] [SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:5080;rport;branch=z9hG4bK-1749068164
+[2025-06-04 20:16:04] [DEBUG] [SIP]   3: Max-Forwards: 70
+[2025-06-04 20:16:04] [DEBUG] [SIP]   4: From: <sip:81000000465001000001@172.31.7.94:5080>;tag=tag1749068164
+[2025-06-04 20:16:04] [DEBUG] [SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+[2025-06-04 20:16:04] [DEBUG] [SIP]   6: Call-ID: catalog-897956-1749068164
+[2025-06-04 20:16:04] [DEBUG] [SIP]   7: CSeq: 9045 MESSAGE
+[2025-06-04 20:16:04] [DEBUG] [SIP]   8: Contact: <sip:172.31.7.94:5080>
+[2025-06-04 20:16:04] [DEBUG] [SIP]   9: User-Agent: GB28181-Restreamer/1.0
+[2025-06-04 20:16:04] [DEBUG] [SIP]   10: Content-Type: Application/MANSCDP+xml
+[2025-06-04 20:16:04] [DEBUG] [SIP]   ... and 66 more lines
+[2025-06-04 20:16:04] [INFO] [SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+[2025-06-04 20:16:04] [INFO] [SIP] ✅ UDP transmission SUCCESSFUL: 2486/2486 bytes
+[2025-06-04 20:16:04] [WARNING] [SIP] 📡 Large message sent - WVP platform may need time to reassemble
+[2025-06-04 20:16:04] [INFO] [SIP] 📤 Catalog response (SN: 897956) delivered successfully
+[2025-06-04 20:16:04] [INFO] [SIP]   • Contains 2 devices
+[2025-06-04 20:16:04] [INFO] [SIP]   • Total size: 2486 bytes
+[2025-06-04 20:16:04] [INFO] [SIP]   • WVP platform should process this within 30 seconds
+[2025-06-04 20:16:04] [INFO] [SIP] ✅ File-based catalog response sent successfully (SN: 897956)
+[2025-06-04 20:16:04] [INFO] [SIP] ✅ WVP-compatible proactive catalog notification sent - frontend should show parent device + channels immediately
+[2025-06-04 20:16:11] [INFO] [SIP] 💓 Sending scheduled heartbeat to WVP platform
+[2025-06-04 20:16:11] [INFO] [SIP] 💓 Sending WVP-compatible keepalive (SN: 68171) to prevent heartbeat timeout
+[2025-06-04 20:16:11] [DEBUG] [SIP] 💓 Sending keepalive UDP packet (684 bytes) to ai-sip.x-stage.bull-b.com:5060
+[2025-06-04 20:16:11] [DEBUG] [SIP] ✅ Keepalive UDP transmission successful: 684 bytes
+[2025-06-04 20:16:11] [INFO] [SIP] ✅ Keepalive sent successfully - device should stay online
+[2025-06-04 20:16:12] [INFO] [STATUS] Active streams: 0
+[2025-06-04 20:16:12] [INFO] [STATUS] Recording scan complete: 14 files cached
+[2025-06-04 20:16:26] [INFO] [SIP] 💓 Sending scheduled heartbeat to WVP platform
+[2025-06-04 20:16:26] [INFO] [SIP] 💓 Sending WVP-compatible keepalive (SN: 68186) to prevent heartbeat timeout
+[2025-06-04 20:16:26] [DEBUG] [SIP] 💓 Sending keepalive UDP packet (684 bytes) to ai-sip.x-stage.bull-b.com:5060
+[2025-06-04 20:16:26] [DEBUG] [SIP] ✅ Keepalive UDP transmission successful: 684 bytes
+[2025-06-04 20:16:26] [INFO] [SIP] ✅ Keepalive sent successfully - device should stay online
+[2025-06-04 20:16:26] [WARNING] [SIP] 🔄 Registration approaching expiry in 45s - will renew soon
+[2025-06-04 20:16:27] [WARNING] [SIP] 🔄 Registration approaching expiry in 44s - will renew soon
+[2025-06-04 20:16:28] [WARNING] [SIP] 🔄 Registration approaching expiry in 43s - will renew soon
+[2025-06-04 20:16:29] [WARNING] [SIP] 🔄 Registration approaching expiry in 42s - will renew soon
+[2025-06-04 20:16:30] [WARNING] [SIP] 🔄 Registration approaching expiry in 41s - will renew soon
+[2025-06-04 20:16:31] [WARNING] [SIP] 🔄 Registration approaching expiry in 40s - will renew soon
+[2025-06-04 20:16:32] [WARNING] [SIP] 🔄 Registration approaching expiry in 39s - will renew soon
+[2025-06-04 20:16:33] [WARNING] [SIP] 🔄 Registration approaching expiry in 38s - will renew soon
+[2025-06-04 20:16:34] [WARNING] [SIP] 🔄 Registration approaching expiry in 37s - will renew soon
+[2025-06-04 20:16:35] [WARNING] [SIP] 🔄 Registration approaching expiry in 36s - will renew soon
+[2025-06-04 20:16:36] [WARNING] [SIP] 🔄 Registration approaching expiry in 35s - will renew soon
+[2025-06-04 20:16:37] [WARNING] [SIP] 🔄 Registration approaching expiry in 34s - will renew soon
+[2025-06-04 20:16:38] [WARNING] [SIP] 🔄 Registration approaching expiry in 33s - will renew soon
+[2025-06-04 20:16:39] [WARNING] [SIP] 🔄 Registration approaching expiry in 32s - will renew soon
+[2025-06-04 20:16:40] [WARNING] [SIP] 🔄 Registration approaching expiry in 31s - will renew soon
+[2025-06-04 20:16:41] [INFO] [SIP] 💓 Sending scheduled heartbeat to WVP platform
+[2025-06-04 20:16:41] [INFO] [SIP] 💓 Sending WVP-compatible keepalive (SN: 68201) to prevent heartbeat timeout
+[2025-06-04 20:16:41] [DEBUG] [SIP] 💓 Sending keepalive UDP packet (684 bytes) to ai-sip.x-stage.bull-b.com:5060
+[2025-06-04 20:16:41] [DEBUG] [SIP] ✅ Keepalive UDP transmission successful: 684 bytes
+[2025-06-04 20:16:41] [INFO] [SIP] ✅ Keepalive sent successfully - device should stay online
+[2025-06-04 20:16:41] [INFO] [SIP] 🔄 Proactive registration renewal for WVP platform - preventing device offline
+[2025-06-04 20:16:56] [INFO] [SIP] 💓 Sending scheduled heartbeat to WVP platform
+[2025-06-04 20:16:56] [INFO] [SIP] 💓 Sending WVP-compatible keepalive (SN: 68216) to prevent heartbeat timeout
+[2025-06-04 20:16:56] [DEBUG] [SIP] 💓 Sending keepalive UDP packet (684 bytes) to ai-sip.x-stage.bull-b.com:5060
+[2025-06-04 20:16:56] [DEBUG] [SIP] ✅ Keepalive UDP transmission successful: 684 bytes
+[2025-06-04 20:16:56] [INFO] [SIP] ✅ Keepalive sent successfully - device should stay online
+[2025-06-04 20:17:11] [INFO] [SIP] 💓 Sending scheduled heartbeat to WVP platform
+[2025-06-04 20:17:11] [INFO] [SIP] 💓 Sending WVP-compatible keepalive (SN: 68231) to prevent heartbeat timeout
+[2025-06-04 20:17:11] [DEBUG] [SIP] 💓 Sending keepalive UDP packet (684 bytes) to ai-sip.x-stage.bull-b.com:5060
+[2025-06-04 20:17:11] [DEBUG] [SIP] ✅ Keepalive UDP transmission successful: 684 bytes
+[2025-06-04 20:17:11] [INFO] [SIP] ✅ Keepalive sent successfully - device should stay online
+[2025-06-04 20:17:12] [INFO] [STATUS] Active streams: 0
+[2025-06-04 20:17:12] [INFO] [STATUS] Recording scan complete: 14 files cached
+[2025-06-04 20:17:13] [WARNING] [SHUTDOWN] Caught signal 15. Initiating graceful shutdown...
+[2025-06-04 20:17:13] [WARNING] [SHUTDOWN] Cleaning up resources...
+[2025-06-04 20:17:13] [INFO] [SHUTDOWN] Stopping SIP client...
+[2025-06-04 20:17:13] [INFO] [SIP] Stopping all streams and SIP client...
+[2025-06-04 20:17:13] [INFO] [SIP] 🛑 Stopping heartbeat thread
+[2025-06-04 20:17:13] [INFO] [SIP] 💓 Heartbeat worker stopped
+[2025-06-04 20:17:13] [INFO] [STREAM] Media streamer shut down
+[2025-06-04 20:17:13] [INFO] [SIP] Attempting graceful pjsua termination...
+[2025-06-04 20:17:13] [INFO] [SIP] PJSUA output handler finished after processing 256 lines
+[2025-06-04 20:17:13] [WARNING] [SIP] pjsua process exited normally
+[2025-06-04 20:17:13] [WARNING] [SIP] SIP client listen loop has ended
+[2025-06-04 20:17:13] [INFO] [SIP] PJSUA process terminated gracefully
+[2025-06-04 20:17:13] [INFO] [SIP] SIP client stopped and cleanup completed
+[2025-06-04 20:17:13] [INFO] [SHUTDOWN] Stopping all RTSP streams...
+[2025-06-04 20:17:13] [INFO] [RTSP] Stopping all 0 streams
+[2025-06-04 20:17:13] [INFO] [RTSP] All streams stopped
+[2025-06-04 20:17:13] [INFO] [SHUTDOWN] Stopping media streamer...
+[2025-06-04 20:17:13] [INFO] [STREAM] Media streamer shut down
+[2025-06-04 20:17:13] [INFO] [SHUTDOWN] Cleanup complete
+[2025-06-04 20:17:13] [WARNING] [SHUTDOWN] Cleaning up resources...
+[2025-06-04 20:17:13] [INFO] [SHUTDOWN] Stopping SIP client...
+[2025-06-04 20:17:13] [INFO] [SIP] Stopping all streams and SIP client...
+[2025-06-04 20:17:13] [INFO] [SIP] 🛑 Stopping heartbeat thread
+[2025-06-04 20:17:13] [INFO] [STREAM] Media streamer shut down
+[2025-06-04 20:17:13] [DEBUG] [SIP] Error closing pipes: [Errno 9] Bad file descriptor
+[2025-06-04 20:17:13] [INFO] [SIP] SIP client stopped and cleanup completed
+[2025-06-04 20:17:13] [INFO] [SHUTDOWN] Stopping all RTSP streams...
+[2025-06-04 20:17:13] [INFO] [RTSP] Stopping all 0 streams
+[2025-06-04 20:17:13] [INFO] [RTSP] All streams stopped
+[2025-06-04 20:17:13] [INFO] [SHUTDOWN] Stopping media streamer...
+[2025-06-04 20:17:13] [INFO] [STREAM] Media streamer shut down
+[2025-06-04 20:17:13] [INFO] [SHUTDOWN] Cleanup complete

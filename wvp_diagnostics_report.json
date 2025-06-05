@@ -1,0 +1,35 @@
+{
+  "timestamp": "2025-06-04T00:30:55.047402",
+  "wvp_platform_tests": {
+    "sip_connectivity": {
+      "tcp_connected": true,
+      "tcp_time_ms": 214.59,
+      "udp_reachable": true,
+      "udp_time_ms": 0.58
+    },
+    "device_accessibility": {
+      "external_ip": "13.50.108.195",
+      "local_ip": "172.31.7.94",
+      "sip_port_bound": false
+    }
+  },
+  "catalog_analysis": {
+    "subscription_analysis": {
+      "catalog_queries_count": 0,
+      "device_status_queries_count": 0,
+      "responses_sent_count": 0,
+      "query_response_ratio": 0.0
+    }
+  },
+  "timeout_analysis": {
+    "catalog_generation_seconds": 1.176,
+    "xml_generation_seconds": 0.0,
+    "total_response_seconds": 1.59,
+    "timeout_risk": false
+  },
+  "network_analysis": {},
+  "recommendations": [
+    "Check for network issues causing response failures",
+    "Use WVP-optimized configuration with reduced channel count"
+  ]
+}

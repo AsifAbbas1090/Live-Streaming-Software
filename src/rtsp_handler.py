@@ -115,6 +115,11 @@ class RTSPHandler:
             # Enhanced pipeline with timeout and reliable error handling
             self.pipeline = self._create_pipeline(self.rtsp_url)
             
+            if not self.pipeline:
+                log.error("[RTSP] ❌ Failed to create any pipeline variant")
+                self.status.mark_error("Pipeline creation failed")
+                return False
+            
             # Add bus watch
             bus = self.pipeline.get_bus()
             bus.add_signal_watch()
@@ -123,9 +128,13 @@ class RTSPHandler:
             # Start the pipeline
             ret = self.pipeline.set_state(Gst.State.PLAYING)
             if ret == Gst.StateChangeReturn.FAILURE:
-                log.error("[RTSP] Failed to start pipeline")
+                log.error("[RTSP] ❌ Failed to start pipeline - state change failed")
                 self.status.mark_error("Failed to start pipeline")
                 return False
+            elif ret == Gst.StateChangeReturn.ASYNC:
+                log.info("[RTSP] Pipeline starting asynchronously...")
+            elif ret == Gst.StateChangeReturn.SUCCESS:
+                log.info("[RTSP] ✅ Pipeline started successfully")
                 
             log.info("[RTSP] GStreamer RTSP pipeline started.")
             self.running = True
@@ -143,7 +152,7 @@ class RTSPHandler:
             
             return True
         except Exception as e:
-            log.exception(f"[RTSP] Error starting RTSP stream: {e}")
+            log.exception(f"[RTSP] ❌ Error starting RTSP stream: {e}")
             self.status.mark_error(str(e))
             return False
     
@@ -334,18 +343,58 @@ class RTSPHandler:
 
     def _create_pipeline(self, rtsp_url):
         """Create GStreamer pipeline for RTSP stream with improved error handling"""
+        # Enhanced pipeline with proper H.264 decoding chain
+        # Based on best practices from GStreamer documentation and forum discussions
         pipeline_str = (
             f'rtspsrc location="{rtsp_url}" latency=0 buffer-mode=auto '
             'tcp-timeout=5000000 retry=3 connection-speed=1000000 ! '
             'rtph264depay ! h264parse config-interval=1 ! '
+            'avdec_h264 ! '  # Added missing H.264 decoder
             'queue max-size-buffers=3000 max-size-bytes=0 max-size-time=0 ! '
             'videoconvert ! video/x-raw,format=RGB ! '
             'queue max-size-buffers=3000 max-size-bytes=0 max-size-time=0 ! '
             'fakesink sync=false'
         )
         
-        log.debug(f"Pipeline: {pipeline_str}")
-        return Gst.parse_launch(pipeline_str)
+        log.debug(f"[RTSP] Enhanced pipeline: {pipeline_str}")
+        
+        try:
+            pipeline = Gst.parse_launch(pipeline_str)
+            return pipeline
+        except Exception as e:
+            log.error(f"[RTSP] Failed to create pipeline: {e}")
+            
+            # Fallback pipeline with different decoder
+            log.info("[RTSP] Trying fallback pipeline with different decoder")
+            fallback_pipeline_str = (
+                f'rtspsrc location="{rtsp_url}" latency=0 buffer-mode=auto '
+                'tcp-timeout=5000000 retry=3 connection-speed=1000000 ! '
+                'rtph264depay ! h264parse ! '
+                'decodebin ! '  # Generic decoder as fallback
+                'videoconvert ! video/x-raw,format=RGB ! '
+                'fakesink sync=false'
+            )
+            
+            try:
+                log.debug(f"[RTSP] Fallback pipeline: {fallback_pipeline_str}")
+                return Gst.parse_launch(fallback_pipeline_str)
+            except Exception as e2:
+                log.error(f"[RTSP] Fallback pipeline also failed: {e2}")
+                
+                # Final fallback - minimal pipeline
+                log.info("[RTSP] Trying minimal pipeline")
+                minimal_pipeline_str = (
+                    f'rtspsrc location="{rtsp_url}" ! '
+                    'decodebin ! videoconvert ! '
+                    'fakesink sync=false'
+                )
+                
+                try:
+                    log.debug(f"[RTSP] Minimal pipeline: {minimal_pipeline_str}")
+                    return Gst.parse_launch(minimal_pipeline_str)
+                except Exception as e3:
+                    log.error(f"[RTSP] All pipeline variants failed: {e3}")
+                    return None
 
     def _on_pipeline_state_change(self, bus, message):
         """Handle pipeline state changes with detailed monitoring"""

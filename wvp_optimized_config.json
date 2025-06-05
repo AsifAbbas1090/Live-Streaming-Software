@@ -1,0 +1,6 @@
+{
+  "reduced_catalog_size": true,
+  "max_channels": 20,
+  "response_timeout_optimization": true,
+  "wvp_compatibility_mode": true
+}

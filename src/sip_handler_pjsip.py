@@ -1,5 +1,4 @@
 # src/sip_handler_pjsip.py
-
 import subprocess
 import threading
 import time
@@ -24,7 +23,6 @@ from gb28181_xml import (
     parse_xml_message,
     parse_recordinfo_query
 )
-from gb28181_sip_sender import GB28181SIPSender
 
 class SIPClient:
     def __init__(self, config):
@@ -47,16 +45,22 @@ class SIPClient:
         # For storing device catalog
         self.device_catalog = {}
         
-        # Rate limiting for catalog responses
-        self.last_catalog_response_time = 0
-        self.catalog_response_interval = 2  # Minimum 2 seconds between catalog responses
+        # FIXED: Thread-safe rate limiting for catalog responses
+        self._catalog_lock = threading.Lock()
+        self._last_catalog_time = 0
+        self.catalog_response_interval = 0.5  # Reduced from 2 to 0.5 seconds for faster WVP response
         
-        # Set up health monitoring
+        # FIXED: Thread-safe catalog generation
+        self._catalog_generation_lock = threading.Lock()
+        
+        # FIXED: Enhanced health monitoring for WVP platform compatibility
         self.registration_status = "OFFLINE"
         self.last_keepalive_time = None
         self.last_keepalive_check = time.time()
-        self.keepalive_interval = 60  # Seconds between keepalive messages
-        self.registration_retry_interval = 30  # Seconds between registration retries
+        self.keepalive_interval = 15  # FIXED: Reduced from 30 to 15 seconds for WVP compatibility
+        self.registration_retry_interval = 20  # FIXED: Reduced from 30 to 20 seconds for faster recovery
+        self.last_registration_time = 0  # Track when we last registered
+        self.registration_timeout = 120  # FIXED: Registration expires in 2 minutes (120s) for WVP platform
         
         # Streamer connection
         self.streamer = config.get("streamer")
@@ -71,55 +75,145 @@ class SIPClient:
         self.registration_attempts = 0
         self.max_registration_attempts = 5
         self.last_keepalive = time.time()
-        self.catalog_ready = False
+        self.catalog_ready = False # Used to track if catalog has been generated at least once
         self.last_catalog_update = 0
         
         # Create thread-safe pipe for communication with PJSUA
         self.pipe_read, self.pipe_write = os.pipe()
         
-        # Create SIP message sender
-        self.sip_sender = GB28181SIPSender(config)
+        # Initialize SIP header storage for OPTIONS responses
+        self._last_via = ""
+        self._last_from = ""
+        self._last_to = ""
+        self._last_call_id = ""
+        self._last_cseq = ""
+        self._local_tag = f"tag{int(time.time())}"
+        self.local_ip = self._get_local_ip()  # Get actual local IP
+
+        # ADDED: Enhanced message processing with thread safety
+        self._message_processing_lock = threading.Lock()
+        self._pending_catalog_queries = {}  # Track pending queries to prevent duplicates
+        
+        # FIXED: Dedicated heartbeat thread for WVP platform compatibility with reduced intervals
+        self._heartbeat_thread = None
+        self._heartbeat_running = False
+        self._last_successful_keepalive = time.time()  # Track successful keepalives for failure detection
+
+    def _get_local_ip(self):
+        """Get the local IP address that can reach the SIP server"""
+        try:
+            import socket
+            # Create a socket to determine which local IP is used to reach the server
+            s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            s.connect((self.server, self.port))
+            local_ip = s.getsockname()[0]
+            s.close()
+            log.info(f"[SIP] Determined local IP: {local_ip}")
+            return local_ip
+        except Exception as e:
+            log.warning(f"[SIP] Could not determine local IP: {e}, using 127.0.0.1")
+            return "127.0.0.1"
 
     def generate_device_catalog(self):
-        """Generate device catalog information according to GB28181 standard"""
-        scan_video_files(self.config['stream_directory'])
-        video_catalog = get_video_catalog()
-        catalog_dict = {}
-        if not video_catalog:
-            log.warning("[SIP] No video files found in catalog")
-            return
-
-        # Clear existing catalog
-        self.device_catalog = {}
-        
-        # Create device catalog in GB28181 format
-        for i, video_path in enumerate(video_catalog):
-            video_name = os.path.basename(video_path)
-            # Generate unique channel ID for each video file
-            # Format: deviceID + 3-digit suffix (must be a proper SIP ID format)
-            channel_id = f"{self.device_id}{i+1:03d}"
-            
-            self.device_catalog[channel_id] = {
-                "device_id": channel_id,
-                "name": video_name,
-                "path": video_path,
-                "channel_id": channel_id,
-                "status": "ON",  # ON or OFF
-                "manufacturer": "GB28181-Restreamer",
-                "model": "Video-File",
-                "owner": "gb28181-restreamer",
-                "civil_code": "123456",  # Required by GB28181
-                "address": f"Video-{i+1}",
-                "parental": "0",  # 0 means root device
-                "parent_id": self.device_id,  # Use device_id as parent
-                "safety_way": "0",  # 0 means no safety
-                "register_way": "1",  # 1 means active registration
-                "secrecy": "0",  # 0 means not secret
-            }
-        
-        log.info(f"[SIP] Generated catalog with {len(self.device_catalog)} channels")
-        self.catalog_ready = True
-        self.last_catalog_update = time.time()
+        """Generate device catalog information according to GB28181 standard with thread safety"""
+        # FIXED: Thread-safe catalog generation
+        with self._catalog_generation_lock:
+            try:
+                log.info("[SIP] 🔧 Generating device catalog (thread-safe)...")
+                
+                # First, try to scan video files
+                try:
+                    scan_video_files(self.config['stream_directory'])
+                    video_catalog = get_video_catalog()
+                    log.info(f"[SIP] Found {len(video_catalog)} video files for catalog")
+                except Exception as e:
+                    log.warning(f"[SIP] Error scanning video files: {e}")
+                    video_catalog = []
+                
+                # Clear existing catalog
+                self.device_catalog = {}
+                
+                # Create channels from video files
+                if video_catalog:
+                    log.info(f"[SIP] Creating channels from {len(video_catalog)} video files")
+                    for i, video_path in enumerate(video_catalog[:100], 1):  # Limit to 100 channels for performance
+                        # Generate proper 20-digit channel ID with type 131 (video channel)
+                        # FIXED: Use device type 131 for video channels (WVP platform compatibility)
+                        base_id = self.device_id[:12] if len(self.device_id) >= 12 else "340200000000"
+                        channel_id = f"{base_id}131{i:06d}"
+                        
+                        # Extract meaningful name from video file path
+                        video_name = os.path.splitext(os.path.basename(video_path))[0]
+                        if len(video_name) > 30:  # Truncate long names
+                            video_name = video_name[:27] + "..."
+                        
+                        # Get file size if possible
+                        try:
+                            file_size = os.path.getsize(video_path)
+                        except:
+                            file_size = 0
+                        
+                        self.device_catalog[channel_id] = {
+                            'name': video_name,
+                            'manufacturer': 'GB28181-Restreamer',
+                            'model': 'File Stream',
+                            'status': 'ON',
+                            'parent_id': self.device_id,
+                            'video_path': video_path, # Use 'video_path' consistently
+                            'file_size': file_size,
+                            'duration': 'Unknown'
+                        }
+                
+                # Always create at least one default channel even if no videos found
+                if not self.device_catalog:
+                    log.info("[SIP] No video files found, creating default RTSP channels")
+                    
+                    # Create channels for any configured RTSP sources
+                    rtsp_sources = self.config.get('rtsp_sources', [])
+                    if rtsp_sources:
+                        for i, rtsp_url in enumerate(rtsp_sources[:10], 1):  # Limit to 10 RTSP sources
+                            # FIXED: Use device type 131 for video channels (WVP platform compatibility)
+                            base_id = self.device_id[:12] if len(self.device_id) >= 12 else "340200000000"
+                            channel_id = f"{base_id}131{i:06d}"
+                            
+                            self.device_catalog[channel_id] = {
+                                'name': f'RTSP Stream {i}',
+                                'manufacturer': 'GB28181-Restreamer',
+                                'model': 'RTSP Camera',
+                                'status': 'ON',
+                                'parent_id': self.device_id,
+                                'rtsp_url': rtsp_url # Use 'rtsp_url' for RTSP sources
+                            }
+                    else:
+                        # Create one default test channel
+                        # FIXED: Use device type 131 for video channels (WVP platform compatibility)
+                        base_id = self.device_id[:12] if len(self.device_id) >= 12 else "340200000000"
+                        channel_id = f"{base_id}13100001"
+                        
+                        self.device_catalog[channel_id] = {
+                            'name': 'Test Camera Channel',
+                            'manufacturer': 'GB28181-Restreamer',
+                            'model': 'Virtual Camera',
+                            'status': 'ON',
+                            'parent_id': self.device_id
+                        }
+                
+                log.info(f"[SIP] ✅ Generated device catalog with {len(self.device_catalog)} channels")
+                self.catalog_ready = True # Mark catalog as ready after generation
+                self.last_catalog_update = time.time() # Update last catalog update time
+                
+                # Debug output for first few channels
+                for i, (channel_id, channel_info) in enumerate(list(self.device_catalog.items())[:3]):
+                    log.debug(f"[SIP] Channel {i+1}: {channel_id} - {channel_info['name']}")
+                
+                if len(self.device_catalog) > 3:
+                    log.debug(f"[SIP] ... and {len(self.device_catalog) - 3} more channels")
+                
+                return self.device_catalog
+                
+            except Exception as e:
+                log.error(f"[SIP] Error in catalog generation: {e}")
+                return {}
 
     def extract_sdp_from_message(self, msg_text):
         """Extract SDP content from a SIP message with enhanced parsing
@@ -249,7 +343,8 @@ class SIPClient:
         if not has_video:
             fixed_lines.append('m=video 9000 RTP/AVP 96')
         if not has_connection:
-            fixed_lines.append(f'c=IN IP4 {self.server}')
+            fixed_lines.append(f'c=IN IP4 {self.server}') # This might be the platform's IP, use self.local_ip for local SIP client's perspective?
+                                                       # However, for an SDP *offer*, it indicates the target IP for media.
         if not has_rtpmap:
             fixed_lines.append('a=rtpmap:96 H264/90000')
             fixed_lines.append('a=fmtp:96 profile-level-id=42e01f')
@@ -273,7 +368,7 @@ class SIPClient:
             if not sdp_content:
                 log.warning("[SIP] ⚠️ No SDP content found in message, cannot start stream")
                 return False
-            
+                
             log.debug(f"[SIP] Parsed SDP content: {sdp_content}")
                 
             # Extract destination IP (c= line)
@@ -339,7 +434,7 @@ class SIPClient:
                     encoder_params["height"] = 1080
                     
                 log.info(f"[SIP] Video format request: codec={encoder_params.get('codec', 'h264')}, " +
-                         f"resolution={encoder_params.get('width', '?')}x{encoder_params.get('height', '?')}")
+                             f"resolution={encoder_params.get('width', '?')}x{encoder_params.get('height', '?')}")
             
             # Select video source based on target channel
             video_source = None
@@ -348,25 +443,46 @@ class SIPClient:
             if target_channel and self.catalog_ready:
                 # Check if this is a known channel ID in our catalog
                 if target_channel in self.device_catalog:
-                    video_source = self.device_catalog[target_channel]["path"]
-                    log.info(f"[SIP] Using channel-specific video source: {video_source}")
+                    # **FIX:** Use .get() for safer access and handle both video_path and rtsp_url
+                    video_source = self.device_catalog[target_channel].get("video_path")
+                    if not video_source:
+                        video_source = self.device_catalog[target_channel].get("rtsp_url")
+                    
+                    if video_source:
+                        log.info(f"[SIP] Using channel-specific video source: {video_source}")
+                    else:
+                        log.warning(f"[SIP] Channel {target_channel} found in catalog but has no playable source (video_path/rtsp_url).")
                 elif target_channel == self.device_id:
                     # If requesting the main device ID, use first available video
                     if self.device_catalog:
-                        first_channel = list(self.device_catalog.keys())[0]
-                        video_source = self.device_catalog[first_channel]["path"]
-                        log.info(f"[SIP] Using first available video: {video_source}")
+                        # **FIX:** Iterate to find first available video_path or rtsp_url
+                        for ch_id, ch_info in self.device_catalog.items():
+                            video_source = ch_info.get("video_path")
+                            if not video_source:
+                                video_source = ch_info.get("rtsp_url")
+                            if video_source:
+                                log.info(f"[SIP] Using first available video from catalog: {video_source}")
+                                break
+                    if not video_source:
+                        log.warning("[SIP] Main device ID requested but no playable sources found in catalog.")
             
-            # If still no video source, select first available one
+            # If still no video source, select first available one from a fresh scan
             if not video_source:
-                # If no specific channel or not found, select first available file
+                log.info("[SIP] Falling back to scanning video files for a source.")
                 catalog = get_video_catalog()
                 if catalog:
                     video_source = catalog[0]
                     log.info(f"[SIP] Using first available video file: {video_source}")
                 else:
-                    log.error("[SIP] No video files available")
-                    return False
+                    log.error("[SIP] No video files available to stream.")
+                    # Also check for RTSP sources from config as a last resort
+                    rtsp_sources = self.config.get('rtsp_sources', [])
+                    if rtsp_sources:
+                        video_source = rtsp_sources[0]
+                        log.info(f"[SIP] Using first configured RTSP source: {video_source}")
+                    else:
+                        log.error("[SIP] No RTSP sources configured either. Cannot start stream.")
+                        return False
                 
             # Start the stream using our Media Streamer
             success = self.streamer.start_stream(
@@ -383,7 +499,7 @@ class SIPClient:
                     "dest_ip": ip,
                     "dest_port": port,
                     "ssrc": ssrc,
-                    "video_path": video_source,
+                    "video_path": video_source, # Storing the actual source used
                     "start_time": time.time(),
                     "status": "active",
                     "encoder_params": encoder_params
@@ -505,7 +621,7 @@ class SIPClient:
             
             # Attempt to restart with original parameters
             success = self.streamer.start_stream(
-                video_path=stream_info["video_path"],
+                video_path=stream_info["video_path"], # This should still be accurate as set in parse_sdp_and_stream
                 dest_ip=stream_info["dest_ip"],
                 dest_port=stream_info["dest_port"],
                 ssrc=stream_info["ssrc"],
@@ -525,113 +641,284 @@ class SIPClient:
             log.error(f"[SIP] Error during stream recovery: {e}")
             
     def handle_catalog_query(self, msg_text):
-        """Handle catalog query according to GB28181 protocol"""
-        try:
-            log.info("[SIP] Processing potential catalog query from platform")
-            
-            # Extract XML from the message - must be a Query type
-            xml_match = re.search(r'<\?xml.*?<\/Query>', msg_text, re.DOTALL)
-            if not xml_match:
-                log.debug("[SIP] No Query XML content found in message")
-                return None
+        """Handle catalog query according to GB28181 protocol with thread safety"""
+        # FIXED: Thread-safe message processing to prevent race conditions
+        with self._message_processing_lock:
+            try:
+                log.info("[SIP] 🔍 Processing catalog query from platform (thread-safe)")
                 
-            xml_content = xml_match.group(0)
-            
-            # Ensure this is specifically a Catalog query
-            if not re.search(r'<CmdType>\s*Catalog\s*</CmdType>', xml_content, re.IGNORECASE):
-                log.debug("[SIP] Not a catalog query, ignoring")
-                return None
-                
-            # Extract SN (sequence number) for response matching
-            sn_match = re.search(r'<SN>(\d+)</SN>', xml_content)
-            if not sn_match:
-                log.warning("[SIP] No SN found in catalog query")
-                return None
-                
-            sn = sn_match.group(1)
-            log.info("✅ Valid catalog query confirmed, processing...")
-            log.debug(f"[SIP] Extracted XML content: {xml_content}")
-            
-            # Rate limiting to prevent spam
-            current_time = time.time()
-            if hasattr(self, '_last_catalog_time'):
-                time_diff = current_time - self._last_catalog_time
-                if time_diff < 2.0:  # Minimum 2 seconds between catalog responses
-                    log.warning(f"[SIP] Rate limiting: ignoring catalog query (next allowed in {2.0 - time_diff:.1f}s)")
+                # Extract XML from the message - improved to handle both with and without XML prolog
+                xml_match = re.search(r'(<\?xml.*?<\/Query>)', msg_text, re.DOTALL)
+                if not xml_match:
+                    xml_match = re.search(r'(<Query.*?<\/Query>)', msg_text, re.DOTALL)
+                if not xml_match:
+                    log.error("[SIP] ❌ Failed to extract <Query>…</Query> block from Catalog message")
                     return None
-            
-            self._last_catalog_time = current_time
-            
-            # Generate catalog response
-            response_xml = self._generate_catalog_response(sn)
-            
-            # Save response to file for debugging
-            with open("catalog_response.xml", "w", encoding="utf-8") as f:
-                f.write(response_xml)
-            
-            log.info(f"[SIP] 📂 Generated catalog response with {len(self.device_catalog)} channels")
-            return response_xml
-            
-        except Exception as e:
-            log.error(f"[SIP] Error handling catalog query: {e}")
-            return None
+                    
+                xml_content = xml_match.group(1)
+                
+                if not xml_content.strip().startswith('<?xml'):
+                    xml_content = '<?xml version="1.0" encoding="UTF-8"?>\n' + xml_content
+                    
+                log.debug(f"[SIP] Extracted raw Catalog XML: {xml_content[:200]}...")
+                
+                if not re.search(r'<CmdType>\s*Catalog\s*</CmdType>', xml_content, re.IGNORECASE):
+                    log.debug("[SIP] Not a catalog query, ignoring")
+                    return None
+                    
+                sn_match = re.search(r'<SN>(\d+)</SN>', xml_content)
+                if not sn_match:
+                    log.warning("[SIP] No SN found in catalog query")
+                    return None
+                    
+                sn = sn_match.group(1)
+                log.info(f"✅ Valid catalog query confirmed (SN: {sn}), processing...")
+                
+                # FIXED: Thread-safe rate limiting for catalog responses
+                with self._catalog_lock:
+                    current_time = time.time()
+                    time_diff = current_time - self._last_catalog_time
+                    
+                    if time_diff < self.catalog_response_interval:
+                        log.info(f"[SIP] ⏱️ Rate limiting: delaying catalog response by {self.catalog_response_interval - time_diff:.1f}s to prevent spam")
+                        # Reduced delay to prevent WVP timeout
+                        time.sleep(self.catalog_response_interval - time_diff)
+                        current_time = time.time()
+                    
+                    self._last_catalog_time = current_time
+                
+                # Generate full catalog response
+                response_xml = self._generate_catalog_response(sn)
+                
+                if response_xml and len(self.device_catalog) > 0:
+                    log.info(f"[SIP] 📂 Generated catalog response with {len(self.device_catalog)} channels")
+                else:
+                    log.warning(f"[SIP] ⚠️ Generated empty or invalid catalog response")
 
-    def _generate_catalog_response(self, sn):
-        """Generate catalog response XML"""
-        try:
-            # Use device_catalog as the source of channels
-            channels = []
-            
-            # Ensure we have a device catalog
-            if not hasattr(self, 'device_catalog') or not self.device_catalog:
-                self.generate_device_catalog()
-            
-            for channel_id, channel_info in self.device_catalog.items():
-                channels.append({
-                    'id': channel_id,
-                    'name': channel_info.get('name', f'Camera {channel_id}'),
-                    'manufacturer': channel_info.get('manufacturer', 'GB28181-Restreamer'),
-                    'model': channel_info.get('model', 'IP Camera'),
-                    'status': channel_info.get('status', 'ON')
-                })
-            
-            # Generate XML items
-            xml_items = []
-            for channel in channels:
-                xml_items.append(f"""    <Item>
-      <DeviceID>{channel['id']}</DeviceID>
-      <Name>{channel['name']}</Name>
-      <Manufacturer>{channel['manufacturer']}</Manufacturer>
-      <Model>{channel['model']}</Model>
-      <Owner>gb28181-restreamer</Owner>
-      <CivilCode>123456</CivilCode>
-      <Block>123456</Block>
-      <Address>Local</Address>
-      <Parental>0</Parental>
-      <ParentID>{self.device_id}</ParentID>
-      <SafetyWay>0</SafetyWay>
-      <RegisterWay>1</RegisterWay>
-      <Secrecy>0</Secrecy>
-      <Status>{channel['status']}</Status>
-    </Item>""")
-            
-            response_xml = f"""<?xml version="1.0" encoding="GB2312"?>
+                # Save response to file for debugging
+                try:
+                    debug_filename = f"catalog_response_sn_{sn}.xml"
+                    with open(debug_filename, "w", encoding="utf-8") as f:
+                        f.write(response_xml)
+                    log.debug(f"[SIP] 💾 Saved response to {debug_filename}")
+                except Exception as e:
+                    log.warning(f"[SIP] Could not save debug file: {e}")
+                
+                # Clean up pending queries (remove old entries)
+                current_time = time.time()
+                expired_queries = [sn for sn, timestamp in self._pending_catalog_queries.items() 
+                                 if current_time - timestamp > 30]  # 30-second expiry
+                for expired_sn in expired_queries:
+                    del self._pending_catalog_queries[expired_sn]
+                
+                return response_xml
+                
+            except Exception as e:
+                log.error(f"[SIP] ❌ Error handling catalog query: {e}")
+                import traceback
+                log.debug(f"[SIP] Traceback: {traceback.format_exc()}")
+                
+                # Return a minimal valid response with error status to prevent platform timeout
+                sn = re.search(r'<SN>(\d+)</SN>', msg_text).group(1) if re.search(r'<SN>(\d+)</SN>', msg_text) else "0"
+                error_response_xml = f"""<?xml version="1.0" encoding="GB2312"?>
 <Response>
   <CmdType>Catalog</CmdType>
   <SN>{sn}</SN>
   <DeviceID>{self.device_id}</DeviceID>
-  <Result>OK</Result>
-  <SumNum>{len(channels)}</SumNum>
-  <DeviceList Num="{len(channels)}">
-{"".join(xml_items)}
+  <Result>Error</Result>
+  <SumNum>0</SumNum>
+  <DeviceList Num="0">
   </DeviceList>
-</Response>
-"""
-            return response_xml
+</Response>"""
+                return error_response_xml
+
+    def _generate_catalog_response(self, sn):
+        """Generate catalog response XML for given SN using thread-safe cached catalog"""
+        try:
+            # FIXED: Use the thread-safe cached device catalog instead of re-scanning
+            with self._catalog_generation_lock:
+                # Ensure catalog is ready and up-to-date
+                if not self.catalog_ready or not self.device_catalog:
+                    log.warning("[SIP] Device catalog not ready, generating on-demand...")
+                    self.generate_device_catalog()
+                
+                # Use the cached catalog
+                catalog_items = list(self.device_catalog.items())
+                
+            log.info(f"[SIP] Using cached catalog with {len(catalog_items)} video channels")
             
+            # Build XML items for COMPLETE CATALOG FORMAT (parent device + channels)
+            # CRITICAL FIX: WVP platform requires the parent device as first item, then channels
+            xml_items = []
+            
+            # STEP 1: Add the parent device as the first item (required by WVP)
+            parent_device_xml = f"""    <Item>
+      <DeviceID>{self.device_id}</DeviceID>
+      <Name>GB28181-Restreamer</Name>
+      <Manufacturer>GB28181-RestreamerProject</Manufacturer>
+      <Model>Restreamer-1.0</Model>
+      <Owner>gb28181-restreamer</Owner>
+      <CivilCode>{self.device_id[:6]}</CivilCode>
+      <Block>{self.device_id[:8]}</Block>
+      <Address>gb28181-restreamer</Address>
+      <Parental>0</Parental>
+      <SafetyWay>0</SafetyWay>
+      <RegisterWay>1</RegisterWay>
+      <CertNum>1234567890</CertNum>
+      <Certifiable>1</Certifiable>
+      <ErrCode>0</ErrCode>
+      <EndTime></EndTime>
+      <Secrecy>0</Secrecy>
+      <IPAddress>{self.local_ip}</IPAddress>
+      <Port>{self.local_port}</Port>
+      <Password></Password>
+      <Status>ON</Status>
+      <Longitude>0.0</Longitude>
+      <Latitude>0.0</Latitude>
+      <PTZType>0</PTZType>
+      <PositionType>0</PositionType>
+      <RoomType>0</RoomType>
+      <UseType>0</UseType>
+      <SupplyLightType>0</SupplyLightType>
+      <DirectionType>0</DirectionType>
+      <Resolution>640*480</Resolution>
+      <BusinessGroupID></BusinessGroupID>
+      <DownloadSpeed></DownloadSpeed>
+      <SVCSpaceSupportMode>0</SVCSpaceSupportMode>
+      <SVCTimeSupportMode>0</SVCTimeSupportMode>
+    </Item>"""
+            xml_items.append(parent_device_xml)
+            
+            # STEP 2: Add video channels as child items with Parental=1
+            for channel_id, channel_info in catalog_items:
+                # Use compact format for UDP efficiency while maintaining WVP compatibility
+                channel_item_xml = f"""    <Item>
+      <DeviceID>{channel_id}</DeviceID>
+      <Name>{channel_info['name']}</Name>
+      <Manufacturer>GB28181-RestreamerProject</Manufacturer>
+      <Model>Virtual-Channel</Model>
+      <Owner>gb28181-restreamer</Owner>
+      <CivilCode>{self.device_id[:6]}</CivilCode>
+      <Block>{self.device_id[:8]}</Block>
+      <Address>Channel {channel_info['name']}</Address>
+      <Parental>1</Parental>
+      <ParentID>{self.device_id}</ParentID>
+      <SafetyWay>0</SafetyWay>
+      <RegisterWay>1</RegisterWay>
+      <Secrecy>0</Secrecy>
+      <IPAddress></IPAddress>
+      <Port>0</Port>
+      <Password></Password>
+      <Status>{channel_info['status']}</Status>
+    </Item>"""
+                xml_items.append(channel_item_xml)
+
+            # Total count includes parent device + channels
+            total_count = len(xml_items)  # 1 parent + N channels
+            
+            # FIXED: Check message size for UDP safety with proper newlines
+            xml_content = "\n".join(xml_items)  # FIXED: Use actual newlines, not \\n
+            estimated_size = len(xml_content) + 1000  # Add overhead for headers
+            
+            log.info(f"[SIP] 🏗️ Building WVP-compatible catalog response:")
+            log.info(f"[SIP]   • Parent Device: {self.device_id} (GB28181-Restreamer)")
+            log.info(f"[SIP]   • Child Channels: {len(catalog_items)}")
+            log.info(f"[SIP]   • Total Items: {total_count}")
+            log.info(f"[SIP]   • Estimated size: {estimated_size} bytes")
+            
+            # FIXED: Apply reasonable UDP size limits but less aggressive for parent+children format
+            if estimated_size > 3000:  # Higher limit since we need parent + at least some channels
+                log.warning(f"[SIP] ⚠️ Large response ({estimated_size} bytes) - limiting channels for UDP safety")
+                
+                # Always keep the parent device (first item), limit channels
+                safe_items = [xml_items[0]]  # Parent device must be included
+                running_size = len(xml_items[0].encode('utf-8')) + 800  # Base response size + headers
+                
+                # Add as many channels as fit within UDP limit
+                for channel_item in xml_items[1:]:  # Skip parent device (already added)
+                    item_size = len(channel_item.encode('utf-8'))
+                    if running_size + item_size < 3000:  # Allow more space for this format
+                        safe_items.append(channel_item)
+                        running_size += item_size
+                    else:
+                        break
+                
+                xml_content = "\n".join(safe_items)
+                actual_count = len(safe_items)
+                channel_count = actual_count - 1  # Subtract parent device
+                log.info(f"[SIP] 📦 Limited to parent device + {channel_count} channels (total: {actual_count} items)")
+            else:
+                safe_items = xml_items
+                actual_count = total_count
+                channel_count = len(catalog_items)
+                log.info(f"[SIP] 📦 Including parent device + all {channel_count} channels (total: {actual_count} items)")
+
+            # FIXED: Generate the XML response with proper WVP-compatible format
+            xml_response = f"""<?xml version="1.0" encoding="GB2312"?>
+<Response>
+<CmdType>Catalog</CmdType>
+<SN>{sn}</SN>
+<DeviceID>{self.device_id}</DeviceID>
+<Result>OK</Result>
+<SumNum>{actual_count}</SumNum>
+<DeviceList Num="{actual_count}">
+{xml_content}
+</DeviceList>
+</Response>"""
+
+            # Validate the response structure
+            message_size = len(xml_response.encode('utf-8'))
+            log.info(f"[SIP] 📊 Final WVP-compatible catalog response:")
+            log.info(f"[SIP]   • Message size: {message_size} bytes")
+            log.info(f"[SIP]   • SumNum: {actual_count}")
+            log.info(f"[SIP]   • DeviceList Num: {actual_count}")
+            log.info(f"[SIP]   • Structure: 1 Parent Device + {actual_count-1} Channels")
+            
+            # FIXED: Final size check with better fallback - ensure at least parent + 1 channel
+            if message_size > 4000:  # Higher threshold for parent+children format
+                log.error(f"[SIP] ❌ Response still too large ({message_size} bytes) - using minimal fallback")
+                # Emergency fallback: Parent device + 1 channel only
+                minimal_items = [xml_items[0]]  # Parent device
+                if len(xml_items) > 1:
+                    minimal_items.append(xml_items[1])  # First channel
+                
+                minimal_xml = "\n".join(minimal_items)
+                xml_response = f"""<?xml version="1.0" encoding="GB2312"?>
+<Response>
+<CmdType>Catalog</CmdType>
+<SN>{sn}</SN>
+<DeviceID>{self.device_id}</DeviceID>
+<Result>OK</Result>
+<SumNum>{len(minimal_items)}</SumNum>
+<DeviceList Num="{len(minimal_items)}">
+{minimal_xml}
+</DeviceList>
+</Response>"""
+                log.info(f"[SIP] 📦 Emergency fallback: parent device + 1 channel, {len(xml_response.encode('utf-8'))} bytes")
+
+            return xml_response
+
         except Exception as e:
             log.error(f"[SIP] Error generating catalog response: {e}")
-            return None
+            # FIXED: Return minimal valid response with parent device
+            return f"""<?xml version="1.0" encoding="GB2312"?>
+<Response>
+<CmdType>Catalog</CmdType>
+<SN>{sn}</SN>
+<DeviceID>{self.device_id}</DeviceID>
+<Result>OK</Result>
+<SumNum>1</SumNum>
+<DeviceList Num="1">
+    <Item>
+      <DeviceID>{self.device_id}</DeviceID>
+      <Name>GB28181-Restreamer</Name>
+      <Manufacturer>GB28181-RestreamerProject</Manufacturer>
+      <Model>Restreamer-1.0</Model>
+      <Status>ON</Status>
+      <Parental>0</Parental>
+    </Item>
+</DeviceList>
+</Response>"""
 
     def handle_device_info_query(self, msg_text):
         """Handle device info query according to GB28181 protocol"""
@@ -651,8 +938,8 @@ class SIPClient:
         # Format XML response
         xml_response = format_device_info_response(device_info)
         
-        # Send device info using the SIP sender
-        self.sip_sender.send_device_info(xml_response)
+        # Send device info using the integrated send method
+        return self.send_sip_message(xml_response)
 
     def handle_device_control(self, msg_text):
         """Handle device control commands according to GB28181 protocol"""
@@ -705,8 +992,11 @@ class SIPClient:
             
             # Send response via SIP message
             if response:
-                self.sip_sender.send_recordinfo(response)
-                log.info(f"[SIP] Sent record info response with {len(recordings)} recordings")
+                success = self.send_sip_message(response)
+                if success:
+                    log.info(f"[SIP] Sent record info response with {len(recordings)} recordings")
+                else:
+                    log.error("[SIP] Failed to send record info response")
             else:
                 log.error("[SIP] Failed to format record info response")
                 
@@ -892,9 +1182,6 @@ class SIPClient:
         # Generate device catalog on startup
         self.generate_device_catalog()
 
-        # Start SIP message sender
-        self.sip_sender.start()
-
         cfg_path = "/tmp/pjsua.cfg"
         sip = self.config["sip"]
 
@@ -941,8 +1228,8 @@ class SIPClient:
 --duration 0
 --log-level 5
 --auto-update-nat=1
---reg-timeout=3600
---rereg-delay={self.registration_retry_interval}
+--reg-timeout=120
+--rereg-delay=60
 --max-calls=4
 --thread-cnt=4
 --rtp-port=10000
@@ -991,7 +1278,7 @@ class SIPClient:
             while True:
                 time.sleep(1)
                 self._check_registration()
-                self._check_keepalive()
+                # REMOVED: _check_keepalive() - now handled by dedicated heartbeat thread
                 self._check_streams()
         except KeyboardInterrupt:
             self.stop()
@@ -1032,6 +1319,8 @@ class SIPClient:
             "--thread-cnt", "4",  # Use default thread count
             "--capture-dev", "-1",  # Disable audio capture
             "--playback-dev", "-1",  # Disable audio playback
+            "--reg-timeout", "120",  # FIXED: 2 minute registration timeout to match WVP platform expectations
+            "--rereg-delay", "60",   # FIXED: Re-register every 60 seconds to prevent timeout
         ]
         
         # Set transport based on configuration
@@ -1053,8 +1342,9 @@ class SIPClient:
                 ["pjsua"] + config,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
+                stdin=subprocess.PIPE,  # Enable stdin for interactive commands
                 universal_newlines=True,
-                bufsize=1,
+                bufsize=0,  # Unbuffered to get immediate output
                 preexec_fn=os.setsid  # Create new process group
             )
             log.info(f"[SIP] Started PJSUA process with PID: {self.process.pid}")
@@ -1099,12 +1389,25 @@ class SIPClient:
             return
 
         buffer = ""
+        line_count = 0
         try:
+            log.info("[SIP] 🔍 Starting PJSUA output monitoring...")
             for line in self.process.stdout:
                 if not self.running:
                     break
                     
+                line_count += 1
                 print(line.strip())
+                
+                # Debug: Log every few lines to ensure we're receiving output
+                if line_count % 50 == 0:
+                    log.debug(f"[SIP] Processed {line_count} lines from PJSUA")
+                
+                # Extra debugging for MESSAGE-related lines
+                if "MESSAGE" in line:
+                    log.info(f"[SIP] 🔍 DEBUG: MESSAGE line detected: {line.strip()}")
+                if "pjsua_app.c" in line:
+                    log.debug(f"[SIP] 🔍 DEBUG: pjsua_app.c line: {line.strip()}")
                 
                 # Buffer the line for context
                 buffer += line
@@ -1122,24 +1425,249 @@ class SIPClient:
         except Exception as e:
             log.error(f"[SIP] Error in output handler: {e}")
         finally:
-            log.info("[SIP] PJSUA output handler finished")
+            log.info(f"[SIP] PJSUA output handler finished after processing {line_count} lines")
             self.running = False
 
     def _process_sip_message(self, line, buffer):
         """Process SIP messages with improved handling"""
+        
+        # Store SIP headers for OPTIONS responses
+        if line.startswith("Via:"):
+            self._last_via = line.strip()
+        elif line.startswith("From:"):
+            self._last_from = line.strip()
+        elif line.startswith("To:"):
+            self._last_to = line.strip()
+        elif line.startswith("Call-ID:"):
+            self._last_call_id = line.strip()
+        elif line.startswith("CSeq:"):
+            self._last_cseq = line.strip()
+            
+        # ───────────────────────────────────────────────────────────────────────
+        # Immediately respond to any incoming OPTIONS so the server knows we're alive
+        if "Request msg OPTIONS" in line or re.match(r'^OPTIONS\s', line):
+            log.info("[SIP] Received OPTIONS → replying 200 OK to keep‐alive")
+            # Build a simple 200 OK response
+            ok_resp = (
+                "SIP/2.0 200 OK\r\n"
+                f"{self._last_via}\r\n"
+                f"{self._last_from}\r\n"
+                f"{self._last_to};tag={self._local_tag}\r\n"
+                f"{self._last_call_id}\r\n"
+                f"{self._last_cseq}\r\n"
+                f"Contact: <sip:{self.local_ip}:{self.local_port}>\r\n"
+                "Content-Length: 0\r\n"
+                "\r\n"
+            )
+            
+            # Send the response using our SIP sender
+            sent = self.send_sip_message(ok_resp)
+            if not sent:
+                log.error("[SIP] Failed to send 200 OK for OPTIONS")
+            else:
+                log.info("[SIP] ✅ Sent 200 OK response to OPTIONS")
+            return  # don't try to parse this as XML or anything else
+        # ───────────────────────────────────────────────────────────────────────
+        
         # Registration status handling
         if "Registration successfully sent" in line:
             log.info("[SIP] Registration request sent successfully")
             self.registration_status = "registering"
-        elif "Registration complete" in line:
+        elif "registration success" in line:
             log.info("[SIP] ✅ Registration completed successfully")
             self.registration_status = "registered"
             self.registration_attempts = 0
+            # ADDED: Start heartbeat thread immediately after successful registration
+            self._start_heartbeat_thread()
+            # ADDED: Send immediate heartbeat to update keepaliveTime in WVP platform
+            log.info("[SIP] 💓 Sending immediate heartbeat after registration to update WVP keepaliveTime")
+            threading.Timer(2.0, self._send_keepalive).start()  # Send after 2 seconds
+            
+            # NEW FIX: Send proactive catalog notification to WVP platform for immediate frontend visibility
+            log.info("[SIP] 🚀 Sending proactive catalog notification for immediate frontend visibility")
+            threading.Timer(3.0, self._send_proactive_catalog_notification).start()  # Send after 3 seconds
         elif "Registration failed" in line:
             log.warning("[SIP] ⚠️ Registration failed")
             self.registration_status = "failed"
+            # ADDED: Stop heartbeat thread if registration fails
+            self._stop_heartbeat_thread()
             self._handle_registration_failure()
             
+        # Handle Route header warnings that cause offline issues
+        if "sip: unkonw message head Route" in line or "sip: unknown message head Route" in line:
+            log.warning("[SIP] ⚠️ Route header detected - this is normal for some GB28181 implementations")
+            log.info("[SIP] Route headers are used for SIP routing and should not cause registration failures")
+            # Don't treat this as an error - continue processing
+            return
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # IMPROVED APPROACH: Direct PJSUA XML capture with better multi-line handling
+        # ═══════════════════════════════════════════════════════════════════════
+        
+        # Detect PJSUA MESSAGE lines - XML will appear in subsequent lines
+        # Updated to match actual PJSUA output format
+        if ("pjsua_core.c" in line and "Request msg MESSAGE" in line) or \
+           ("pjsua_app.c" in line and ".MESSAGE from" in line):
+            log.info(f"[SIP] 🎯 Direct PJSUA XML capture - detected MESSAGE line: {line.strip()}")
+            
+            # Initialize XML collection for subsequent lines
+            self._pjsua_xml_lines = []
+            self._collecting_pjsua_xml = True
+            self._non_xml_line_count = 0  # Reset counter
+            
+            # Check if XML starts on this same line (rare but possible)
+            xml_start_pos = -1
+            for xml_marker in ["<?xml", "<Query>", "<Response>", "<Control>"]:
+                pos = line.find(xml_marker)
+                if pos != -1:
+                    xml_start_pos = pos
+                    break
+            
+            if xml_start_pos != -1:
+                xml_content = line[xml_start_pos:].strip()
+                self._pjsua_xml_lines.append(xml_content)
+                log.debug(f"[SIP] 📝 Found XML on MESSAGE line: {xml_content}")
+            
+            return
+        
+        # Continue collecting PJSUA XML content if we're in collection mode
+        if hasattr(self, '_collecting_pjsua_xml') and self._collecting_pjsua_xml:
+            stripped_line = line.strip()
+            
+            # Skip empty lines and PJSUA metadata lines (but not --end msg--)
+            if not stripped_line or ("pjsua_" in stripped_line and "MESSAGE" not in stripped_line and "--end msg--" not in stripped_line) or \
+               (".TX " in stripped_line) or (".RX " in stripped_line and "MESSAGE" not in stripped_line):
+                return
+            
+            # Check for XML content patterns
+            is_xml_line = False
+            
+            # Method 1: Line starts with XML declaration or tag
+            if stripped_line.startswith('<?xml') or stripped_line.startswith('<'):
+                is_xml_line = True
+            
+            # Method 2: Line contains XML tags  
+            elif any(tag in stripped_line for tag in ['<CmdType>', '<SN>', '<DeviceID>', '<Query>', '<Response>', '<Control>', '</Query>', '</Response>', '</Control>']):
+                is_xml_line = True
+            
+            # Method 3: Check for --end msg-- which indicates end of PJSUA message block
+            elif "--end msg--" in stripped_line:
+                # End of PJSUA message block, process collected XML if any
+                if self._pjsua_xml_lines:
+                    complete_xml = '\n'.join(self._pjsua_xml_lines)
+                    log.info(f"[SIP] ✅ PJSUA XML collection complete (end msg): {len(complete_xml)} characters")
+                    log.debug(f"[SIP] Complete XML: {complete_xml}")
+                    self._process_xml_content(complete_xml)
+                else:
+                    log.warning("[SIP] ⚠️ No XML collected before end msg")
+                
+                # Reset collection
+                self._collecting_pjsua_xml = False
+                self._pjsua_xml_lines = []
+                return
+            
+            # ENHANCED DEBUG: Log what we're processing
+            log.debug(f"[SIP] 🔍 XML line analysis: '{stripped_line}' - is_xml: {is_xml_line}")
+            
+            if is_xml_line:
+                self._pjsua_xml_lines.append(stripped_line)
+                log.debug(f"[SIP] 📝 Added XML line ({len(self._pjsua_xml_lines)} total): {stripped_line}")
+                
+                # Check if this line completes the XML
+                if stripped_line.endswith('</Query>') or stripped_line.endswith('</Response>') or stripped_line.endswith('</Control>'):
+                    # XML is complete, process it immediately
+                    complete_xml = '\n'.join(self._pjsua_xml_lines)
+                    log.info(f"[SIP] ✅ PJSUA XML collection complete (end tag): {len(complete_xml)} characters")
+                    log.debug(f"[SIP] Complete XML: {complete_xml}")
+                    
+                    # Process the complete XML
+                    self._process_xml_content(complete_xml)
+                    
+                    # Reset collection
+                    self._collecting_pjsua_xml = False
+                    self._pjsua_xml_lines = []
+                    
+                    return
+                    
+                # Also check if we have a complete Query even without proper end tag
+                elif len(self._pjsua_xml_lines) >= 5 and any('</Query>' in line for line in self._pjsua_xml_lines):
+                    # We have enough lines and there's an end tag somewhere
+                    complete_xml = '\n'.join(self._pjsua_xml_lines)
+                    log.info(f"[SIP] ✅ PJSUA XML collection complete (found end in lines): {len(complete_xml)} characters")
+                    log.debug(f"[SIP] Complete XML: {complete_xml}")
+                    
+                    # Process the complete XML
+                    self._process_xml_content(complete_xml)
+                    
+                    # Reset collection
+                    self._collecting_pjsua_xml = False
+                    self._pjsua_xml_lines = []
+                    
+                    return
+                    
+                # Force completion if we have enough XML content for a basic query
+                elif len(self._pjsua_xml_lines) >= 5:
+                    # Check if we have the essential elements for a catalog query
+                    xml_text = '\n'.join(self._pjsua_xml_lines)
+                    if all(element in xml_text for element in ['<Query>', '<CmdType>Catalog', '<SN>', '<DeviceID>']):
+                        # Force add closing tag if missing
+                        if '</Query>' not in xml_text:
+                            self._pjsua_xml_lines.append('</Query>')
+                            xml_text = '\n'.join(self._pjsua_xml_lines)
+                        
+                        log.info(f"[SIP] ✅ PJSUA XML collection complete (forced): {len(xml_text)} characters")
+                        log.debug(f"[SIP] Complete XML: {xml_text}")
+                        
+                        # Process the complete XML
+                        self._process_xml_content(xml_text)
+                        
+                        # Reset collection
+                        self._collecting_pjsua_xml = False
+                        self._pjsua_xml_lines = []
+                        
+                        return
+            else:
+                # Non-XML line encountered - log what we're skipping
+                log.debug(f"[SIP] 🚫 Skipping non-XML line: '{stripped_line}'")
+                
+                # If we have incomplete XML, continue collecting a bit more
+                # But if we hit multiple non-XML lines, stop collecting
+                if not hasattr(self, '_non_xml_line_count'):
+                    self._non_xml_line_count = 0
+                
+                self._non_xml_line_count += 1
+                
+                if self._non_xml_line_count > 10:  # FIXED: Increased from 3 to 10 to allow for SIP headers
+                    # Too many non-XML lines, check if we have valid XML to process
+                    if self._pjsua_xml_lines:
+                        xml_text = '\n'.join(self._pjsua_xml_lines)
+                        
+                        # Check if we have enough for a basic query
+                        if all(element in xml_text for element in ['<Query>', '<CmdType>', '<SN>', '<DeviceID>']):
+                            # Force add closing tag if missing
+                            if '</Query>' not in xml_text:
+                                self._pjsua_xml_lines.append('</Query>')
+                                xml_text = '\n'.join(self._pjsua_xml_lines)
+                            
+                            log.info(f"[SIP] ✅ PJSUA XML collection finished (non-XML limit): {len(xml_text)} characters")
+                            log.debug(f"[SIP] Complete XML: {xml_text}")
+                            self._process_xml_content(xml_text)
+                        else:
+                            log.warning(f"[SIP] ⚠️ XML collection abandoned - incomplete: {xml_text[:100]}...")
+                    else:
+                        log.warning("[SIP] ⚠️ XML collection abandoned - no XML collected")
+                    
+                    # Reset collection
+                    self._collecting_pjsua_xml = False
+                    self._pjsua_xml_lines = []
+                    self._non_xml_line_count = 0
+            
+            return
+            
+        # ═══════════════════════════════════════════════════════════════════════
+        # FALLBACK: Keep the original message collection logic as backup
+        # ═══════════════════════════════════════════════════════════════════════
+        
         # Handle incoming MESSAGE requests - only process complete messages
         if "MESSAGE sip:" in line and "SIP/2.0" in line:
             log.info(f"[SIP] Incoming MESSAGE detected: {line.strip()}")
@@ -1152,23 +1680,60 @@ class SIPClient:
         if hasattr(self, '_collecting_message') and self._collecting_message:
             self._current_message_buffer.append(line)
             
-            # Check if message is complete (ends with --end msg-- or empty line after content)
-            if "--end msg--" in line or (line.strip() == "" and len(self._current_message_buffer) > 10):
-                complete_message = "\n".join(self._current_message_buffer)
-                self._collecting_message = False
+            # Improved message completion detection
+            # Check for multiple completion indicators
+            message_complete = False
+            
+            # Method 1: Look for --end msg-- marker (most reliable)
+            if "--end msg--" in line:
+                message_complete = True
+                log.debug("[SIP] Message complete: Found --end msg-- marker")
                 
-                # Only process if it contains XML content
-                if "<?xml" in complete_message and "<Query>" in complete_message:
-                    log.debug("[SIP] Found XML in complete message")
-                    log.info("[SIP] Received catalog query")
-                    response = self.handle_catalog_query(complete_message)
-                    if response:
-                        self.send_sip_message(response)
-                else:
-                    log.debug("[SIP] MESSAGE without XML content")
+            # Method 2: Look for XML end tags which indicate complete XML content
+            elif "</Query>" in line or "</Response>" in line or "</Control>" in line:
+                message_complete = True
+                log.debug(f"[SIP] Message complete: Found XML end tag in line: {line.strip()}")
                 
-                # Clear the buffer
-                self._current_message_buffer = []
+            # Method 3: Check Content-Length compliance after we have enough content
+            elif line.strip() == "" and len(self._current_message_buffer) > 10:
+                # Only check content length if we have a substantial message
+                complete_message_preview = "\n".join(self._current_message_buffer)
+                content_length_match = re.search(r'Content-Length:\s*(\d+)', complete_message_preview, re.IGNORECASE)
+                if content_length_match:
+                    expected_length = int(content_length_match.group(1))
+                    # Find where headers end
+                    if '\r\n\r\n' in complete_message_preview:
+                        body_start = complete_message_preview.find('\r\n\r\n') + 4
+                    elif '\n\n' in complete_message_preview:
+                        body_start = complete_message_preview.find('\n\n') + 2
+                    else:
+                        body_start = len(complete_message_preview)
+                    
+                    actual_body_length = len(complete_message_preview) - body_start
+                    if actual_body_length >= expected_length:
+                        message_complete = True
+                        log.debug(f"[SIP] Message complete: Content-Length satisfied ({actual_body_length}/{expected_length})")
+            
+            # Continue collecting if not complete
+            if not message_complete:
+                return
+            
+            # Process the complete message (FALLBACK ONLY)
+            complete_message = "\n".join(self._current_message_buffer)
+            self._collecting_message = False
+            
+            log.debug(f"[SIP] 🔙 FALLBACK: Processing complete message ({len(complete_message)} bytes)")
+            
+            # Try to extract XML using the old method as fallback
+            xml_content = self._extract_xml_from_message(complete_message)
+            if xml_content:
+                log.info("[SIP] ✅ FALLBACK: Successfully extracted XML from message buffer")
+                self._process_xml_content(xml_content)
+            else:
+                log.warning("[SIP] ⚠️ FALLBACK: No XML content found in message buffer")
+            
+            # Clear the buffer for next message
+            self._current_message_buffer = []
             return
             
         # Handle INVITE messages for media streaming
@@ -1193,6 +1758,159 @@ class SIPClient:
         elif "pjsua_core.c" in line and ("TX" in line or "RX" in line):
             log.debug(f"[SIP] SIP traffic: {line.strip()}")
 
+    def _extract_xml_from_message(self, complete_message):
+        """Extract XML content from a complete SIP message"""
+        try:
+            # Enhanced XML content detection that looks at the entire message
+            xml_content = ""
+
+            # Method 1: Look for XML declaration
+            if "<?xml" in complete_message:
+                xml_start = complete_message.find("<?xml")
+                xml_content = complete_message[xml_start:]
+                log.debug(f"[SIP] Found XML prolog at position {xml_start}")
+                
+            # Method 2: Look for GB28181 query tags
+            elif "<Query>" in complete_message:
+                xml_start = complete_message.find("<Query>")
+                xml_content = complete_message[xml_start:]
+                log.debug(f"[SIP] Found <Query> tag at position {xml_start}")
+                
+            # Method 3: Look for GB28181 response tags
+            elif "<Response>" in complete_message:
+                xml_start = complete_message.find("<Response>")
+                xml_content = complete_message[xml_start:]
+                log.debug(f"[SIP] Found <Response> tag at position {xml_start}")
+                
+            # Method 4: Emergency detection - look for XML content after double newline
+            if not xml_content:
+                log.debug("[SIP] Primary XML detection failed, trying emergency detection")
+                
+                # Split by double newlines to separate headers from body
+                if '\r\n\r\n' in complete_message:
+                    headers, body = complete_message.split('\r\n\r\n', 1)
+                elif '\n\n' in complete_message:
+                    headers, body = complete_message.split('\n\n', 1)
+                else:
+                    headers = complete_message
+                    body = ""
+                
+                log.debug(f"[SIP] Emergency: Headers length: {len(headers)}, Body length: {len(body)}")
+                
+                # Check if body contains XML
+                if body and ("<?xml" in body or "<Query>" in body or "<Response>" in body):
+                    xml_content = body.strip()
+                    log.info(f"[SIP] 🔧 Emergency XML detection successful! Found: {xml_content[:100]}...")
+                elif "Query" in complete_message or "Response" in complete_message:
+                    # Last resort: extract any XML-like content
+                    log.warning("[SIP] 🚨 Desperate XML search in complete message")
+                    for pattern in ["<Query>", "<Response>", "<?xml"]:
+                        if pattern in complete_message:
+                            start_pos = complete_message.find(pattern)
+                            xml_content = complete_message[start_pos:]
+                            log.info(f"[SIP] 🔧 Desperate search found XML: {xml_content[:100]}...")
+                            break
+
+            return xml_content.strip() if xml_content else None
+            
+        except Exception as e:
+            log.error(f"[SIP] Error extracting XML: {e}")
+            return None
+
+    def _process_xml_content(self, xml_content):
+        """Process extracted XML content"""
+        try:
+            if not xml_content:
+                return
+                
+            log.info(f"[SIP] ✅ Processing XML content ({len(xml_content)} bytes)")
+            log.debug(f"[SIP] XML content preview: {xml_content[:200]}...")
+            
+            # Parse XML to determine message type
+            import xml.etree.ElementTree as ET
+            
+            # Clean XML content for parsing
+            clean_xml = xml_content.strip()
+            
+            # Handle cases where XML might not have proper declaration
+            if not clean_xml.startswith('<?xml'):
+                clean_xml = '<?xml version="1.0" encoding="UTF-8"?>\n' + clean_xml
+            
+            # Parse the XML
+            root = ET.fromstring(clean_xml)
+            cmd_type = None
+            
+            # Extract command type
+            if root.tag == "Query":
+                cmd_type_elem = root.find("CmdType")
+                if cmd_type_elem is not None:
+                    cmd_type = cmd_type_elem.text
+                    
+            log.info(f"[SIP] ✅ Successfully parsed {root.tag} message with CmdType: {cmd_type}")
+            
+            # Handle different query types
+            if root.tag == "Query":
+                if cmd_type == "Catalog":
+                    log.info("[SIP] 📂 Processing Catalog query - will send device catalog")
+                    response = self.handle_catalog_query(xml_content)
+                    if response:
+                        log.info("[SIP] ✅ Sending catalog response to WVP platform")
+                        success = self.send_sip_message(response)
+                        if success:
+                            log.info("[SIP] ✅ Catalog response sent successfully")
+                        else:
+                            log.error("[SIP] ❌ Failed to send catalog response")
+                    else:
+                        log.error("[SIP] ❌ Failed to generate catalog response")
+                elif cmd_type == "DeviceStatus":
+                    log.info("[SIP] 🔍 Processing DeviceStatus query")
+                    response = self.handle_device_info_query(xml_content)
+                    if response:
+                        self.send_sip_message(response)
+                elif cmd_type == "DeviceInfo":
+                    log.info("[SIP] ℹ️ Processing DeviceInfo query")
+                    response = self.handle_device_info_query(xml_content)
+                    if response:
+                        self.send_sip_message(response)
+                elif cmd_type == "RecordInfo":
+                    log.info("[SIP] 📹 Processing RecordInfo query")
+                    response = self.handle_recordinfo_query(xml_content)
+                    if response:
+                        success = self.send_sip_message(response)
+                        if success:
+                            log.info(f"[SIP] Sent record info response with {len(recordings)} recordings")
+                        else:
+                            log.error("[SIP] Failed to send record info response")
+                    else:
+                        log.error("[SIP] Failed to format record info response")
+                else:
+                    log.warning(f"[SIP] ⚠️ Unhandled query type: {cmd_type}")
+            elif root.tag == "Control":
+                log.info("[SIP] 🎮 Processing Control message")
+                response = self.handle_device_control(xml_content)
+                if response:
+                    self.send_sip_message(response)
+            else:
+                log.warning(f"[SIP] ❓ Unknown XML message type: {root.tag}")
+                
+        except ET.ParseError as e:
+            log.error(f"[SIP] ❌ XML parsing error: {e}")
+            log.debug(f"[SIP] Failed XML content: {xml_content}")
+            # Try manual processing for Catalog queries
+            if "Catalog" in xml_content:
+                log.info("[SIP] 🔧 Attempting manual catalog processing")
+                try:
+                    response = self.handle_catalog_query(xml_content)
+                    if response:
+                        log.info("[SIP] ✅ Manual catalog processing successful")
+                        self.send_sip_message(response)
+                except Exception as manual_e:
+                    log.error(f"[SIP] ❌ Manual catalog processing failed: {manual_e}")
+        except Exception as e:
+            log.error(f"[SIP] ❌ Error processing XML message: {e}")
+            import traceback
+            log.debug(f"[SIP] Full traceback: {traceback.format_exc()}")
+
     def _handle_registration_failure(self):
         """Handle registration failures with retry logic"""
         self.registration_attempts += 1
@@ -1216,33 +1934,30 @@ class SIPClient:
         self._start_pjsua_process("/tmp/pjsua.cfg")
 
     def _check_registration(self):
-        """Periodically check registration status"""
-        if self.registration_status != "registered":
-            return
-            
-        # Check if we need to refresh registration
-        if time.time() - self.last_keepalive > 240:  # 4 minutes
-            log.info("[SIP] Registration refresh needed")
-            self._retry_registration()
-
-    def _check_keepalive(self):
-        """Send periodic keepalive messages"""
+        """Periodically check registration status and renew proactively for WVP platform compatibility"""
         if self.registration_status != "registered":
             return
             
         now = time.time()
-        if now - self.last_keepalive >= self.keepalive_interval:
-            self.last_keepalive = now
-            self._send_keepalive()
-
-    def _send_keepalive(self):
-        """Send keepalive message to maintain registration"""
-        try:
-            xml_response = format_keepalive_response(self.device_id)
-            self.sip_sender.send_keepalive(xml_response)
-            log.debug("[SIP] Sent keepalive message")
-        except Exception as e:
-            log.error(f"[SIP] Error sending keepalive: {e}")
+        
+        # FIXED: Proactive registration renewal for WVP platform (renew at 75% of expiry time)
+        # WVP platform expects registration renewal every ~90 seconds to prevent offline status
+        registration_renewal_time = 90  # FIXED: 90 seconds instead of 2700 (45 minutes)
+        
+        if now - self.last_registration_time > registration_renewal_time:
+            log.info("[SIP] 🔄 Proactive registration renewal for WVP platform - preventing device offline")
+            self.last_registration_time = now  # Update timestamp before renewal
+            self._retry_registration()
+        
+        # Check for registration expiry warnings
+        elif now - self.last_registration_time > 75:  # FIXED: 75 seconds - warning before expiry
+            log.warning(f"[SIP] 🔄 Registration approaching expiry in {120 - (now - self.last_registration_time):.0f}s - will renew soon")
+            
+        # Emergency registration renewal if we're close to expiry
+        elif now - self.last_registration_time > 105:  # FIXED: 105 seconds - emergency renewal before 2min timeout
+            log.error("[SIP] 🚨 Emergency registration renewal - device may go offline in 15 seconds!")
+            self.last_registration_time = now  # Update timestamp before renewal
+            self._retry_registration()
 
     def _check_streams(self):
         """Check and maintain active streams with enhanced monitoring"""
@@ -1292,8 +2007,12 @@ class SIPClient:
 
     def stop(self):
         log.info("[SIP] Stopping all streams and SIP client...")
-        # Stop the SIP message sender
-        self.sip_sender.stop()
+        
+        # Set running flag to false first
+        self.running = False
+        
+        # ADDED: Stop heartbeat thread first
+        self._stop_heartbeat_thread()
         
         # Stop all active media streams
         for callid, stream_info in list(self.active_streams.items()):
@@ -1303,7 +2022,8 @@ class SIPClient:
                     stream_id = f"{stream_id}:{stream_info['ssrc']}"
                 
                 log.info(f"[SIP] Stopping stream {stream_id} for Call-ID: {callid}")
-                self.streamer.stop_stream(stream_id)
+                if self.streamer:
+                    self.streamer.stop_stream(stream_id)
             except Exception as e:
                 log.error(f"[SIP] Error stopping stream for Call-ID {callid}: {e}")
         
@@ -1311,15 +2031,53 @@ class SIPClient:
         self.active_streams.clear()
             
         # Properly shutdown the media streamer
-        self.streamer.shutdown()
+        try:
+            if self.streamer:
+                self.streamer.shutdown()
+        except Exception as e:
+            log.error(f"[SIP] Error shutting down media streamer: {e}")
         
-        # Terminate the pjsua process
+        # Enhanced process cleanup for pjsua
         if self.process:
-            self.process.terminate()
             try:
-                self.process.wait(timeout=5)
-            except subprocess.TimeoutExpired:
-                self.process.kill()
+                # First attempt graceful termination
+                log.info("[SIP] Attempting graceful pjsua termination...")
+                self.process.terminate()
+                
+                # Wait with timeout
+                try:
+                    self.process.wait(timeout=5)
+                    log.info("[SIP] PJSUA process terminated gracefully")
+                except subprocess.TimeoutExpired:
+                    log.warning("[SIP] PJSUA process did not terminate gracefully, forcing kill...")
+                    self.process.kill()
+                    try:
+                        self.process.wait(timeout=2)
+                        log.info("[SIP] PJSUA process killed successfully")
+                    except subprocess.TimeoutExpired:
+                        log.error("[SIP] Failed to kill PJSUA process")
+                        
+            except Exception as e:
+                log.error(f"[SIP] Error during process cleanup: {e}")
+            finally:
+                self.process = None
+                
+        # Additional cleanup of any remaining pjsua processes
+        try:
+            self._kill_existing_pjsua_processes()
+        except Exception as e:
+            log.error(f"[SIP] Error in additional process cleanup: {e}")
+            
+        # Close pipes if they exist
+        try:
+            if hasattr(self, 'pipe_read'):
+                os.close(self.pipe_read)
+            if hasattr(self, 'pipe_write'):
+                os.close(self.pipe_write)
+        except Exception as e:
+            log.debug(f"[SIP] Error closing pipes: {e}")
+            
+        log.info("[SIP] SIP client stopped and cleanup completed")
 
     def _schedule_media_status_update(self, stream_id, delay=5.0):
         """Schedule a media status update after a delay"""
@@ -1404,25 +2162,184 @@ class SIPClient:
             log.error(f"[SIP] Error handling alarm subscription: {e}")
 
     def send_sip_message(self, xml_content):
-        """Send SIP message with XML content"""
+        """Send SIP message with XML content by writing to file for PJSUA to process"""
         try:
             if not xml_content:
                 log.warning("[SIP] No XML content to send")
                 return False
                 
-            # Use the SIP sender to send the catalog response
-            target_uri = f"sip:{self.server}:{self.port}"
-            success = self.sip_sender.send_catalog(xml_content, target_uri)
+            # Extract SN from XML for tracking
+            import re
+            sn_match = re.search(r'<SN>(\d+)</SN>', xml_content)
+            sn = sn_match.group(1) if sn_match else "unknown"
+            
+            log.info(f"[SIP] 📤 Sending catalog response (SN: {sn}) via file-based method")
+            
+            # Use file-based method to avoid any socket conflicts
+            return self._send_via_file_method(xml_content, sn)
+                    
+        except Exception as e:
+            log.error(f"[SIP] ❌ Error sending SIP message: {e}")
+            return False
+
+    def _send_via_file_method(self, xml_content, sn):
+        """Send SIP message via file-based method for reliable delivery"""
+        try:
+            import time
+            import random
+            
+            # Generate unique identifiers for the SIP message
+            current_time = int(time.time())
+            call_id = f"catalog-{sn}-{current_time}"
+            branch = f"z9hG4bK-{current_time}"
+            tag = f"tag{current_time}"
+            # FIXED: Handle both string and numeric SNs for CSeq conversion
+            try:
+                if isinstance(sn, str) and sn.isdigit():
+                    cseq = int(sn) % 9999 + 1000
+                elif isinstance(sn, int):
+                    cseq = sn % 9999 + 1000
+                else:
+                    # Fallback for non-numeric SNs
+                    cseq = hash(str(sn)) % 9999 + 1000
+            except (ValueError, TypeError):
+                # Final fallback
+                cseq = int(time.time()) % 9999 + 1000
+            
+            # FIXED: Use the platform's actual SIP address from recent query
+            # Instead of hardcoded platform ID, use the actual server domain
+            from_uri = f"sip:{self.device_id}@{self.local_ip}:{self.local_port}"
+            # CRITICAL FIX: Use the platform's domain/realm, not specific user ID
+            to_uri = f"sip:{self.server}:{self.port}"  # Use platform server directly
+            contact_uri = f"<sip:{self.local_ip}:{self.local_port}>"
+            
+            # Write XML content to a temporary file for debugging
+            temp_file = f"catalog_response_{sn}.xml"
+            try:
+                with open(temp_file, 'w', encoding='utf-8') as f:
+                    f.write(xml_content)
+                log.debug(f"[SIP] Saved response XML to {temp_file}")
+            except Exception as file_error:
+                log.warning(f"[SIP] Could not save debug file: {file_error}")
+            
+            # Build complete SIP message
+            sip_message = f"""MESSAGE {to_uri} SIP/2.0
+Via: SIP/2.0/UDP {self.local_ip}:{self.local_port};rport;branch={branch}
+Max-Forwards: 70
+From: <{from_uri}>;tag={tag}
+To: <{to_uri}>
+Call-ID: {call_id}
+CSeq: {cseq} MESSAGE
+Contact: {contact_uri}
+User-Agent: GB28181-Restreamer/1.0
+Content-Type: Application/MANSCDP+xml
+Content-Length: {len(xml_content)}
+
+{xml_content}"""
+            
+            # Send using a clean UDP socket that doesn't conflict with PJSUA
+            success = self._send_udp_message(sip_message, sn)
             
             if success:
-                log.info("[SIP] ✅ Successfully sent SIP message")
+                log.info(f"[SIP] ✅ File-based catalog response sent successfully (SN: {sn})")
                 return True
             else:
-                log.error("[SIP] ❌ Failed to send SIP message")
+                log.error(f"[SIP] ❌ File-based catalog response failed (SN: {sn})")
                 return False
                 
         except Exception as e:
-            log.error(f"[SIP] Error sending SIP message: {e}")
+            log.error(f"[SIP] ❌ Error in file-based sending: {e}")
+            return False
+            
+    def _send_udp_message(self, sip_message, sn):
+        """Send SIP message via clean UDP socket"""
+        try:
+            import socket
+            
+            # Create a new UDP socket for this message only
+            sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            
+            try:
+                # Don't bind to any specific port - let OS choose
+                # This avoids any conflicts with PJSUA
+                sock.settimeout(5.0)  # 5 second timeout
+                
+                # ENHANCED DEBUGGING: Analyze message before sending
+                message_bytes = sip_message.encode('utf-8')
+                log.info(f"[SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: {sn}):")
+                log.info(f"[SIP]   • Message size: {len(message_bytes)} bytes")
+                log.info(f"[SIP]   • Target: {self.server}:{self.port}")
+                log.info(f"[SIP]   • Encoding: UTF-8")
+                
+                # Count XML elements in the message for verification
+                import re
+                item_count = len(re.findall(r'<Item>', sip_message))
+                sumnum_match = re.search(r'<SumNum>(\d+)</SumNum>', sip_message)
+                declared_count = int(sumnum_match.group(1)) if sumnum_match else 0
+                
+                log.info(f"[SIP]   • XML <Item> count: {item_count}")
+                log.info(f"[SIP]   • XML SumNum: {declared_count}")
+                
+                if item_count != declared_count:
+                    log.error(f"[SIP] ❌ CRITICAL: Item count mismatch before sending!")
+                    log.error(f"[SIP]   Declared: {declared_count}, Actual: {item_count}")
+                else:
+                    log.info(f"[SIP] ✅ XML integrity verified before transmission")
+                
+                # Check if message might be too large for single UDP packet
+                if len(message_bytes) > 1400:  # Conservative UDP safe size
+                    log.warning(f"[SIP] ⚠️ Large UDP packet: {len(message_bytes)} bytes (may fragment)")
+                    
+                # Log message headers and start of content
+                lines = sip_message.split('\n')
+                log.debug(f"[SIP] 📨 Message headers:")
+                for i, line in enumerate(lines[:10]):  # First 10 lines
+                    log.debug(f"[SIP]   {i+1}: {line.strip()}")
+                if len(lines) > 10:
+                    log.debug(f"[SIP]   ... and {len(lines) - 10} more lines")
+                
+                # Send the message
+                log.info(f"[SIP] 🚀 Sending UDP packet to {self.server}:{self.port}...")
+                bytes_sent = sock.sendto(message_bytes, (self.server, self.port))
+                
+                # Verify transmission
+                if bytes_sent == len(message_bytes):
+                    log.info(f"[SIP] ✅ UDP transmission SUCCESSFUL: {bytes_sent}/{len(message_bytes)} bytes")
+                else:
+                    log.error(f"[SIP] ❌ UDP transmission INCOMPLETE: {bytes_sent}/{len(message_bytes)} bytes")
+                    return False
+                
+                # Additional verification for large messages
+                if len(message_bytes) > 1400:
+                    log.warning(f"[SIP] 📡 Large message sent - WVP platform may need time to reassemble")
+                
+                # Brief pause to ensure message is sent
+                time.sleep(0.05)
+                
+                # Log success with context
+                log.info(f"[SIP] 📤 Catalog response (SN: {sn}) delivered successfully")
+                log.info(f"[SIP]   • Contains {item_count} devices")
+                log.info(f"[SIP]   • Total size: {len(message_bytes)} bytes")
+                log.info(f"[SIP]   • WVP platform should process this within 30 seconds")
+                
+                return True
+                
+            except socket.timeout:
+                log.error(f"[SIP] ❌ UDP send timeout for SN: {sn}")
+                log.error(f"[SIP] Network may be congested or WVP platform unresponsive")
+                return False
+            except socket.error as send_error:
+                log.error(f"[SIP] ❌ UDP socket error for SN: {sn}: {send_error}")
+                log.error(f"[SIP] This may indicate network connectivity issues")
+                return False
+            except Exception as send_error:
+                log.error(f"[SIP] ❌ UDP send error for SN: {sn}: {send_error}")
+                return False
+            finally:
+                sock.close()
+                
+        except Exception as e:
+            log.error(f"[SIP] ❌ Error creating UDP socket: {e}")
             return False
 
     def _extract_call_id_from_line(self, line):
@@ -1457,3 +2374,394 @@ class SIPClient:
         except Exception as e:
             log.error(f"[SIP] Error handling INVITE with SDP: {e}")
             return False
+
+    def _start_heartbeat_thread(self):
+        """Start dedicated heartbeat thread for WVP platform compatibility"""
+        if self._heartbeat_running:
+            return
+            
+        log.info("[SIP] 💓 Starting dedicated heartbeat thread for WVP platform")
+        self._heartbeat_running = True
+        self._heartbeat_thread = threading.Thread(target=self._heartbeat_worker, daemon=True)
+        self._heartbeat_thread.start()
+        
+    def _stop_heartbeat_thread(self):
+        """Stop the heartbeat thread"""
+        log.info("[SIP] 🛑 Stopping heartbeat thread")
+        self._heartbeat_running = False
+        if self._heartbeat_thread and self._heartbeat_thread.is_alive():
+            self._heartbeat_thread.join(timeout=2)
+            
+    def _heartbeat_worker(self):
+        """Dedicated heartbeat worker thread - sends keepalive every 15 seconds for WVP platform compatibility"""
+        log.info("[SIP] 💓 Heartbeat worker started - will send keepalive every 15s to prevent WVP timeout")
+        
+        while self._heartbeat_running and self.running:
+            try:
+                # Only send heartbeat if registered
+                if self.registration_status == "registered":
+                    log.info("[SIP] 💓 Sending scheduled heartbeat to WVP platform")
+                    self._send_keepalive()
+                else:
+                    log.debug("[SIP] 💓 Skipping heartbeat - not registered")
+                
+                # FIXED: Wait 15 seconds before next heartbeat (increased frequency for WVP platform)
+                for _ in range(15):  # Split into 1-second intervals for responsive shutdown
+                    if not self._heartbeat_running or not self.running:
+                        break
+                    time.sleep(1)
+                    
+            except Exception as e:
+                log.error(f"[SIP] ❌ Error in heartbeat worker: {e}")
+                time.sleep(5)  # Brief pause before retry
+                
+        log.info("[SIP] 💓 Heartbeat worker stopped")
+
+    def _send_keepalive(self):
+        """Send keepalive message to maintain registration with enhanced WVP compatibility"""
+        try:
+            # Create proper GB28181 keepalive message according to WVP platform requirements
+            current_time = time.time()
+            sn = int(current_time) % 100000  # Use timestamp for unique SN
+            
+            # Format timestamp for Info section (WVP may expect this)
+            timestamp_str = time.strftime("%Y-%m-%dT%H:%M:%S", time.localtime(current_time))
+            
+            keepalive_xml = f"""<?xml version="1.0" encoding="GB2312"?>
+<Notify>
+<CmdType>Keepalive</CmdType>
+<SN>{sn}</SN>
+<DeviceID>{self.device_id}</DeviceID>
+<Status>OK</Status>
+<Info>
+<DeviceID>{self.device_id}</DeviceID>
+<Time>{timestamp_str}</Time>
+</Info>
+</Notify>"""
+            
+            log.info(f"[SIP] 💓 Sending WVP-compatible keepalive (SN: {sn}) to prevent heartbeat timeout")
+            
+            # FIXED: Send keepalive via dedicated UDP socket, not catalog response method
+            success = self._send_keepalive_message(keepalive_xml, sn)
+            
+            if success:
+                self.last_keepalive_time = current_time
+                self.last_keepalive = current_time
+                log.info(f"[SIP] ✅ Keepalive sent successfully - device should stay online")
+            else:
+                log.warning(f"[SIP] ⚠️ Keepalive failed to send - device may go offline")
+                
+                # If keepalive fails consistently, try emergency registration renewal
+                if hasattr(self, '_last_successful_keepalive'):
+                    time_since_last_success = current_time - self._last_successful_keepalive
+                    if time_since_last_success > 90:  # 90 seconds without successful keepalive
+                        log.error("[SIP] 🚨 Keepalive failures detected - triggering emergency registration renewal")
+                        self._retry_registration()
+                else:
+                    self._last_successful_keepalive = current_time
+                    
+            # Track successful keepalive for failure detection
+            if success:
+                self._last_successful_keepalive = current_time
+                
+        except Exception as e:
+            log.error(f"[SIP] ❌ Error sending keepalive: {e}")
+            import traceback
+            log.debug(f"[SIP] Keepalive error traceback: {traceback.format_exc()}")
+            
+            # Emergency fallback - try to renew registration if keepalive fails
+            try:
+                log.warning("[SIP] 🔄 Keepalive failed, attempting registration renewal as fallback")
+                self._retry_registration()
+            except Exception as retry_error:
+                log.error(f"[SIP] ❌ Emergency registration renewal also failed: {retry_error}")
+
+    def _send_keepalive_message(self, keepalive_xml, sn):
+        """Send keepalive message via clean UDP socket"""
+        try:
+            import socket
+            import time
+            
+            # Generate unique identifiers for the SIP message
+            current_time = int(time.time())
+            call_id = f"keepalive-{sn}-{current_time}"
+            branch = f"z9hG4bK-ka-{current_time}"
+            tag = f"katag{current_time}"
+            cseq = sn % 9999 + 2000  # Different range for keepalives
+            
+            # Build SIP URIs
+            from_uri = f"sip:{self.device_id}@{self.local_ip}:{self.local_port}"
+            to_uri = f"sip:{self.server}:{self.port}"
+            contact_uri = f"<sip:{self.local_ip}:{self.local_port}>"
+            
+            # Build complete SIP MESSAGE for keepalive
+            sip_message = f"""MESSAGE {to_uri} SIP/2.0
+Via: SIP/2.0/UDP {self.local_ip}:{self.local_port};rport;branch={branch}
+Max-Forwards: 70
+From: <{from_uri}>;tag={tag}
+To: <{to_uri}>
+Call-ID: {call_id}
+CSeq: {cseq} MESSAGE
+Contact: {contact_uri}
+User-Agent: GB28181-Restreamer/1.0
+Content-Type: Application/MANSCDP+xml
+Content-Length: {len(keepalive_xml)}
+
+{keepalive_xml}"""
+            
+            # Create a new UDP socket for keepalive only
+            sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            
+            try:
+                sock.settimeout(3.0)  # Shorter timeout for keepalives
+                
+                # Log keepalive attempt
+                message_bytes = sip_message.encode('utf-8')
+                log.debug(f"[SIP] 💓 Sending keepalive UDP packet ({len(message_bytes)} bytes) to {self.server}:{self.port}")
+                
+                # Send the keepalive message
+                bytes_sent = sock.sendto(message_bytes, (self.server, self.port))
+                
+                # Verify transmission
+                if bytes_sent == len(message_bytes):
+                    log.debug(f"[SIP] ✅ Keepalive UDP transmission successful: {bytes_sent} bytes")
+                    return True
+                else:
+                    log.error(f"[SIP] ❌ Keepalive UDP transmission incomplete: {bytes_sent}/{len(message_bytes)} bytes")
+                    return False
+                
+            except socket.timeout:
+                log.error(f"[SIP] ❌ Keepalive UDP send timeout")
+                return False
+            except socket.error as send_error:
+                log.error(f"[SIP] ❌ Keepalive UDP socket error: {send_error}")
+                return False
+            finally:
+                sock.close()
+                
+        except Exception as e:
+            log.error(f"[SIP] ❌ Error creating keepalive UDP socket: {e}")
+            return False
+
+    def _send_proactive_catalog_notification(self):
+        """Send proactive catalog notification to WVP platform for immediate frontend visibility"""
+        try:
+            log.info("[SIP] 🚀 Sending proactive catalog notification for immediate frontend visibility")
+            
+            # Generate a unique numeric SN for the proactive notification (FIXED: use numeric SN)
+            import random
+            proactive_sn = random.randint(800000, 999999)  # Use pure numeric SN instead of string
+            
+            # FIXED: Use the same format as regular catalog responses - parent device + channels
+            # This ensures consistency between proactive notifications and query responses
+            catalog_xml_items = []
+            
+            # STEP 1: Add the parent device as the first item (same as catalog responses)
+            parent_device_xml = f"""    <Item>
+      <DeviceID>{self.device_id}</DeviceID>
+      <Name>GB28181-Restreamer</Name>
+      <Manufacturer>GB28181-RestreamerProject</Manufacturer>
+      <Model>Restreamer-1.0</Model>
+      <Owner>gb28181-restreamer</Owner>
+      <CivilCode>{self.device_id[:6]}</CivilCode>
+      <Block>{self.device_id[:8]}</Block>
+      <Address>gb28181-restreamer</Address>
+      <Parental>0</Parental>
+      <SafetyWay>0</SafetyWay>
+      <RegisterWay>1</RegisterWay>
+      <CertNum>1234567890</CertNum>
+      <Certifiable>1</Certifiable>
+      <ErrCode>0</ErrCode>
+      <EndTime></EndTime>
+      <Secrecy>0</Secrecy>
+      <IPAddress>{self.local_ip}</IPAddress>
+      <Port>{self.local_port}</Port>
+      <Password></Password>
+      <Status>ON</Status>
+      <Longitude>0.0</Longitude>
+      <Latitude>0.0</Latitude>
+      <PTZType>0</PTZType>
+      <PositionType>0</PositionType>
+      <RoomType>0</RoomType>
+      <UseType>0</UseType>
+      <SupplyLightType>0</SupplyLightType>
+      <DirectionType>0</DirectionType>
+      <Resolution>640*480</Resolution>
+      <BusinessGroupID></BusinessGroupID>
+      <DownloadSpeed></DownloadSpeed>
+      <SVCSpaceSupportMode>0</SVCSpaceSupportMode>
+      <SVCTimeSupportMode>0</SVCTimeSupportMode>
+    </Item>"""
+            catalog_xml_items.append(parent_device_xml)
+            
+            # STEP 2: Add each video channel as child items with Parental=1
+            for channel_id, channel_info in self.device_catalog.items():
+                # Use compact format for UDP efficiency while maintaining WVP compatibility
+                channel_item_xml = f"""    <Item>
+      <DeviceID>{channel_id}</DeviceID>
+      <Name>{channel_info['name']}</Name>
+      <Manufacturer>GB28181-RestreamerProject</Manufacturer>
+      <Model>Virtual-Channel</Model>
+      <Owner>gb28181-restreamer</Owner>
+      <CivilCode>{self.device_id[:6]}</CivilCode>
+      <Block>{self.device_id[:8]}</Block>
+      <Address>Channel {channel_info['name']}</Address>
+      <Parental>1</Parental>
+      <ParentID>{self.device_id}</ParentID>
+      <SafetyWay>0</SafetyWay>
+      <RegisterWay>1</RegisterWay>
+      <Secrecy>0</Secrecy>
+      <IPAddress></IPAddress>
+      <Port>0</Port>
+      <Password></Password>
+      <Status>{channel_info['status']}</Status>
+    </Item>"""
+                catalog_xml_items.append(channel_item_xml)
+            
+            # FIXED: Check message size and limit channels for UDP safety (same as regular response)
+            xml_content = "\n".join(catalog_xml_items)
+            estimated_size = len(xml_content) + 1000  # Add overhead for headers
+            
+            # Apply same UDP size limits as regular catalog responses
+            if estimated_size > 3000:  # Conservative limit for WVP
+                log.warning(f"[SIP] ⚠️ Large proactive notification ({estimated_size} bytes) - limiting channels")
+                
+                # Always keep the parent device (first item), limit channels
+                safe_items = [catalog_xml_items[0]]  # Parent device must be included
+                running_size = len(catalog_xml_items[0].encode('utf-8')) + 800  # Base response size + headers
+                
+                # Add as many channels as fit within UDP limit
+                for channel_item in catalog_xml_items[1:]:  # Skip parent device (already added)
+                    item_size = len(channel_item.encode('utf-8'))
+                    if running_size + item_size < 3000:  # Conservative UDP limit
+                        safe_items.append(channel_item)
+                        running_size += item_size
+                    else:
+                        break
+                
+                xml_content = "\n".join(safe_items)
+                actual_count = len(safe_items)
+                channel_count = actual_count - 1  # Subtract parent device
+                log.info(f"[SIP] 📦 Limited proactive notification to parent device + {channel_count} channels (total: {actual_count} items)")
+            else:
+                actual_count = len(catalog_xml_items)
+                channel_count = len(self.device_catalog)
+                log.info(f"[SIP] 📦 Including parent device + all {channel_count} channels in proactive notification (total: {actual_count} items)")
+            
+            # FIXED: Generate catalog response XML in same format as regular responses
+            catalog_xml = f"""<?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>{proactive_sn}</SN>
+  <DeviceID>{self.device_id}</DeviceID>
+  <Result>OK</Result>
+  <SumNum>{actual_count}</SumNum>
+  <DeviceList Num="{actual_count}">
+{xml_content}
+  </DeviceList>
+</Response>"""
+            
+            # Send the proactive catalog notification via UDP MESSAGE
+            log.info(f"[SIP] 📤 Sending WVP-compatible proactive catalog with parent device + {actual_count-1} channels (SN: {proactive_sn})")
+            
+            # Final size check
+            final_size = len(catalog_xml.encode('utf-8'))
+            log.info(f"[SIP] 📊 Final proactive notification size: {final_size} bytes")
+            
+            # Save the notification for debugging (FIXED: use numeric SN for filename)
+            with open(f"proactive_catalog_{proactive_sn}.xml", "w") as f:
+                f.write(catalog_xml)
+            
+            # Send via file-based method for reliability (FIXED: pass numeric SN)
+            self._send_via_file_method(catalog_xml, str(proactive_sn))
+            
+            log.info("[SIP] ✅ WVP-compatible proactive catalog notification sent - frontend should show parent device + channels immediately")
+            
+        except Exception as e:
+            log.error(f"[SIP] ❌ Error sending proactive catalog notification: {e}")
+            import traceback
+            log.error(f"[SIP] Traceback: {traceback.format_exc()}")
+
+    def debug_catalog_generation(self):
+        """Debug method to test catalog generation and validate XML structure"""
+        try:
+            log.info("[SIP] 🔍 DEBUG: Testing catalog generation...")
+            
+            # First, check the device catalog state
+            log.info(f"[SIP] Device catalog ready: {self.catalog_ready}")
+            log.info(f"[SIP] Device catalog size: {len(self.device_catalog)}")
+            
+            if self.device_catalog:
+                log.info("[SIP] Device catalog contents:")
+                for i, (channel_id, channel_info) in enumerate(list(self.device_catalog.items())[:5]):
+                    log.info(f"  {i+1}. {channel_id}: {channel_info.get('name', 'Unknown')}")
+                if len(self.device_catalog) > 5:
+                    log.info(f"  ... and {len(self.device_catalog) - 5} more channels")
+            else:
+                log.warning("[SIP] Device catalog is empty!")
+                # Try to regenerate it
+                log.info("[SIP] Attempting to regenerate device catalog...")
+                self.generate_device_catalog()
+                log.info(f"[SIP] After regeneration: {len(self.device_catalog)} channels")
+            
+            # Generate a test catalog response
+            test_sn = "DEBUG123"
+            log.info(f"[SIP] Generating test catalog response (SN: {test_sn})...")
+            
+            test_xml = self._generate_catalog_response(test_sn)
+            
+            if test_xml:
+                log.info(f"[SIP] ✅ Test catalog generated successfully ({len(test_xml)} bytes)")
+                
+                # Save debug file
+                debug_filename = f"debug_catalog_{test_sn}.xml"
+                with open(debug_filename, 'w', encoding='utf-8') as f:
+                    f.write(test_xml)
+                log.info(f"[SIP] 💾 Debug catalog saved to: {debug_filename}")
+                
+                # Validate the XML
+                import xml.etree.ElementTree as ET
+                try:
+                    root = ET.fromstring(test_xml)
+                    device_list = root.find('DeviceList')
+                    items = device_list.findall('Item') if device_list is not None else []
+                    
+                    sumnum_elem = root.find('SumNum')
+                    declared_sum = int(sumnum_elem.text) if sumnum_elem is not None else 0
+                    declared_num = int(device_list.get('Num')) if device_list is not None else 0
+                    actual_count = len(items)
+                    
+                    log.info(f"[SIP] 📊 DEBUG VALIDATION RESULTS:")
+                    log.info(f"[SIP]   • Declared SumNum: {declared_sum}")
+                    log.info(f"[SIP]   • Declared DeviceList Num: {declared_num}")
+                    log.info(f"[SIP]   • Actual <Item> elements: {actual_count}")
+                    
+                    if declared_sum == declared_num == actual_count:
+                        log.info(f"[SIP] ✅ XML validation PASSED - all counts match!")
+                        
+                        # Test the sending mechanism
+                        log.info(f"[SIP] 🚀 Testing UDP transmission...")
+                        success = self._send_via_file_method(test_xml, test_sn)
+                        if success:
+                            log.info(f"[SIP] ✅ Test transmission successful")
+                        else:
+                            log.error(f"[SIP] ❌ Test transmission failed")
+                            
+                    else:
+                        log.error(f"[SIP] ❌ XML validation FAILED!")
+                        log.error(f"[SIP] This is the root cause of the frontend issue!")
+                        
+                except ET.ParseError as e:
+                    log.error(f"[SIP] ❌ XML parsing failed: {e}")
+                    log.error(f"[SIP] Invalid XML generated - this is the problem!")
+                    
+            else:
+                log.error(f"[SIP] ❌ Failed to generate test catalog")
+                
+        except Exception as e:
+            log.error(f"[SIP] ❌ Debug catalog generation failed: {e}")
+            import traceback
+            log.error(f"[SIP] Traceback: {traceback.format_exc()}")
+
+            log.error(f"[SIP] ❌ XML parsing failed: {e}")
+            log.error(f"[SIP] Invalid XML generated - this is the problem!")

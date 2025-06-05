@@ -1,0 +1,28 @@
+{
+  "timestamp": "2025-06-03T22:19:45.163956",
+  "config": {
+    "server": "ai-sip.x-stage.bull-b.com",
+    "port": 5060,
+    "device_id": "81000000465001000001",
+    "username": "81000000465001000001"
+  },
+  "catalog_queries": [
+    {
+      "timestamp": "2025-06-03T22:19:32.359513",
+      "sn": "989172",
+      "device_id": "81000000465001000001",
+      "source": "simulation"
+    }
+  ],
+  "catalog_responses": [
+    {
+      "timestamp": "2025-06-03T22:19:34.279425",
+      "sn": "989172",
+      "catalog_gen_time": 1.9082534313201904,
+      "total_time": 1.9198853969573975,
+      "response_length": 68859,
+      "success": true
+    }
+  ],
+  "query_response_pairs": []
+}

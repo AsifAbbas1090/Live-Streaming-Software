@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="GB2312"?>
+<Response>
+<CmdType>Catalog</CmdType>
+<SN>DEBUG123</SN>
+<DeviceID>81000000465001000001</DeviceID>
+<SumNum>1</SumNum>
+<DeviceList Num="1">
+    <Item>
+      <DeviceID>810000004650131000001</DeviceID>
+      <Name>00-10-10</Name>
+      <Manufacturer>GB28181-RestreamerProject</Manufacturer>
+      <Model>Video-Channel</Model>
+      <Status>ON</Status>
+      <Parental>0</Parental>
+      <ParentID>81000000465001000001</ParentID>
+    </Item>
+</DeviceList>
+</Response>

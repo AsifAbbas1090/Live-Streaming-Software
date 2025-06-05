@@ -1,0 +1,48 @@
+{
+  "timestamp": "2025-06-03T23:34:56.583685",
+  "network_interfaces": {
+    "lo": {
+      "status": "UP",
+      "addresses": [
+        "127.0.0.1/8"
+      ]
+    },
+    "ens5": {
+      "status": "UP",
+      "addresses": [
+        "172.31.7.94/20"
+      ]
+    },
+    "docker0": {
+      "status": "UP",
+      "addresses": [
+        "172.17.0.1/16",
+        "172.23.0.1/16"
+      ]
+    }
+  },
+  "connectivity_tests": {
+    "ai-sip.x-stage.bull-b.com:5060": {
+      "dns_resolution": true,
+      "tcp_connectivity": true,
+      "udp_connectivity": true,
+      "resolved_ip": "203.142.93.131"
+    }
+  },
+  "sip_configuration": {
+    "device_id": "81000000465001000001",
+    "username": "81000000465001000001",
+    "password": "admin123",
+    "server": "ai-sip.x-stage.bull-b.com",
+    "port": 5060,
+    "local_port": 5080,
+    "transport": "udp",
+    "local_ip": "172.31.7.94",
+    "contact_ip": "13.50.108.195"
+  },
+  "issues_found": [
+    "Port 5080 is not bound",
+    "Port 5080 is not bound"
+  ],
+  "recommendations": []
+}

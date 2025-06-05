@@ -1,0 +1,38 @@
+{
+  "sip": {
+    "device_id": "81000000465001000001",
+    "username": "81000000465001000001",
+    "password": "admin123",
+    "server": "ai-sip.x-stage.bull-b.com",
+    "port": 5060,
+    "local_port": 5080,
+    "transport": "udp",
+    "local_ip": "172.31.7.94",
+    "contact_ip": "13.50.108.195"
+  },
+  "local_sip": {
+    "enabled": false,
+    "port": 5060,
+    "transport": "udp"
+  },
+  "stream_directory": "/home/ubuntu/rstp/gb28181-restreamer/recordings",
+  "rtsp_sources": [],
+  "srtp": {
+    "key": "313233343536373839303132333435363132333435363738393031323334"
+  },
+  "logging": {
+    "level": "INFO",
+    "file": "./logs/gb28181-restreamer.log",
+    "console": true
+  },
+  "pipeline": {
+    "format": "RGB",
+    "width": 640,
+    "height": 480,
+    "framerate": 30,
+    "buffer_size": 33554432,
+    "queue_size": 3000,
+    "sync": false,
+    "async": false
+  }
+}

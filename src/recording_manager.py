@@ -14,6 +14,7 @@ import json
 import time
 import datetime
 import logging
+import threading
 from pathlib import Path
 from logger import log
 
@@ -27,13 +28,34 @@ class RecordingManager:
         self.metadata_cache = {}
         self.last_scan_time = 0
         self.scan_interval = 60  # Scan every 60 seconds
+        self.scanning = False  # Flag to prevent concurrent scans
+        self.scan_thread = None  # Thread for async scanning
         
         # Ensure the recordings directory exists
         os.makedirs(self.recordings_directory, exist_ok=True)
         
-        # Initial scan of recordings
-        self.scan_recordings()
+        # Start initial async scan
+        self.start_async_scan()
         
+    def start_async_scan(self):
+        """Start asynchronous recording scan to avoid blocking startup"""
+        if self.scanning or (self.scan_thread and self.scan_thread.is_alive()):
+            log.info("[REC-MANAGER] Scan already in progress, skipping")
+            return
+            
+        log.info("[REC-MANAGER] Starting asynchronous recording scan")
+        self.scan_thread = threading.Thread(target=self._async_scan_recordings, daemon=True)
+        self.scan_thread.start()
+    
+    def _async_scan_recordings(self):
+        """Asynchronous recording scan that doesn't block the main thread"""
+        try:
+            self.scanning = True
+            log.info("[REC-MANAGER] Starting async scan with CPU throttling for better SIP performance")
+            self.scan_recordings(force=True)
+        finally:
+            self.scanning = False
+    
     def scan_recordings(self, force=False):
         """Scan the recordings directory and update the metadata cache"""
         current_time = time.time()
@@ -42,12 +64,18 @@ class RecordingManager:
         if not force and current_time - self.last_scan_time < self.scan_interval:
             return
             
-        log.info("[REC-MANAGER] Scanning recordings directory")
+        log.info("[REC-MANAGER] Scanning recordings directory with CPU throttling")
         self.last_scan_time = current_time
         
         # Clear the cache if rescanning
         if force:
             self.metadata_cache = {}
+        
+        file_count = 0
+        processed_count = 0
+        skipped_count = 0
+        batch_size = 5  # Process files in small batches
+        batch_count = 0
             
         # Walk through the recordings directory
         for root, dirs, files in os.walk(self.recordings_directory):
@@ -59,18 +87,34 @@ class RecordingManager:
                 if not self._is_video_file(file):
                     continue
                     
+                file_count += 1
                 file_path = os.path.join(root, file)
                 
                 # Skip files we've already scanned
                 if file_path in self.metadata_cache:
+                    skipped_count += 1
                     continue
                     
-                # Extract metadata from the file
+                # Extract metadata from the file with progress logging
+                if file_count % 10 == 0:  # Log progress every 10 files
+                    log.info(f"[REC-MANAGER] Processing file {file_count}: {os.path.basename(file)}")
+                
                 metadata = self._extract_metadata(file_path)
                 if metadata:
                     self.metadata_cache[file_path] = metadata
+                    processed_count += 1
+                
+                # CPU throttling: sleep briefly every few files to not overwhelm the system
+                batch_count += 1
+                if batch_count >= batch_size:
+                    batch_count = 0
+                    time.sleep(0.01)  # 10ms pause every 5 files to reduce CPU load
+                    
+                    # Check if we should yield more time for high file counts
+                    if file_count % 50 == 0:
+                        time.sleep(0.1)  # 100ms pause every 50 files for better system responsiveness
         
-        log.info(f"[REC-MANAGER] Found {len(self.metadata_cache)} recording files")
+        log.info(f"[REC-MANAGER] Scan complete: {len(self.metadata_cache)} total files, {processed_count} processed, {skipped_count} skipped")
     
     def _is_video_file(self, filename):
         """Check if a file is a video file based on extension"""
@@ -78,12 +122,29 @@ class RecordingManager:
         return filename.lower().endswith(video_extensions)
     
     def _extract_metadata(self, file_path):
-        """Extract metadata from a video file"""
+        """Extract metadata from a video file with improved error handling"""
         try:
             # Get file stats
             file_stats = os.stat(file_path)
             file_size = file_stats.st_size
             file_mtime = file_stats.st_mtime
+            
+            # Skip very large files during initial scan to prevent blocking
+            max_file_size = 2 * 1024 * 1024 * 1024  # 2GB limit for quick scan
+            if file_size > max_file_size:
+                log.warning(f"[REC-MANAGER] Skipping large file for quick scan: {os.path.basename(file_path)} ({file_size / (1024*1024*1024):.1f}GB)")
+                return {
+                    "path": file_path,
+                    "filename": os.path.basename(file_path),
+                    "size": file_size,
+                    "date_time": datetime.datetime.fromtimestamp(file_mtime),
+                    "timestamp": file_mtime,
+                    "duration": file_size / (1024 * 1024) * 10,  # Rough estimate
+                    "secrecy": "0",
+                    "type": "all",
+                    "device_id": None,
+                    "scan_status": "quick_scan"  # Mark as quick scan
+                }
             
             # Extract date and time from path or filename
             date_time = self._extract_datetime_from_path(file_path)
@@ -92,8 +153,8 @@ class RecordingManager:
             if not date_time:
                 date_time = datetime.datetime.fromtimestamp(file_mtime)
             
-            # Try to get duration from file, fallback to estimating based on size
-            duration = self._get_video_duration(file_path)
+            # Try to get duration from file with timeout, fallback to estimating based on size
+            duration = self._get_video_duration_with_timeout(file_path, timeout=5)
             if not duration:
                 # Rough estimate: 1MB ~= 10 seconds for medium quality video
                 duration = file_size / (1024 * 1024) * 10
@@ -108,7 +169,8 @@ class RecordingManager:
                 "duration": duration,
                 "secrecy": "0",  # Default secrecy level (0 = not secret)
                 "type": "all",   # Default recording type (all = general recording)
-                "device_id": None  # Will be set by query method
+                "device_id": None,  # Will be set by query method
+                "scan_status": "complete"
             }
         except Exception as e:
             log.error(f"[REC-MANAGER] Error extracting metadata for {file_path}: {e}")
@@ -164,26 +226,48 @@ class RecordingManager:
             log.error(f"[REC-MANAGER] Error extracting datetime from path {file_path}: {e}")
             return None
     
-    def _get_video_duration(self, file_path):
-        """Get video duration using ffmpeg if available"""
+    def _get_video_duration_with_timeout(self, file_path, timeout=5):
+        """Get video duration using ffmpeg with timeout to prevent blocking"""
         try:
             import subprocess
             
+            # Use a shorter timeout for large files to prevent blocking
             result = subprocess.run(
                 ["ffprobe", "-v", "error", "-show_entries", "format=duration", 
                  "-of", "default=noprint_wrappers=1:nokey=1", file_path],
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
-                text=True
+                text=True,
+                timeout=timeout  # Add timeout to prevent blocking
             )
             
             if result.returncode == 0 and result.stdout.strip():
                 return float(result.stdout.strip())
                 
             return None
-        except Exception:
-            # If ffprobe fails or isn't available, return None
+        except subprocess.TimeoutExpired:
+            log.warning(f"[REC-MANAGER] ffprobe timeout for {os.path.basename(file_path)}, using size estimation")
             return None
+        except Exception as e:
+            log.debug(f"[REC-MANAGER] ffprobe failed for {os.path.basename(file_path)}: {e}")
+            return None
+    
+    def _get_video_duration(self, file_path):
+        """Get video duration using ffmpeg if available (legacy method)"""
+        return self._get_video_duration_with_timeout(file_path, timeout=10)
+    
+    def is_scan_complete(self):
+        """Check if the initial scan is complete"""
+        return not self.scanning and self.scan_thread and not self.scan_thread.is_alive()
+    
+    def get_scan_status(self):
+        """Get current scan status"""
+        return {
+            "scanning": self.scanning,
+            "files_cached": len(self.metadata_cache),
+            "last_scan": self.last_scan_time,
+            "scan_complete": self.is_scan_complete()
+        }
     
     def query_recordings(self, device_id=None, start_time=None, end_time=None, 
                         recording_type=None, secrecy=None, max_results=100):
@@ -200,8 +284,9 @@ class RecordingManager:
         Returns:
             list: List of matching recording metadata
         """
-        # Rescan to ensure we have the latest recordings
-        self.scan_recordings()
+        # Start a fresh scan if we don't have recent data (but don't wait for it)
+        if time.time() - self.last_scan_time > self.scan_interval:
+            self.start_async_scan()
         
         # Parse start and end times if provided
         start_timestamp = None
@@ -231,27 +316,25 @@ class RecordingManager:
             if end_timestamp and metadata['timestamp'] > end_timestamp:
                 continue
                 
-            # Apply type filter if specified
-            if recording_type and metadata.get('type') != recording_type and recording_type != 'all':
+            # Apply recording type filter
+            if recording_type and recording_type != "all" and metadata.get('type') != recording_type:
                 continue
                 
-            # Apply secrecy filter if specified
+            # Apply secrecy filter
             if secrecy and metadata.get('secrecy') != secrecy:
                 continue
-                
-            # Add to results
+            
             results.append(metadata)
             
-            # Check if we've reached the maximum number of results
+            # Limit results
             if len(results) >= max_results:
                 break
-                
-        # Sort results by timestamp
-        results.sort(key=lambda x: x['timestamp'])
         
-        log.info(f"[REC-MANAGER] Query found {len(results)} matching recordings")
+        # Sort by timestamp (newest first)
+        results.sort(key=lambda x: x['timestamp'], reverse=True)
+        
         return results
-    
+
     def _parse_time_string(self, time_str):
         """Parse a time string into a timestamp
         

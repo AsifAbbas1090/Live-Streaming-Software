@@ -1,0 +1,521 @@
+nohup: ignoring input
+[2025-06-04 01:39:16] [INFO] [BOOT] Starting GB28181 Restreamer...
+[2025-06-04 01:39:16] [INFO] [CONFIG] Loaded configuration successfully.
+[2025-06-04 01:39:16] [INFO] [CATALOG] Performing quick video scan (full scan will happen in background)...
+[2025-06-04 01:39:16] [INFO] [CATALOG] Quick scan found 9 sample video files
+[2025-06-04 01:39:16] [INFO]   • 00-10-10.mp4
+[2025-06-04 01:39:16] [INFO]   • 14-32-14.mp4
+[2025-06-04 01:39:16] [INFO]   • 12-30-00.mp4
+[2025-06-04 01:39:16] [INFO]   • 01-20-30.mp4
+[2025-06-04 01:39:16] [INFO]   • filename_1996.mp4
+[2025-06-04 01:39:16] [INFO]   ... and 4 more videos
+[2025-06-04 01:39:16] [INFO] [STREAM] Initializing media streamer with frame processing support
+[2025-06-04 01:39:16] [INFO] [STREAM] GLib main loop started
+[2025-06-04 01:39:16] [INFO] [RTSP] No RTSP sources configured
+[2025-06-04 01:39:16] [INFO] [STREAM] Registered frame processor: grayscale
+[2025-06-04 01:39:16] [INFO] [STREAM] Registered frame processor: edge
+[2025-06-04 01:39:16] [INFO] [STREAM] Registered frame processor: blur
+[2025-06-04 01:39:16] [INFO] [STREAM] Registered frame processor: text
+[2025-06-04 01:39:16] [INFO] [STREAM] Registered frame processors for video manipulation
+[2025-06-04 01:39:16] [INFO] [SIP] Starting SIP client with priority (recording scan will happen in background)...
+[2025-06-04 01:39:16] [INFO] [SIP] Determined local IP: 172.31.7.94
+[2025-06-04 01:39:16] [INFO] [SIP] 🚀 Launching GB28181 SIP client...
+[2025-06-04 01:39:16] [INFO] [SIP] 🔧 Generating device catalog (thread-safe)...
+[2025-06-04 01:39:16] [INFO] [SCAN] 📁 Scanning directory: /home/ubuntu/rstp/gb28181-restreamer/recordings
+[2025-06-04 01:39:16] [DEBUG] [SCAN] 📂 Scanning subdirectory: /home/ubuntu/rstp/gb28181-restreamer/recordings
+[2025-06-04 01:39:16] [DEBUG] [SCAN] 📁 Found 2 subdirectories: ['2025-05-16', '2025-05-15']
+[2025-06-04 01:39:16] [INFO] [SIP] SIP client started in background thread
+[2025-06-04 01:39:16] [DEBUG] [SCAN] 📄 Found 0 files
+[2025-06-04 01:39:16] [DEBUG] [SCAN] 📂 Scanning subdirectory: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-16
+[2025-06-04 01:39:16] [DEBUG] [SCAN] 📁 Found 0 subdirectories: []
+[2025-06-04 01:39:16] [DEBUG] [SCAN] 📄 Found 4 files
+[2025-06-04 01:39:16] [DEBUG] [SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-16/00-10-10.mp4
+[2025-06-04 01:39:16] [INFO] [SCAN] Found video: 00-10-10.mp4
+[2025-06-04 01:39:16] [DEBUG] [SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-16/14-32-14.mp4
+[2025-06-04 01:39:16] [INFO] [SCAN] Found video: 14-32-14.mp4
+[2025-06-04 01:39:16] [DEBUG] [SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-16/12-30-00.mp4
+[2025-06-04 01:39:16] [INFO] [SCAN] Found video: 12-30-00.mp4
+[2025-06-04 01:39:16] [DEBUG] [SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-16/01-20-30.mp4
+[2025-06-04 01:39:16] [INFO] [SCAN] Found video: 01-20-30.mp4
+[2025-06-04 01:39:16] [DEBUG] [SCAN] 📂 Scanning subdirectory: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15
+[2025-06-04 01:39:16] [DEBUG] [SCAN] 📁 Found 0 subdirectories: []
+[2025-06-04 01:39:16] [DEBUG] [SCAN] 📄 Found 10 files
+[2025-06-04 01:39:16] [DEBUG] [SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/filename_1996.mp4
+[2025-06-04 01:39:16] [INFO] [SCAN] Found video: filename_1996.mp4
+[2025-06-04 01:39:16] [DEBUG] [SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/filename_1997.mp4
+[2025-06-04 01:39:16] [INFO] [SCAN] Found video: filename_1997.mp4
+[2025-06-04 01:39:16] [DEBUG] [SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/filename_1992.mp4
+[2025-06-04 01:39:16] [INFO] [SCAN] Found video: filename_1992.mp4
+[2025-06-04 01:39:16] [DEBUG] [SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/filename_1995.mp4
+[2025-06-04 01:39:16] [INFO] [SCAN] Found video: filename_1995.mp4
+[2025-06-04 01:39:16] [DEBUG] [SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/filename_1993.mp4
+[2025-06-04 01:39:16] [INFO] [SCAN] Found video: filename_1993.mp4
+[2025-06-04 01:39:16] [DEBUG] [SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/filename_1991.mp4
+[2025-06-04 01:39:16] [INFO] [SCAN] Found video: filename_1991.mp4
+[2025-06-04 01:39:16] [DEBUG] [SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/filename_1994.mp4
+[2025-06-04 01:39:16] [INFO] [SCAN] ... (limiting log output, found many more videos)
+[2025-06-04 01:39:16] [DEBUG] [SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/filename_1998.mp4
+[2025-06-04 01:39:16] [DEBUG] [SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/filename_1999.mp4
+[2025-06-04 01:39:16] [DEBUG] [SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/filename_2000.mp4
+[2025-06-04 01:39:16] [INFO] [SCAN] 📊 Scan complete: Found 14 video files out of 14 total files
+[2025-06-04 01:39:16] [INFO] [SIP] Found 14 video files for catalog
+[2025-06-04 01:39:16] [INFO] [SIP] Creating channels from 14 video files
+[2025-06-04 01:39:16] [INFO] [SIP] ✅ Generated device catalog with 14 channels
+[2025-06-04 01:39:16] [DEBUG] [SIP] Channel 1: 810000004650131000001 - 00-10-10
+[2025-06-04 01:39:16] [DEBUG] [SIP] Channel 2: 810000004650131000002 - 14-32-14
+[2025-06-04 01:39:16] [DEBUG] [SIP] Channel 3: 810000004650131000003 - 12-30-00
+[2025-06-04 01:39:16] [DEBUG] [SIP] ... and 11 more channels
+[2025-06-04 01:39:16] [INFO] [SIP] Using transport: udp
+[2025-06-04 01:39:16] [INFO] [SIP] Device ID: 81000000465001000001
+[2025-06-04 01:39:16] [INFO] [SIP] Username: 81000000465001000001
+[2025-06-04 01:39:16] [INFO] [SIP] Server: ai-sip.x-stage.bull-b.com
+[2025-06-04 01:39:16] [INFO] [SIP] Proxy: sip:ai-sip.x-stage.bull-b.com:5060
+[2025-06-04 01:39:16] [INFO] [SIP] Local port: 5080
+[2025-06-04 01:39:16] [INFO] [SIP] Starting pjsua process (attempt 1/3)
+[2025-06-04 01:39:16] [INFO] [SIP] Started PJSUA process with PID: 3130834
+[2025-06-04 01:39:16] [INFO] [SIP] 🔍 Starting PJSUA output monitoring...
+01:39:16.559         sip_endpoint.c !.Module "mod-pjsua-log" registered
+01:39:16.559         sip_endpoint.c  .Module "mod-tsx-layer" registered
+01:39:16.559         sip_endpoint.c  .Module "mod-stateful-util" registered
+01:39:16.559         sip_endpoint.c  .Module "mod-ua" registered
+01:39:16.559         sip_endpoint.c  .Module "mod-100rel" registered
+01:39:16.559         sip_endpoint.c  .Module "mod-pjsua" registered
+01:39:16.559         sip_endpoint.c  .Module "mod-invite" registered
+01:39:16.559                  pjlib  ..select() I/O Queue created (0x59fa924187f8)
+01:39:16.565         sip_endpoint.c  .Module "mod-evsub" registered
+01:39:16.565         sip_endpoint.c  .Module "mod-presence" registered
+01:39:16.565         sip_endpoint.c  .Module "mod-dlg_even" registered
+01:39:16.565         sip_endpoint.c  .Module "mod-mwi" registered
+01:39:16.565         sip_endpoint.c  .Module "mod-refer" registered
+01:39:16.565         sip_endpoint.c  .Module "mod-pjsua-pres" registered
+01:39:16.565         sip_endpoint.c  .Module "mod-pjsua-im" registered
+01:39:16.565         sip_endpoint.c  .Module "mod-pjsua-options" registered
+01:39:16.565           pjsua_core.c  .4 SIP worker threads created
+01:39:16.565           pjsua_core.c  .pjsua version 2.15-dev for Linux-6.8.4.4/x86_64/glibc-2.39 initialized
+01:39:16.565           pjsua_core.c  .PJSUA state changed: CREATED --> INIT
+01:39:16.565         sip_endpoint.c  Module "mod-default-handler" registered
+01:39:16.565           conference.c  .Add port 1 (ringback) queued
+01:39:16.565           conference.c  .Add port 2 (ring) queued
+01:39:16.566           pjsua_core.c  SIP UDP socket reachable at 172.31.7.94:5080
+01:39:16.566      udp0x59fa92476790  SIP UDP transport started, published address is 172.31.7.94:5080
+01:39:16.566            pjsua_acc.c  Adding account: id=<sip:172.31.7.94:5080>
+01:39:16.566            pjsua_acc.c  .Account <sip:172.31.7.94:5080> added with id 0
+01:39:16.566            pjsua_acc.c  Modifying account 0
+01:39:16.566            pjsua_acc.c  Acc 0: setting online status to 1..
+01:39:16.566            pjsua_acc.c  Adding account: id=sip:81000000465001000001@ai-sip.x-stage.bull-b.com
+01:39:16.566            pjsua_acc.c  .Account sip:81000000465001000001@ai-sip.x-stage.bull-b.com added with id 1
+01:39:16.566            pjsua_acc.c  .Acc 1: setting registration..
+01:39:16.566            pjsua_acc.c  ..Contact for acc 1 updated: <sip:81000000465001000001@172.31.7.94:5080;ob>
+01:39:16.567           pjsua_core.c  ...TX 645 bytes Request msg REGISTER/cseq=45241 (tdta0x59fa9247c2b0) to UDP 203.142.93.131:5060:
+[2025-06-04 01:39:16] [DEBUG] [SIP] SIP traffic: 01:39:16.567           pjsua_core.c  ...TX 645 bytes Request msg REGISTER/cseq=45241 (tdta0x59fa9247c2b0) to UDP 203.142.93.131:5060:
+REGISTER sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+Via: SIP/2.0/UDP 172.31.7.94:5080;rport;branch=z9hG4bKPjfbce3ad2-8cec-4296-88bc-3efeb87fced4
+Max-Forwards: 70
+From: <sip:81000000465001000001@ai-sip.x-stage.bull-b.com>;tag=62508d4e-ada5-46b8-9d57-160697d69b63
+To: <sip:81000000465001000001@ai-sip.x-stage.bull-b.com>
+Call-ID: 46104ef2-f015-47b4-a7ea-8c6b4e357de9
+CSeq: 45241 REGISTER
+User-Agent: PJSUA/v2.15-dev Linux-6.8.4.4 x86_64 glibc-2.39
+Contact: <sip:81000000465001000001@172.31.7.94:5080;ob>
+Expires: 300
+Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+[2025-06-04 01:39:16] [INFO] [SIP] 🔍 DEBUG: MESSAGE line detected: Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+Content-Length:  0
+
+
+--end msg--
+01:39:16.567            pjsua_acc.c  ..Acc 1: Registration sent
+01:39:16.567            pjsua_acc.c  Acc 1: setting online status to 1..
+[2025-06-04 01:39:16] [DEBUG] [SIP] Processed 50 lines from PJSUA
+01:39:16.567            pjsua_aud.c  Setting null sound device..
+01:39:16.567            pjsua_app.c  .Turning sound device -99 -99 ON
+[2025-06-04 01:39:16] [DEBUG] [SIP] 🔍 DEBUG: pjsua_app.c line: 01:39:16.567            pjsua_app.c  .Turning sound device -99 -99 ON
+01:39:16.567            pjsua_aud.c  .Opening null sound device..
+01:39:16.567           pjsua_core.c  PJSUA state changed: INIT --> STARTING
+01:39:16.567         sip_endpoint.c  .Module "mod-unsolicited-mwi" registered
+01:39:16.567           pjsua_core.c  .PJSUA state changed: STARTING --> RUNNING
+01:39:16.567                 main.c  Ready: Success
+>>>>
+Account list:
+[ 0] <sip:172.31.7.94:5080>: does not register
+Online status: Online
+*[ 1] sip:81000000465001000001@ai-sip.x-stage.bull-b.com: 100/In Progress (expires=0)
+Online status: Online
+Buddy list:
+-none-
+
++=============================================================================+
+|       Call Commands:         |   Buddy, IM & Presence:  |     Account:      |
+|                              |                          |                   |
+|  m  Make new call            | +b  Add new buddy        | +a  Add new accnt.|
+|  M  Make multiple calls      | -b  Delete buddy         | -a  Delete accnt. |
+|  a  Answer call              |  i  Send IM              | !a  Modify accnt. |
+|  h  Hangup call  (ha=all)    |  s  Subscribe presence   | rr  (Re-)register |
+|  H  Hold call                |  u  Unsubscribe presence | ru  Unregister    |
+|  o Toggle call SDP offer     |  D  Subscribe dlg event  |                   |
+|                              |  Du Unsub dlg event      |                   |
+|  v  re-inVite (release hold) |  t  Toggle online status |  >  Cycle next ac.|
+|  U  send UPDATE              |  T  Set online status    |  <  Cycle prev ac.|
+| ],[ Select next/prev call    +--------------------------+-------------------+
+|  x  Xfer call                |      Media Commands:     |  Status & Config: |
+|  X  Xfer with Replaces       |                          |                   |
+|  #  Send RFC 2833 DTMF       | cl  List ports           |  d  Dump status   |
+|  *  Send DTMF with INFO      | cc  Connect port         | dd  Dump detailed |
+| rt  Send real-time text      | cd  Disconnect port      | dc  Dump config   |
+| dq  Dump curr. call quality  |  V  Adjust audio Volume  |  f  Save config   |
+|  S  Send arbitrary REQUEST   | Cp  Codec priorities     |                   |
++-----------------------------------------------------------------------------+
+|  q  QUIT      L  ReLoad       I  IP change     n  detect NAT type           |
+|  sleep MS     echo [0|1|txt]                                                |
++=============================================================================+
+You have 0 active call
+>>> 01:39:16.586           conference.c !.Added port 1 (ringback), port count=2
+01:39:16.586           conference.c  .Added port 2 (ring), port count=3
+01:39:16.826           pjsua_core.c !.RX 528 bytes Response msg 401/REGISTER/cseq=45241 (rdata0x59fa92478218) from UDP 203.142.93.131:5060:
+[2025-06-04 01:39:17] [DEBUG] [SIP] SIP traffic: 01:39:16.826           pjsua_core.c !.RX 528 bytes Response msg 401/REGISTER/cseq=45241 (rdata0x59fa92478218) from UDP 203.142.93.131:5060:
+SIP/2.0 401 Unauthorized
+[2025-06-04 01:39:17] [DEBUG] [SIP] SIP response: SIP/2.0 401 Unauthorized
+CSeq: 45241 REGISTER
+Call-ID: 46104ef2-f015-47b4-a7ea-8c6b4e357de9
+From: <sip:81000000465001000001@ai-sip.x-stage.bull-b.com>;tag=62508d4e-ada5-46b8-9d57-160697d69b63
+To: <sip:81000000465001000001@ai-sip.x-stage.bull-b.com>
+Via: SIP/2.0/UDP 172.31.7.94:5080;rport=5080;branch=z9hG4bKPjfbce3ad2-8cec-4296-88bc-3efeb87fced4;received=13.50.108.195
+[2025-06-04 01:39:17] [DEBUG] [SIP] Processed 100 lines from PJSUA
+WWW-Authenticate: Digest realm="81000000",qop="auth",nonce="201d04db3ea72a97042c82f2a4cfd573",algorithm=MD5
+User-Agent: WVP-Pro
+Content-Length: 0
+
+
+--end msg--
+01:39:16.827           pjsua_core.c  ....TX 930 bytes Request msg REGISTER/cseq=45242 (tdta0x59fa9247c2b0) to UDP 203.142.93.131:5060:
+[2025-06-04 01:39:17] [DEBUG] [SIP] SIP traffic: 01:39:16.827           pjsua_core.c  ....TX 930 bytes Request msg REGISTER/cseq=45242 (tdta0x59fa9247c2b0) to UDP 203.142.93.131:5060:
+REGISTER sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+Via: SIP/2.0/UDP 13.50.108.195:5080;rport;branch=z9hG4bKPj2b4238cf-adab-43fd-8553-0d045780e339
+Max-Forwards: 70
+From: <sip:81000000465001000001@ai-sip.x-stage.bull-b.com>;tag=62508d4e-ada5-46b8-9d57-160697d69b63
+To: <sip:81000000465001000001@ai-sip.x-stage.bull-b.com>
+Call-ID: 46104ef2-f015-47b4-a7ea-8c6b4e357de9
+CSeq: 45242 REGISTER
+User-Agent: PJSUA/v2.15-dev Linux-6.8.4.4 x86_64 glibc-2.39
+Contact: <sip:81000000465001000001@172.31.7.94:5080;ob>
+Expires: 300
+Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+[2025-06-04 01:39:17] [INFO] [SIP] 🔍 DEBUG: MESSAGE line detected: Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+Authorization: Digest username="81000000465001000001", realm="81000000", nonce="201d04db3ea72a97042c82f2a4cfd573", uri="sip:ai-sip.x-stage.bull-b.com:5060", response="1821ab560e8d3c9917a10137cbe3d5ce", algorithm=MD5, cnonce="af9b8e7c4e11437888c78f7eb4beeeeb", qop=auth, nc=00000001
+Content-Length:  0
+
+
+--end msg--
+01:39:17.054           pjsua_core.c !.RX 513 bytes Response msg 200/REGISTER/cseq=45242 (rdata0x731290001d78) from UDP 203.142.93.131:5060:
+[2025-06-04 01:39:17] [DEBUG] [SIP] SIP traffic: 01:39:17.054           pjsua_core.c !.RX 513 bytes Response msg 200/REGISTER/cseq=45242 (rdata0x731290001d78) from UDP 203.142.93.131:5060:
+SIP/2.0 200 OK
+[2025-06-04 01:39:17] [DEBUG] [SIP] SIP response: SIP/2.0 200 OK
+CSeq: 45242 REGISTER
+Call-ID: 46104ef2-f015-47b4-a7ea-8c6b4e357de9
+From: <sip:81000000465001000001@ai-sip.x-stage.bull-b.com>;tag=62508d4e-ada5-46b8-9d57-160697d69b63
+To: <sip:81000000465001000001@ai-sip.x-stage.bull-b.com>
+Via: SIP/2.0/UDP 13.50.108.195:5080;rport=5080;branch=z9hG4bKPj2b4238cf-adab-43fd-8553-0d045780e339;received=13.50.108.195
+Date: 2025-06-04T09:39:16.921
+Contact: <sip:81000000465001000001@172.31.7.94:5080;ob>
+Expires: 300
+User-Agent: WVP-Pro
+Content-Length: 0
+
+
+--end msg--
+01:39:17.055            pjsua_acc.c  ....SIP outbound status for acc 1 is not active
+01:39:17.055            pjsua_acc.c  ....Service-Route updated for acc 1 with 0 URI(s)
+01:39:17.055            pjsua_acc.c  ....sip:81000000465001000001@ai-sip.x-stage.bull-b.com: registration success, status=200 (OK), will re-register in 300 seconds
+01:39:17.055            pjsua_acc.c  ....Keep-alive timer started for acc 1, destination:203.142.93.131:5060, interval:14s
+[2025-06-04 01:39:17] [DEBUG] [SIP] Keep-alive message
+01:39:17.240           pjsua_core.c !.RX 580 bytes Request msg MESSAGE/cseq=375 (rdata0x731288000b98) from UDP 203.142.93.131:5060:
+[2025-06-04 01:39:17] [INFO] [SIP] 🔍 DEBUG: MESSAGE line detected: 01:39:17.240           pjsua_core.c !.RX 580 bytes Request msg MESSAGE/cseq=375 (rdata0x731288000b98) from UDP 203.142.93.131:5060:
+[2025-06-04 01:39:17] [INFO] [SIP] 🎯 Direct PJSUA XML capture - detected MESSAGE line: 01:39:17.240           pjsua_core.c !.RX 580 bytes Request msg MESSAGE/cseq=375 (rdata0x731288000b98) from UDP 203.142.93.131:5060:
+MESSAGE sip:81000000465001000001@13.50.108.195:5080 SIP/2.0
+[2025-06-04 01:39:17] [INFO] [SIP] 🔍 DEBUG: MESSAGE line detected: MESSAGE sip:81000000465001000001@13.50.108.195:5080 SIP/2.0
+Call-ID: b0faba93d64d333d36b3e44ef854898a@0.0.0.0
+CSeq: 375 MESSAGE
+[2025-06-04 01:39:17] [INFO] [SIP] 🔍 DEBUG: MESSAGE line detected: CSeq: 375 MESSAGE
+From: <sip:81000000462001888888@81000000>;tag=9c4b2022d01a42a7871d6b922e429317
+To: <sip:81000000465001000001@13.50.108.195:5080>
+Via: SIP/2.0/UDP 0.0.0.0:5060;branch=z9hG4bK7613692480;rport
+Max-Forwards: 70
+[2025-06-04 01:39:17] [DEBUG] [SIP] Processed 150 lines from PJSUA
+User-Agent: WVP-Pro
+Content-Type: Application/MANSCDP+xml
+Content-Length: 154
+
+<?xml version="1.0" encoding="GB2312"?>
+<Query>
+<CmdType>Catalog</CmdType>
+<SN>842525</SN>
+<DeviceID>81000000465001000001</DeviceID>
+</Query>
+
+--end msg--
+01:39:17.240           pjsua_core.c  ..TX 347 bytes Response msg 200/MESSAGE/cseq=375 (tdta0x73128c000c20) to UDP 203.142.93.131:5060:
+[2025-06-04 01:39:17] [INFO] [SIP] 🔍 DEBUG: MESSAGE line detected: 01:39:17.240           pjsua_core.c  ..TX 347 bytes Response msg 200/MESSAGE/cseq=375 (tdta0x73128c000c20) to UDP 203.142.93.131:5060:
+[2025-06-04 01:39:17] [DEBUG] [SIP] SIP traffic: 01:39:17.240           pjsua_core.c  ..TX 347 bytes Response msg 200/MESSAGE/cseq=375 (tdta0x73128c000c20) to UDP 203.142.93.131:5060:
+SIP/2.0 200 OK
+[2025-06-04 01:39:17] [DEBUG] [SIP] SIP response: SIP/2.0 200 OK
+Via: SIP/2.0/UDP 0.0.0.0:5060;rport=5060;received=203.142.93.131;branch=z9hG4bK7613692480
+Call-ID: b0faba93d64d333d36b3e44ef854898a@0.0.0.0
+[2025-06-04 01:39:18] [INFO] [RECORD] Starting recording manager (this will scan files in background)...
+[2025-06-04 01:39:18] [INFO] [REC-MANAGER] Starting asynchronous recording scan
+[2025-06-04 01:39:18] [INFO] [REC-MANAGER] Starting async scan with CPU throttling for better SIP performance
+[2025-06-04 01:39:18] [INFO] [REC-MANAGER] Scanning recordings directory with CPU throttling
+[2025-06-04 01:39:18] [INFO] [RECORD] Recording manager initialized with async scanning
+[2025-06-04 01:39:18] [INFO] [RECORD] Initial scan status: 0 files cached, scanning=True
+[2025-06-04 01:39:18] [INFO] [STATUS] Starting periodic status monitoring
+[2025-06-04 01:39:18] [INFO] [MAIN] Monitoring SIP client health...
+[2025-06-04 01:39:18] [INFO] [STATUS] Active streams: 0
+[2025-06-04 01:39:18] [INFO] [STATUS] Recording scan in progress: 0 files found
+[2025-06-04 01:39:19] [INFO] [REC-MANAGER] Processing file 10: filename_1991.mp4
+[2025-06-04 01:39:20] [INFO] [REC-MANAGER] Scan complete: 14 total files, 14 processed, 0 skipped
+[2025-06-04 01:40:18] [INFO] [STATUS] Active streams: 0
+[2025-06-04 01:40:18] [INFO] [STATUS] Recording scan complete: 14 files cached
+[2025-06-04 01:41:18] [INFO] [STATUS] Active streams: 0
+[2025-06-04 01:41:18] [INFO] [STATUS] Recording scan complete: 14 files cached
+From: <sip:81000000462001888888@81000000>;tag=9c4b2022d01a42a7871d6b922e429317
+To: <sip:81000000465001000001@13.50.108.195>;tag=z9hG4bK7613692480
+CSeq: 375 MESSAGE
+[2025-06-04 01:42:16] [INFO] [SIP] 🔍 DEBUG: MESSAGE line detected: CSeq: 375 MESSAGE
+Content-Length:  0
+
+
+--end msg--
+01:39:17.240            pjsua_app.c  .MESSAGE from <sip:81000000462001888888@81000000>: <?xml version="1.0" encoding="GB2312"?>
+[2025-06-04 01:42:16] [INFO] [SIP] 🔍 DEBUG: MESSAGE line detected: 01:39:17.240            pjsua_app.c  .MESSAGE from <sip:81000000462001888888@81000000>: <?xml version="1.0" encoding="GB2312"?>
+[2025-06-04 01:42:16] [DEBUG] [SIP] 🔍 DEBUG: pjsua_app.c line: 01:39:17.240            pjsua_app.c  .MESSAGE from <sip:81000000462001888888@81000000>: <?xml version="1.0" encoding="GB2312"?>
+[2025-06-04 01:42:16] [INFO] [SIP] 🎯 Direct PJSUA XML capture - detected MESSAGE line: 01:39:17.240            pjsua_app.c  .MESSAGE from <sip:81000000462001888888@81000000>: <?xml version="1.0" encoding="GB2312"?>
+[2025-06-04 01:42:16] [DEBUG] [SIP] 📝 Found XML on MESSAGE line: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+[2025-06-04 01:42:16] [DEBUG] [SIP] 📝 Added XML line: <Query>
+<CmdType>Catalog</CmdType>
+[2025-06-04 01:42:16] [DEBUG] [SIP] 📝 Added XML line: <CmdType>Catalog</CmdType>
+<SN>842525</SN>
+[2025-06-04 01:42:16] [DEBUG] [SIP] 📝 Added XML line: <SN>842525</SN>
+<DeviceID>81000000465001000001</DeviceID>
+[2025-06-04 01:42:16] [DEBUG] [SIP] 📝 Added XML line: <DeviceID>81000000465001000001</DeviceID>
+</Query>
+[2025-06-04 01:42:16] [DEBUG] [SIP] 📝 Added XML line: </Query>
+[2025-06-04 01:42:16] [INFO] [SIP] ✅ PJSUA XML collection complete (end tag): 141 characters
+[2025-06-04 01:42:16] [DEBUG] [SIP] Complete XML: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+<CmdType>Catalog</CmdType>
+<SN>842525</SN>
+<DeviceID>81000000465001000001</DeviceID>
+</Query>
+[2025-06-04 01:42:16] [INFO] [SIP] ✅ Processing XML content (141 bytes)
+[2025-06-04 01:42:16] [DEBUG] [SIP] XML content preview: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+<CmdType>Catalog</CmdType>
+<SN>842525</SN>
+<DeviceID>81000000465001000001</DeviceID>
+</Query>...
+[2025-06-04 01:42:16] [INFO] [SIP] ✅ Successfully parsed Query message with CmdType: Catalog
+[2025-06-04 01:42:16] [INFO] [SIP] 📂 Processing Catalog query - will send device catalog
+[2025-06-04 01:42:16] [INFO] [SIP] 🔍 Processing catalog query from platform (thread-safe)
+[2025-06-04 01:42:16] [DEBUG] [SIP] Extracted raw Catalog XML: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+<CmdType>Catalog</CmdType>
+<SN>842525</SN>
+<DeviceID>81000000465001000001</DeviceID>
+</Query>...
+[2025-06-04 01:42:16] [INFO] ✅ Valid catalog query confirmed (SN: 842525), processing...
+[2025-06-04 01:42:16] [INFO] [SIP] Using cached device catalog with 14 channels
+[2025-06-04 01:42:16] [INFO] [SIP] 📂 Generated WVP-compatible catalog with 14 channels + 1 parent device (total: 15) using cached data
+[2025-06-04 01:42:16] [DEBUG] [SIP] Catalog XML preview: <?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>842525</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>15</SumNum>
+  <DeviceList Num="15">
+    <Item>
+      <DeviceID>81000000465001000001</DeviceID>
+      <Name>GB28181-Restreamer</Name>
+      <Manufacturer>GB28181-RestreamerProject</Manufacturer>
+      <Model>Restreamer-1.0</Model>
+      <Owner>gb28181-restreamer</Owner>
+      <CivilCode>810000</CivilCode>
+      <Block>8100000...
+[2025-06-04 01:42:16] [INFO] [SIP] 📂 Generated catalog response with 14 channels
+[2025-06-04 01:42:16] [DEBUG] [SIP] 💾 Saved response to catalog_response_sn_842525.xml
+[2025-06-04 01:42:16] [INFO] [SIP] ✅ Sending catalog response to WVP platform
+[2025-06-04 01:42:16] [INFO] [SIP] 📤 Sending catalog response (SN: 842525) via UDP method
+[2025-06-04 01:42:16] [INFO] [SIP] 📡 Sending catalog response (SN: 842525) via UDP fallback
+[2025-06-04 01:42:16] [INFO] [SIP] ✅ UDP fallback successful for SN: 842525
+[2025-06-04 01:42:16] [INFO] [SIP] ✅ Catalog response sent successfully
+(Application/MANSCDP+xml)
+01:39:17.567            pjsua_aud.c !Closing sound device after idle for 1 second(s)
+01:39:17.567            pjsua_app.c  .Turning sound device -99 -99 OFF
+[2025-06-04 01:42:16] [DEBUG] [SIP] 🔍 DEBUG: pjsua_app.c line: 01:39:17.567            pjsua_app.c  .Turning sound device -99 -99 OFF
+01:39:17.567            pjsua_aud.c  .Closing null sound device..
+01:39:55.846           pjsua_core.c !.RX 516 bytes Request msg MESSAGE/cseq=213 (rdata0x73128c004728) from UDP 172.31.7.94:47953:
+[2025-06-04 01:42:16] [INFO] [SIP] 🔍 DEBUG: MESSAGE line detected: 01:39:55.846           pjsua_core.c !.RX 516 bytes Request msg MESSAGE/cseq=213 (rdata0x73128c004728) from UDP 172.31.7.94:47953:
+[2025-06-04 01:42:16] [INFO] [SIP] 🎯 Direct PJSUA XML capture - detected MESSAGE line: 01:39:55.846           pjsua_core.c !.RX 516 bytes Request msg MESSAGE/cseq=213 (rdata0x73128c004728) from UDP 172.31.7.94:47953:
+MESSAGE sip:81000000465001000001@172.31.7.94:5080 SIP/2.0
+[2025-06-04 01:42:16] [INFO] [SIP] 🔍 DEBUG: MESSAGE line detected: MESSAGE sip:81000000465001000001@172.31.7.94:5080 SIP/2.0
+Via: SIP/2.0/UDP 127.0.0.1:6060;rport;branch=z9hG4bK-test-1749001195
+Max-Forwards: 70
+From: <sip:test@127.0.0.1:6060>;tag=test-1749001195
+To: <sip:81000000465001000001@172.31.7.94:5080>
+Call-ID: test-1749001195-2482
+CSeq: 213 MESSAGE
+[2025-06-04 01:42:16] [INFO] [SIP] 🔍 DEBUG: MESSAGE line detected: CSeq: 213 MESSAGE
+User-Agent: Manual-Test
+Content-Type: Application/MANSCDP+xml
+Content-Length: 141
+
+<?xml version="1.0" encoding="GB2312"?>
+<Query>
+<CmdType>Catalog</CmdType>
+<SN>182114</SN>
+<DeviceID>81000000465001000001</DeviceID>
+[2025-06-04 01:42:16] [DEBUG] [SIP] Processed 200 lines from PJSUA
+</Query>
+--end msg--
+01:39:55.846           pjsua_core.c  ..TX 305 bytes Response msg 200/MESSAGE/cseq=213 (tdta0x73128c000c20) to UDP 172.31.7.94:47953:
+[2025-06-04 01:42:16] [INFO] [SIP] 🔍 DEBUG: MESSAGE line detected: 01:39:55.846           pjsua_core.c  ..TX 305 bytes Response msg 200/MESSAGE/cseq=213 (tdta0x73128c000c20) to UDP 172.31.7.94:47953:
+[2025-06-04 01:42:16] [DEBUG] [SIP] SIP traffic: 01:39:55.846           pjsua_core.c  ..TX 305 bytes Response msg 200/MESSAGE/cseq=213 (tdta0x73128c000c20) to UDP 172.31.7.94:47953:
+SIP/2.0 200 OK
+[2025-06-04 01:42:16] [DEBUG] [SIP] SIP response: SIP/2.0 200 OK
+Via: SIP/2.0/UDP 127.0.0.1:6060;rport=47953;received=172.31.7.94;branch=z9hG4bK-test-1749001195
+Call-ID: test-1749001195-2482
+From: <sip:test@127.0.0.1>;tag=test-1749001195
+To: <sip:81000000465001000001@172.31.7.94>;tag=z9hG4bK-test-1749001195
+CSeq: 213 MESSAGE
+[2025-06-04 01:42:16] [INFO] [SIP] 🔍 DEBUG: MESSAGE line detected: CSeq: 213 MESSAGE
+Content-Length:  0
+
+
+--end msg--
+01:39:55.846            pjsua_app.c  .MESSAGE from <sip:test@127.0.0.1>: <?xml version="1.0" encoding="GB2312"?>
+[2025-06-04 01:42:16] [INFO] [SIP] 🔍 DEBUG: MESSAGE line detected: 01:39:55.846            pjsua_app.c  .MESSAGE from <sip:test@127.0.0.1>: <?xml version="1.0" encoding="GB2312"?>
+[2025-06-04 01:42:16] [DEBUG] [SIP] 🔍 DEBUG: pjsua_app.c line: 01:39:55.846            pjsua_app.c  .MESSAGE from <sip:test@127.0.0.1>: <?xml version="1.0" encoding="GB2312"?>
+[2025-06-04 01:42:16] [INFO] [SIP] 🎯 Direct PJSUA XML capture - detected MESSAGE line: 01:39:55.846            pjsua_app.c  .MESSAGE from <sip:test@127.0.0.1>: <?xml version="1.0" encoding="GB2312"?>
+[2025-06-04 01:42:16] [DEBUG] [SIP] 📝 Found XML on MESSAGE line: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+[2025-06-04 01:42:16] [DEBUG] [SIP] 📝 Added XML line: <Query>
+<CmdType>Catalog</CmdType>
+[2025-06-04 01:42:16] [DEBUG] [SIP] 📝 Added XML line: <CmdType>Catalog</CmdType>
+<SN>182114</SN>
+[2025-06-04 01:42:16] [DEBUG] [SIP] 📝 Added XML line: <SN>182114</SN>
+<DeviceID>81000000465001000001</DeviceID>
+[2025-06-04 01:42:16] [DEBUG] [SIP] 📝 Added XML line: <DeviceID>81000000465001000001</DeviceID>
+</Query> (Application/MANSCDP+xml)
+[2025-06-04 01:42:16] [DEBUG] [SIP] 📝 Added XML line: </Query> (Application/MANSCDP+xml)
+01:40:50.210           pjsua_core.c  .RX 516 bytes Request msg MESSAGE/cseq=925 (rdata0x73128c004728) from UDP 172.31.7.94:53398:
+[2025-06-04 01:42:16] [INFO] [SIP] 🔍 DEBUG: MESSAGE line detected: 01:40:50.210           pjsua_core.c  .RX 516 bytes Request msg MESSAGE/cseq=925 (rdata0x73128c004728) from UDP 172.31.7.94:53398:
+[2025-06-04 01:42:16] [INFO] [SIP] 🎯 Direct PJSUA XML capture - detected MESSAGE line: 01:40:50.210           pjsua_core.c  .RX 516 bytes Request msg MESSAGE/cseq=925 (rdata0x73128c004728) from UDP 172.31.7.94:53398:
+MESSAGE sip:81000000465001000001@172.31.7.94:5080 SIP/2.0
+[2025-06-04 01:42:16] [INFO] [SIP] 🔍 DEBUG: MESSAGE line detected: MESSAGE sip:81000000465001000001@172.31.7.94:5080 SIP/2.0
+Via: SIP/2.0/UDP 127.0.0.1:6060;rport;branch=z9hG4bK-test-1749001250
+Max-Forwards: 70
+From: <sip:test@127.0.0.1:6060>;tag=test-1749001250
+To: <sip:81000000465001000001@172.31.7.94:5080>
+Call-ID: test-1749001250-3665
+CSeq: 925 MESSAGE
+[2025-06-04 01:42:16] [INFO] [SIP] 🔍 DEBUG: MESSAGE line detected: CSeq: 925 MESSAGE
+User-Agent: Manual-Test
+Content-Type: Application/MANSCDP+xml
+Content-Length: 141
+
+<?xml version="1.0" encoding="GB2312"?>
+<Query>
+<CmdType>Catalog</CmdType>
+<SN>809753</SN>
+<DeviceID>81000000465001000001</DeviceID>
+</Query>
+--end msg--
+01:40:50.210           pjsua_core.c  ..TX 305 bytes Response msg 200/MESSAGE/cseq=925 (tdta0x73128c000c20) to UDP 172.31.7.94:53398:
+[2025-06-04 01:42:16] [INFO] [SIP] 🔍 DEBUG: MESSAGE line detected: 01:40:50.210           pjsua_core.c  ..TX 305 bytes Response msg 200/MESSAGE/cseq=925 (tdta0x73128c000c20) to UDP 172.31.7.94:53398:
+[2025-06-04 01:42:16] [DEBUG] [SIP] SIP traffic: 01:40:50.210           pjsua_core.c  ..TX 305 bytes Response msg 200/MESSAGE/cseq=925 (tdta0x73128c000c20) to UDP 172.31.7.94:53398:
+SIP/2.0 200 OK
+[2025-06-04 01:42:16] [DEBUG] [SIP] SIP response: SIP/2.0 200 OK
+Via: SIP/2.0/UDP 127.0.0.1:6060;rport=53398;received=172.31.7.94;branch=z9hG4bK-test-1749001250
+Call-ID: test-1749001250-3665
+From: <sip:test@127.0.0.1>;tag=test-1749001250
+To: <sip:81000000465001000001@172.31.7.94>;tag=z9hG4bK-test-1749001250
+CSeq: 925 MESSAGE
+[2025-06-04 01:42:16] [INFO] [SIP] 🔍 DEBUG: MESSAGE line detected: CSeq: 925 MESSAGE
+Content-Length:  0
+
+
+--end msg--
+01:40:50.210            pjsua_app.c  .MESSAGE from <sip:test@127.0.0.1>: <?xml version="1.0" encoding="GB2312"?>
+[2025-06-04 01:42:16] [DEBUG] [SIP] Processed 250 lines from PJSUA
+[2025-06-04 01:42:16] [INFO] [SIP] 🔍 DEBUG: MESSAGE line detected: 01:40:50.210            pjsua_app.c  .MESSAGE from <sip:test@127.0.0.1>: <?xml version="1.0" encoding="GB2312"?>
+[2025-06-04 01:42:16] [DEBUG] [SIP] 🔍 DEBUG: pjsua_app.c line: 01:40:50.210            pjsua_app.c  .MESSAGE from <sip:test@127.0.0.1>: <?xml version="1.0" encoding="GB2312"?>
+[2025-06-04 01:42:16] [INFO] [SIP] 🎯 Direct PJSUA XML capture - detected MESSAGE line: 01:40:50.210            pjsua_app.c  .MESSAGE from <sip:test@127.0.0.1>: <?xml version="1.0" encoding="GB2312"?>
+[2025-06-04 01:42:16] [DEBUG] [SIP] 📝 Found XML on MESSAGE line: <?xml version="1.0" encoding="GB2312"?>
+<Query>
+[2025-06-04 01:42:16] [DEBUG] [SIP] 📝 Added XML line: <Query>
+<CmdType>Catalog</CmdType>
+[2025-06-04 01:42:16] [DEBUG] [SIP] 📝 Added XML line: <CmdType>Catalog</CmdType>
+<SN>809753</SN>
+[2025-06-04 01:42:16] [DEBUG] [SIP] 📝 Added XML line: <SN>809753</SN>
+<DeviceID>81000000465001000001</DeviceID>
+[2025-06-04 01:42:16] [DEBUG] [SIP] 📝 Added XML line: <DeviceID>81000000465001000001</DeviceID>
+</Query> (Application/MANSCDP+xml)
+[2025-06-04 01:42:16] [DEBUG] [SIP] 📝 Added XML line: </Query> (Application/MANSCDP+xml)
+01:42:16.092           pjsua_core.c !.RX 580 bytes Request msg MESSAGE/cseq=377 (rdata0x73128c002bf8) from UDP 203.142.93.131:5060:
+[2025-06-04 01:42:16] [INFO] [SIP] 🔍 DEBUG: MESSAGE line detected: 01:42:16.092           pjsua_core.c !.RX 580 bytes Request msg MESSAGE/cseq=377 (rdata0x73128c002bf8) from UDP 203.142.93.131:5060:
+[2025-06-04 01:42:16] [INFO] [SIP] 🎯 Direct PJSUA XML capture - detected MESSAGE line: 01:42:16.092           pjsua_core.c !.RX 580 bytes Request msg MESSAGE/cseq=377 (rdata0x73128c002bf8) from UDP 203.142.93.131:5060:
+MESSAGE sip:81000000465001000001@13.50.108.195:5080 SIP/2.0
+[2025-06-04 01:42:16] [INFO] [SIP] 🔍 DEBUG: MESSAGE line detected: MESSAGE sip:81000000465001000001@13.50.108.195:5080 SIP/2.0
+Call-ID: a19999cc277001ab43301c75f040546e@0.0.0.0
+CSeq: 377 MESSAGE
+[2025-06-04 01:42:16] [INFO] [SIP] 🔍 DEBUG: MESSAGE line detected: CSeq: 377 MESSAGE
+From: <sip:81000000462001888888@81000000>;tag=52a4fc508ff947edaa9bf450fa66fc19
+To: <sip:81000000465001000001@13.50.108.195:5080>
+Via: SIP/2.0/UDP 0.0.0.0:5060;branch=z9hG4bK4364140213;rport
+Max-Forwards: 70
+User-Agent: WVP-Pro
+Content-Type: Application/MANSCDP+xml
+Content-Length: 154
+
+<?xml version="1.0" encoding="GB2312"?>
+<Query>
+<CmdType>Catalog</CmdType>
+<SN>865940</SN>
+<DeviceID>81000000465001000001</DeviceID>
+</Query>
+
+--end msg--
+[2025-06-04 01:42:18] [INFO] [STATUS] Active streams: 0
+[2025-06-04 01:42:18] [INFO] [STATUS] Recording scan complete: 14 files cached
+[2025-06-04 01:42:41] [WARNING] [SHUTDOWN] Caught signal 15. Initiating graceful shutdown...
+[2025-06-04 01:42:41] [WARNING] [SHUTDOWN] Cleaning up resources...
+[2025-06-04 01:42:41] [INFO] [SHUTDOWN] Stopping SIP client...
+[2025-06-04 01:42:41] [INFO] [SIP] Stopping all streams and SIP client...
+[2025-06-04 01:42:41] [INFO] [STREAM] Media streamer shut down
+[2025-06-04 01:42:41] [INFO] [SIP] Attempting graceful pjsua termination...
+[2025-06-04 01:42:41] [INFO] [SIP] PJSUA output handler finished after processing 275 lines
+[2025-06-04 01:42:41] [WARNING] [SIP] pjsua process exited normally
+[2025-06-04 01:42:41] [WARNING] [SIP] SIP client listen loop has ended
+[2025-06-04 01:42:41] [INFO] [SIP] PJSUA process terminated gracefully
+[2025-06-04 01:42:41] [INFO] [SIP] SIP client stopped and cleanup completed
+[2025-06-04 01:42:41] [INFO] [SHUTDOWN] Stopping all RTSP streams...
+[2025-06-04 01:42:41] [INFO] [RTSP] Stopping all 0 streams
+[2025-06-04 01:42:41] [INFO] [RTSP] All streams stopped
+[2025-06-04 01:42:41] [INFO] [SHUTDOWN] Stopping media streamer...
+[2025-06-04 01:42:41] [INFO] [STREAM] Media streamer shut down
+[2025-06-04 01:42:41] [INFO] [SHUTDOWN] Cleanup complete
+[2025-06-04 01:42:41] [WARNING] [SHUTDOWN] Cleaning up resources...
+[2025-06-04 01:42:41] [INFO] [SHUTDOWN] Stopping SIP client...
+[2025-06-04 01:42:41] [INFO] [SIP] Stopping all streams and SIP client...
+[2025-06-04 01:42:41] [INFO] [STREAM] Media streamer shut down
+[2025-06-04 01:42:41] [DEBUG] [SIP] Error closing pipes: [Errno 9] Bad file descriptor
+[2025-06-04 01:42:41] [INFO] [SIP] SIP client stopped and cleanup completed
+[2025-06-04 01:42:41] [INFO] [SHUTDOWN] Stopping all RTSP streams...
+[2025-06-04 01:42:41] [INFO] [RTSP] Stopping all 0 streams
+[2025-06-04 01:42:41] [INFO] [RTSP] All streams stopped
+[2025-06-04 01:42:41] [INFO] [SHUTDOWN] Stopping media streamer...
+[2025-06-04 01:42:41] [INFO] [STREAM] Media streamer shut down
+[2025-06-04 01:42:41] [INFO] [SHUTDOWN] Cleanup complete
+Command 'python' not found, did you mean:
+  command 'python3' from deb python3
+  command 'python' from deb python-is-python3

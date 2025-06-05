@@ -1,0 +1,11 @@
+{
+  "timestamp": "2025-06-03T23:31:22.290389",
+  "config": {
+    "server": "ai-sip.x-stage.bull-b.com",
+    "port": 5060,
+    "device_id": "81000000465001000001",
+    "username": "81000000465001000001",
+    "local_port": 5080
+  },
+  "messages": []
+}

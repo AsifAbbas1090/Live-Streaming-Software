@@ -1,0 +1,747 @@
+2025-06-05 00:00:00.001 [schedule] INFO  com.genersoft.iot.vmp.conf.CloudRecordTimer:38 - [录像文件定时清理] 开始清理过期录像文件
+2025-06-05 00:00:00.018 [schedule] INFO  c.g.iot.vmp.media.zlm.ZLMMediaNodeServerService:165 - [zlm-deleteRecordDirectory] 删除磁盘文件, server: your_server_id rtp:81000000465001000601_81000000465001000601->2025-05-27/2025-05-27-16-09-26-0.mp4
+2025-06-05 00:00:00.042 [schedule] WARN  com.genersoft.iot.vmp.conf.CloudRecordTimer:67 - [录像文件定时清理] 删除磁盘文件成功： /opt/media/www/record/rtp/81000000465001000601_81000000465001000601/2025-05-27/2025-05-27-16-09-26-0.mp4
+2025-06-05 00:00:00.044 [schedule] INFO  c.g.iot.vmp.media.zlm.ZLMMediaNodeServerService:165 - [zlm-deleteRecordDirectory] 删除磁盘文件, server: your_server_id rtp:81000000465001999901_81000000465001999901->2025-05-27/2025-05-27-16-05-52-0.mp4
+2025-06-05 00:00:00.060 [schedule] WARN  com.genersoft.iot.vmp.conf.CloudRecordTimer:67 - [录像文件定时清理] 删除磁盘文件成功： /opt/media/www/record/rtp/81000000465001999901_81000000465001999901/2025-05-27/2025-05-27-16-05-52-0.mp4
+2025-06-05 00:00:00.061 [schedule] INFO  c.g.iot.vmp.media.zlm.ZLMMediaNodeServerService:165 - [zlm-deleteRecordDirectory] 删除磁盘文件, server: your_server_id rtp:81000000465001000601_81000000465001000601->2025-05-27/2025-05-27-16-10-23-0.mp4
+2025-06-05 00:00:00.067 [schedule] WARN  com.genersoft.iot.vmp.conf.CloudRecordTimer:67 - [录像文件定时清理] 删除磁盘文件成功： /opt/media/www/record/rtp/81000000465001000601_81000000465001000601/2025-05-27/2025-05-27-16-10-23-0.mp4
+2025-06-05 00:00:00.068 [schedule] INFO  c.g.iot.vmp.media.zlm.ZLMMediaNodeServerService:165 - [zlm-deleteRecordDirectory] 删除磁盘文件, server: your_server_id rtp:81000000465001999901_81000000465001999901->2025-05-27/2025-05-27-16-10-33-0.mp4
+2025-06-05 00:00:00.071 [schedule] WARN  com.genersoft.iot.vmp.conf.CloudRecordTimer:67 - [录像文件定时清理] 删除磁盘文件成功： /opt/media/www/record/rtp/81000000465001999901_81000000465001999901/2025-05-27/2025-05-27-16-10-33-0.mp4
+2025-06-05 00:00:00.072 [schedule] INFO  c.g.iot.vmp.media.zlm.ZLMMediaNodeServerService:165 - [zlm-deleteRecordDirectory] 删除磁盘文件, server: your_server_id rtp:81000000465001000601_81000000465001000601->2025-05-27/2025-05-27-16-13-14-0.mp4
+2025-06-05 00:00:00.075 [schedule] WARN  com.genersoft.iot.vmp.conf.CloudRecordTimer:67 - [录像文件定时清理] 删除磁盘文件成功： /opt/media/www/record/rtp/81000000465001000601_81000000465001000601/2025-05-27/2025-05-27-16-13-14-0.mp4
+2025-06-05 00:00:00.076 [schedule] INFO  c.g.iot.vmp.media.zlm.ZLMMediaNodeServerService:165 - [zlm-deleteRecordDirectory] 删除磁盘文件, server: your_server_id rtp:81000000465001999901_81000000465001999901->2025-05-27/2025-05-27-16-12-52-0.mp4
+2025-06-05 00:00:00.079 [schedule] WARN  com.genersoft.iot.vmp.conf.CloudRecordTimer:67 - [录像文件定时清理] 删除磁盘文件成功： /opt/media/www/record/rtp/81000000465001999901_81000000465001999901/2025-05-27/2025-05-27-16-12-52-0.mp4
+2025-06-05 00:00:00.080 [schedule] INFO  c.g.iot.vmp.media.zlm.ZLMMediaNodeServerService:165 - [zlm-deleteRecordDirectory] 删除磁盘文件, server: your_server_id rtp:00000357->2025-05-27/2025-05-27-16-13-42-0.mp4
+2025-06-05 00:00:00.085 [schedule] WARN  com.genersoft.iot.vmp.conf.CloudRecordTimer:67 - [录像文件定时清理] 删除磁盘文件成功： /opt/media/www/record/rtp/00000357/2025-05-27/2025-05-27-16-13-42-0.mp4
+2025-06-05 00:00:00.085 [schedule] INFO  c.g.iot.vmp.media.zlm.ZLMMediaNodeServerService:165 - [zlm-deleteRecordDirectory] 删除磁盘文件, server: your_server_id rtp:81000000465001000601_81000000465001000601->2025-05-27/2025-05-27-16-13-53-0.mp4
+2025-06-05 00:00:00.087 [schedule] WARN  com.genersoft.iot.vmp.conf.CloudRecordTimer:67 - [录像文件定时清理] 删除磁盘文件成功： /opt/media/www/record/rtp/81000000465001000601_81000000465001000601/2025-05-27/2025-05-27-16-13-53-0.mp4
+2025-06-05 00:00:00.088 [schedule] INFO  c.g.iot.vmp.media.zlm.ZLMMediaNodeServerService:165 - [zlm-deleteRecordDirectory] 删除磁盘文件, server: your_server_id rtp:81000000465002000102_81000000465002000102->2025-05-27/2025-05-27-16-17-43-0.mp4
+2025-06-05 00:00:00.091 [schedule] WARN  com.genersoft.iot.vmp.conf.CloudRecordTimer:67 - [录像文件定时清理] 删除磁盘文件成功： /opt/media/www/record/rtp/81000000465002000102_81000000465002000102/2025-05-27/2025-05-27-16-17-43-0.mp4
+2025-06-05 00:00:00.092 [schedule] INFO  c.g.iot.vmp.media.zlm.ZLMMediaNodeServerService:165 - [zlm-deleteRecordDirectory] 删除磁盘文件, server: your_server_id rtp:81000000465002000103_81000000465002000103->2025-05-27/2025-05-27-16-18-02-0.mp4
+2025-06-05 00:00:00.095 [schedule] WARN  com.genersoft.iot.vmp.conf.CloudRecordTimer:67 - [录像文件定时清理] 删除磁盘文件成功： /opt/media/www/record/rtp/81000000465002000103_81000000465002000103/2025-05-27/2025-05-27-16-18-02-0.mp4
+2025-06-05 00:00:00.095 [schedule] INFO  c.g.iot.vmp.media.zlm.ZLMMediaNodeServerService:165 - [zlm-deleteRecordDirectory] 删除磁盘文件, server: your_server_id rtp:81000000465001000601_81000000465001000601->2025-05-27/2025-05-27-16-18-23-0.mp4
+2025-06-05 00:00:00.099 [schedule] WARN  com.genersoft.iot.vmp.conf.CloudRecordTimer:67 - [录像文件定时清理] 删除磁盘文件成功： /opt/media/www/record/rtp/81000000465001000601_81000000465001000601/2025-05-27/2025-05-27-16-18-23-0.mp4
+2025-06-05 00:00:00.100 [schedule] INFO  c.g.iot.vmp.media.zlm.ZLMMediaNodeServerService:165 - [zlm-deleteRecordDirectory] 删除磁盘文件, server: your_server_id rtp:81000000465001000601_81000000465001000601_20250527000000_20250527151622->2025-05-27/2025-05-27-16-20-52-0.mp4
+2025-06-05 00:00:00.103 [schedule] WARN  com.genersoft.iot.vmp.conf.CloudRecordTimer:67 - [录像文件定时清理] 删除磁盘文件成功： /opt/media/www/record/rtp/81000000465001000601_81000000465001000601_20250527000000_20250527151622/2025-05-27/2025-05-27-16-20-52-0.mp4
+2025-06-05 00:00:00.104 [schedule] INFO  c.g.iot.vmp.media.zlm.ZLMMediaNodeServerService:165 - [zlm-deleteRecordDirectory] 删除磁盘文件, server: your_server_id rtp:81000000465001000601_81000000465001000601_20250527000000_20250527175708->2025-05-27/2025-05-27-16-20-54-0.mp4
+2025-06-05 00:00:00.108 [schedule] WARN  com.genersoft.iot.vmp.conf.CloudRecordTimer:67 - [录像文件定时清理] 删除磁盘文件成功： /opt/media/www/record/rtp/81000000465001000601_81000000465001000601_20250527000000_20250527175708/2025-05-27/2025-05-27-16-20-54-0.mp4
+2025-06-05 00:00:00.111 [schedule] INFO  c.g.iot.vmp.media.zlm.ZLMMediaNodeServerService:165 - [zlm-deleteRecordDirectory] 删除磁盘文件, server: your_server_id rtp:81000000465001000601_81000000465001000601_20250527000000_20250527175708->2025-05-27/2025-05-27-16-21-25-0.mp4
+2025-06-05 00:00:00.117 [schedule] WARN  com.genersoft.iot.vmp.conf.CloudRecordTimer:67 - [录像文件定时清理] 删除磁盘文件成功： /opt/media/www/record/rtp/81000000465001000601_81000000465001000601_20250527000000_20250527175708/2025-05-27/2025-05-27-16-21-25-0.mp4
+2025-06-05 00:00:00.118 [schedule] INFO  c.g.iot.vmp.media.zlm.ZLMMediaNodeServerService:165 - [zlm-deleteRecordDirectory] 删除磁盘文件, server: your_server_id rtp:81000000465002000101_81000000465002000101->2025-05-28/2025-05-28-02-39-12-0.mp4
+2025-06-05 00:00:00.122 [schedule] WARN  com.genersoft.iot.vmp.conf.CloudRecordTimer:67 - [录像文件定时清理] 删除磁盘文件成功： /opt/media/www/record/rtp/81000000465002000101_81000000465002000101/2025-05-28/2025-05-28-02-39-12-0.mp4
+2025-06-05 00:00:00.122 [schedule] INFO  c.g.iot.vmp.media.zlm.ZLMMediaNodeServerService:165 - [zlm-deleteRecordDirectory] 删除磁盘文件, server: your_server_id rtp:81000000465001999901_81000000465001999901->2025-05-28/2025-05-28-02-54-35-0.mp4
+2025-06-05 00:00:00.136 [schedule] WARN  com.genersoft.iot.vmp.conf.CloudRecordTimer:67 - [录像文件定时清理] 删除磁盘文件成功： /opt/media/www/record/rtp/81000000465001999901_81000000465001999901/2025-05-28/2025-05-28-02-54-35-0.mp4
+2025-06-05 00:00:00.136 [schedule] INFO  c.g.iot.vmp.media.zlm.ZLMMediaNodeServerService:165 - [zlm-deleteRecordDirectory] 删除磁盘文件, server: your_server_id rtp:81000000465001999901_81000000465001999901->2025-05-28/2025-05-28-02-54-48-0.mp4
+2025-06-05 00:00:00.140 [schedule] WARN  com.genersoft.iot.vmp.conf.CloudRecordTimer:67 - [录像文件定时清理] 删除磁盘文件成功： /opt/media/www/record/rtp/81000000465001999901_81000000465001999901/2025-05-28/2025-05-28-02-54-48-0.mp4
+2025-06-05 00:00:00.141 [schedule] INFO  c.g.iot.vmp.media.zlm.ZLMMediaNodeServerService:165 - [zlm-deleteRecordDirectory] 删除磁盘文件, server: your_server_id rtp:81000000465001999901_81000000465001999901_20250528001006_20250528002012->2025-05-28/2025-05-28-02-55-07-0.mp4
+2025-06-05 00:00:00.144 [schedule] WARN  com.genersoft.iot.vmp.conf.CloudRecordTimer:67 - [录像文件定时清理] 删除磁盘文件成功： /opt/media/www/record/rtp/81000000465001999901_81000000465001999901_20250528001006_20250528002012/2025-05-28/2025-05-28-02-55-07-0.mp4
+2025-06-05 00:00:00.145 [schedule] INFO  c.g.iot.vmp.media.zlm.ZLMMediaNodeServerService:165 - [zlm-deleteRecordDirectory] 删除磁盘文件, server: your_server_id rtp:81000000465002000102_81000000465002000102->2025-05-28/2025-05-28-02-55-52-0.mp4
+2025-06-05 00:00:00.147 [schedule] WARN  com.genersoft.iot.vmp.conf.CloudRecordTimer:67 - [录像文件定时清理] 删除磁盘文件成功： /opt/media/www/record/rtp/81000000465002000102_81000000465002000102/2025-05-28/2025-05-28-02-55-52-0.mp4
+2025-06-05 00:00:00.149 [schedule] INFO  c.g.iot.vmp.media.zlm.ZLMMediaNodeServerService:165 - [zlm-deleteRecordDirectory] 删除磁盘文件, server: your_server_id rtp:81000000465002000101_81000000465002000101->2025-05-28/2025-05-28-02-56-05-0.mp4
+2025-06-05 00:00:00.160 [schedule] WARN  com.genersoft.iot.vmp.conf.CloudRecordTimer:67 - [录像文件定时清理] 删除磁盘文件成功： /opt/media/www/record/rtp/81000000465002000101_81000000465002000101/2025-05-28/2025-05-28-02-56-05-0.mp4
+2025-06-05 00:00:00.160 [schedule] INFO  c.g.iot.vmp.media.zlm.ZLMMediaNodeServerService:165 - [zlm-deleteRecordDirectory] 删除磁盘文件, server: your_server_id rtp:81000000465001000601_81000000465001000601->2025-05-28/2025-05-28-03-02-26-0.mp4
+2025-06-05 00:00:00.165 [schedule] WARN  com.genersoft.iot.vmp.conf.CloudRecordTimer:67 - [录像文件定时清理] 删除磁盘文件成功： /opt/media/www/record/rtp/81000000465001000601_81000000465001000601/2025-05-28/2025-05-28-03-02-26-0.mp4
+2025-06-05 00:00:00.667 [schedule] INFO  com.genersoft.iot.vmp.conf.CloudRecordTimer:75 - [录像文件定时清理] 共清理21个过期录像文件
+2025-06-05 00:01:22.066 [async-12] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 00:01:22.068 [async-12] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 00:01:22.092 [async-12] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 00:01:22.539 [async-12] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 00:02:16.767 [async-6] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465002000103, 开始处理: 192.168.96.1:26024
+2025-06-05 00:02:16.768 [async-6] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:126 - [注册请求] 设备：81000000465002000103, 回复401: 192.168.96.1:26024
+2025-06-05 00:02:17.335 [async-8] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465002000103, 开始处理: 192.168.96.1:26024
+2025-06-05 00:02:17.336 [async-8] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:206 - [注册成功] deviceId: 81000000465002000103->192.168.96.1:26024
+2025-06-05 00:02:17.353 [async-8] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465002000103->192.168.96.1:26024
+2025-06-05 00:03:17.315 [async-8] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 00:03:17.316 [async-8] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 00:03:17.316 [async-8] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 00:03:17.423 [async-8] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 00:05:09.588 [pool-AffinityJAIN-thread-7] INFO  GB28181_SIP:461 - serving msg on call id a84b4c76e66710
+2025-06-05 00:05:09.589 [async-8] WARN  c.g.iot.vmp.gb28181.transmit.SIPProcessorObserver:67 - 不支持方法OPTIONS的request
+2025-06-05 00:05:12.551 [async-16] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 00:05:12.552 [async-16] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 00:05:12.553 [async-16] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 00:05:12.799 [async-16] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 00:07:07.775 [async-4] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 00:07:07.776 [async-4] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 00:07:07.779 [async-4] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 00:07:07.873 [async-4] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 00:09:03.017 [async-14] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 00:09:03.018 [async-14] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 00:09:03.020 [async-14] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 00:09:03.288 [async-14] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 00:10:58.248 [async-14] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 00:10:58.250 [async-14] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 00:10:58.251 [async-14] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 00:10:58.379 [async-14] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 00:12:53.473 [async-13] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 00:12:53.473 [async-13] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 00:12:53.474 [async-13] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 00:12:53.552 [async-13] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 00:14:48.718 [async-3] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 00:14:48.719 [async-3] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 00:14:48.720 [async-3] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 00:14:49.216 [async-3] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 00:16:18.410 [async-1] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000601, 开始处理: 203.145.95.92:39279
+2025-06-05 00:16:18.412 [async-1] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000601, 注册续订: 81000000465001000601
+2025-06-05 00:16:18.414 [async-1] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000601->203.145.95.92:39279
+2025-06-05 00:16:43.959 [async-1] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 00:16:43.959 [async-1] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 00:16:43.960 [async-1] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 00:16:44.184 [async-1] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 00:18:39.206 [async-12] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 00:18:39.207 [async-12] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 00:18:39.207 [async-12] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 00:18:39.602 [async-12] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 00:20:34.476 [async-10] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 00:20:34.495 [async-10] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 00:20:34.496 [async-10] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 00:20:34.754 [async-10] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 00:22:29.728 [async-14] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 00:22:29.729 [async-14] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 00:22:29.730 [async-14] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 00:22:29.870 [async-14] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 00:22:43.684 [async-10] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465002000102, 开始处理: 192.168.100.143:5061
+2025-06-05 00:22:43.685 [async-10] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465002000102, 注册续订: 81000000465002000102
+2025-06-05 00:22:43.685 [async-10] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465002000102->192.168.100.143:5061
+2025-06-05 00:24:24.979 [async-3] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 00:24:24.982 [async-3] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 00:24:24.983 [async-3] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 00:24:25.155 [async-3] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 00:26:20.227 [async-4] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 00:26:20.227 [async-4] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 00:26:20.228 [async-4] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 00:26:20.456 [async-4] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 00:28:15.453 [async-2] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 00:28:15.454 [async-2] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 00:28:15.454 [async-2] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 00:28:15.725 [async-2] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 00:30:10.689 [async-1] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 00:30:10.690 [async-1] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 00:30:10.694 [async-1] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 00:30:11.450 [async-1] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 00:32:05.989 [async-16] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 00:32:05.990 [async-16] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 00:32:06.007 [async-16] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 00:32:06.388 [async-16] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 00:34:01.220 [async-12] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 00:34:01.220 [async-12] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 00:34:01.228 [async-12] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 00:34:01.478 [async-12] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 00:34:43.552 [async-8] WARN  c.g.iot.vmp.gb28181.transmit.SIPProcessorObserver:67 - 不支持方法OPTIONS的request
+2025-06-05 00:35:56.450 [async-11] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 00:35:56.450 [async-11] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 00:35:56.452 [async-11] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 00:35:56.578 [async-11] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 00:37:51.723 [async-6] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 00:37:51.724 [async-6] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 00:37:51.724 [async-6] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 00:37:51.910 [async-6] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 00:39:46.953 [async-5] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 00:39:46.954 [async-5] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 00:39:46.960 [async-5] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 00:39:47.247 [async-5] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 00:41:42.262 [async-7] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 00:41:42.263 [async-7] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 00:41:42.264 [async-7] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 00:41:42.635 [async-7] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 00:43:37.501 [async-14] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 00:43:37.503 [async-14] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 00:43:37.504 [async-14] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 00:43:37.603 [async-14] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 00:45:32.724 [async-11] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 00:45:32.724 [async-11] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 00:45:32.725 [async-11] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 00:45:32.837 [async-11] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 00:47:27.998 [async-1] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 00:47:27.999 [async-1] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 00:47:28.000 [async-1] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 00:47:28.297 [async-1] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 00:49:23.232 [async-1] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 00:49:23.232 [async-1] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 00:49:23.233 [async-1] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 00:49:23.340 [async-1] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 00:51:20.468 [async-3] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 00:51:20.469 [async-3] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:126 - [注册请求] 设备：81000000465001000001, 回复401: 13.50.108.195:5080
+2025-06-05 00:51:20.748 [async-5] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 00:51:20.749 [async-5] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:206 - [注册成功] deviceId: 81000000465001000001->13.50.108.195:5080
+2025-06-05 00:51:20.750 [async-5] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 00:51:23.044 [async-5] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 00:51:33.747 [http-nio-18080-exec-1] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:354 - [添加目录订阅] 设备 81000000465001888881
+2025-06-05 00:51:34.518 [http-nio-18080-exec-8] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:384 - [移除目录订阅]: 81000000465001888881
+2025-06-05 00:51:34.766 [schedule] WARN  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:373 - [目录订阅]失败，信令发送失败： 81000000465001888881-消息超时未回复 
+2025-06-05 00:53:15.976 [async-16] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 00:53:15.978 [async-16] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 00:53:15.982 [async-16] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 00:53:16.113 [async-16] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 00:53:54.839 [async-9] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 00:53:54.840 [async-9] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:126 - [注册请求] 设备：81000000465001000001, 回复401: 13.50.108.195:5080
+2025-06-05 00:53:55.054 [async-6] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 00:53:55.056 [async-6] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:206 - [注册成功] deviceId: 81000000465001000001->13.50.108.195:5080
+2025-06-05 00:53:55.057 [async-6] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 00:53:55.155 [async-6] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 00:55:50.313 [async-3] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 00:55:50.314 [async-3] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 00:55:50.319 [async-3] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 00:55:51.112 [async-3] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 00:55:52.115 [schedule] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:501 - [同步通道]失败,编号: 81000000465001000001, 错误码： -1024, 消息超时未回复
+2025-06-05 00:55:54.210 [async-5] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 00:55:54.219 [async-5] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:126 - [注册请求] 设备：81000000465001000001, 回复401: 13.50.108.195:5080
+2025-06-05 00:55:54.576 [async-7] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 00:55:54.579 [async-7] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:206 - [注册成功] deviceId: 81000000465001000001->13.50.108.195:5080
+2025-06-05 00:55:54.579 [async-7] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 00:55:56.243 [async-7] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 00:55:56.557 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:48149->0.0.0.0
+2025-06-05 00:55:58.578 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:44941->0.0.0.0
+2025-06-05 00:56:11.707 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:37408->0.0.0.0
+2025-06-05 00:56:26.692 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:56451->0.0.0.0
+2025-06-05 00:56:41.775 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:52350->0.0.0.0
+2025-06-05 00:56:56.804 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:38477->0.0.0.0
+2025-06-05 00:57:11.790 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:60335->0.0.0.0
+2025-06-05 00:57:26.914 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:60033->0.0.0.0
+2025-06-05 00:57:41.921 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:52138->0.0.0.0
+2025-06-05 00:57:49.801 [async-16] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 00:57:49.801 [async-16] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 00:57:49.802 [async-16] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 00:57:49.928 [async-16] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 00:57:56.937 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:44255->0.0.0.0
+2025-06-05 00:58:12.025 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:55194->0.0.0.0
+2025-06-05 00:58:17.035 [schedule] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:501 - [同步通道]失败,编号: 81000000465001000001, 错误码： -1024, 消息超时未回复
+2025-06-05 00:58:27.068 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:39656->0.0.0.0
+2025-06-05 00:58:42.136 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:49462->0.0.0.0
+2025-06-05 00:58:57.260 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:53092->0.0.0.0
+2025-06-05 00:59:12.187 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:40554->0.0.0.0
+2025-06-05 00:59:25.057 [http-nio-18080-exec-3] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:384 - [移除目录订阅]: 81000000465001888881
+2025-06-05 00:59:27.287 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:48395->0.0.0.0
+2025-06-05 00:59:42.364 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:60231->0.0.0.0
+2025-06-05 00:59:45.067 [async-15] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 00:59:45.067 [async-15] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 00:59:45.068 [async-15] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 00:59:45.852 [async-15] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 00:59:47.201 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:37157->0.0.0.0
+2025-06-05 00:59:57.410 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:45058->0.0.0.0
+2025-06-05 01:00:12.426 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:60327->0.0.0.0
+2025-06-05 01:00:27.455 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:57336->0.0.0.0
+2025-06-05 01:00:31.764 [async-6] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 01:00:31.765 [async-6] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:126 - [注册请求] 设备：81000000465001000001, 回复401: 13.50.108.195:5080
+2025-06-05 01:00:31.981 [async-13] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 01:00:31.982 [async-13] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:206 - [注册成功] deviceId: 81000000465001000001->13.50.108.195:5080
+2025-06-05 01:00:31.987 [async-13] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 01:00:32.198 [async-13] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 01:00:32.499 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:33061->0.0.0.0
+2025-06-05 01:00:34.633 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:33165->0.0.0.0
+2025-06-05 01:00:47.568 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:51466->0.0.0.0
+2025-06-05 01:01:02.630 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:34813->0.0.0.0
+2025-06-05 01:01:17.718 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:33404->0.0.0.0
+2025-06-05 01:01:32.721 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:44057->0.0.0.0
+2025-06-05 01:01:47.846 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:36249->0.0.0.0
+2025-06-05 01:02:02.858 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:58184->0.0.0.0
+2025-06-05 01:02:17.855 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:36506->0.0.0.0
+2025-06-05 01:02:27.208 [async-1] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 01:02:27.208 [async-1] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 01:02:27.209 [async-1] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 01:02:27.363 [async-1] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 01:02:32.937 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:56523->0.0.0.0
+2025-06-05 01:02:47.933 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:45921->0.0.0.0
+2025-06-05 01:03:03.105 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:51731->0.0.0.0
+2025-06-05 01:03:18.057 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:45936->0.0.0.0
+2025-06-05 01:03:33.167 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:39369->0.0.0.0
+2025-06-05 01:03:48.180 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:54345->0.0.0.0
+2025-06-05 01:04:03.200 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:40539->0.0.0.0
+2025-06-05 01:04:18.254 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:40206->0.0.0.0
+2025-06-05 01:04:22.427 [async-2] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 01:04:22.428 [async-2] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 01:04:22.429 [async-2] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 01:04:22.525 [async-2] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 01:04:24.507 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:35226->0.0.0.0
+2025-06-05 01:04:33.380 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:34841->0.0.0.0
+2025-06-05 01:04:48.451 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:56555->0.0.0.0
+2025-06-05 01:05:03.511 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:56845->0.0.0.0
+2025-06-05 01:05:12.294 [async-13] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 01:05:12.295 [async-13] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:126 - [注册请求] 设备：81000000465001000001, 回复401: 13.50.108.195:5080
+2025-06-05 01:05:12.519 [async-1] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 01:05:12.520 [async-1] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:206 - [注册成功] deviceId: 81000000465001000001->13.50.108.195:5080
+2025-06-05 01:05:12.521 [async-1] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 01:05:12.564 [async-1] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 01:05:12.816 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:35795->0.0.0.0
+2025-06-05 01:05:14.820 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:41434->0.0.0.0
+2025-06-05 01:05:27.842 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:59207->0.0.0.0
+2025-06-05 01:05:42.978 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:52872->0.0.0.0
+2025-06-05 01:05:58.041 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:36388->0.0.0.0
+2025-06-05 01:06:13.093 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:33124->0.0.0.0
+2025-06-05 01:06:27.443 [schedule] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:501 - [同步通道]失败,编号: 81000000465001000001, 错误码： -1024, 消息超时未回复
+2025-06-05 01:06:28.213 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:48067->0.0.0.0
+2025-06-05 01:06:33.511 [schedule] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:501 - [同步通道]失败,编号: 81000000465001000001, 错误码： -1024, 消息超时未回复
+2025-06-05 01:06:43.227 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:57172->0.0.0.0
+2025-06-05 01:06:43.656 [schedule] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:501 - [同步通道]失败,编号: 81000000465001000001, 错误码： -1024, 消息超时未回复
+2025-06-05 01:06:58.239 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:53328->0.0.0.0
+2025-06-05 01:07:07.735 [async-10] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 01:07:07.736 [async-10] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 01:07:07.737 [async-10] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 01:07:08.455 [async-10] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 01:07:13.332 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:44703->0.0.0.0
+2025-06-05 01:07:28.413 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:59159->0.0.0.0
+2025-06-05 01:07:43.540 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:44057->0.0.0.0
+2025-06-05 01:07:58.598 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:51178->0.0.0.0
+2025-06-05 01:08:13.499 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:40662->0.0.0.0
+2025-06-05 01:08:28.538 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:44803->0.0.0.0
+2025-06-05 01:08:43.602 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:60777->0.0.0.0
+2025-06-05 01:08:58.715 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:37383->0.0.0.0
+2025-06-05 01:09:02.957 [async-16] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 01:09:02.962 [async-16] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 01:09:02.963 [async-16] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 01:09:04.000 [async-16] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 01:09:05.115 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:55984->0.0.0.0
+2025-06-05 01:09:13.801 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:53979->0.0.0.0
+2025-06-05 01:09:30.439 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:49261->0.0.0.0
+2025-06-05 01:09:43.900 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:58360->0.0.0.0
+2025-06-05 01:09:58.862 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:54390->0.0.0.0
+2025-06-05 01:10:06.297 [async-5] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465002000102, 开始处理: 192.168.100.143:5061
+2025-06-05 01:10:06.298 [async-5] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:126 - [注册请求] 设备：81000000465002000102, 回复401: 192.168.100.143:5061
+2025-06-05 01:10:06.871 [async-7] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465002000102, 开始处理: 192.168.100.143:5061
+2025-06-05 01:10:06.872 [async-7] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:206 - [注册成功] deviceId: 81000000465002000102->192.168.100.143:5061
+2025-06-05 01:10:06.876 [async-7] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465002000102->192.168.100.143:5061
+2025-06-05 01:10:13.963 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:42000->0.0.0.0
+2025-06-05 01:10:29.020 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:56179->0.0.0.0
+2025-06-05 01:10:44.028 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:60409->0.0.0.0
+2025-06-05 01:10:58.208 [async-16] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 01:10:58.212 [async-16] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 01:10:58.213 [async-16] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 01:10:58.417 [async-16] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 01:10:59.146 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:52717->0.0.0.0
+2025-06-05 01:11:00.320 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:52359->0.0.0.0
+2025-06-05 01:11:14.162 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:60312->0.0.0.0
+2025-06-05 01:11:29.283 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:48733->0.0.0.0
+2025-06-05 01:11:44.288 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:33433->0.0.0.0
+2025-06-05 01:11:59.428 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:32889->0.0.0.0
+2025-06-05 01:12:14.362 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:35828->0.0.0.0
+2025-06-05 01:12:29.457 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:60883->0.0.0.0
+2025-06-05 01:12:44.449 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:39753->0.0.0.0
+2025-06-05 01:12:53.439 [async-12] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 01:12:53.441 [async-12] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 01:12:53.453 [async-12] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 01:12:53.565 [async-12] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 01:12:55.676 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:44757->0.0.0.0
+2025-06-05 01:12:59.583 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:40785->0.0.0.0
+2025-06-05 01:13:14.644 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:35399->0.0.0.0
+2025-06-05 01:13:29.701 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:41176->0.0.0.0
+2025-06-05 01:13:44.764 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:55980->0.0.0.0
+2025-06-05 01:13:57.413 [async-8] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 01:13:57.417 [async-8] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:126 - [注册请求] 设备：81000000465001000001, 回复401: 13.50.108.195:5080
+2025-06-05 01:13:57.644 [async-3] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 01:13:57.646 [async-3] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:206 - [注册成功] deviceId: 81000000465001000001->13.50.108.195:5080
+2025-06-05 01:13:57.651 [async-3] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 01:13:59.580 [async-3] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 01:13:59.874 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:47859->0.0.0.0
+2025-06-05 01:14:02.843 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:39521->0.0.0.0
+2025-06-05 01:14:14.964 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:37822->0.0.0.0
+2025-06-05 01:14:19.868 [async-16] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000601, 开始处理: 203.145.95.92:39279
+2025-06-05 01:14:19.869 [async-16] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000601, 注册续订: 81000000465001000601
+2025-06-05 01:14:19.870 [async-16] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000601->203.145.95.92:39279
+2025-06-05 01:14:29.990 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:58298->0.0.0.0
+2025-06-05 01:14:39.661 [async-12] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000601, 开始处理: 203.145.95.92:39279
+2025-06-05 01:14:39.661 [async-12] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:126 - [注册请求] 设备：81000000465001000601, 回复401: 203.145.95.92:39279
+2025-06-05 01:14:40.362 [async-7] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000601, 开始处理: 203.145.95.92:39279
+2025-06-05 01:14:40.363 [async-7] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:206 - [注册成功] deviceId: 81000000465001000601->203.145.95.92:39279
+2025-06-05 01:14:40.363 [async-7] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000601->203.145.95.92:39279
+2025-06-05 01:14:45.054 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:45045->0.0.0.0
+2025-06-05 01:15:00.110 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:53150->0.0.0.0
+2025-06-05 01:15:15.144 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:58734->0.0.0.0
+2025-06-05 01:15:30.195 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:41317->0.0.0.0
+2025-06-05 01:15:45.286 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:36266->0.0.0.0
+2025-06-05 01:15:52.876 [async-4] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 01:15:52.877 [async-4] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 01:15:52.879 [async-4] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 01:15:53.630 [async-4] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 01:16:00.311 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:52765->0.0.0.0
+2025-06-05 01:16:15.323 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:47156->0.0.0.0
+2025-06-05 01:16:30.432 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:44662->0.0.0.0
+2025-06-05 01:16:45.494 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:43877->0.0.0.0
+2025-06-05 01:17:00.540 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:50794->0.0.0.0
+2025-06-05 01:17:15.580 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:51230->0.0.0.0
+2025-06-05 01:17:30.662 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:37050->0.0.0.0
+2025-06-05 01:17:45.654 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:42603->0.0.0.0
+2025-06-05 01:17:48.097 [async-8] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 01:17:48.098 [async-8] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 01:17:48.100 [async-8] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 01:17:48.174 [async-8] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 01:17:50.251 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:48378->0.0.0.0
+2025-06-05 01:18:00.774 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:60261->0.0.0.0
+2025-06-05 01:18:15.831 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:44965->0.0.0.0
+2025-06-05 01:18:30.813 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:44916->0.0.0.0
+2025-06-05 01:18:45.914 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:47181->0.0.0.0
+2025-06-05 01:19:00.983 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:54086->0.0.0.0
+2025-06-05 01:19:15.953 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:46885->0.0.0.0
+2025-06-05 01:19:31.386 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:60249->0.0.0.0
+2025-06-05 01:19:43.336 [async-13] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 01:19:43.337 [async-13] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 01:19:43.337 [async-13] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 01:19:43.533 [async-13] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 01:19:45.387 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:52064->0.0.0.0
+2025-06-05 01:19:46.120 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:43113->0.0.0.0
+2025-06-05 01:20:01.324 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:39853->0.0.0.0
+2025-06-05 01:20:16.250 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:47455->0.0.0.0
+2025-06-05 01:20:31.487 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:53496->0.0.0.0
+2025-06-05 01:20:46.266 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:39494->0.0.0.0
+2025-06-05 01:21:01.587 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:56285->0.0.0.0
+2025-06-05 01:21:16.466 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:34517->0.0.0.0
+2025-06-05 01:21:31.572 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:46848->0.0.0.0
+2025-06-05 01:21:38.556 [async-3] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 01:21:38.556 [async-3] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 01:21:38.558 [async-3] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 01:21:38.866 [async-3] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 01:21:40.822 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:49573->0.0.0.0
+2025-06-05 01:21:46.574 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:47838->0.0.0.0
+2025-06-05 01:22:02.041 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:50294->0.0.0.0
+2025-06-05 01:22:16.703 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:33823->0.0.0.0
+2025-06-05 01:22:31.719 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:52936->0.0.0.0
+2025-06-05 01:22:46.715 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:46543->0.0.0.0
+2025-06-05 01:23:01.855 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:52581->0.0.0.0
+2025-06-05 01:23:16.957 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:55194->0.0.0.0
+2025-06-05 01:23:31.955 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:49964->0.0.0.0
+2025-06-05 01:23:33.791 [async-4] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 01:23:33.798 [async-4] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 01:23:33.856 [async-4] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 01:23:34.080 [async-4] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 01:23:36.911 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:35404->0.0.0.0
+2025-06-05 01:23:37.168 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:44047->0.0.0.0
+2025-06-05 01:23:46.976 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:46573->0.0.0.0
+2025-06-05 01:24:02.002 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:54130->0.0.0.0
+2025-06-05 01:24:14.534 [async-2] WARN  c.g.iot.vmp.gb28181.transmit.SIPProcessorObserver:67 - 不支持方法OPTIONS的request
+2025-06-05 01:24:17.064 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:38049->0.0.0.0
+2025-06-05 01:24:32.525 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:42157->0.0.0.0
+2025-06-05 01:24:47.200 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:57239->0.0.0.0
+2025-06-05 01:25:02.224 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:33271->0.0.0.0
+2025-06-05 01:25:17.279 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:55603->0.0.0.0
+2025-06-05 01:25:29.078 [async-11] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 01:25:29.079 [async-11] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 01:25:29.081 [async-11] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 01:25:29.254 [async-11] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 01:25:32.083 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:59756->0.0.0.0
+2025-06-05 01:25:32.447 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:39976->0.0.0.0
+2025-06-05 01:25:47.400 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:50255->0.0.0.0
+2025-06-05 01:26:02.461 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:41237->0.0.0.0
+2025-06-05 01:26:17.501 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:36868->0.0.0.0
+2025-06-05 01:26:32.557 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:43689->0.0.0.0
+2025-06-05 01:26:47.648 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:52439->0.0.0.0
+2025-06-05 01:27:02.645 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:35402->0.0.0.0
+2025-06-05 01:27:17.780 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:45927->0.0.0.0
+2025-06-05 01:27:24.298 [async-16] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 01:27:24.299 [async-16] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 01:27:24.304 [async-16] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 01:27:24.416 [async-16] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 01:27:32.805 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:46607->0.0.0.0
+2025-06-05 01:27:47.796 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:34192->0.0.0.0
+2025-06-05 01:28:02.940 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:58978->0.0.0.0
+2025-06-05 01:28:18.233 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:37547->0.0.0.0
+2025-06-05 01:28:33.064 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:54094->0.0.0.0
+2025-06-05 01:28:48.120 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:47438->0.0.0.0
+2025-06-05 01:29:03.118 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:39117->0.0.0.0
+2025-06-05 01:29:18.215 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:49890->0.0.0.0
+2025-06-05 01:29:19.525 [async-4] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 01:29:19.526 [async-4] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 01:29:19.526 [async-4] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 01:29:19.639 [async-4] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 01:29:21.710 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:52582->0.0.0.0
+2025-06-05 01:29:33.197 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:50030->0.0.0.0
+2025-06-05 01:29:48.203 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:46413->0.0.0.0
+2025-06-05 01:30:03.262 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:43786->0.0.0.0
+2025-06-05 01:30:18.410 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:41246->0.0.0.0
+2025-06-05 01:30:33.458 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:58205->0.0.0.0
+2025-06-05 01:30:48.496 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:34639->0.0.0.0
+2025-06-05 01:31:03.516 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:43006->0.0.0.0
+2025-06-05 01:31:14.747 [async-3] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 01:31:14.750 [async-3] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 01:31:14.752 [async-3] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 01:31:15.042 [async-3] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 01:31:16.798 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:52103->0.0.0.0
+2025-06-05 01:31:18.582 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:39538->0.0.0.0
+2025-06-05 01:31:33.616 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:53706->0.0.0.0
+2025-06-05 01:31:48.660 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:57479->0.0.0.0
+2025-06-05 01:32:03.737 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:35789->0.0.0.0
+2025-06-05 01:32:18.766 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:55348->0.0.0.0
+2025-06-05 01:32:33.830 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:37777->0.0.0.0
+2025-06-05 01:32:48.957 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:36171->0.0.0.0
+2025-06-05 01:33:04.236 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:58237->0.0.0.0
+2025-06-05 01:33:09.973 [async-1] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 01:33:09.973 [async-1] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 01:33:09.979 [async-1] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 01:33:10.078 [async-1] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 01:33:12.256 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:35252->0.0.0.0
+2025-06-05 01:33:19.250 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:54297->0.0.0.0
+2025-06-05 01:33:34.035 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:33629->0.0.0.0
+2025-06-05 01:33:49.392 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:43222->0.0.0.0
+2025-06-05 01:34:04.161 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:48458->0.0.0.0
+2025-06-05 01:34:19.352 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:52147->0.0.0.0
+2025-06-05 01:34:34.294 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:35014->0.0.0.0
+2025-06-05 01:34:49.314 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:37139->0.0.0.0
+2025-06-05 01:35:04.330 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:56296->0.0.0.0
+2025-06-05 01:35:05.211 [async-2] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 01:35:05.211 [async-2] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 01:35:05.213 [async-2] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 01:35:05.443 [async-2] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 01:35:07.716 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:39601->0.0.0.0
+2025-06-05 01:35:07.957 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:43091->0.0.0.0
+2025-06-05 01:35:19.437 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:60584->0.0.0.0
+2025-06-05 01:35:34.452 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:43120->0.0.0.0
+2025-06-05 01:35:49.558 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:47555->0.0.0.0
+2025-06-05 01:36:04.551 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:34983->0.0.0.0
+2025-06-05 01:36:19.644 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:48118->0.0.0.0
+2025-06-05 01:36:34.676 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:45641->0.0.0.0
+2025-06-05 01:36:49.754 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:43329->0.0.0.0
+2025-06-05 01:36:58.499 [async-3] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001999902, 开始处理: 124.217.188.125:35245
+2025-06-05 01:36:58.499 [async-3] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:126 - [注册请求] 设备：81000000465001999902, 回复401: 124.217.188.125:35245
+2025-06-05 01:36:59.136 [async-12] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001999902, 开始处理: 124.217.188.125:35245
+2025-06-05 01:36:59.138 [async-12] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:206 - [注册成功] deviceId: 81000000465001999902->124.217.188.125:35245
+2025-06-05 01:36:59.139 [async-12] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001999902->124.217.188.125:35245
+2025-06-05 01:37:00.428 [async-14] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 01:37:00.431 [async-14] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 01:37:00.435 [async-14] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 01:37:00.556 [async-14] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 01:37:02.915 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:35579->0.0.0.0
+2025-06-05 01:37:04.880 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:35476->0.0.0.0
+2025-06-05 01:37:19.876 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:37316->0.0.0.0
+2025-06-05 01:37:34.950 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:42958->0.0.0.0
+2025-06-05 01:37:51.105 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:56464->0.0.0.0
+2025-06-05 01:38:05.034 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:60357->0.0.0.0
+2025-06-05 01:38:20.018 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:44954->0.0.0.0
+2025-06-05 01:38:35.154 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:51622->0.0.0.0
+2025-06-05 01:38:50.268 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:43868->0.0.0.0
+2025-06-05 01:38:55.659 [async-13] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 01:38:55.660 [async-13] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 01:38:55.661 [async-13] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 01:38:55.812 [async-13] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 01:39:05.275 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:54628->0.0.0.0
+2025-06-05 01:39:20.332 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:44999->0.0.0.0
+2025-06-05 01:39:35.366 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:33750->0.0.0.0
+2025-06-05 01:39:50.363 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:50309->0.0.0.0
+2025-06-05 01:40:05.411 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:52190->0.0.0.0
+2025-06-05 01:40:20.517 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:34264->0.0.0.0
+2025-06-05 01:40:35.575 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:59850->0.0.0.0
+2025-06-05 01:40:50.540 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:48627->0.0.0.0
+2025-06-05 01:40:50.914 [async-6] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 01:40:50.915 [async-6] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 01:40:50.916 [async-6] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 01:40:52.020 [async-6] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 01:40:53.097 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:38683->0.0.0.0
+2025-06-05 01:41:05.766 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:51119->0.0.0.0
+2025-06-05 01:41:20.692 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:34088->0.0.0.0
+2025-06-05 01:41:35.833 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:54668->0.0.0.0
+2025-06-05 01:41:50.823 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:47236->0.0.0.0
+2025-06-05 01:42:05.939 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:48154->0.0.0.0
+2025-06-05 01:42:20.982 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:42378->0.0.0.0
+2025-06-05 01:42:35.984 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:44847->0.0.0.0
+2025-06-05 01:42:46.144 [async-8] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 01:42:46.145 [async-8] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 01:42:46.145 [async-8] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 01:42:46.690 [async-8] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 01:42:48.562 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:43386->0.0.0.0
+2025-06-05 01:42:51.024 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:33373->0.0.0.0
+2025-06-05 01:43:06.073 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:50250->0.0.0.0
+2025-06-05 01:43:21.121 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:48860->0.0.0.0
+2025-06-05 01:43:36.209 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:59142->0.0.0.0
+2025-06-05 01:43:51.244 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:33712->0.0.0.0
+2025-06-05 01:44:06.286 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:42781->0.0.0.0
+2025-06-05 01:44:21.369 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:59874->0.0.0.0
+2025-06-05 01:44:36.380 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:53027->0.0.0.0
+2025-06-05 01:44:41.389 [async-6] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 01:44:41.389 [async-6] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 01:44:41.390 [async-6] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 01:44:41.482 [async-6] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 01:44:43.697 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:38386->0.0.0.0
+2025-06-05 01:44:51.456 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:56194->0.0.0.0
+2025-06-05 01:45:06.542 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:49480->0.0.0.0
+2025-06-05 01:45:21.538 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:38261->0.0.0.0
+2025-06-05 01:45:36.671 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:50546->0.0.0.0
+2025-06-05 01:45:51.748 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:38952->0.0.0.0
+2025-06-05 01:46:06.694 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:49069->0.0.0.0
+2025-06-05 01:46:21.766 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:47212->0.0.0.0
+2025-06-05 01:46:36.637 [async-1] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 01:46:36.638 [async-1] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 01:46:36.639 [async-1] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 01:46:36.859 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:36281->0.0.0.0
+2025-06-05 01:46:36.951 [async-1] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 01:46:39.651 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:37735->0.0.0.0
+2025-06-05 01:46:39.812 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:49192->0.0.0.0
+2025-06-05 01:46:45.702 [async-9] WARN  c.g.iot.vmp.gb28181.transmit.SIPProcessorObserver:67 - 不支持方法OPTIONS的request
+2025-06-05 01:46:51.940 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:49131->0.0.0.0
+2025-06-05 01:46:56.670 [pool-AffinityJAIN-thread-8] INFO  GB28181_SIP:461 - serving msg on call id 50000
+2025-06-05 01:46:56.687 [async-3] WARN  c.g.iot.vmp.gb28181.transmit.SIPProcessorObserver:67 - 不支持方法OPTIONS的request
+2025-06-05 01:47:06.981 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:40112->0.0.0.0
+2025-06-05 01:47:22.101 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:50566->0.0.0.0
+2025-06-05 01:47:37.040 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:34669->0.0.0.0
+2025-06-05 01:47:52.105 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:46785->0.0.0.0
+2025-06-05 01:48:07.222 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:47045->0.0.0.0
+2025-06-05 01:48:22.256 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:45904->0.0.0.0
+2025-06-05 01:48:31.858 [async-1] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 01:48:31.859 [async-1] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 01:48:31.859 [async-1] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 01:48:33.159 [async-1] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 01:48:35.510 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:34156->0.0.0.0
+2025-06-05 01:48:37.312 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:54799->0.0.0.0
+2025-06-05 01:48:52.317 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:39547->0.0.0.0
+2025-06-05 01:49:07.592 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:58760->0.0.0.0
+2025-06-05 01:49:22.442 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:56754->0.0.0.0
+2025-06-05 01:49:37.189 [async-5] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001999904, 开始处理: 124.217.188.125:39279
+2025-06-05 01:49:37.189 [async-5] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001999904, 注册续订: 81000000465001999904
+2025-06-05 01:49:37.190 [async-5] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001999904->124.217.188.125:39279
+2025-06-05 01:49:37.516 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:35407->0.0.0.0
+2025-06-05 01:49:52.561 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:52204->0.0.0.0
+2025-06-05 01:50:07.736 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:40691->0.0.0.0
+2025-06-05 01:50:22.735 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:53804->0.0.0.0
+2025-06-05 01:50:27.075 [async-7] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 01:50:27.082 [async-7] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 01:50:27.083 [async-7] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 01:50:27.187 [async-7] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 01:50:37.918 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:33129->0.0.0.0
+2025-06-05 01:50:53.366 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:36503->0.0.0.0
+2025-06-05 01:51:07.857 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:50327->0.0.0.0
+2025-06-05 01:51:23.161 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:44392->0.0.0.0
+2025-06-05 01:51:37.886 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:44806->0.0.0.0
+2025-06-05 01:51:53.234 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:40660->0.0.0.0
+2025-06-05 01:52:08.032 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:52799->0.0.0.0
+2025-06-05 01:52:22.332 [async-8] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 01:52:22.334 [async-8] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 01:52:22.348 [async-8] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 01:52:22.665 [async-8] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 01:52:23.307 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:41653->0.0.0.0
+2025-06-05 01:52:24.431 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:59687->0.0.0.0
+2025-06-05 01:52:38.109 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:49499->0.0.0.0
+2025-06-05 01:52:53.514 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:42037->0.0.0.0
+2025-06-05 01:53:08.243 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:48455->0.0.0.0
+2025-06-05 01:53:23.350 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:36071->0.0.0.0
+2025-06-05 01:53:38.380 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:55652->0.0.0.0
+2025-06-05 01:53:53.407 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:39192->0.0.0.0
+2025-06-05 01:54:08.450 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:38996->0.0.0.0
+2025-06-05 01:54:17.567 [async-3] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 01:54:17.568 [async-3] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 01:54:17.569 [async-3] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 01:54:18.323 [async-3] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 01:54:20.637 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:36538->0.0.0.0
+2025-06-05 01:54:23.533 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:51595->0.0.0.0
+2025-06-05 01:54:40.019 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:50020->0.0.0.0
+2025-06-05 01:54:53.653 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:39679->0.0.0.0
+2025-06-05 01:55:08.658 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:46042->0.0.0.0
+2025-06-05 01:55:23.739 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:54495->0.0.0.0
+2025-06-05 01:55:38.824 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:43506->0.0.0.0
+2025-06-05 01:55:53.826 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:52129->0.0.0.0
+2025-06-05 01:56:08.825 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:52090->0.0.0.0
+2025-06-05 01:56:12.791 [async-7] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 01:56:12.798 [async-7] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 01:56:12.799 [async-7] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 01:56:12.995 [async-7] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 01:56:15.110 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:45222->0.0.0.0
+2025-06-05 01:56:23.955 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:40490->0.0.0.0
+2025-06-05 01:56:38.985 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:45894->0.0.0.0
+2025-06-05 01:56:54.086 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:47963->0.0.0.0
+2025-06-05 01:57:09.125 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:46639->0.0.0.0
+2025-06-05 01:57:24.198 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:51609->0.0.0.0
+2025-06-05 01:57:39.178 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:54187->0.0.0.0
+2025-06-05 01:57:54.281 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:48378->0.0.0.0
+2025-06-05 01:58:08.244 [async-3] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 01:58:08.245 [async-3] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 01:58:08.245 [async-3] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 01:58:09.242 [async-3] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 01:58:09.553 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:44415->0.0.0.0
+2025-06-05 01:58:16.849 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:37758->0.0.0.0
+2025-06-05 01:58:17.459 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:39894->0.0.0.0
+2025-06-05 01:58:24.419 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:50991->0.0.0.0
+2025-06-05 01:58:42.697 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:40322->0.0.0.0
+2025-06-05 01:58:54.446 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:50665->0.0.0.0
+2025-06-05 01:59:10.238 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:54605->0.0.0.0
+2025-06-05 01:59:24.569 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:44058->0.0.0.0
+2025-06-05 01:59:40.079 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:36876->0.0.0.0
+2025-06-05 01:59:54.653 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:44463->0.0.0.0
+2025-06-05 02:00:03.478 [async-12] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 02:00:03.479 [async-12] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 02:00:03.480 [async-12] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 02:00:03.751 [async-12] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 02:00:06.065 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:60850->0.0.0.0
+2025-06-05 02:00:09.787 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:51310->0.0.0.0
+2025-06-05 02:00:24.878 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:53132->0.0.0.0
+2025-06-05 02:00:39.870 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:54362->0.0.0.0
+2025-06-05 02:00:54.924 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:58297->0.0.0.0
+2025-06-05 02:01:10.070 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:46130->0.0.0.0
+2025-06-05 02:01:25.045 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:40832->0.0.0.0
+2025-06-05 02:01:40.478 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:58758->0.0.0.0
+2025-06-05 02:01:55.108 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:58479->0.0.0.0
+2025-06-05 02:01:58.716 [async-1] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 02:01:58.717 [async-1] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 02:01:58.718 [async-1] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 02:01:58.830 [async-1] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 02:02:10.131 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:47342->0.0.0.0
+2025-06-05 02:02:25.255 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:44467->0.0.0.0
+2025-06-05 02:02:40.277 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:49853->0.0.0.0
+2025-06-05 02:02:55.323 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:48867->0.0.0.0
+2025-06-05 02:03:10.352 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:47452->0.0.0.0
+2025-06-05 02:03:25.376 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:36997->0.0.0.0
+2025-06-05 02:03:40.449 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:45960->0.0.0.0
+2025-06-05 02:03:53.949 [async-15] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 02:03:53.949 [async-15] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 02:03:53.968 [async-15] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 02:03:54.530 [async-15] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 02:03:55.561 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:52123->0.0.0.0
+2025-06-05 02:03:56.091 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:38106->0.0.0.0
+2025-06-05 02:04:10.563 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:46025->0.0.0.0
+2025-06-05 02:04:25.669 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:47510->0.0.0.0
+2025-06-05 02:04:35.589 [async-13] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000601, 开始处理: 203.145.95.92:39279
+2025-06-05 02:04:35.590 [async-13] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:126 - [注册请求] 设备：81000000465001000601, 回复401: 203.145.95.92:39279
+2025-06-05 02:04:36.474 [async-5] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000601, 开始处理: 203.145.95.92:39279
+2025-06-05 02:04:36.476 [async-5] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:206 - [注册成功] deviceId: 81000000465001000601->203.145.95.92:39279
+2025-06-05 02:04:36.480 [async-5] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000601->203.145.95.92:39279
+2025-06-05 02:04:40.735 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:34583->0.0.0.0
+2025-06-05 02:04:55.719 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:36801->0.0.0.0
+2025-06-05 02:05:11.024 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:37123->0.0.0.0
+2025-06-05 02:05:25.887 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:52103->0.0.0.0
+2025-06-05 02:05:42.659 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:40328->0.0.0.0
+2025-06-05 02:05:49.192 [async-1] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 02:05:49.192 [async-1] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 02:05:49.193 [async-1] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 02:05:49.780 [async-1] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 02:05:51.592 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:35400->0.0.0.0
+2025-06-05 02:05:55.956 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:35653->0.0.0.0
+2025-06-05 02:06:11.236 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:56146->0.0.0.0
+2025-06-05 02:06:26.138 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:53043->0.0.0.0
+2025-06-05 02:06:41.479 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:42884->0.0.0.0
+2025-06-05 02:06:56.199 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:46492->0.0.0.0
+2025-06-05 02:07:11.376 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:56426->0.0.0.0
+2025-06-05 02:07:26.282 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:50331->0.0.0.0
+2025-06-05 02:07:41.863 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:41275->0.0.0.0
+2025-06-05 02:07:44.437 [async-2] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 02:07:44.437 [async-2] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 02:07:44.441 [async-2] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 02:07:44.514 [async-2] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 02:07:46.807 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:35741->0.0.0.0
+2025-06-05 02:07:56.438 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:52884->0.0.0.0
+2025-06-05 02:08:08.131 [async-6] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465002000102, 开始处理: 192.168.100.143:5061
+2025-06-05 02:08:08.132 [async-6] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:126 - [注册请求] 设备：81000000465002000102, 回复401: 192.168.100.143:5061
+2025-06-05 02:08:08.156 [async-9] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465002000102, 开始处理: 192.168.100.143:5061
+2025-06-05 02:08:08.157 [async-9] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:126 - [注册请求] 设备：81000000465002000102, 回复401: 192.168.100.143:5061
+2025-06-05 02:08:08.177 [async-15] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465002000102, 开始处理: 192.168.100.143:5061
+2025-06-05 02:08:08.177 [async-15] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:126 - [注册请求] 设备：81000000465002000102, 回复401: 192.168.100.143:5061
+2025-06-05 02:08:08.216 [async-13] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465002000102, 开始处理: 192.168.100.143:5061
+2025-06-05 02:08:08.216 [async-13] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:126 - [注册请求] 设备：81000000465002000102, 回复401: 192.168.100.143:5061
+2025-06-05 02:08:08.685 [async-8] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465002000102, 开始处理: 192.168.100.143:5061
+2025-06-05 02:08:08.687 [async-8] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:206 - [注册成功] deviceId: 81000000465002000102->192.168.100.143:5061
+2025-06-05 02:08:08.688 [async-8] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465002000102->192.168.100.143:5061
+2025-06-05 02:08:11.711 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:40053->0.0.0.0
+2025-06-05 02:08:27.555 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:33883->0.0.0.0
+2025-06-05 02:08:41.583 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:48684->0.0.0.0
+2025-06-05 02:08:57.237 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:53743->0.0.0.0
+2025-06-05 02:09:11.951 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:58491->0.0.0.0
+2025-06-05 02:09:27.595 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:51717->0.0.0.0
+2025-06-05 02:09:39.742 [async-7] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001000001, 开始处理: 13.50.108.195:5080
+2025-06-05 02:09:39.742 [async-7] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:101 - [注册请求]设备：81000000465001000001, 注册续订: 81000000465001000001
+2025-06-05 02:09:39.743 [async-7] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001000001->13.50.108.195:5080
+2025-06-05 02:09:40.873 [async-7] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:229 - [设备上线]: 81000000465001000001，通道数为0,查询通道信息
+2025-06-05 02:09:47.745 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:44110->0.0.0.0
+2025-06-05 02:09:49.149 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:55252->0.0.0.0
+2025-06-05 02:09:50.545 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:51219->0.0.0.0
+2025-06-05 02:09:56.861 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:58237->0.0.0.0
+2025-06-05 02:09:58.829 [async-2] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001999903, 开始处理: 124.217.188.125:35244
+2025-06-05 02:09:58.830 [async-2] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:126 - [注册请求] 设备：81000000465001999903, 回复401: 124.217.188.125:35244
+2025-06-05 02:09:59.445 [async-10] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:97 - [注册请求]设备：81000000465001999903, 开始处理: 124.217.188.125:35244
+2025-06-05 02:09:59.453 [async-10] INFO  c.g.i.v.g.t.e.r.impl.RegisterRequestProcessor:206 - [注册成功] deviceId: 81000000465001999903->124.217.188.125:35244
+2025-06-05 02:09:59.454 [async-10] INFO  c.g.iot.vmp.gb28181.service.impl.DeviceServiceImpl:153 - [设备上线] deviceId：81000000465001999903->124.217.188.125:35244
+2025-06-05 02:10:19.120 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:35912->0.0.0.0
+2025-06-05 02:10:26.910 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:47399->0.0.0.0
+2025-06-05 02:10:42.205 [schedule] INFO  c.g.i.v.g.t.e.r.i.m.n.c.KeepaliveNotifyMessageHandler:103 - [收到心跳] 地址变化, null(81000000465001000001), 13.50.108.195:56851->0.0.0.0
