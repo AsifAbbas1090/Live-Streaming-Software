@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+  <CmdType>DeviceInfo</CmdType>
+  <SN>1749761155</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <DeviceName>GB28181-Restreamer</DeviceName>
+  <Manufacturer>GB28181-RestreamerProject</Manufacturer>
+  <Model>Restreamer-1.0</Model>
+  <Firmware>1.0.0</Firmware>
+  <MaxCamera>14</MaxCamera>
+  <MaxAlarm>0</MaxAlarm>
+</Response>
