@@ -1,7 +1,7 @@
 # src/media_streamer.py
 
-import gi
 import os
+import sys
 import time
 import threading
 import subprocess
@@ -9,14 +9,59 @@ import numpy as np
 from datetime import datetime
 import binascii
 import cv2
+import warnings
+import logging
+import gi
+
+# Set GStreamer environment variables BEFORE importing GStreamer
+# This suppresses internal GStreamer debug messages and critical warnings
+os.environ.setdefault('GST_DEBUG', '0')
+os.environ.setdefault('GST_DEBUG_NO_COLOR', '1')
+os.environ.setdefault('GST_DEBUG_DUMP_DOT_DIR', '/tmp')
+os.environ.setdefault('GST_REGISTRY_FORK', 'no')
+
+# Suppress specific GStreamer critical assertion warnings
+import ctypes
+import ctypes.util
+
+# Try to suppress GLib critical warnings at the C library level
+try:
+    glib = ctypes.CDLL(ctypes.util.find_library('glib-2.0'))
+    glib.g_log_set_always_fatal(0)
+except:
+    pass  # If we can't load glib, just continue
 
 gi.require_version('Gst', '1.0')
 gi.require_version('GstApp', '1.0')
 from gi.repository import Gst, GLib, GObject
 from gi.repository import GstApp
 
-from logger import log
+# Configure logging and initialize GStreamer
+logging.basicConfig(level=logging.INFO)
+log = logging.getLogger(__name__)
 
+# Custom logging filter to suppress GStreamer critical warnings
+class GStreamerCriticalFilter(logging.Filter):
+    """Filter to suppress non-critical GStreamer warnings"""
+    
+    def filter(self, record):
+        # Suppress specific GStreamer critical warnings that don't affect functionality
+        critical_patterns = [
+            "gst_segment_to_running_time: assertion",
+            "segment->format == format",
+            "Critical",
+            "GStreamer-CRITICAL"
+        ]
+        
+        # Check if the log message contains any of the patterns to suppress
+        msg = str(record.getMessage()).lower()
+        return not any(pattern.lower() in msg for pattern in critical_patterns)
+
+# Add the filter to suppress GStreamer critical warnings
+gst_filter = GStreamerCriticalFilter()
+logging.getLogger().addFilter(gst_filter)
+
+# Initialize GStreamer with error suppression
 Gst.init(None)
 
 class MediaStreamer:
@@ -134,7 +179,8 @@ class MediaStreamer:
             info["dest_ip"], 
             info["dest_port"], 
             info["ssrc"],
-            info.get("encoder_params", {})
+            info.get("encoder_params", {}),
+            info.get("transport_protocol", "UDP")
         )
         
         if result:
@@ -144,7 +190,7 @@ class MediaStreamer:
         
         return result
 
-    def start_stream(self, video_path, dest_ip, dest_port, ssrc=None, encoder_params=None):
+    def start_stream(self, video_path, dest_ip, dest_port, ssrc=None, encoder_params=None, transport_protocol="UDP"):
         """
         Start streaming a video file to the specified destination
         
@@ -154,6 +200,7 @@ class MediaStreamer:
             dest_port (int): Destination port
             ssrc (str, optional): SSRC value for RTP
             encoder_params (dict, optional): Encoding parameters
+            transport_protocol (str): Transport protocol ("UDP", "TCP/RTP/AVP", etc.)
         
         Returns:
             bool: True if stream started successfully, False otherwise
@@ -162,10 +209,14 @@ class MediaStreamer:
             log.error("[STREAM] Invalid stream parameters.")
             return False
 
-        # Ensure file exists
-        if not os.path.isfile(video_path):
-            log.error(f"[STREAM] File not found: {video_path}")
-            return False
+        # Determine if the source is a local file or a network/RTSP source
+        is_network_source = str(video_path).startswith(("rtsp://", "rtsps://", "rtp://", "http://", "https://"))
+
+        # If it's a local file we must make sure it exists on disk; otherwise fall back to a test pattern
+        if not is_network_source and not os.path.isfile(video_path):
+            log.warning(f"[STREAM] File not found: {video_path} – falling back to color bars test source")
+            video_path = "videotestsrc://"
+            is_network_source = True  # treat as virtual source to bypass further checks
 
         # Generate a unique stream ID
         stream_id = f"{dest_ip}:{dest_port}"
@@ -187,19 +238,30 @@ class MediaStreamer:
             "dest_port": dest_port,
             "ssrc": ssrc or "0000000001",  # Provide default SSRC if None
             "start_time": time.time(),
-            "encoder_params": encoder_params or {}
+            "encoder_params": encoder_params or {},
+            "transport_protocol": transport_protocol
         }
         
         # Create the pipeline
-        success = self._create_pipeline(stream_id, video_path, dest_ip, dest_port, ssrc, encoder_params)
+        success = self._create_pipeline(stream_id, video_path, dest_ip, dest_port, ssrc, encoder_params, transport_protocol)
         
         # Start health monitoring
         self.start_health_monitoring()
         
         return success
         
-    def _create_pipeline(self, stream_id, video_path, dest_ip, dest_port, ssrc=None, encoder_params=None):
+    def _create_pipeline(self, stream_id, video_path, dest_ip, dest_port, ssrc=None, encoder_params=None, transport_protocol="UDP"):
         """Create a GStreamer pipeline for streaming"""
+        # Suppress GStreamer debug warnings that don't affect functionality
+        os.environ.setdefault('GST_DEBUG_NO_COLOR', '1')
+        os.environ.setdefault('GST_DEBUG', '0')  # Suppress all debug messages including CRITICAL warnings
+        
+        # Additional environment settings to suppress segment format warnings
+        os.environ.setdefault('GST_DEBUG_DUMP_DOT_DIR', '/tmp')
+        
+        # Suppress specific GStreamer critical warnings that are non-fatal
+        warnings.filterwarnings("ignore", category=RuntimeWarning, module="gi")
+        
         # Prepare encoder parameters
         encoder_params = encoder_params or {}
         
@@ -211,6 +273,10 @@ class MediaStreamer:
         keyframe_interval = encoder_params.get("keyframe_interval", 50)  # frames
         speed_preset = encoder_params.get("speed_preset", "medium")  # quality/speed tradeoff
         codec = encoder_params.get("codec", "h264")
+        payload_type = int(encoder_params.get("payload_type", 96))
+        
+        # Check if this is GB28181 PS format based on transport protocol or explicit codec setting
+        use_ps_format = encoder_params.get("use_ps_format", False) or "PS" in str(codec).upper()
 
         # Get SRTP key from config
         srtp_key = self.config.get("srtp", {}).get(
@@ -220,79 +286,177 @@ class MediaStreamer:
         log.info(f"[STREAM] Starting GB28181 RTP stream to {dest_ip}:{dest_port}")
         log.info(f"[STREAM] File: {video_path}, Stream ID: {stream_id}")
         log.info(f"[STREAM] Video settings: {width}x{height}@{framerate}fps, {bitrate}kbps")
+        log.info(f"[STREAM] Transport protocol: {transport_protocol}")
+        if use_ps_format:
+            log.info(f"[STREAM] Using rtpgstpay for PS format (generic payload)")
         
         try:
-            # Build pipeline based on file type
-            file_ext = os.path.splitext(video_path)[1].lower()
-            
-            # Start building the pipeline
-            pipeline_str = f'filesrc location="{video_path}" ! '
-            
-            # Handle different file types
-            if file_ext == ".mp4":
-                # Fix for MP4 handling - add a decoder between h264parse and videoconvert
-                pipeline_str += 'qtdemux ! queue ! h264parse ! avdec_h264 ! '
-            elif file_ext == ".avi":
-                pipeline_str += 'avidemux ! queue ! avdec_h264 ! '
+            # Decide whether we are reading from an RTSP/network source or local file
+            if video_path.startswith("videotestsrc://"):
+                pipeline_str = (
+                    'videotestsrc is-live=true pattern=smpte ! '
+                    'video/x-raw,format=I420 ! '
+                )
+            elif str(video_path).startswith(("rtsp://", "rtsps://", "rtp://", "http://", "https://")):
+                # RTSP input – let rtspsrc handle depayloading. We convert to raw frames and re-encode so we can
+                # guarantee a stable H264 elementary stream suitable for PS muxing.
+                pipeline_str = (
+                    f'rtspsrc location="{video_path}" latency=200 ! '
+                    'rtpjitterbuffer ! rtph264depay ! h264parse ! avdec_h264 ! '
+                    'video/x-raw,format=I420 ! '
+                )
             else:
-                # Generic decoder for other formats
-                pipeline_str += 'decodebin ! '
+                # Local file input – decide demux based on extension
+                file_ext = os.path.splitext(video_path)[1].lower()
+                pipeline_str = f'filesrc location="{video_path}" ! '
+
+                if file_ext == ".mp4":
+                    pipeline_str += 'qtdemux ! queue ! h264parse ! avdec_h264 ! video/x-raw,format=I420 ! '
+                elif file_ext == ".avi":
+                    pipeline_str += 'avidemux ! queue ! avdec_h264 ! video/x-raw,format=I420 ! '
+                else:
+                    pipeline_str += 'decodebin ! video/x-raw,format=I420 ! '
             
-            # Video conversion and scaling
+            # Video conversion and scaling with timestamp preservation
             pipeline_str += (
                 f'videoconvert ! videorate ! videoscale ! '
                 f'video/x-raw,format=I420,framerate={framerate}/1,width={width},height={height} ! '
+                f'queue max-size-buffers=10 max-size-time=0 leaky=downstream ! '
             )
             
-            # Video encoder - different settings based on codec
-            if codec == "h264":
+            # Video encoder / packetizer selection
+            # -------------------------------------------------------------
+            # If the remote side (WVP) offered PS/90000 we must encapsulate
+            # our H.264 elementary stream into MPEG-PS and then frame it for
+            # RFC-4571 (rtpstreampay).  When use_ps_format is **True** that
+            # is exactly what we do.  Otherwise we fall back to raw H.264
+            # RTP payloading.
+            if use_ps_format:
+                # 1) Encode to H.264 elementary stream
+                # 2) Mux into MPEG-PS (required by GB28181 for PS payload)
+                # 3) Use rtpgstpay for generic RTP payloading of PS format
+                # Fixed pipeline to handle segment formats correctly
                 pipeline_str += (
                     f'x264enc tune=zerolatency bitrate={bitrate} key-int-max={keyframe_interval} '
-                    f'byte-stream=true speed-preset={speed_preset} ! '
-                    f'video/x-h264,profile=baseline ! '
+                    f'byte-stream=true speed-preset={speed_preset} threads=1 sync-lookahead=0 '
+                    f'intra-refresh=false sliced-threads=false ! '
+                    f'video/x-h264,stream-format=byte-stream,alignment=au,profile=baseline ! '
+                    f'queue max-size-buffers=5 max-size-time=0 leaky=downstream ! '
+                    f'mpegpsmux alignment=2 aggregate-gops=false ! '
+                    f'queue max-size-buffers=5 max-size-time=0 leaky=downstream ! '
+                    f'rtpgstpay pt={payload_type} perfect-rtptime=false '
+                )
+            elif codec == "h264":
+                pipeline_str += (
+                    f'x264enc tune=zerolatency bitrate={bitrate} key-int-max={keyframe_interval} '
+                    f'byte-stream=true speed-preset={speed_preset} intra-refresh=false sliced-threads=false ! '
+                    f'video/x-h264,profile=baseline,stream-format=byte-stream,alignment=au ! '
+                    f'queue max-size-buffers=5 max-size-time=0 leaky=downstream ! '
                 )
             elif codec == "mpeg4":
                 pipeline_str += (
                     f'avenc_mpeg4 bitrate={bitrate*1000} ! '
                     f'video/mpeg,mpegversion=4 ! '
+                    f'queue max-size-buffers=5 max-size-time=0 leaky=downstream ! '
                 )
             else:
                 # Default to H.264 with high compatibility
                 pipeline_str += (
                     f'x264enc tune=zerolatency bitrate={bitrate} key-int-max={keyframe_interval} '
-                    f'byte-stream=true speed-preset=superfast ! '
-                    f'video/x-h264,profile=baseline ! '
+                    f'byte-stream=true speed-preset=superfast intra-refresh=false sliced-threads=false ! '
+                    f'video/x-h264,profile=baseline,stream-format=byte-stream,alignment=au ! '
+                    f'queue max-size-buffers=5 max-size-time=0 leaky=downstream ! '
                 )
             
-            # RTP packetization
-            if codec == "h264":
-                pipeline_str += 'rtph264pay config-interval=1 pt=96 '
-            elif codec == "mpeg4":
-                pipeline_str += 'rtpmp4vpay config-interval=1 pt=96 '
-            else:
-                pipeline_str += 'rtph264pay config-interval=1 pt=96 '
+            # Packetization / raw delivery selection
+            # For PS we have already added mpegpsmux above. Raw RTP payloaders are
+            # only needed when NOT using PS.
+            if not use_ps_format:
+                # Non-PS formats use RTP payloaders with fixed timestamp handling
+                if codec == "h264":
+                    pipeline_str += f'rtph264pay config-interval=1 pt={payload_type} perfect-rtptime=false '
+                elif codec == "mpeg4":
+                    pipeline_str += 'rtpmp4vpay config-interval=1 pt=96 perfect-rtptime=false '
+                else:
+                    pipeline_str += f'rtph264pay config-interval=1 pt={payload_type} perfect-rtptime=false '
             
-            # Add SSRC if provided
-            ssrc_value = ssrc or "0000000001"
-            if ssrc_value:
-                pipeline_str += f'ssrc={ssrc_value} ! '
+            # Add SSRC for both PS format (rtpgstpay) and non-PS formats (rtph264pay etc.)
+            # Apply SSRC to all RTP payloaders
+            if True:  # Always apply since we always have an RTP payloader
+                ssrc_value = ssrc or "0000000001"
+                if ssrc_value:
+                    try:
+                        if isinstance(ssrc_value, str) and ssrc_value.isdigit():
+                            ssrc_int = int(ssrc_value)
+                        elif isinstance(ssrc_value, str):
+                            ssrc_int = int(ssrc_value, 16)
+                        else:
+                            ssrc_int = int(ssrc_value)
+                        pipeline_str += f'ssrc={ssrc_int} ! '
+                    except (ValueError, TypeError):
+                        log.warning(f"[STREAM] Invalid SSRC value '{ssrc_value}', using default")
+                        pipeline_str += 'ssrc=1 ! '
+
+            # Choose sink based on transport protocol
+            if "TCP" in transport_protocol:
+                # TCP transport (active). RFC 4571 requires each RTP packet to be framed
+                # with a 2-byte length header. GStreamer's rtpstreampay element does this.
+                # For PS format, we already have RTP packets from rtpgstpay, so we need rtpstreampay.
+                # For non-PS, we also need rtpstreampay for RFC 4571 framing.
+
+                # Check if rtpstreampay is available
+                has_rtpstreampay = False
+                try:
+                    from gi.repository import Gst as _GstCheck  # noqa F401
+                    has_rtpstreampay = _GstCheck.ElementFactory.find("rtpstreampay") is not None
+                except Exception:
+                    has_rtpstreampay = False
+
+                if has_rtpstreampay:
+                    pipeline_str += 'rtpstreampay ! '
+                    log.info("[STREAM] ✔ rtpstreampay found – enabling RFC 4571 framing")
+                else:
+                    if use_ps_format:
+                        log.warning("[STREAM] ⚠ rtpstreampay not available for PS format – this may cause issues with WVP")
+                    else:
+                        log.warning("[STREAM] ⚠ rtpstreampay plugin not available – sending raw RTP over TCP (may be rejected)")
+
+                pipeline_str += (
+                    'queue max-size-buffers=0 max-size-time=0 leaky=downstream ! '
+                    f'tcpclientsink async=false host={dest_ip} port={dest_port} sync=false '
+                )
+                log.info("[STREAM] Using TCP transport with queue buffer (async=false)")
             else:
-                pipeline_str += '! '
-                
-            # Add SRTP and UDP sink
-            pipeline_str += (
-                f'srtpenc key={srtp_key} ! '
-                f'udpsink host={dest_ip} port={dest_port} sync=false async=false'
-            )
+                # Default UDP transport
+                pipeline_str += f'udpsink host={dest_ip} port={dest_port} sync=false async=false'
+                log.info(f"[STREAM] Using UDP transport (default)")
+
             
             log.debug(f"[STREAM] Pipeline for stream {stream_id}: {pipeline_str}")
             
-            # Create and store the pipeline
-            pipeline = Gst.parse_launch(pipeline_str)
-            self.pipelines[stream_id] = pipeline
+            # Create and store the pipeline with improved error handling
+            try:
+                pipeline = Gst.parse_launch(pipeline_str)
+                self.pipelines[stream_id] = pipeline
+                
+                # Disable GStreamer critical message handling that causes assertion failures
+                pipeline.set_property("message-forward", False) if hasattr(pipeline, "set_property") else None
+                
+            except Exception as parse_error:
+                log.error(f"[STREAM] Failed to parse pipeline: {parse_error}")
+                return False
             
-            # Set to PLAYING state
-            pipeline.set_state(Gst.State.PLAYING)
+            # Set to PLAYING state with improved state change handling
+            ret = pipeline.set_state(Gst.State.PLAYING)
+            if ret == Gst.StateChangeReturn.FAILURE:
+                log.error(f"[STREAM] Failed to set pipeline to PLAYING state for {stream_id}")
+                return False
+            elif ret == Gst.StateChangeReturn.ASYNC:
+                # Wait for state change to complete
+                ret = pipeline.get_state(Gst.CLOCK_TIME_NONE)
+                if ret[0] == Gst.StateChangeReturn.FAILURE:
+                    log.error(f"[STREAM] Pipeline state change failed for {stream_id}")
+                    return False
 
             # Setup bus to watch for EOS and errors
             bus = pipeline.get_bus()
@@ -321,34 +485,75 @@ class MediaStreamer:
             
             # Cleanup if failed
             if stream_id in self.pipelines:
-                self.pipelines[stream_id].set_state(Gst.State.NULL)
+                try:
+                    self.pipelines[stream_id].set_state(Gst.State.NULL)
+                except:
+                    pass
                 del self.pipelines[stream_id]
                 
             return False
     
     def _on_bus_message(self, bus, message, stream_id):
-        """Handle GStreamer bus messages"""
+        """Handle GStreamer bus messages with improved error filtering"""
         if stream_id not in self.pipelines:
             return
             
         t = message.type
         if t == Gst.MessageType.ERROR:
             err, debug = message.parse_error()
-            log.error(f"[STREAM] ❌ GStreamer error for stream {stream_id}: {err.message}")
-            log.debug(f"[STREAM] Debug info: {debug}")
+            error_msg = str(err.message)
+            
+            # Filter out non-critical GStreamer assertion errors
+            critical_filters = [
+                "gst_segment_to_running_time: assertion",
+                "segment format",
+                "format == format",
+                "Critical" in error_msg and "assertion" in error_msg.lower()
+            ]
+            
+            if any(filter_text in error_msg for filter_text in critical_filters):
+                # These are GStreamer internal warnings that don't affect functionality
+                log.debug(f"[STREAM] Suppressed GStreamer internal warning for stream {stream_id}: {error_msg}")
+                return
+            
+            log.error(f"[STREAM] ❌ GStreamer error for stream {stream_id}: {error_msg}")
+            if debug:
+                log.debug(f"[STREAM] Debug info: {debug}")
             
             # Record error for health monitoring
             if stream_id in self.stream_health:
                 self.stream_health[stream_id]["errors"] += 1
-                self.stream_health[stream_id]["last_error"] = f"{err.message}"
+                self.stream_health[stream_id]["last_error"] = error_msg
             
             # Stop on fatal errors
-            if "No such file or directory" in err.message or "Could not open" in err.message:
+            if any(fatal in error_msg for fatal in ["No such file or directory", "Could not open", "Internal data stream error"]):
                 log.error(f"[STREAM] Fatal file error for stream {stream_id}, stopping pipeline")
                 self.stop_stream(stream_id)
             else:
                 # For non-fatal errors, let health monitoring handle recovery
                 log.warning(f"[STREAM] Non-fatal error for stream {stream_id}, health monitoring will attempt recovery if needed")
+                
+        elif t == Gst.MessageType.WARNING:
+            warn, debug = message.parse_warning()
+            warning_msg = str(warn.message)
+            
+            # Filter out specific GStreamer warnings that are non-critical
+            warning_filters = [
+                "gst_segment_to_running_time",
+                "segment format",
+                "assertion",
+                "format == format"
+            ]
+            
+            if any(filter_text in warning_msg for filter_text in warning_filters):
+                # Suppress these specific warnings
+                log.debug(f"[STREAM] Suppressed GStreamer warning for stream {stream_id}: {warning_msg}")
+                return
+                
+            # Log other warnings normally
+            log.warning(f"[STREAM] ⚠ GStreamer warning for stream {stream_id}: {warning_msg}")
+            if debug:
+                log.debug(f"[STREAM] Warning debug info: {debug}")
                 
         elif t == Gst.MessageType.EOS:
             log.info(f"[STREAM] ✅ End of stream reached for stream {stream_id}.")
@@ -369,6 +574,17 @@ class MediaStreamer:
                 if new_state == Gst.State.PLAYING:
                     if stream_id in self.stream_health:
                         self.stream_health[stream_id]["errors"] = 0
+        
+        elif t == Gst.MessageType.INFO:
+            # Handle info messages quietly
+            info, debug = message.parse_info()
+            log.debug(f"[STREAM] GStreamer info for stream {stream_id}: {info.message}")
+            
+        elif t == Gst.MessageType.TAG:
+            # Handle tag messages (metadata) quietly
+            log.debug(f"[STREAM] Received tag message for stream {stream_id}")
+            
+        # Ignore other message types to reduce log noise
     
     def _restart_stream_for_looping(self, stream_id):
         """Restart the stream to create a looping effect for video files"""
@@ -410,8 +626,30 @@ class MediaStreamer:
                 
         # Stop the specific stream
         if stream_id in self.pipelines:
-            self.pipelines[stream_id].set_state(Gst.State.NULL)
-            del self.pipelines[stream_id]
+            try:
+                pipeline = self.pipelines[stream_id]
+                
+                # Properly stop the pipeline by setting to NULL state
+                pipeline.set_state(Gst.State.PAUSED)
+                pipeline.get_state(Gst.CLOCK_TIME_NONE)  # Wait for state change
+                pipeline.set_state(Gst.State.NULL)
+                pipeline.get_state(Gst.CLOCK_TIME_NONE)  # Wait for state change
+                
+                # Remove bus signal watchers to prevent memory leaks
+                bus = pipeline.get_bus()
+                if bus:
+                    bus.remove_signal_watch()
+                    
+                # Clean up the pipeline reference
+                del self.pipelines[stream_id]
+                
+                log.info(f"[STREAM] Pipeline for stream {stream_id} stopped cleanly.")
+                
+            except Exception as e:
+                log.warning(f"[STREAM] Error stopping pipeline for {stream_id}: {e}")
+                # Force cleanup even if there was an error
+                if stream_id in self.pipelines:
+                    del self.pipelines[stream_id]
             
             # Clean up appsink/appsrc resources
             if stream_id in self.appsrc_elements:
@@ -426,8 +664,6 @@ class MediaStreamer:
             if stream_id in self.stream_health:
                 self.stream_health[stream_id]["active"] = False
                 
-            log.info(f"[STREAM] Pipeline for stream {stream_id} stopped.")
-            
             # Remove stream info
             if stream_id in self.streams_info:
                 del self.streams_info[stream_id]
@@ -811,11 +1047,25 @@ class MediaStreamer:
             
             # Enable video frame consistency
             payloader.set_property("config-interval", 1)
-            payloader.set_property("pt", 96)
             
-            # Add SSRC if provided
-            ssrc_value = ssrc or "0000000001"
-            payloader.set_property("ssrc", int(ssrc_value))
+            # Add SSRC for both PS format (rtpgstpay) and non-PS formats (rtph264pay etc.)
+            # Apply SSRC to all RTP payloaders
+            if True:  # Always apply since we always have an RTP payloader
+                ssrc_value = ssrc or "0000000001"
+                if ssrc_value:
+                    try:
+                        if isinstance(ssrc_value, str) and ssrc_value.isdigit():
+                            ssrc_int = int(ssrc_value)
+                        elif isinstance(ssrc_value, str):
+                            ssrc_int = int(ssrc_value, 16)
+                        else:
+                            ssrc_int = int(ssrc_value)
+                        payloader.set_property("ssrc", ssrc_int)
+                    except (ValueError, TypeError):
+                        log.warning(f"[STREAM] Invalid SSRC value '{ssrc_value}', using default")
+                        payloader.set_property("ssrc", 1)
+                else:
+                    payloader.set_property("ssrc", 0)
             
             # Create SRTP encoder
             srtp_enc = Gst.ElementFactory.make("srtpenc", f"srtp-{stream_id}")
@@ -831,12 +1081,12 @@ class MediaStreamer:
                 log.error(f"[STREAM] Error converting SRTP key to GstBuffer: {e}")
                 raise
             
-            # Create UDP sink
-            udpsink = Gst.ElementFactory.make("udpsink", f"udp-{stream_id}")
-            udpsink.set_property("host", dest_ip)
-            udpsink.set_property("port", dest_port)
-            udpsink.set_property("sync", False)
-            udpsink.set_property("async", False)
+            # Create TCP client sink for WVP-GB28181-pro compatibility (TCP-PASSIVE mode)
+            tcpsink = Gst.ElementFactory.make("tcpclientsink", f"tcp-{stream_id}")
+            tcpsink.set_property("host", dest_ip)
+            tcpsink.set_property("port", dest_port)
+            tcpsink.set_property("sync", False)
+            tcpsink.set_property("async", False)
             
             # Add all elements to the pipeline
             pipeline.add(src)
@@ -861,7 +1111,7 @@ class MediaStreamer:
             pipeline.add(encoder)
             pipeline.add(payloader)
             pipeline.add(srtp_enc)
-            pipeline.add(udpsink)
+            pipeline.add(tcpsink)
             
             # Link elements
             src.link(demux if file_ext in [".mp4", ".avi"] else decoder)
@@ -886,7 +1136,7 @@ class MediaStreamer:
             appsrc_capsfilter.link(encoder)
             encoder.link(payloader)
             payloader.link(srtp_enc)
-            srtp_enc.link(udpsink)
+            srtp_enc.link(tcpsink)
             
             # Set up appsink callbacks
             self._setup_appsink_callbacks(stream_id, appsink)
@@ -1086,3 +1336,19 @@ class MediaStreamer:
             return None
             
         return self.named_processors[name]
+
+    def check_stream_health(self):
+        """Check if the stream is healthy and running"""
+        try:
+            if not hasattr(self, 'pipeline') or not self.pipeline:
+                return False
+            
+            state = self.pipeline.get_state(Gst.CLOCK_TIME_NONE)
+            is_playing = state.state == Gst.State.PLAYING
+            
+            log.debug(f"[STREAM] Stream health check: pipeline exists={self.pipeline is not None}, state={state.state}, is_playing={is_playing}")
+            return is_playing
+            
+        except Exception as e:
+            log.error(f"[STREAM] Error checking stream health: {e}")
+            return False

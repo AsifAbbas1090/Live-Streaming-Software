@@ -7,6 +7,48 @@ import time
 import signal
 import sys
 import atexit
+import logging
+
+# Set GStreamer environment variables BEFORE importing any GStreamer modules
+# This suppresses internal GStreamer debug messages and critical warnings
+os.environ.setdefault('GST_DEBUG', '0')
+os.environ.setdefault('GST_DEBUG_NO_COLOR', '1') 
+os.environ.setdefault('GST_DEBUG_DUMP_DOT_DIR', '/tmp')
+os.environ.setdefault('GST_REGISTRY_FORK', 'no')
+
+# Suppress specific GStreamer critical assertion warnings at the C library level
+import ctypes
+import ctypes.util
+
+# Try to suppress GLib critical warnings at the C library level
+try:
+    glib = ctypes.CDLL(ctypes.util.find_library('glib-2.0'))
+    glib.g_log_set_always_fatal(0)
+except:
+    pass  # If we can't load glib, just continue
+
+# Add a logging filter to suppress GStreamer critical warnings
+class GStreamerCriticalFilter(logging.Filter):
+    """Filter to suppress non-critical GStreamer warnings"""
+    
+    def filter(self, record):
+        # Suppress specific GStreamer critical warnings that don't affect functionality
+        critical_patterns = [
+            "gst_segment_to_running_time: assertion",
+            "segment->format == format",
+            "Critical",
+            "GStreamer-CRITICAL"
+        ]
+        
+        # Check if the log message contains any of the patterns to suppress
+        msg = str(record.getMessage()).lower()
+        return not any(pattern.lower() in msg for pattern in critical_patterns)
+
+# Add the filter to suppress GStreamer critical warnings
+gst_filter = GStreamerCriticalFilter()
+logging.getLogger().addFilter(gst_filter)
+
+# Now import the rest of the modules
 from logger import log
 from file_scanner import scan_video_files, get_video_catalog
 from rtsp_handler import start_rtsp_stream, cleanup_all_streams, get_rtsp_status

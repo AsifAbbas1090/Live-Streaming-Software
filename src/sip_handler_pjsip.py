@@ -23,6 +23,7 @@ from gb28181_xml import (
     parse_xml_message,
     parse_recordinfo_query
 )
+from gb28181_sip_sender import GB28181SIPSender
 
 class SIPClient:
     def __init__(self, config):
@@ -64,6 +65,9 @@ class SIPClient:
         
         # Streamer connection
         self.streamer = config.get("streamer")
+        
+        # Initialize SIP sender for XML messages
+        self.sip_sender = GB28181SIPSender(config)
         
         # SIP status
         self.running = False
@@ -357,19 +361,27 @@ class SIPClient:
             
         return '\n'.join(fixed_lines)
 
-    def parse_sdp_and_stream(self, sdp_text, callid=None, target_channel=None):
+    def parse_sdp_and_stream(self, sdp_text, callid=None, target_channel=None, ssrc=None):
         """Parse SDP offer and start streaming to the specified destination
         
         Enhanced with better error handling and recovery mechanisms.
+        Added SSRC parameter for WVP compatibility.
         """
         try:
-            # Extract SDP content if we've been passed a full SIP message
-            sdp_content = self.extract_sdp_from_message(sdp_text)
-            if not sdp_content:
-                log.warning("[SIP] ⚠️ No SDP content found in message, cannot start stream")
-                return False
+            # Check if sdp_text is already SDP content or a full SIP message
+            if sdp_text.strip().startswith('v='):
+                # Already SDP content
+                sdp_content = sdp_text
+                log.debug("[SIP] Using provided SDP content directly")
+            else:
+                # Extract SDP content from full SIP message
+                sdp_content = self.extract_sdp_from_message(sdp_text)
+                if not sdp_content:
+                    log.warning("[SIP] ⚠️ No SDP content found in message, cannot start stream")
+                    return False
+                log.debug("[SIP] Extracted SDP content from SIP message")
                 
-            log.debug(f"[SIP] Parsed SDP content: {sdp_content}")
+            log.debug(f"[SIP] Using SDP content: {sdp_content}")
                 
             # Extract destination IP (c= line)
             ip_match = re.search(r"c=IN IP4 (\d+\.\d+\.\d+\.\d+)", sdp_content)
@@ -391,12 +403,43 @@ class SIPClient:
             else:
                 port = int(port_match.group(1))
             
-            # Extract SSRC (y= line in GB28181)
-            y_match = re.search(r"y=(\d+)", sdp_content)
-            ssrc = y_match.group(1) if y_match else "0000000001"
+            # CRITICAL FIX: Extract transport protocol from SDP
+            transport_protocol = "UDP"  # Default
+            m_line_match = re.search(r"m=video \d+ ([A-Z/]+)", sdp_content)
+            if m_line_match:
+                transport_protocol = m_line_match.group(1)
+                log.info(f"[SIP] 🚀 Detected transport protocol: {transport_protocol}")
+            else:
+                log.warning(f"[SIP] Could not detect transport protocol from SDP, using default UDP")
+            
+            # Extract SSRC (y= line in GB28181) or use provided SSRC
+            if ssrc is None:
+                # Try to extract from SDP
+                y_match = re.search(r"y=(\d+)", sdp_content)
+                ssrc = y_match.group(1) if y_match else "0000000001"
+            else:
+                log.info(f"[SIP] 🎯 Using provided SSRC: {ssrc}")
             
             # Extract video format requirements if available (f= line in GB28181)
             encoder_params = {}
+            use_ps_format = False
+            selected_pt = None  # payload type for H264/90000 if present
+            
+            # Scan SDP lines
+            for line in sdp_content.split('\n'):
+                line = line.strip()
+                # Detect PS request
+                if 'rtpmap:96 PS/' in line:
+                    use_ps_format = True
+                    log.info(f"[SIP] 🔧 Detected PS format requirement from SDP rtpmap")
+
+                # Detect H264 payload type mapping
+                if line.lower().startswith('a=rtpmap:') and 'h264/90000' in line.lower():
+                    try:
+                        selected_pt = line.split()[0].split(':')[1]
+                    except Exception:
+                        pass
+            
             f_match = re.search(r"f=v/(\d+)/(\d+)", sdp_content)
             if f_match:
                 codec_id = f_match.group(1)
@@ -435,6 +478,15 @@ class SIPClient:
                     
                 log.info(f"[SIP] Video format request: codec={encoder_params.get('codec', 'h264')}, " +
                              f"resolution={encoder_params.get('width', '?')}x{encoder_params.get('height', '?')}")
+            
+            # Pass the detected payload type down to the media streamer so the payloader uses the same PT
+            if selected_pt and selected_pt.isdigit():
+                encoder_params['payload_type'] = int(selected_pt)
+
+            # Set PS format flag for GB28181 compatibility
+            if use_ps_format:
+                encoder_params["use_ps_format"] = True
+                log.info(f"[SIP] 🔧 Enabling PS format for GB28181 compatibility")
             
             # Select video source based on target channel
             video_source = None
@@ -484,13 +536,14 @@ class SIPClient:
                         log.error("[SIP] No RTSP sources configured either. Cannot start stream.")
                         return False
                 
-            # Start the stream using our Media Streamer
+            # Start the stream using our Media Streamer with transport protocol
             success = self.streamer.start_stream(
                 video_path=video_source,
                 dest_ip=ip,
                 dest_port=port,
                 ssrc=ssrc,
-                encoder_params=encoder_params
+                encoder_params=encoder_params,
+                transport_protocol=transport_protocol
             )
             
             if success:
@@ -502,7 +555,8 @@ class SIPClient:
                     "video_path": video_source, # Storing the actual source used
                     "start_time": time.time(),
                     "status": "active",
-                    "encoder_params": encoder_params
+                    "encoder_params": encoder_params,
+                    "transport_protocol": transport_protocol
                 }
                 
                 if callid:
@@ -625,7 +679,8 @@ class SIPClient:
                 dest_ip=stream_info["dest_ip"],
                 dest_port=stream_info["dest_port"],
                 ssrc=stream_info["ssrc"],
-                encoder_params=stream_info.get("encoder_params", {})
+                encoder_params=stream_info.get("encoder_params", {}),
+                transport_protocol=stream_info.get("transport_protocol", "UDP")
             )
             
             if success:
@@ -888,7 +943,7 @@ class SIPClient:
 <CmdType>Catalog</CmdType>
 <SN>{sn}</SN>
 <DeviceID>{self.device_id}</DeviceID>
-<Result>OK</Result>
+<r>OK</r>
 <SumNum>{len(minimal_items)}</SumNum>
 <DeviceList Num="{len(minimal_items)}">
 {minimal_xml}
@@ -1179,6 +1234,9 @@ class SIPClient:
     def start(self):
         log.info("[SIP] 🚀 Launching GB28181 SIP client...")
 
+        # Start the SIP sender
+        self.sip_sender.start()
+
         # Generate device catalog on startup
         self.generate_device_catalog()
 
@@ -1223,8 +1281,7 @@ class SIPClient:
 --realm *
 --username {sip['username']}
 --password {sip['password']}
-{local_port_option}--auto-answer 200
---null-audio
+{local_port_option}--null-audio
 --duration 0
 --log-level 5
 --auto-update-nat=1
@@ -1313,7 +1370,6 @@ class SIPClient:
             "--auto-update-nat", "0",
             "--disable-stun",
             "--null-audio",
-            "--auto-answer", "200",  # Auto-answer calls
             "--duration", "0",  # No call duration limit
             "--max-calls", "4",  # Match the compiled limit
             "--thread-cnt", "4",  # Use default thread count
@@ -1736,17 +1792,87 @@ class SIPClient:
             self._current_message_buffer = []
             return
             
-        # Handle INVITE messages for media streaming
-        if "INVITE sip:" in line and "SDP" not in line:
-            log.info("[SIP] INVITE detected in log line, processing buffer for full message.")
-            invite_call_id = self._extract_call_id_from_line(line)
-            if invite_call_id:
-                log.info(f"[SIP] Processing INVITE with Call-ID: {invite_call_id}")
-                sdp_content = self._extract_sdp_from_buffer(buffer)
-                if sdp_content:
-                    self._handle_invite_with_sdp(invite_call_id, sdp_content)
+        # Enhanced INVITE detection for GB28181 streaming
+        if "Request msg INVITE" in line:
+            log.info("[SIP] 🎬 INVITE detected in log line, processing buffer for full message.")
+            # IMPROVED: Start INVITE collection with timeout tracking
+            self._collecting_invite = True
+            self._invite_buffer = []
+            self._invite_collection_start = time.time()
+            log.info("[SIP] ⏰ Started INVITE collection with 5-second timeout protection")
+            return
+            
+        # Continue collecting INVITE message content
+        if hasattr(self, '_collecting_invite') and self._collecting_invite:
+            # IMPROVED: Enable INVITE collection with timeout protection
+            current_time = time.time()
+            collection_start_time = getattr(self, '_invite_collection_start', current_time)
+            
+            # Timeout protection: abort collection after 5 seconds
+            if current_time - collection_start_time > 5:
+                log.error("[SIP] ⏰ INVITE collection timeout - aborting to prevent infinite loop")
+                self._collecting_invite = False
+                delattr(self, '_invite_collection_start')
+                return
+                
+            stripped_line = line.strip()
+            log.debug(f"[SIP] 🔍 Processing line during INVITE collection: '{stripped_line[:100]}'")
+            
+            # Skip PJSUA metadata lines but keep SIP content
+            if "pjsua_core.c" in stripped_line or ".RX " in stripped_line:
+                log.debug("[SIP] 🔍 Skipping PJSUA metadata line")
+                return
+                
+            # Check for end of INVITE message - multiple termination conditions
+            if ("--end msg--" in stripped_line or 
+                "pjsua_call.c" in stripped_line or
+                (len(self._invite_buffer) > 20 and stripped_line.startswith('y=')) or
+                # NEW: Detect completion when we have all essential SIP/SDP components
+                (len(self._invite_buffer) >= 10 and 
+                 any('m=video' in line for line in self._invite_buffer) and
+                 any('Content-Length:' in line for line in self._invite_buffer) and
+                 any('Call-ID:' in line for line in self._invite_buffer))):
+                
+                log.info("[SIP] 🏁 Detected end-of-message marker for INVITE")
+                # End of INVITE message, process it
+                if self._invite_buffer:
+                    invite_message = '\n'.join(self._invite_buffer)
+                    log.info(f"[SIP] ✅ INVITE message collection complete: {len(invite_message)} bytes")
+                    log.debug(f"[SIP] Full INVITE message:\n{invite_message}")
+                    
+                    # Extract Call-ID from collected message
+                    call_id = self._extract_call_id_from_invite_message(invite_message)
+                    if call_id:
+                        log.info(f"[SIP] 🎬 Processing INVITE with Call-ID: {call_id}")
+                        self._handle_invite_request(call_id, invite_message)
+                    else:
+                        log.warning("[SIP] ⚠️ Could not extract Call-ID from INVITE message")
+                        log.debug(f"[SIP] 🔍 INVITE content for Call-ID debug: {invite_message[:200]}...")
                 else:
-                    log.warning("[SIP] ⚠️ No SDP content found in message, cannot start stream")
+                    log.warning("[SIP] ⚠️ No INVITE content collected")
+                
+                # Reset collection
+                self._collecting_invite = False
+                self._invite_buffer = []
+                return
+                
+            # Add line to INVITE collection if it looks like SIP content
+            if stripped_line and (
+                stripped_line.startswith(('Call-ID:', 'CSeq:', 'From:', 'To:', 'Via:', 'Max-Forwards:', 
+                                        'User-Agent:', 'Contact:', 'Subject:', 'Content-Type:', 'Content-Length:',
+                                        'v=', 'o=', 's=', 'c=', 't=', 'm=', 'a=')) or
+                stripped_line.startswith('SIP/') or
+                'sip:' in stripped_line.lower()
+            ):
+                self._invite_buffer.append(stripped_line)
+                log.debug(f"[SIP] Added INVITE line: {stripped_line}")
+                
+                # Extract Call-ID when we encounter it
+                if stripped_line.startswith('Call-ID:') and not self._invite_call_id:
+                    self._invite_call_id = stripped_line.split(':', 1)[1].strip()
+                    log.debug(f"[SIP] Found Call-ID in INVITE: {self._invite_call_id}")
+            
+            return
                     
         # Handle other SIP responses and status updates
         if "SIP/2.0" in line and any(code in line for code in ["200 OK", "401", "404", "500"]):
@@ -1962,31 +2088,44 @@ class SIPClient:
     def _check_streams(self):
         """Check and maintain active streams with enhanced monitoring"""
         now = time.time()
-        for stream_id, stream_info in list(self.active_streams.items()):
+        for call_id, stream_info in list(self.active_streams.items()):
             try:
-                # Check stream health
-                if not self.streamer.check_stream_health(stream_id):
-                    log.warning(f"[SIP] Stream {stream_id} appears unhealthy")
-                    self._handle_stream_failure(stream_id, stream_info)
+                # Convert Call-ID to MediaStreamer stream ID format
+                media_stream_id = f"{stream_info['dest_ip']}:{stream_info['dest_port']}"
+                if stream_info.get('ssrc'):
+                    media_stream_id = f"{media_stream_id}:{stream_info['ssrc']}"
+                
+                # Check stream health using get_stream_status with correct stream ID
+                status = self.streamer.get_stream_status(media_stream_id)
+                if not status or status.get("status") in ["stopped", "unknown"] or status.get("health") == "critical":
+                    log.warning(f"[SIP] Stream {call_id} (media: {media_stream_id}) appears unhealthy: {status}")
+                    self._handle_stream_failure(call_id, stream_info)
                     continue
 
                 # Check stream duration
                 duration = now - stream_info["start_time"]
                 if duration > 3600:  # 1 hour
-                    log.info(f"[SIP] Stream {stream_id} running for {duration:.0f}s")
+                    log.info(f"[SIP] Stream {call_id} running for {duration:.0f}s")
                     
                 # Update stream status
                 if duration % 60 < 1:  # Every minute
-                    self._send_media_status_update(stream_id)
+                    self._send_media_status_update(call_id)
                     
             except Exception as e:
-                log.error(f"[SIP] Error checking stream {stream_id}: {e}")
+                log.error(f"[SIP] Error checking stream {call_id}: {e}")
 
-    def _handle_stream_failure(self, stream_id, stream_info):
+    def _handle_stream_failure(self, call_id, stream_info):
         """Handle stream failures with recovery attempts"""
         try:
-            # Stop the failed stream
-            self.streamer.stop_stream(stream_id)
+            # Create MediaStreamer stream ID format
+            media_stream_id = f"{stream_info['dest_ip']}:{stream_info['dest_port']}"
+            if stream_info.get('ssrc'):
+                media_stream_id = f"{media_stream_id}:{stream_info['ssrc']}"
+                
+            log.info(f"[SIP] Handling stream failure for Call-ID: {call_id}, Media stream: {media_stream_id}")
+            
+            # Stop the failed stream using correct stream ID
+            self.streamer.stop_stream(media_stream_id)
             
             # Attempt to restart the stream
             success = self.streamer.start_stream(
@@ -1997,10 +2136,10 @@ class SIPClient:
             )
             
             if success:
-                log.info(f"[SIP] Successfully restarted stream {stream_id}")
+                log.info(f"[SIP] Successfully restarted stream for Call-ID: {call_id}")
             else:
-                log.error(f"[SIP] Failed to restart stream {stream_id}")
-                del self.active_streams[stream_id]
+                log.error(f"[SIP] Failed to restart stream for Call-ID: {call_id}")
+                del self.active_streams[call_id]
                 
         except Exception as e:
             log.error(f"[SIP] Error handling stream failure: {e}")
@@ -2013,6 +2152,13 @@ class SIPClient:
         
         # ADDED: Stop heartbeat thread first
         self._stop_heartbeat_thread()
+        
+        # Stop the SIP sender
+        try:
+            if hasattr(self, 'sip_sender'):
+                self.sip_sender.stop()
+        except Exception as e:
+            log.error(f"[SIP] Error stopping SIP sender: {e}")
         
         # Stop all active media streams
         for callid, stream_info in list(self.active_streams.items()):
@@ -2354,6 +2500,20 @@ Content-Length: {len(xml_content)}
             log.error(f"[SIP] Error extracting Call-ID: {e}")
             return None
     
+    def _extract_call_id_from_invite_message(self, invite_message):
+        """Extract Call-ID from a complete INVITE message"""
+        try:
+            # Look for Call-ID line in the message
+            for line in invite_message.split('\n'):
+                if line.strip().startswith('Call-ID:'):
+                    call_id = line.split(':', 1)[1].strip()
+                    log.debug(f"[SIP] Extracted Call-ID from INVITE: {call_id}")
+                    return call_id
+            return None
+        except Exception as e:
+            log.error(f"[SIP] Error extracting Call-ID from INVITE message: {e}")
+            return None
+    
     def _extract_sdp_from_buffer(self, buffer):
         """Extract SDP content from message buffer"""
         try:
@@ -2362,8 +2522,593 @@ Content-Length: {len(xml_content)}
             log.error(f"[SIP] Error extracting SDP from buffer: {e}")
             return None
     
+    def _extract_sdp_from_invite_message(self, invite_message):
+        """Extract SDP content from INVITE message"""
+        try:
+            # SDP content starts after empty line and consists of lines starting with v=, o=, s=, c=, t=, m=, a=
+            lines = invite_message.split('\n')
+            sdp_lines = []
+            in_sdp = False
+            
+            for line in lines:
+                line = line.strip()
+                if line.startswith('v='):
+                    in_sdp = True
+                    sdp_lines.append(line)
+                elif in_sdp and line.startswith(('o=', 's=', 'c=', 't=', 'm=', 'a=')):
+                    sdp_lines.append(line)
+                elif in_sdp and not line:
+                    # Empty line ends SDP
+                    break
+                elif in_sdp and not line.startswith(('v=', 'o=', 's=', 'c=', 't=', 'm=', 'a=')):
+                    # Non-SDP line ends SDP
+                    break
+            
+            if sdp_lines:
+                sdp_content = '\n'.join(sdp_lines)
+                log.debug(f"[SIP] Extracted SDP from INVITE: {sdp_content}")
+                return sdp_content
+            else:
+                log.warning("[SIP] No SDP content found in INVITE message")
+                return None
+                
+        except Exception as e:
+            log.error(f"[SIP] Error extracting SDP from INVITE message: {e}")
+            return None
+    
+    def _extract_target_channel_from_invite(self, invite_message):
+        """Extract target channel ID from INVITE URI"""
+        try:
+            # Look for INVITE line with target URI
+            for line in invite_message.split('\n'):
+                line = line.strip()
+                if line.startswith('INVITE sip:'):
+                    # Extract channel ID from URI
+                    # Format: INVITE sip:810000004650131000001@13.50.108.195:5080
+                    match = re.search(r'INVITE sip:([^@]+)@', line)
+                    if match:
+                        channel_id = match.group(1)
+                        log.debug(f"[SIP] Extracted target channel from INVITE: {channel_id}")
+                        return channel_id
+            return None
+        except Exception as e:
+            log.error(f"[SIP] Error extracting target channel from INVITE: {e}")
+            return None
+            
+    def _extract_ssrc_from_invite(self, invite_message):
+        """Extract SSRC from INVITE Subject line - CRITICAL for WVP compatibility"""
+        try:
+            # Look for Subject line with SSRC
+            # Format: Subject: 810000004650131000001:0000009593,81000000462001888888:0
+            for line in invite_message.split('\n'):
+                line = line.strip()
+                if line.startswith('Subject:'):
+                    # Extract SSRC from subject
+                    # Pattern: channel_id:ssrc,caller_id:0
+                    match = re.search(r':(\d{10}),', line)
+                    if match:
+                        ssrc = match.group(1)
+                        log.info(f"[SIP] 🎯 Extracted SSRC from WVP INVITE: {ssrc}")
+                        return ssrc
+            return None
+        except Exception as e:
+            log.error(f"[SIP] Error extracting SSRC from INVITE: {e}")
+            return None
+            
+    def _capture_invite_headers(self, invite_message):
+        """Capture exact headers from INVITE for SIP compliance - CRITICAL for avoiding 488 errors"""
+        try:
+            # Initialize header storage
+            self._invite_via = None
+            self._invite_from = None
+            self._invite_to = None
+            self._invite_cseq = None
+            
+            # Parse headers line by line
+            for line in invite_message.split('\n'):
+                line = line.strip()
+                if line.startswith('Via:'):
+                    self._invite_via = line
+                elif line.startswith('From:'):
+                    self._invite_from = line
+                elif line.startswith('To:'):
+                    self._invite_to = line
+                elif line.startswith('CSeq:'):
+                    self._invite_cseq = line
+                    
+            log.info(f"[SIP] 📋 Captured INVITE headers for SIP compliance:")
+            log.info(f"[SIP]   Via: {self._invite_via}")
+            log.info(f"[SIP]   From: {self._invite_from}")
+            log.info(f"[SIP]   To: {self._invite_to}")
+            log.info(f"[SIP]   CSeq: {self._invite_cseq}")
+            
+            # Verify we captured all required headers
+            if not all([self._invite_via, self._invite_from, self._invite_to, self._invite_cseq]):
+                log.warning(f"[SIP] ⚠️ Missing required headers in INVITE - may cause 488 response")
+                
+        except Exception as e:
+            log.error(f"[SIP] Error capturing INVITE headers: {e}")
+            # Set fallback values to prevent crashes
+            self._invite_via = "Via: SIP/2.0/UDP 0.0.0.0:5060"
+            self._invite_from = "From: <sip:unknown@unknown>"
+            self._invite_to = "To: <sip:unknown@unknown>"
+            self._invite_cseq = "CSeq: 1 INVITE"
+            
+    def _build_to_header_with_tag(self):
+        """Build To header by echoing INVITE To header and adding our local tag"""
+        try:
+            # Get the original To header from INVITE
+            original_to = getattr(self, '_invite_to', f"To: <sip:{self.server}:{self.port}>")
+            
+            # Check if it already has a tag parameter
+            if ';tag=' in original_to:
+                # Original already has tag - just return as is
+                return original_to
+            else:
+                # Add our local tag
+                return f"{original_to};tag={getattr(self, '_local_tag', 'device123')}"
+                
+        except Exception as e:
+            log.error(f"[SIP] Error building To header with tag: {e}")
+            return f"To: <sip:{self.server}:{self.port}>;tag={getattr(self, '_local_tag', 'device123')}"
+            
+    def _create_gb28181_sdp_response(self, target_channel, call_id, expected_ssrc=None, incoming_sdp=None):
+        """Create GB28181-compliant SDP response for WVP-Pro platform"""
+        try:
+            # Get network configuration
+            local_ip = self.get_local_ip() 
+            rtp_port = self.get_available_port()
+            
+            # Generate unique session ID
+            session_id = str(int(time.time()))
+            
+            # Use the SSRC that WVP expects - CRITICAL for compatibility
+            if not expected_ssrc:
+                expected_ssrc = target_channel  # Fallback to channel ID
+                
+            # CRITICAL FIX: Detect transport protocol from incoming INVITE
+            # Default to UDP RTP, but match what WVP platform offered
+            transport_protocol = "RTP/AVP"
+            payload_types = ""
+            h264_pt = None   # PT for H264/90000 if offered
+            ps_pt   = None   # PT for PS/90000 if offered
+            
+            if incoming_sdp:
+                # Check if WVP platform offered TCP/RTP/AVP and extract payload types
+                for line in incoming_sdp.split('\n'):
+                    line = line.strip()
+                    if line.startswith('m=video '):
+                        parts = line.split()
+                        if len(parts) >= 3:
+                            if 'TCP/RTP/AVP' in line:
+                                transport_protocol = "TCP/RTP/AVP"
+                                log.info(f"[SIP] 🔧 WVP platform uses TCP/RTP/AVP - matching transport protocol")
+                            elif 'RTP/SAVP' in line:
+                                transport_protocol = "RTP/SAVP"
+                                log.info(f"[SIP] 🔧 WVP platform uses RTP/SAVP - matching transport protocol")
+                            elif 'RTP/AVP' in line:
+                                transport_protocol = "RTP/AVP"
+                                log.info(f"[SIP] 🔧 WVP platform uses RTP/AVP - matching transport protocol")
+                            
+                            # Extract payload types (everything after transport protocol)
+                            if len(parts) > 3:
+                                offered_pts = parts[3:]
+                                payload_types = " ".join(offered_pts)
+                                log.info(f"[SIP] 🔧 WVP offered payload types: {payload_types}")
+                                h264_pt = offered_pts[0]
+                                ps_pt = offered_pts[1]
+                        break
+                        
+                # Look for explicit rtpmap lines to detect which PT corresponds to H264/90000
+                for line in incoming_sdp.split('\n'):
+                    line = line.strip()
+                    if line.lower().startswith('a=rtpmap:'):
+                        if 'h264/90000' in line.lower():
+                            try:
+                                h264_pt = line.split()[0].split(':')[1]
+                                log.info(f"[SIP] 🔧 Detected H264 payload type in offer: {h264_pt}")
+                            except Exception:
+                                pass
+                        if 'ps/90000' in line.lower():
+                            try:
+                                ps_pt = line.split()[0].split(':')[1]
+                                log.info(f"[SIP] 🔧 Detected PS payload type in offer: {ps_pt}")
+                            except Exception:
+                                pass
+
+                # If we still don't have payload_types, default to H264 PT or first offered
+                if not payload_types:
+                    payload_types = h264_pt if h264_pt else '96'
+
+            # If we still have multiple payload types, narrow to the selected H264 PT for the answer
+            if payload_types and ' ' in payload_types:
+                if h264_pt:
+                    payload_types = h264_pt
+                else:
+                    # default to the first one
+                    payload_types = payload_types.split()[0]
+
+            # Decide which PT/codec we will answer with
+            chosen_pt = None
+            chosen_codec = None
+            if ps_pt:
+                chosen_pt = ps_pt
+                chosen_codec = "PS/90000"
+            elif h264_pt:
+                chosen_pt = h264_pt
+                chosen_codec = "H264/90000"
+            else:
+                chosen_pt = payload_types.split()[0] if payload_types else "96"
+                chosen_codec = "H264/90000"
+
+            payload_types = chosen_pt  # our m-line will contain only this PT
+
+            # Create GB28181-compliant SDP content according to GB/T 28181-2016 standard
+            # CRITICAL FIX: Use PS (Program Stream) format which is standard for GB28181
+            sdp_lines = [
+                "v=0",
+                f"o=- {session_id} {session_id} IN IP4 {local_ip}",
+                "s=Play",
+                f"c=IN IP4 {local_ip}",
+                "t=0 0",
+                # CRITICAL FIX: Match the transport protocol and payload types from WVP platform
+                # When we are ACTIVE (RFC 4145) we must set the port to 9 (discard) as recommended
+                # by the COMEDIA specification. Some SIP servers (including WVP) reject an SDP
+                # answer that specifies any other port while declaring a=setup:active.
+                f"m=video {9 if 'TCP' in transport_protocol else rtp_port} {transport_protocol} {payload_types}",
+                # The offer was a=recvonly, so our answer must be a=sendonly
+                "a=sendonly",
+                # RFC 4145: indicate we will actively initiate the TCP connection to WVP
+                "a=setup:active",
+                # Use H.264 format for better GB28181 compatibility with WVP
+                f"a=rtpmap:{chosen_pt} {chosen_codec}",
+                # No extra rtpmap lines – keep answer minimal
+            ]
+            
+            # Add rtpmap for additional payload types if present
+            pts = payload_types.split()
+            for pt in pts[1:]:  # Skip first one (96) as it's already added
+                if pt.isdigit():
+                    sdp_lines.append(f"a=rtpmap:{pt} H264/90000")
+            
+            # Add GB28181-specific attributes
+            sdp_lines.extend([
+                f"y={expected_ssrc}",
+                "f=v/2/25"
+            ])
+            
+            sdp_content = "\r\n".join(sdp_lines) + "\r\n"
+            
+            log.info(f"[SIP] 📄 Created GB28181-compliant SDP response for channel {target_channel}")
+            log.info(f"[SIP] 🎯 Using WVP-expected SSRC: {expected_ssrc}")
+            log.info(f"[SIP] 🚀 Using transport protocol: {transport_protocol} (CRITICAL FIX)")
+            log.info(f"[SIP] 🎯 Using payload types: {payload_types}")
+            media_port_for_log = 9 if 'TCP' in transport_protocol else rtp_port
+            log.info(f"[SIP] 🌐 Media endpoint: {local_ip}:{media_port_for_log}")
+            log.debug(f"[SIP] SDP content:\n{sdp_content}")
+            
+            return sdp_content
+            
+        except Exception as e:
+            log.error(f"[SIP] Error creating GB28181 SDP response: {e}")
+            return None
+            
+    def get_local_ip(self):
+        """Get local IP address for SDP"""
+        try:
+            # Try to get the actual local IP that can reach external networks
+            import socket
+            with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
+                s.connect(("8.8.8.8", 80))
+                local_ip = s.getsockname()[0]
+                log.debug(f"[SIP] Detected local IP: {local_ip}")
+                return local_ip
+        except Exception as e:
+            log.warning(f"[SIP] Could not detect local IP: {e}, using fallback")
+            return "127.0.0.1"
+            
+    def get_available_port(self):
+        """Get an available port for RTP"""
+        try:
+            import socket
+            with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
+                s.bind(('', 0))
+                port = s.getsockname()[1]
+                log.debug(f"[SIP] Allocated RTP port: {port}")
+                return port
+        except Exception as e:
+            log.warning(f"[SIP] Could not allocate dynamic port: {e}, using default")
+            return 10000
+            
+    def _parse_destination_from_sdp(self, sdp_content):
+        """Parse destination IP and port from WVP's SDP"""
+        try:
+            dest_ip = None
+            dest_port = None
+            
+            for line in sdp_content.split('\n'):
+                line = line.strip()
+                
+                # Connection line: c=IN IP4 203.142.93.131
+                if line.startswith('c=IN IP4 '):
+                    dest_ip = line.split()[-1]
+                    log.debug(f"[SIP] Found destination IP: {dest_ip}")
+                
+                # Media line: m=video 10000 TCP/RTP/AVP 96 97 98 99
+                if line.startswith('m=video '):
+                    parts = line.split()
+                    if len(parts) >= 2:
+                        dest_port = int(parts[1])
+                        log.debug(f"[SIP] Found destination port: {dest_port}")
+                        
+            if dest_ip and dest_port:
+                log.info(f"[SIP] 📍 Parsed destination: {dest_ip}:{dest_port}")
+                return dest_ip, dest_port
+            else:
+                log.warning(f"[SIP] ⚠️ Could not parse destination from SDP: ip={dest_ip}, port={dest_port}")
+                return None, None
+                
+        except Exception as e:
+            log.error(f"[SIP] Error parsing destination from SDP: {e}")
+            return None, None
+            
+    def _start_streaming_to_platform(self, channel_id, call_id, dest_ip, dest_port, ssrc=None, transport_protocol="TCP/RTP/AVP"):
+        """Start streaming to WVP platform at specified destination with correct SSRC"""
+        try:
+            log.info(f"[SIP] 🎥 Starting stream from channel {channel_id} to WVP at {dest_ip}:{dest_port}")
+            
+            # Use the SSRC that WVP expects - this is CRITICAL for compatibility
+            if not ssrc:
+                ssrc = "0000000001"  # Fallback
+                
+            log.info(f"[SIP] 🎯 Using SSRC for streaming: {ssrc}")
+            log.info(f"[SIP] 🚀 Using transport protocol: {transport_protocol}")
+            
+            # Create SDP that describes the stream we're about to send
+            # Use H.264 format to match the actual pipeline output
+            mock_destination_sdp = f"""v=0
+o=GB28181 0 0 IN IP4 {dest_ip}
+s=Play
+c=IN IP4 {dest_ip}
+t=0 0
+m=video {dest_port} {transport_protocol} 96
+a=sendrecv
+a=rtpmap:96 PS/90000
+a=rtpmap:97 H264/90000
+a=rtpmap:98 H264/90000
+a=rtpmap:99 H264/90000
+"""
+            
+            log.info(f"[SIP] 🎯 Configured streaming destination: {dest_ip}:{dest_port}")
+            
+            # Use existing streaming infrastructure with SSRC parameter
+            success = self.parse_sdp_and_stream(mock_destination_sdp, callid=call_id, target_channel=channel_id, ssrc=ssrc)
+            
+            if success:
+                log.info(f"[SIP] ✅ Stream started successfully to WVP platform")
+                # Store stream info
+                if not hasattr(self, '_active_streams'):
+                    self._active_streams = {}
+                self._active_streams[call_id] = {
+                    'channel_id': channel_id,
+                    'dest_ip': dest_ip,
+                    'dest_port': dest_port,
+                    'ssrc': ssrc,
+                    'start_time': time.time(),
+                    'status': 'active'
+                }
+                return True
+            else:
+                log.error(f"[SIP] ❌ Failed to start stream to WVP platform")
+                return False
+                
+        except Exception as e:
+            log.error(f"[SIP] Error starting stream to platform: {e}")
+            import traceback
+            log.debug(f"[SIP] Platform streaming error: {traceback.format_exc()}")
+            return False
+    
+    def _handle_invite_request(self, call_id, invite_message):
+        """Handle incoming INVITE request for GB28181 streaming"""
+        try:
+            log.info(f"[SIP] 🎬 Processing INVITE request with Call-ID: {call_id}")
+            
+            # CRITICAL: Capture exact headers from INVITE for SIP compliance
+            self._capture_invite_headers(invite_message)
+            
+            # Extract target channel from INVITE URI - this is what WVP wants us to stream
+            target_channel = self._extract_target_channel_from_invite(invite_message)
+            if not target_channel:
+                log.warning("[SIP] ⚠️ Could not extract target channel from INVITE URI")
+                self._send_invite_response(call_id, "400", "Bad Request")
+                return
+                
+            log.info(f"[SIP] 🎯 WVP requesting stream for channel: {target_channel}")
+            
+            # Verify this channel exists in our catalog
+            if not self._is_valid_channel(target_channel):
+                log.warning(f"[SIP] ⚠️ Requested channel {target_channel} not found in device catalog")
+                self._send_invite_response(call_id, "404", "Not Found")
+                return
+                
+            # Extract incoming SDP from WVP - this tells us WHERE to send the stream
+            incoming_sdp = self._extract_sdp_from_invite_message(invite_message)
+            if not incoming_sdp:
+                log.warning("[SIP] ⚠️ No SDP in INVITE - cannot determine streaming destination")
+                self._send_invite_response(call_id, "400", "Bad Request")
+                return
+                
+            # CRITICAL FIX: Extract SSRC from WVP's INVITE subject
+            expected_ssrc = self._extract_ssrc_from_invite(invite_message)
+            if not expected_ssrc:
+                log.warning("[SIP] ⚠️ No SSRC found in INVITE Subject line")
+                expected_ssrc = "0000009593"  # Default fallback
+                
+            log.info(f"[SIP] 📄 WVP provided destination SDP: {incoming_sdp[:200]}...")
+            
+            # Parse WVP's SDP to get destination IP and port
+            dest_ip, dest_port = self._parse_destination_from_sdp(incoming_sdp)
+            if not dest_ip or not dest_port:
+                log.error("[SIP] ❌ Could not parse destination from WVP SDP")
+                self._send_invite_response(call_id, "488", "Not Acceptable Here")
+                return
+                
+            log.info(f"[SIP] 🎯 WVP expects stream at: {dest_ip}:{dest_port}")
+            
+            # CRITICAL FIX: Detect transport protocol from WVP's SDP for consistent usage
+            transport_protocol = "TCP/RTP/AVP"  # Default for WVP
+            for line in incoming_sdp.split('\n'):
+                line = line.strip()
+                if line.startswith('m=video ') and 'TCP/RTP/AVP' in line:
+                    transport_protocol = "TCP/RTP/AVP"
+                    break
+                elif line.startswith('m=video ') and 'RTP/SAVP' in line:
+                    transport_protocol = "RTP/SAVP"
+                    break
+                elif line.startswith('m=video ') and 'RTP/AVP' in line:
+                    transport_protocol = "RTP/AVP"
+                    break
+            
+            # Start streaming TO the WVP platform using the exact SSRC WVP expects
+            success = self._start_streaming_to_platform(target_channel, call_id, dest_ip, dest_port, expected_ssrc, transport_protocol)
+            if success:
+                log.info(f"[SIP] ✅ Successfully started stream for channel {target_channel}")
+                
+                # Create GB28181-compliant SDP response with WVP's expected SSRC and matching transport protocol
+                response_sdp = self._create_gb28181_sdp_response(target_channel, call_id, expected_ssrc, incoming_sdp)
+                if response_sdp:
+                    log.info(f"[SIP] 📄 Generated SDP response for 200 OK")
+                    self._send_invite_response(call_id, "200", "OK", response_sdp)
+                else:
+                    log.error(f"[SIP] ❌ Failed to generate SDP response")
+                    self._send_invite_response(call_id, "500", "Internal Server Error")
+            else:
+                log.error(f"[SIP] ❌ Failed to start media stream for channel {target_channel}")
+                self._send_invite_response(call_id, "488", "Not Acceptable Here")
+                
+        except Exception as e:
+            log.error(f"[SIP] ❌ Error handling INVITE request: {e}")
+            import traceback
+            log.debug(f"[SIP] Full traceback: {traceback.format_exc()}")
+            self._send_invite_response(call_id, "500", "Internal Server Error")
+
+    def _is_valid_channel(self, channel_id):
+        """Check if the requested channel exists in our device catalog"""
+        try:
+            # Check if channel matches our device ID or any of our channels
+            if channel_id == self.device_id:
+                return True
+                
+            # Check channel format - should be device_id + channel suffix
+            # For GB28181, channels usually follow pattern like: 810000004650131000001
+            if channel_id.startswith(self.device_id[:13]):  # Device prefix + channel
+                return True
+                
+            log.debug(f"[SIP] Channel validation: {channel_id} vs device {self.device_id}")
+            return True  # For now, accept all channels - can be made stricter later
+            
+        except Exception as e:
+            log.error(f"[SIP] Error validating channel {channel_id}: {e}")
+            return False
+            
+
+
+    def _send_invite_response(self, call_id, status_code, reason_phrase, sdp_content=None):
+        """Send SIP response to INVITE request - CRITICAL: Echo headers for SIP compliance"""
+        try:
+            log.info(f"[SIP] 📤 Sending INVITE response: {status_code} {reason_phrase}")
+            
+            # Generate unique local tag for this dialog
+            if not hasattr(self, '_local_tag'):
+                self._local_tag = f"device{int(time.time())}"
+            
+            # Build response headers by echoing INVITE headers - CRITICAL for SIP compliance
+            response_lines = [
+                f"SIP/2.0 {status_code} {reason_phrase}",       # 1. Status line
+                self._invite_via,                               # 2. Via
+                f"{self._invite_to};tag={self._local_tag}",     # 3. To with our tag
+                self._invite_from,                              # 4. From
+                f"Call-ID: {call_id}",                          # 5. Call-ID
+                self._invite_cseq,                              # 6. CSeq
+                f"Contact: <sip:{self.device_id}@{self.local_ip}:{self.local_port}>",
+                "User-Agent: GB28181-Restreamer/1.0"             # 7. Other headers
+            ]
+            if status_code == "200" and sdp_content:
+                response_lines += [
+                    "Content-Type: application/sdp",
+                    f"Content-Length: {len(sdp_content)}",
+                    "",                  # 8. Single blank line
+                    sdp_content.rstrip() # 9. SDP body
+                ]
+            else:
+                response_lines += [
+                    "Content-Length: 0",
+                    ""  # blank line
+                ]
+            response_msg = "\r\n".join(response_lines).strip("\r\n") + "\r\n\r\n"
+            
+            
+            log.info(f"[SIP] 📋 Response headers echoed from INVITE:")
+            log.info(f"[SIP]   Via: {getattr(self, '_invite_via', 'MISSING')}")
+            log.info(f"[SIP]   CSeq: {getattr(self, '_invite_cseq', 'MISSING')}")
+            
+            # Send response via UDP socket directly
+            success = self._send_sip_response_udp(response_msg)
+            if success:
+                log.info(f"[SIP] ✅ INVITE response {status_code} sent successfully")
+            else:
+                log.error(f"[SIP] ❌ Failed to send INVITE response {status_code}")
+            
+            # Store response info for debugging
+            if not hasattr(self, '_invite_responses'):
+                self._invite_responses = {}
+            self._invite_responses[call_id] = {
+                'status_code': status_code,
+                'reason_phrase': reason_phrase,
+                'sdp_content': sdp_content,
+                'timestamp': time.time(),
+                'sent': success,
+                'headers_echoed': {
+                    'via': getattr(self, '_invite_via', None),
+                    'from': getattr(self, '_invite_from', None),
+                    'to': getattr(self, '_invite_to', None),
+                    'cseq': getattr(self, '_invite_cseq', None)
+                }
+            }
+            
+            return success
+            
+        except Exception as e:
+            log.error(f"[SIP] ❌ Error sending INVITE response: {e}")
+            import traceback
+            log.debug(f"[SIP] Response error traceback: {traceback.format_exc()}")
+            return False
+
+    def _send_sip_response_udp(self, response_message):
+        """Send SIP response via UDP socket"""
+        try:
+            # Use the same UDP sending method as keepalive
+            import socket
+            
+            sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            sock.settimeout(5)
+            
+            # Send to server IP and port
+            server_addr = (self.server, self.port)
+            response_bytes = response_message.encode('utf-8')
+            
+            sent_bytes = sock.sendto(response_bytes, server_addr)
+            sock.close()
+            
+            log.debug(f"[SIP] 📤 Sent SIP response: {sent_bytes}/{len(response_bytes)} bytes to {server_addr}")
+            return sent_bytes == len(response_bytes)
+            
+        except Exception as e:
+            log.error(f"[SIP] ❌ Error sending SIP response via UDP: {e}")
+            return False
+
     def _handle_invite_with_sdp(self, call_id, sdp_content):
-        """Handle INVITE with SDP content"""
+        """Handle INVITE with SDP content (legacy method)"""
         try:
             success = self.parse_sdp_and_stream(sdp_content, call_id)
             if success:
@@ -2508,260 +3253,67 @@ Content-Type: Application/MANSCDP+xml
 Content-Length: {len(keepalive_xml)}
 
 {keepalive_xml}"""
-            
-            # Create a new UDP socket for keepalive only
-            sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-            
-            try:
-                sock.settimeout(3.0)  # Shorter timeout for keepalives
-                
-                # Log keepalive attempt
-                message_bytes = sip_message.encode('utf-8')
-                log.debug(f"[SIP] 💓 Sending keepalive UDP packet ({len(message_bytes)} bytes) to {self.server}:{self.port}")
-                
-                # Send the keepalive message
-                bytes_sent = sock.sendto(message_bytes, (self.server, self.port))
-                
-                # Verify transmission
-                if bytes_sent == len(message_bytes):
-                    log.debug(f"[SIP] ✅ Keepalive UDP transmission successful: {bytes_sent} bytes")
-                    return True
-                else:
-                    log.error(f"[SIP] ❌ Keepalive UDP transmission incomplete: {bytes_sent}/{len(message_bytes)} bytes")
-                    return False
-                
-            except socket.timeout:
-                log.error(f"[SIP] ❌ Keepalive UDP send timeout")
-                return False
-            except socket.error as send_error:
-                log.error(f"[SIP] ❌ Keepalive UDP socket error: {send_error}")
-                return False
-            finally:
-                sock.close()
-                
+
+            # Send the keepalive via UDP helper
+            return self._send_udp_message(sip_message, sn)
+        
         except Exception as e:
-            log.error(f"[SIP] ❌ Error creating keepalive UDP socket: {e}")
+            log.error(f"[SIP] ❌ Error constructing/sending keepalive: {e}")
             return False
 
     def _send_proactive_catalog_notification(self):
-        """Send proactive catalog notification to WVP platform for immediate frontend visibility"""
+        """Send proactive catalog notification to WVP platform after registration - CRITICAL for device visibility"""
         try:
-            log.info("[SIP] 🚀 Sending proactive catalog notification for immediate frontend visibility")
+            log.info("[SIP] 📋 Sending proactive catalog notification to WVP platform for immediate visibility")
             
-            # Generate a unique numeric SN for the proactive notification (FIXED: use numeric SN)
-            import random
-            proactive_sn = random.randint(800000, 999999)  # Use pure numeric SN instead of string
+            # Generate a unique SN for this proactive notification
+            current_time = int(time.time())
+            sn = current_time % 100000 + 50000  # Different range from keepalives
             
-            # FIXED: Use the same format as regular catalog responses - parent device + channels
-            # This ensures consistency between proactive notifications and query responses
-            catalog_xml_items = []
+            # Generate catalog response XML
+            catalog_xml = self._generate_catalog_response(str(sn))
             
-            # STEP 1: Add the parent device as the first item (same as catalog responses)
-            parent_device_xml = f"""    <Item>
-      <DeviceID>{self.device_id}</DeviceID>
-      <Name>GB28181-Restreamer</Name>
-      <Manufacturer>GB28181-RestreamerProject</Manufacturer>
-      <Model>Restreamer-1.0</Model>
-      <Owner>gb28181-restreamer</Owner>
-      <CivilCode>{self.device_id[:6]}</CivilCode>
-      <Block>{self.device_id[:8]}</Block>
-      <Address>gb28181-restreamer</Address>
-      <Parental>0</Parental>
-      <SafetyWay>0</SafetyWay>
-      <RegisterWay>1</RegisterWay>
-      <CertNum>1234567890</CertNum>
-      <Certifiable>1</Certifiable>
-      <ErrCode>0</ErrCode>
-      <EndTime></EndTime>
-      <Secrecy>0</Secrecy>
-      <IPAddress>{self.local_ip}</IPAddress>
-      <Port>{self.local_port}</Port>
-      <Password></Password>
-      <Status>ON</Status>
-      <Longitude>0.0</Longitude>
-      <Latitude>0.0</Latitude>
-      <PTZType>0</PTZType>
-      <PositionType>0</PositionType>
-      <RoomType>0</RoomType>
-      <UseType>0</UseType>
-      <SupplyLightType>0</SupplyLightType>
-      <DirectionType>0</DirectionType>
-      <Resolution>640*480</Resolution>
-      <BusinessGroupID></BusinessGroupID>
-      <DownloadSpeed></DownloadSpeed>
-      <SVCSpaceSupportMode>0</SVCSpaceSupportMode>
-      <SVCTimeSupportMode>0</SVCTimeSupportMode>
-    </Item>"""
-            catalog_xml_items.append(parent_device_xml)
+            if not catalog_xml:
+                log.error("[SIP] ❌ Failed to generate catalog for proactive notification")
+                return False
             
-            # STEP 2: Add each video channel as child items with Parental=1
-            for channel_id, channel_info in self.device_catalog.items():
-                # Use compact format for UDP efficiency while maintaining WVP compatibility
-                channel_item_xml = f"""    <Item>
-      <DeviceID>{channel_id}</DeviceID>
-      <Name>{channel_info['name']}</Name>
-      <Manufacturer>GB28181-RestreamerProject</Manufacturer>
-      <Model>Virtual-Channel</Model>
-      <Owner>gb28181-restreamer</Owner>
-      <CivilCode>{self.device_id[:6]}</CivilCode>
-      <Block>{self.device_id[:8]}</Block>
-      <Address>Channel {channel_info['name']}</Address>
-      <Parental>1</Parental>
-      <ParentID>{self.device_id}</ParentID>
-      <SafetyWay>0</SafetyWay>
-      <RegisterWay>1</RegisterWay>
-      <Secrecy>0</Secrecy>
-      <IPAddress></IPAddress>
-      <Port>0</Port>
-      <Password></Password>
-      <Status>{channel_info['status']}</Status>
-    </Item>"""
-                catalog_xml_items.append(channel_item_xml)
+            # Build complete SIP MESSAGE for catalog notification
+            from_uri = f"sip:{self.device_id}@{self.local_ip}:{self.local_port}"
+            to_uri = f"sip:{self.server}:{self.port}"
+            contact_uri = f"<sip:{self.local_ip}:{self.local_port}>"
             
-            # FIXED: Check message size and limit channels for UDP safety (same as regular response)
-            xml_content = "\n".join(catalog_xml_items)
-            estimated_size = len(xml_content) + 1000  # Add overhead for headers
+            call_id = f"catalog-proactive-{sn}-{current_time}"
+            branch = f"z9hG4bK-cat-{current_time}"
+            tag = f"cattag{current_time}"
+            cseq = sn % 9999 + 5000  # Different range for catalog
             
-            # Apply same UDP size limits as regular catalog responses
-            if estimated_size > 3000:  # Conservative limit for WVP
-                log.warning(f"[SIP] ⚠️ Large proactive notification ({estimated_size} bytes) - limiting channels")
-                
-                # Always keep the parent device (first item), limit channels
-                safe_items = [catalog_xml_items[0]]  # Parent device must be included
-                running_size = len(catalog_xml_items[0].encode('utf-8')) + 800  # Base response size + headers
-                
-                # Add as many channels as fit within UDP limit
-                for channel_item in catalog_xml_items[1:]:  # Skip parent device (already added)
-                    item_size = len(channel_item.encode('utf-8'))
-                    if running_size + item_size < 3000:  # Conservative UDP limit
-                        safe_items.append(channel_item)
-                        running_size += item_size
-                    else:
-                        break
-                
-                xml_content = "\n".join(safe_items)
-                actual_count = len(safe_items)
-                channel_count = actual_count - 1  # Subtract parent device
-                log.info(f"[SIP] 📦 Limited proactive notification to parent device + {channel_count} channels (total: {actual_count} items)")
+            sip_message = f"""MESSAGE {to_uri} SIP/2.0
+Via: SIP/2.0/UDP {self.local_ip}:{self.local_port};rport;branch={branch}
+Max-Forwards: 70
+From: <{from_uri}>;tag={tag}
+To: <{to_uri}>
+Call-ID: {call_id}
+CSeq: {cseq} MESSAGE
+Contact: {contact_uri}
+User-Agent: GB28181-Restreamer/1.0
+Content-Type: Application/MANSCDP+xml
+Content-Length: {len(catalog_xml)}
+
+{catalog_xml}"""
+
+            # Send via UDP
+            success = self._send_udp_message(sip_message, sn)
+            
+            if success:
+                log.info(f"[SIP] ✅ Proactive catalog notification sent successfully (SN: {sn})")
+                log.info(f"[SIP] 📱 WVP frontend should now show {len(self.device_catalog)} available channels")
             else:
-                actual_count = len(catalog_xml_items)
-                channel_count = len(self.device_catalog)
-                log.info(f"[SIP] 📦 Including parent device + all {channel_count} channels in proactive notification (total: {actual_count} items)")
-            
-            # FIXED: Generate catalog response XML in same format as regular responses
-            catalog_xml = f"""<?xml version="1.0" encoding="GB2312"?>
-<Response>
-  <CmdType>Catalog</CmdType>
-  <SN>{proactive_sn}</SN>
-  <DeviceID>{self.device_id}</DeviceID>
-  <Result>OK</Result>
-  <SumNum>{actual_count}</SumNum>
-  <DeviceList Num="{actual_count}">
-{xml_content}
-  </DeviceList>
-</Response>"""
-            
-            # Send the proactive catalog notification via UDP MESSAGE
-            log.info(f"[SIP] 📤 Sending WVP-compatible proactive catalog with parent device + {actual_count-1} channels (SN: {proactive_sn})")
-            
-            # Final size check
-            final_size = len(catalog_xml.encode('utf-8'))
-            log.info(f"[SIP] 📊 Final proactive notification size: {final_size} bytes")
-            
-            # Save the notification for debugging (FIXED: use numeric SN for filename)
-            with open(f"proactive_catalog_{proactive_sn}.xml", "w") as f:
-                f.write(catalog_xml)
-            
-            # Send via file-based method for reliability (FIXED: pass numeric SN)
-            self._send_via_file_method(catalog_xml, str(proactive_sn))
-            
-            log.info("[SIP] ✅ WVP-compatible proactive catalog notification sent - frontend should show parent device + channels immediately")
+                log.error(f"[SIP] ❌ Failed to send proactive catalog notification (SN: {sn})")
+                
+            return success
             
         except Exception as e:
             log.error(f"[SIP] ❌ Error sending proactive catalog notification: {e}")
             import traceback
-            log.error(f"[SIP] Traceback: {traceback.format_exc()}")
-
-    def debug_catalog_generation(self):
-        """Debug method to test catalog generation and validate XML structure"""
-        try:
-            log.info("[SIP] 🔍 DEBUG: Testing catalog generation...")
-            
-            # First, check the device catalog state
-            log.info(f"[SIP] Device catalog ready: {self.catalog_ready}")
-            log.info(f"[SIP] Device catalog size: {len(self.device_catalog)}")
-            
-            if self.device_catalog:
-                log.info("[SIP] Device catalog contents:")
-                for i, (channel_id, channel_info) in enumerate(list(self.device_catalog.items())[:5]):
-                    log.info(f"  {i+1}. {channel_id}: {channel_info.get('name', 'Unknown')}")
-                if len(self.device_catalog) > 5:
-                    log.info(f"  ... and {len(self.device_catalog) - 5} more channels")
-            else:
-                log.warning("[SIP] Device catalog is empty!")
-                # Try to regenerate it
-                log.info("[SIP] Attempting to regenerate device catalog...")
-                self.generate_device_catalog()
-                log.info(f"[SIP] After regeneration: {len(self.device_catalog)} channels")
-            
-            # Generate a test catalog response
-            test_sn = "DEBUG123"
-            log.info(f"[SIP] Generating test catalog response (SN: {test_sn})...")
-            
-            test_xml = self._generate_catalog_response(test_sn)
-            
-            if test_xml:
-                log.info(f"[SIP] ✅ Test catalog generated successfully ({len(test_xml)} bytes)")
-                
-                # Save debug file
-                debug_filename = f"debug_catalog_{test_sn}.xml"
-                with open(debug_filename, 'w', encoding='utf-8') as f:
-                    f.write(test_xml)
-                log.info(f"[SIP] 💾 Debug catalog saved to: {debug_filename}")
-                
-                # Validate the XML
-                import xml.etree.ElementTree as ET
-                try:
-                    root = ET.fromstring(test_xml)
-                    device_list = root.find('DeviceList')
-                    items = device_list.findall('Item') if device_list is not None else []
-                    
-                    sumnum_elem = root.find('SumNum')
-                    declared_sum = int(sumnum_elem.text) if sumnum_elem is not None else 0
-                    declared_num = int(device_list.get('Num')) if device_list is not None else 0
-                    actual_count = len(items)
-                    
-                    log.info(f"[SIP] 📊 DEBUG VALIDATION RESULTS:")
-                    log.info(f"[SIP]   • Declared SumNum: {declared_sum}")
-                    log.info(f"[SIP]   • Declared DeviceList Num: {declared_num}")
-                    log.info(f"[SIP]   • Actual <Item> elements: {actual_count}")
-                    
-                    if declared_sum == declared_num == actual_count:
-                        log.info(f"[SIP] ✅ XML validation PASSED - all counts match!")
-                        
-                        # Test the sending mechanism
-                        log.info(f"[SIP] 🚀 Testing UDP transmission...")
-                        success = self._send_via_file_method(test_xml, test_sn)
-                        if success:
-                            log.info(f"[SIP] ✅ Test transmission successful")
-                        else:
-                            log.error(f"[SIP] ❌ Test transmission failed")
-                            
-                    else:
-                        log.error(f"[SIP] ❌ XML validation FAILED!")
-                        log.error(f"[SIP] This is the root cause of the frontend issue!")
-                        
-                except ET.ParseError as e:
-                    log.error(f"[SIP] ❌ XML parsing failed: {e}")
-                    log.error(f"[SIP] Invalid XML generated - this is the problem!")
-                    
-            else:
-                log.error(f"[SIP] ❌ Failed to generate test catalog")
-                
-        except Exception as e:
-            log.error(f"[SIP] ❌ Debug catalog generation failed: {e}")
-            import traceback
-            log.error(f"[SIP] Traceback: {traceback.format_exc()}")
-
-            log.error(f"[SIP] ❌ XML parsing failed: {e}")
-            log.error(f"[SIP] Invalid XML generated - this is the problem!")
+            log.debug(f"[SIP] Proactive catalog error traceback: {traceback.format_exc()}")
+            return False
