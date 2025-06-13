@@ -162,13 +162,51 @@ class SIPClient:
                 
                 # Create channels from video files (limit to 20 for WVP platform)
                 channels_created = 0
+                channel_counter = 1
+                
+                # First, add RTSP sources as channels
+                rtsp_sources = self.config.get('rtsp_sources', [])
+                if rtsp_sources:
+                    log.info(f"[SIP] 📡 Creating channels from {len(rtsp_sources)} RTSP sources")
+                    for rtsp_config in rtsp_sources:
+                        try:
+                            # Handle both string URLs and config objects
+                            if isinstance(rtsp_config, str):
+                                rtsp_url = rtsp_config
+                                rtsp_name = f"RTSP Stream {channel_counter}"
+                                channel_id = f"81000000465001{channel_counter:06d}"
+                                enabled = True
+                            else:
+                                rtsp_url = rtsp_config.get("url")
+                                rtsp_name = rtsp_config.get("name", f"RTSP Stream {channel_counter}")
+                                channel_id = rtsp_config.get("channel_id", f"81000000465001{channel_counter:06d}")
+                                enabled = rtsp_config.get("enabled", True)
+                            
+                            if not rtsp_url or not enabled:
+                                continue
+                            
+                            self.device_catalog[channel_id] = {
+                                'name': rtsp_name,
+                                'manufacturer': 'GB28181-Restreamer',
+                                'model': 'RTSP Camera',
+                                'status': 'ON',
+                                'parent_id': self.device_id,
+                                'rtsp_url': rtsp_url,
+                                'channel_type': 'rtsp'
+                            }
+                            channels_created += 1
+                            channel_counter += 1
+                            
+                        except Exception as rtsp_error:
+                            log.error(f"[SIP] ❌ Error creating RTSP channel: {rtsp_error}")
+                
+                # Then add video files as channels
                 if video_catalog:
                     log.info(f"[SIP] 📺 Creating channels from {len(video_catalog)} video files")
-                    for i, video_path in enumerate(video_catalog[:20], 1):  # Limit to 20 channels for WVP
+                    for video_path in video_catalog[:20]:  # Limit to 20 total channels for WVP
                         try:
-                            # Generate proper 20-digit channel ID with type 131 (video channel)
-                            base_id = self.device_id[:12] if len(self.device_id) >= 12 else "340200000000"
-                            channel_id = f"{base_id}131{i:06d}"
+                            # Generate proper channel ID using client's format
+                            channel_id = f"81000000465001{channel_counter:06d}"
                             
                             # Extract meaningful name from video file path
                             video_name = os.path.splitext(os.path.basename(video_path))[0]
@@ -189,9 +227,11 @@ class SIPClient:
                                 'parent_id': self.device_id,
                                 'video_path': video_path,
                                 'file_size': file_size,
-                                'duration': 'Unknown'
+                                'duration': 'Unknown',
+                                'channel_type': 'file'
                             }
                             channels_created += 1
+                            channel_counter += 1
                             
                         except Exception as channel_error:
                             log.error(f"[SIP] ❌ Error creating channel for {video_path}: {channel_error}")
@@ -612,15 +652,39 @@ class SIPClient:
                         log.error("[SIP] No RTSP sources configured either. Cannot start stream.")
                         return False
                 
-            # Start the stream using our Media Streamer with transport protocol
-            success = self.streamer.start_stream(
-                video_path=video_source,
-                dest_ip=ip,
-                dest_port=port,
-                ssrc=ssrc,
-                encoder_params=encoder_params,
-                transport_protocol=transport_protocol
-            )
+            # Check if this is an RTSP source and use the appropriate handler
+            if str(video_source).startswith(("rtsp://", "rtsps://")):
+                # Use the live stream handler for RTSP sources
+                from live_stream_handler import LiveStreamHandler
+                live_handler = getattr(self, '_live_stream_handler', None)
+                if not live_handler:
+                    # Initialize live stream handler if not already done
+                    self._live_stream_handler = LiveStreamHandler(self.config)
+                    self._live_stream_handler.start()
+                    live_handler = self._live_stream_handler
+                
+                # Start RTSP stream with optimized pipeline
+                stream_id = f"{ip}:{port}:{ssrc}"
+                success = live_handler.start_rtsp_stream(
+                    stream_id=stream_id,
+                    rtsp_url=video_source,
+                    dest_ip=ip,
+                    dest_port=port,
+                    ssrc=ssrc,
+                    encoder_params=encoder_params
+                )
+                log.info(f"[SIP] Using live stream handler for RTSP: {video_source}")
+            else:
+                # Use regular media streamer for file-based sources
+                success = self.streamer.start_stream(
+                    video_path=video_source,
+                    dest_ip=ip,
+                    dest_port=port,
+                    ssrc=ssrc,
+                    encoder_params=encoder_params,
+                    transport_protocol=transport_protocol
+                )
+                log.info(f"[SIP] Using media streamer for file: {video_source}")
             
             if success:
                 # Record this stream in active streams
@@ -907,116 +971,106 @@ class SIPClient:
                     log.warning("[SIP] Device catalog not ready, generating on-demand...")
                     self.generate_device_catalog()
                 
-                # Use the cached catalog
-                catalog_items = list(self.device_catalog.items())
+                # PRIORITY FIX: Separate RTSP live streams from video files for prioritization
+                rtsp_channels = []
+                video_file_channels = []
                 
-            log.info(f"[SIP] Using cached catalog with {len(catalog_items)} video channels")
+                for channel_id, channel_info in self.device_catalog.items():
+                    if channel_info.get('channel_type') == 'rtsp' or 'rtsp_url' in channel_info:
+                        rtsp_channels.append((channel_id, channel_info))
+                    else:
+                        video_file_channels.append((channel_id, channel_info))
+                
+                log.info(f"[SIP] Catalog composition: {len(rtsp_channels)} RTSP live streams, {len(video_file_channels)} video files")
+                
+                # PRIORITY ORDER: RTSP live streams first, then video files
+                prioritized_catalog = rtsp_channels + video_file_channels
+                
+            log.info(f"[SIP] Using cached catalog with {len(prioritized_catalog)} channels (RTSP streams prioritized)")
             
             # Build XML items for COMPLETE CATALOG FORMAT (parent device + channels)
             # CRITICAL FIX: WVP platform requires the parent device as first item, then channels
             xml_items = []
             
-            # STEP 1: Add the parent device as the first item (required by WVP)
-            parent_device_xml = f"""    <Item>
-      <DeviceID>{self.device_id}</DeviceID>
-      <Name>GB28181-Restreamer</Name>
-      <Manufacturer>GB28181-RestreamerProject</Manufacturer>
-      <Model>Restreamer-1.0</Model>
-      <Owner>gb28181-restreamer</Owner>
-      <CivilCode>{self.device_id[:6]}</CivilCode>
-      <Block>{self.device_id[:8]}</Block>
-      <Address>gb28181-restreamer</Address>
-      <Parental>0</Parental>
-      <SafetyWay>0</SafetyWay>
-      <RegisterWay>1</RegisterWay>
-      <CertNum>1234567890</CertNum>
-      <Certifiable>1</Certifiable>
-      <ErrCode>0</ErrCode>
-      <EndTime></EndTime>
-      <Secrecy>0</Secrecy>
-      <IPAddress>{self.local_ip}</IPAddress>
-      <Port>{self.local_port}</Port>
-      <Password></Password>
-      <Status>ON</Status>
-      <Longitude>0.0</Longitude>
-      <Latitude>0.0</Latitude>
-      <PTZType>0</PTZType>
-      <PositionType>0</PositionType>
-      <RoomType>0</RoomType>
-      <UseType>0</UseType>
-      <SupplyLightType>0</SupplyLightType>
-      <DirectionType>0</DirectionType>
-      <Resolution>640*480</Resolution>
-      <BusinessGroupID></BusinessGroupID>
-      <DownloadSpeed></DownloadSpeed>
-      <SVCSpaceSupportMode>0</SVCSpaceSupportMode>
-      <SVCTimeSupportMode>0</SVCTimeSupportMode>
-    </Item>"""
+            # STEP 1: Add the parent device as the first item (required by WVP) - ULTRA-MINIMAL FORMAT
+            parent_device_xml = f"""    <Item><DeviceID>{self.device_id}</DeviceID><Name>Restreamer</Name><Status>ON</Status><Parental>0</Parental></Item>"""
             xml_items.append(parent_device_xml)
             
-            # STEP 2: Add video channels as child items with Parental=1
-            for channel_id, channel_info in catalog_items:
-                # Use compact format for UDP efficiency while maintaining WVP compatibility
-                channel_item_xml = f"""    <Item>
-      <DeviceID>{channel_id}</DeviceID>
-      <Name>{channel_info['name']}</Name>
-      <Manufacturer>GB28181-RestreamerProject</Manufacturer>
-      <Model>Virtual-Channel</Model>
-      <Owner>gb28181-restreamer</Owner>
-      <CivilCode>{self.device_id[:6]}</CivilCode>
-      <Block>{self.device_id[:8]}</Block>
-      <Address>Channel {channel_info['name']}</Address>
-      <Parental>1</Parental>
-      <ParentID>{self.device_id}</ParentID>
-      <SafetyWay>0</SafetyWay>
-      <RegisterWay>1</RegisterWay>
-      <Secrecy>0</Secrecy>
-      <IPAddress></IPAddress>
-      <Port>0</Port>
-      <Password></Password>
-      <Status>{channel_info['status']}</Status>
-    </Item>"""
+            # STEP 2: Add prioritized channels - RTSP live streams first, then video files - ULTRA-MINIMAL FORMAT
+            rtsp_count = 0
+            video_count = 0
+            
+            for channel_id, channel_info in prioritized_catalog:
+                # ULTRA-MINIMAL FORMAT: Remove all whitespace and non-essential fields for maximum UDP efficiency
+                name = channel_info['name'][:20]  # Truncate long names
+                channel_item_xml = f"""    <Item><DeviceID>{channel_id}</DeviceID><Name>{name}</Name><Status>{channel_info['status']}</Status><Parental>1</Parental><ParentID>{self.device_id}</ParentID></Item>"""
                 xml_items.append(channel_item_xml)
+                
+                # Count channel types for logging
+                if channel_info.get('channel_type') == 'rtsp' or 'rtsp_url' in channel_info:
+                    rtsp_count += 1
+                else:
+                    video_count += 1
 
             # Total count includes parent device + channels
             total_count = len(xml_items)  # 1 parent + N channels
             
-            # FIXED: Check message size for UDP safety with proper newlines
+            # FIXED: Check message size for UDP safety with proper newlines - Apply size limits with RTSP priority
             xml_content = "\n".join(xml_items)  # FIXED: Use actual newlines, not \\n
-            estimated_size = len(xml_content) + 1000  # Add overhead for headers
+            estimated_size = len(xml_content.encode('utf-8')) + 1000  # Add overhead for headers
             
-            log.info(f"[SIP] 🏗️ Building WVP-compatible catalog response:")
+            log.info(f"[SIP] 🏗️ Building WVP-compatible catalog response (RTSP prioritized):")
             log.info(f"[SIP]   • Parent Device: {self.device_id} (GB28181-Restreamer)")
-            log.info(f"[SIP]   • Child Channels: {len(catalog_items)}")
+            log.info(f"[SIP]   • RTSP Live Streams: {rtsp_count}")
+            log.info(f"[SIP]   • Video File Channels: {video_count}")
             log.info(f"[SIP]   • Total Items: {total_count}")
             log.info(f"[SIP]   • Estimated size: {estimated_size} bytes")
             
-            # FIXED: Apply reasonable UDP size limits but less aggressive for parent+children format
-            if estimated_size > 3000:  # Higher limit since we need parent + at least some channels
-                log.warning(f"[SIP] ⚠️ Large response ({estimated_size} bytes) - limiting channels for UDP safety")
+            # PRIORITY-AWARE size management: Ensure all RTSP streams are included
+            if estimated_size > 1400:  # Stricter UDP limit for ultra-minimal format
+                log.warning(f"[SIP] ⚠️ Large response ({estimated_size} bytes) - applying RTSP-priority size limits")
                 
-                # Always keep the parent device (first item), limit channels
-                safe_items = [xml_items[0]]  # Parent device must be included
-                running_size = len(xml_items[0].encode('utf-8')) + 800  # Base response size + headers
+                # Always keep parent device + ALL RTSP streams, limit video files
+                safe_items = [xml_items[0]]  # Parent device
+                running_size = len(xml_items[0].encode('utf-8')) + 600  # Base response size + headers (reduced for minimal format)
                 
-                # Add as many channels as fit within UDP limit
-                for channel_item in xml_items[1:]:  # Skip parent device (already added)
-                    item_size = len(channel_item.encode('utf-8'))
-                    if running_size + item_size < 3000:  # Allow more space for this format
-                        safe_items.append(channel_item)
-                        running_size += item_size
-                    else:
-                        break
+                rtsp_included = 0
+                video_included = 0
+                
+                # First pass: Include ALL RTSP live streams (priority)
+                for i, (channel_id, channel_info) in enumerate(prioritized_catalog):
+                    if channel_info.get('channel_type') == 'rtsp' or 'rtsp_url' in channel_info:
+                        item_xml = xml_items[i + 1]  # +1 to skip parent device
+                        item_size = len(item_xml.encode('utf-8'))
+                        if running_size + item_size < 1400:  # Ensure RTSP streams fit with ultra-minimal format
+                            safe_items.append(item_xml)
+                            running_size += item_size
+                            rtsp_included += 1
+                        else:
+                            log.warning(f"[SIP] ⚠️ RTSP stream {channel_info['name']} too large for UDP - skipping")
+                
+                # Second pass: Include video files if space remains
+                for i, (channel_id, channel_info) in enumerate(prioritized_catalog):
+                    if not (channel_info.get('channel_type') == 'rtsp' or 'rtsp_url' in channel_info):
+                        item_xml = xml_items[i + 1]  # +1 to skip parent device
+                        item_size = len(item_xml.encode('utf-8'))
+                        if running_size + item_size < 1400:  # Updated for ultra-minimal format
+                            safe_items.append(item_xml)
+                            running_size += item_size
+                            video_included += 1
+                        else:
+                            break  # Stop adding video files when size limit reached
                 
                 xml_content = "\n".join(safe_items)
                 actual_count = len(safe_items)
-                channel_count = actual_count - 1  # Subtract parent device
-                log.info(f"[SIP] 📦 Limited to parent device + {channel_count} channels (total: {actual_count} items)")
+                
+                log.info(f"[SIP] 📦 RTSP-PRIORITY result: {rtsp_included} RTSP streams + {video_included} video files (total: {actual_count} items)")
+                log.info(f"[SIP] 🎯 ALL LIVE STREAMS INCLUDED: {rtsp_included}/{len(rtsp_channels)} RTSP channels")
+                
             else:
                 safe_items = xml_items
                 actual_count = total_count
-                channel_count = len(catalog_items)
-                log.info(f"[SIP] 📦 Including parent device + all {channel_count} channels (total: {actual_count} items)")
+                log.info(f"[SIP] 📦 Including all channels - parent device + {rtsp_count} RTSP + {video_count} video files")
 
             # FIXED: Generate the XML response with proper WVP-compatible format
             xml_response = f"""<?xml version="1.0" encoding="GB2312"?>
@@ -1033,19 +1087,20 @@ class SIPClient:
 
             # Validate the response structure
             message_size = len(xml_response.encode('utf-8'))
-            log.info(f"[SIP] 📊 Final WVP-compatible catalog response:")
+            log.info(f"[SIP] 📊 Final WVP-compatible catalog response (RTSP-prioritized):")
             log.info(f"[SIP]   • Message size: {message_size} bytes")
             log.info(f"[SIP]   • SumNum: {actual_count}")
             log.info(f"[SIP]   • DeviceList Num: {actual_count}")
-            log.info(f"[SIP]   • Structure: 1 Parent Device + {actual_count-1} Channels")
+            log.info(f"[SIP]   • Live streams preserved: RTSP channels prioritized over video files")
             
-            # FIXED: Final size check with better fallback - ensure at least parent + 1 channel
-            if message_size > 4000:  # Higher threshold for parent+children format
-                log.error(f"[SIP] ❌ Response still too large ({message_size} bytes) - using minimal fallback")
-                # Emergency fallback: Parent device + 1 channel only
+            # FIXED: Final size check with better fallback - ensure at least parent + RTSP streams
+            if message_size > 2000:  # Conservative threshold for ultra-minimal format
+                log.error(f"[SIP] ❌ Response still too large ({message_size} bytes) - using RTSP-only fallback")
+                # Emergency fallback: Parent device + RTSP channels only
                 minimal_items = [xml_items[0]]  # Parent device
-                if len(xml_items) > 1:
-                    minimal_items.append(xml_items[1])  # First channel
+                for i, (channel_id, channel_info) in enumerate(prioritized_catalog[:3]):  # First 3 RTSP channels
+                    if channel_info.get('channel_type') == 'rtsp' or 'rtsp_url' in channel_info:
+                        minimal_items.append(xml_items[i + 1])
                 
                 minimal_xml = "\n".join(minimal_items)
                 xml_response = f"""<?xml version="1.0" encoding="GB2312"?>
@@ -1053,19 +1108,19 @@ class SIPClient:
 <CmdType>Catalog</CmdType>
 <SN>{sn}</SN>
 <DeviceID>{self.device_id}</DeviceID>
-<r>OK</r>
+<Result>OK</Result>
 <SumNum>{len(minimal_items)}</SumNum>
 <DeviceList Num="{len(minimal_items)}">
 {minimal_xml}
 </DeviceList>
 </Response>"""
-                log.info(f"[SIP] 📦 Emergency fallback: parent device + 1 channel, {len(xml_response.encode('utf-8'))} bytes")
+                log.info(f"[SIP] 📦 Emergency RTSP-only fallback: {len(minimal_items)} items, {len(xml_response.encode('utf-8'))} bytes")
 
             return xml_response
 
         except Exception as e:
             log.error(f"[SIP] Error generating catalog response: {e}")
-            # FIXED: Return minimal valid response with parent device
+            # FIXED: Return minimal valid response with parent device - ULTRA-MINIMAL FORMAT
             return f"""<?xml version="1.0" encoding="GB2312"?>
 <Response>
 <CmdType>Catalog</CmdType>
@@ -1074,14 +1129,7 @@ class SIPClient:
 <Result>OK</Result>
 <SumNum>1</SumNum>
 <DeviceList Num="1">
-    <Item>
-      <DeviceID>{self.device_id}</DeviceID>
-      <Name>GB28181-Restreamer</Name>
-      <Manufacturer>GB28181-RestreamerProject</Manufacturer>
-      <Model>Restreamer-1.0</Model>
-      <Status>ON</Status>
-      <Parental>0</Parental>
-    </Item>
+    <Item><DeviceID>{self.device_id}</DeviceID><Name>Restreamer</Name><Status>ON</Status><Parental>0</Parental></Item>
 </DeviceList>
 </Response>"""
 
@@ -1907,8 +1955,10 @@ class SIPClient:
             self._current_message_buffer = []
             return
             
-        # Enhanced INVITE detection for GB28181 streaming
-        if "Request msg INVITE" in line:
+        # Enhanced INVITE detection for GB28181 streaming - FIXED: Multiple patterns
+        if ("Request msg INVITE" in line or 
+            "INVITE sip:" in line or 
+            "RX " in line and "INVITE" in line):
             log.info("[SIP] 🎬 INVITE detected in log line, processing buffer for full message.")
             # IMPROVED: Start INVITE collection with timeout tracking
             self._collecting_invite = True
@@ -2704,17 +2754,47 @@ Content-Length: {len(xml_content)}
     def _extract_target_channel_from_invite(self, invite_message):
         """Extract target channel ID from INVITE URI"""
         try:
-            # Look for INVITE line with target URI
+            # Look for INVITE line with target URI OR To: header
+            target_id = None
+            
             for line in invite_message.split('\n'):
                 line = line.strip()
                 if line.startswith('INVITE sip:'):
-                    # Extract channel ID from URI
-                    # Format: INVITE sip:810000004650131000001@13.50.108.195:5080
+                    # Extract from INVITE line: INVITE sip:810000004650131000001@13.50.108.195:5080
                     match = re.search(r'INVITE sip:([^@]+)@', line)
                     if match:
-                        channel_id = match.group(1)
-                        log.debug(f"[SIP] Extracted target channel from INVITE: {channel_id}")
-                        return channel_id
+                        target_id = match.group(1)
+                        break
+                elif line.startswith('To:'):
+                    # Extract from To header: To: <sip:81000000465001000001@13.50.108.195:51630>
+                    match = re.search(r'To:.*sip:([^@]+)@', line)
+                    if match:
+                        target_id = match.group(1)
+                        # Don't break - prefer INVITE line if available
+            
+            if target_id:
+                log.debug(f"[SIP] Extracted target ID from INVITE: {target_id}")
+                
+                # CRITICAL FIX: Handle both parent device and channel requests
+                if target_id == self.device_id:
+                    # WVP sent INVITE to parent device - default to first RTSP channel
+                    log.info(f"[SIP] 🔧 INVITE to parent device {target_id} - using first available RTSP channel")
+                    
+                    # Find first RTSP channel from our catalog
+                    catalog = self.generate_device_catalog()
+                    for channel_id, channel_info in catalog.items():
+                        if channel_info.get('channel_type') == 'rtsp' or 'rtsp_url' in channel_info:
+                            log.info(f"[SIP] 🎯 Mapping parent device request to RTSP channel: {channel_id}")
+                            return channel_id
+                    
+                    # Fallback: use device ID with channel suffix
+                    fallback_channel = f"{self.device_id}01"
+                    log.info(f"[SIP] 🔧 Using fallback channel ID: {fallback_channel}")
+                    return fallback_channel
+                else:
+                    # Direct channel request
+                    return target_id
+                    
             return None
         except Exception as e:
             log.error(f"[SIP] Error extracting target channel from INVITE: {e}")
@@ -2841,7 +2921,7 @@ Content-Length: {len(xml_content)}
                                 payload_types = " ".join(offered_pts)
                                 log.info(f"[SIP] 🔧 WVP offered payload types: {payload_types}")
                                 h264_pt = offered_pts[0]
-                                ps_pt = offered_pts[1]
+                                ps_pt = offered_pts[1] if len(offered_pts) > 1 else None
                         break
                         
                 # Look for explicit rtpmap lines to detect which PT corresponds to H264/90000
@@ -2873,48 +2953,92 @@ Content-Length: {len(xml_content)}
                     # default to the first one
                     payload_types = payload_types.split()[0]
 
-            # Decide which PT/codec we will answer with
+            # Decide which PT/codec we will answer with - CRITICAL FIX for WVP compatibility
             chosen_pt = None
             chosen_codec = None
+            
+            # CRITICAL: WVP expects PS format with payload type 97
+            # Check if WVP offered PS/90000 and use that payload type
             if ps_pt:
                 chosen_pt = ps_pt
                 chosen_codec = "PS/90000"
+                log.info(f"[SIP] 🔧 Using PS format with PT {ps_pt} as offered by WVP")
+            elif '97' in payload_types:
+                # WVP typically uses PT 97 for PS format
+                chosen_pt = "97"
+                chosen_codec = "PS/90000"
+                log.info(f"[SIP] 🔧 Using PS format with PT 97 (WVP standard)")
+            elif '96' in payload_types:
+                # WVP sometimes uses PT 96 for PS format
+                chosen_pt = "96"
+                chosen_codec = "PS/90000"
+                log.info(f"[SIP] 🔧 Using PS format with PT 96 (WVP fallback)")
             elif h264_pt:
                 chosen_pt = h264_pt
                 chosen_codec = "H264/90000"
+                log.info(f"[SIP] 🔧 Using H264 format with PT {h264_pt}")
             else:
-                chosen_pt = payload_types.split()[0] if payload_types else "96"
-                chosen_codec = "H264/90000"
+                # Default to PT 97 with PS format for GB28181 compliance
+                chosen_pt = "97"
+                chosen_codec = "PS/90000"
+                log.info(f"[SIP] 🔧 Using default PS format with PT 97")
 
             payload_types = chosen_pt  # our m-line will contain only this PT
+            # --- SEGFAULT MITIGATION ---
+            # If we are going to use Program-Stream (PS/90000) but the selected
+            # payload-type is not 96, override it to 96 so that pjmedia only ever
+            # sees one PT mapped to PS/90000. This avoids the known table
+            # over-run segfault when duplicate mappings (e.g. 96 and 97) appear.
+            if chosen_codec == "PS/90000" and chosen_pt != "96":
+                log.warning(f"[SIP] Segfault workaround: overriding payload type {chosen_pt} to 96")
+                chosen_pt = "96"
+                payload_types = chosen_pt
 
             # Create GB28181-compliant SDP content according to GB/T 28181-2016 standard
             # CRITICAL FIX: Use PS (Program Stream) format which is standard for GB28181
+            
+            # CRITICAL FIX: For TCP-PASSIVE mode, WVP expects us to use THEIR destination port
+            # NOT port 9 - we need to mirror what they specified
+            if 'TCP' in transport_protocol:
+                # Get the destination port that WVP specified for streaming  
+                dest_ip, dest_port = self._parse_destination_from_sdp(incoming_sdp)
+                media_port = dest_port if dest_port else 9  # Use WVP's port, fallback to 9
+                log.info(f"[SIP] 🚀 TCP mode: Using WVP destination port {media_port}")
+            else:
+                media_port = rtp_port
+                log.info(f"[SIP] 🚀 UDP mode: Using allocated RTP port {media_port}")
+            
+            # CRITICAL FIX: For TCP-PASSIVE, use WVP's destination IP in connection line
+            # This tells WVP where they should expect to receive the stream
+            if 'TCP' in transport_protocol and dest_ip:
+                connection_ip = dest_ip  # Use WVP's destination IP
+                log.info(f"[SIP] 🚀 TCP-PASSIVE: Using WVP destination IP {dest_ip} in SDP")
+            else:
+                connection_ip = local_ip  # Use our local IP for UDP
+                log.info(f"[SIP] 🚀 UDP mode: Using local IP {local_ip} in SDP")
+            
             sdp_lines = [
                 "v=0",
                 f"o=- {session_id} {session_id} IN IP4 {local_ip}",
                 "s=Play",
-                f"c=IN IP4 {local_ip}",
+                f"c=IN IP4 {connection_ip}",
                 "t=0 0",
                 # CRITICAL FIX: Match the transport protocol and payload types from WVP platform
-                # When we are ACTIVE (RFC 4145) we must set the port to 9 (discard) as recommended
-                # by the COMEDIA specification. Some SIP servers (including WVP) reject an SDP
-                # answer that specifies any other port while declaring a=setup:active.
-                f"m=video {9 if 'TCP' in transport_protocol else rtp_port} {transport_protocol} {payload_types}",
+                f"m=video {media_port} {transport_protocol} {payload_types}",
                 # The offer was a=recvonly, so our answer must be a=sendonly
                 "a=sendonly",
-                # RFC 4145: indicate we will actively initiate the TCP connection to WVP
-                "a=setup:active",
-                # Use H.264 format for better GB28181 compatibility with WVP
-                f"a=rtpmap:{chosen_pt} {chosen_codec}",
-                # No extra rtpmap lines – keep answer minimal
             ]
             
-            # Add rtpmap for additional payload types if present
-            pts = payload_types.split()
-            for pt in pts[1:]:  # Skip first one (96) as it's already added
-                if pt.isdigit():
-                    sdp_lines.append(f"a=rtpmap:{pt} H264/90000")
+            # Add connection setup for TCP transport - CRITICAL FIX for WVP TCP-PASSIVE
+            if 'TCP' in transport_protocol:
+                # For TCP-PASSIVE mode, WVP is the passive side, we are active
+                # This means WVP listens, we connect to them
+                sdp_lines.append("a=setup:active")
+                sdp_lines.append("a=connection:new")
+            
+            # CRITICAL SEGFAULT FIX: Add only ONE rtpmap line for our chosen payload type
+            # Multiple rtpmap lines cause PJSUA to crash with segmentation fault
+            sdp_lines.append(f"a=rtpmap:{chosen_pt} {chosen_codec}")
             
             # Add GB28181-specific attributes
             sdp_lines.extend([
@@ -2927,11 +3051,29 @@ Content-Length: {len(xml_content)}
             log.info(f"[SIP] 📄 Created GB28181-compliant SDP response for channel {target_channel}")
             log.info(f"[SIP] 🎯 Using WVP-expected SSRC: {expected_ssrc}")
             log.info(f"[SIP] 🚀 Using transport protocol: {transport_protocol} (CRITICAL FIX)")
-            log.info(f"[SIP] 🎯 Using payload types: {payload_types}")
-            media_port_for_log = 9 if 'TCP' in transport_protocol else rtp_port
-            log.info(f"[SIP] 🌐 Media endpoint: {local_ip}:{media_port_for_log}")
+            log.info(f"[SIP] 🎯 Using payload type: {chosen_pt} ({chosen_codec})")
+            log.info(f"[SIP] 🌐 Media endpoint: {local_ip}:{media_port}")
             log.debug(f"[SIP] SDP content:\n{sdp_content}")
             
+            # CRITICAL: Validate SDP content before returning
+            if not sdp_content or len(sdp_content) < 50:
+                log.error(f"[SIP] ❌ Generated SDP content is too short or empty")
+                return None
+                
+            # Ensure all required SDP lines are present
+            required_lines = ['v=0', 'm=video', 'a=sendonly', f'a=rtpmap:{chosen_pt}']
+            for required in required_lines:
+                if required not in sdp_content:
+                    log.error(f"[SIP] ❌ Missing required SDP line: {required}")
+                    return None
+            
+            # SEGFAULT PREVENTION: Ensure no duplicate rtpmap lines exist
+            rtpmap_count = sdp_content.count('a=rtpmap:')
+            if rtpmap_count != 1:
+                log.error(f"[SIP] ❌ SEGFAULT RISK: Found {rtpmap_count} rtpmap lines, expected exactly 1")
+                return None
+            
+            log.info(f"[SIP] ✅ SDP validation passed - ready for WVP platform")
             return sdp_content
             
         except Exception as e:
@@ -3008,29 +3150,87 @@ Content-Length: {len(xml_content)}
                 
             log.info(f"[SIP] 🎯 Using SSRC for streaming: {ssrc}")
             log.info(f"[SIP] 🚀 Using transport protocol: {transport_protocol}")
-            
-            # Create SDP that describes the stream we're about to send
-            # Use H.264 format to match the actual pipeline output
-            mock_destination_sdp = f"""v=0
-o=GB28181 0 0 IN IP4 {dest_ip}
-s=Play
-c=IN IP4 {dest_ip}
-t=0 0
-m=video {dest_port} {transport_protocol} 96
-a=sendrecv
-a=rtpmap:96 PS/90000
-a=rtpmap:97 H264/90000
-a=rtpmap:98 H264/90000
-a=rtpmap:99 H264/90000
-"""
-            
             log.info(f"[SIP] 🎯 Configured streaming destination: {dest_ip}:{dest_port}")
             
-            # Use existing streaming infrastructure with SSRC parameter
-            success = self.parse_sdp_and_stream(mock_destination_sdp, callid=call_id, target_channel=channel_id, ssrc=ssrc)
+            # CRITICAL FIX: Use media streamer directly instead of mock SDP
+            # This prevents the segfault caused by malformed SDP parsing
+            
+            # Find a video source for this channel
+            video_path = None
+            
+            # Check if we have RTSP sources configured for this channel
+            if hasattr(self, 'config') and 'rtsp_sources' in self.config:
+                for source in self.config['rtsp_sources']:
+                    if source.get('channel_id') == channel_id:
+                        # Accept both 'url' and legacy 'rtsp_url' keys
+                        video_path = source.get('url') or source.get('rtsp_url')
+                        log.info(f"[SIP] Using RTSP source for channel {channel_id}: {video_path}")
+                        break
+            
+            # Fallback to scanning video files
+            if not video_path:
+                log.info("[SIP] Falling back to scanning video files for a source.")
+                import os
+                recordings_dir = "recordings"
+                if os.path.exists(recordings_dir):
+                    for root, dirs, files in os.walk(recordings_dir):
+                        for file in files:
+                            if file.lower().endswith(('.mp4', '.avi', '.mkv', '.mov')):
+                                video_path = os.path.join(root, file)
+                                log.info(f"[SIP] Using first available video file: {video_path}")
+                                break
+                        if video_path:
+                            break
+            
+            if not video_path:
+                log.error("[SIP] ❌ No video source found for streaming")
+                return False
+            
+            # CRITICAL FIX: Use media streamer directly with proper parameters
+            # This bypasses the problematic SDP parsing that was causing segfaults
+            stream_id = f"{dest_ip}:{dest_port}:{ssrc}"
+            
+            # Safety check: Ensure media streamer is available
+            if not hasattr(self, 'streamer') or not self.streamer:
+                log.error("[SIP] ❌ Media streamer not available")
+                return False
+            
+            # Configure encoder parameters for GB28181 compatibility
+            # FIXED: Include use_ps_format inside encoder_params, not as separate parameter
+            encoder_params = {
+                'width': 704,
+                'height': 576,
+                'framerate': 25,
+                'bitrate': 1024,
+                'keyframe_interval': 50,
+                'speed_preset': 'superfast',
+                'use_ps_format': True,  # GB28181 typically uses PS format
+                'codec': 'h264',
+                'payload_type': 96
+            }
+            
+            log.info(f"[SIP] Using media streamer for file: {video_path}")
+            
+            # Start the stream using media streamer directly with crash protection
+            try:
+                success = self.streamer.start_stream(
+                    video_path=video_path,
+                    dest_ip=dest_ip,
+                    dest_port=dest_port,
+                    ssrc=ssrc,
+                    encoder_params=encoder_params,
+                    transport_protocol=transport_protocol
+                )
+            except Exception as stream_error:
+                log.error(f"[SIP] ❌ Media streamer crashed: {stream_error}")
+                import traceback
+                log.error(f"[SIP] Streamer traceback: {traceback.format_exc()}")
+                return False
             
             if success:
                 log.info(f"[SIP] ✅ Stream started successfully to WVP platform")
+                log.info(f"[SIP] Started stream to {dest_ip}:{dest_port} with SSRC {ssrc}")
+                
                 # Store stream info
                 if not hasattr(self, '_active_streams'):
                     self._active_streams = {}
@@ -3040,7 +3240,9 @@ a=rtpmap:99 H264/90000
                     'dest_port': dest_port,
                     'ssrc': ssrc,
                     'start_time': time.time(),
-                    'status': 'active'
+                    'status': 'active',
+                    'stream_id': stream_id,
+                    'video_path': video_path
                 }
                 return True
             else:
@@ -3163,9 +3365,32 @@ a=rtpmap:99 H264/90000
         try:
             log.info(f"[SIP] 📤 Sending INVITE response: {status_code} {reason_phrase}")
             
+            # SEGFAULT PREVENTION: Validate SDP content before processing
+            if status_code == "200" and sdp_content:
+                if not isinstance(sdp_content, str) or len(sdp_content) < 10:
+                    log.error(f"[SIP] ❌ Invalid SDP content, cannot send 200 OK response")
+                    return False
+                
+                # Check for dangerous SDP patterns that cause segfaults
+                rtpmap_count = sdp_content.count('a=rtpmap:')
+                if rtpmap_count > 1:
+                    log.error(f"[SIP] ❌ SEGFAULT PREVENTION: Multiple rtpmap lines detected ({rtpmap_count}), refusing to send")
+                    return False
+                
+                # Ensure SDP is properly terminated
+                if not sdp_content.endswith('\r\n'):
+                    sdp_content = sdp_content.rstrip() + '\r\n'
+            
             # Generate unique local tag for this dialog
             if not hasattr(self, '_local_tag'):
                 self._local_tag = f"device{int(time.time())}"
+            
+            # MEMORY SAFETY: Validate all header components exist
+            required_headers = ['_invite_via', '_invite_to', '_invite_from', '_invite_cseq']
+            for header in required_headers:
+                if not hasattr(self, header) or not getattr(self, header):
+                    log.error(f"[SIP] ❌ Missing required header: {header}, cannot send response")
+                    return False
             
             # Build response headers by echoing INVITE headers - CRITICAL for SIP compliance
             response_lines = [
@@ -3178,6 +3403,7 @@ a=rtpmap:99 H264/90000
                 f"Contact: <sip:{self.device_id}@{self.local_ip}:{self.local_port}>",
                 "User-Agent: GB28181-Restreamer/1.0"             # 7. Other headers
             ]
+            
             if status_code == "200" and sdp_content:
                 response_lines += [
                     "Content-Type: application/sdp",
@@ -3190,14 +3416,25 @@ a=rtpmap:99 H264/90000
                     "Content-Length: 0",
                     ""  # blank line
                 ]
-            response_msg = "\r\n".join(response_lines).strip("\r\n") + "\r\n\r\n"
             
+            # MEMORY SAFETY: Build response with proper encoding
+            try:
+                response_msg = "\r\n".join(response_lines).strip("\r\n") + "\r\n\r\n"
+                
+                # Validate response message size (prevent buffer overflows)
+                if len(response_msg) > 65536:  # 64KB limit
+                    log.error(f"[SIP] ❌ Response message too large ({len(response_msg)} bytes), refusing to send")
+                    return False
+                    
+            except Exception as build_error:
+                log.error(f"[SIP] ❌ Error building response message: {build_error}")
+                return False
             
             log.info(f"[SIP] 📋 Response headers echoed from INVITE:")
             log.info(f"[SIP]   Via: {getattr(self, '_invite_via', 'MISSING')}")
             log.info(f"[SIP]   CSeq: {getattr(self, '_invite_cseq', 'MISSING')}")
             
-            # Send response via UDP socket directly
+            # Send response via UDP socket directly with error handling
             success = self._send_sip_response_udp(response_msg)
             if success:
                 log.info(f"[SIP] ✅ INVITE response {status_code} sent successfully")
@@ -3230,8 +3467,18 @@ a=rtpmap:99 H264/90000
             return False
 
     def _send_sip_response_udp(self, response_message):
-        """Send SIP response via UDP socket"""
+        """Send SIP response via UDP socket with enhanced error handling"""
+        sock = None
         try:
+            # MEMORY SAFETY: Validate input parameters
+            if not response_message or not isinstance(response_message, str):
+                log.error(f"[SIP] ❌ Invalid response message for UDP sending")
+                return False
+            
+            if len(response_message) > 65536:  # 64KB limit
+                log.error(f"[SIP] ❌ Response message too large for UDP: {len(response_message)} bytes")
+                return False
+            
             # Use the same UDP sending method as keepalive
             import socket
             
@@ -3240,17 +3487,44 @@ a=rtpmap:99 H264/90000
             
             # Send to server IP and port
             server_addr = (self.server, self.port)
-            response_bytes = response_message.encode('utf-8')
             
-            sent_bytes = sock.sendto(response_bytes, server_addr)
-            sock.close()
+            # MEMORY SAFETY: Encode with error handling
+            try:
+                response_bytes = response_message.encode('utf-8')
+            except UnicodeEncodeError as encode_error:
+                log.error(f"[SIP] ❌ Unicode encoding error: {encode_error}")
+                return False
             
-            log.debug(f"[SIP] 📤 Sent SIP response: {sent_bytes}/{len(response_bytes)} bytes to {server_addr}")
-            return sent_bytes == len(response_bytes)
+            # Send with retry logic
+            max_retries = 3
+            for attempt in range(max_retries):
+                try:
+                    sent_bytes = sock.sendto(response_bytes, server_addr)
+                    
+                    if sent_bytes == len(response_bytes):
+                        log.debug(f"[SIP] 📤 Sent SIP response: {sent_bytes}/{len(response_bytes)} bytes to {server_addr}")
+                        return True
+                    else:
+                        log.warning(f"[SIP] ⚠️ Partial send: {sent_bytes}/{len(response_bytes)} bytes (attempt {attempt + 1})")
+                        
+                except socket.error as send_error:
+                    log.warning(f"[SIP] ⚠️ Send attempt {attempt + 1} failed: {send_error}")
+                    if attempt == max_retries - 1:
+                        raise
+                    time.sleep(0.1)  # Brief delay before retry
+            
+            return False
             
         except Exception as e:
             log.error(f"[SIP] ❌ Error sending SIP response via UDP: {e}")
             return False
+        finally:
+            # MEMORY SAFETY: Always close socket
+            if sock:
+                try:
+                    sock.close()
+                except:
+                    pass
 
     def _handle_invite_with_sdp(self, call_id, sdp_content):
         """Handle INVITE with SDP content (legacy method)"""

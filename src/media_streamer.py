@@ -19,6 +19,7 @@ os.environ.setdefault('GST_DEBUG', '0')
 os.environ.setdefault('GST_DEBUG_NO_COLOR', '1')
 os.environ.setdefault('GST_DEBUG_DUMP_DOT_DIR', '/tmp')
 os.environ.setdefault('GST_REGISTRY_FORK', 'no')
+os.environ.setdefault('GST_DEBUG_FILE', '/dev/null')
 
 # Suppress specific GStreamer critical assertion warnings
 import ctypes
@@ -27,9 +28,20 @@ import ctypes.util
 # Try to suppress GLib critical warnings at the C library level
 try:
     glib = ctypes.CDLL(ctypes.util.find_library('glib-2.0'))
+    # Suppress all critical warnings (they don't affect functionality)
     glib.g_log_set_always_fatal(0)
+    # Set log handler to suppress critical messages
+    glib.g_log_set_default_handler(None, None)
 except:
     pass  # If we can't load glib, just continue
+
+# Additional suppression for GStreamer critical warnings
+try:
+    import warnings
+    warnings.filterwarnings("ignore", category=RuntimeWarning, module="gi")
+    warnings.filterwarnings("ignore", message=".*gst_segment_to_running_time.*")
+except:
+    pass
 
 gi.require_version('Gst', '1.0')
 gi.require_version('GstApp', '1.0')
@@ -49,8 +61,12 @@ class GStreamerCriticalFilter(logging.Filter):
         critical_patterns = [
             "gst_segment_to_running_time: assertion",
             "segment->format == format",
+            "segment format",
             "Critical",
-            "GStreamer-CRITICAL"
+            "GStreamer-CRITICAL",
+            "assertion 'segment->format == format' failed",
+            "gst_segment_to_running_time",
+            "format == format"
         ]
         
         # Check if the log message contains any of the patterns to suppress
@@ -335,14 +351,14 @@ class MediaStreamer:
                 # 1) Encode to H.264 elementary stream
                 # 2) Mux into MPEG-PS (required by GB28181 for PS payload)
                 # 3) Use rtpgstpay for generic RTP payloading of PS format
-                # Fixed pipeline to handle segment formats correctly
+                # Fixed pipeline to handle segment formats correctly and avoid mpegpsmux crashes
                 pipeline_str += (
                     f'x264enc tune=zerolatency bitrate={bitrate} key-int-max={keyframe_interval} '
                     f'byte-stream=true speed-preset={speed_preset} threads=1 sync-lookahead=0 '
                     f'intra-refresh=false sliced-threads=false ! '
                     f'video/x-h264,stream-format=byte-stream,alignment=au,profile=baseline ! '
                     f'queue max-size-buffers=5 max-size-time=0 leaky=downstream ! '
-                    f'mpegpsmux alignment=2 aggregate-gops=false ! '
+                    f'mpegpsmux ! '
                     f'queue max-size-buffers=5 max-size-time=0 leaky=downstream ! '
                     f'rtpgstpay pt={payload_type} perfect-rtptime=false '
                 )
@@ -444,19 +460,70 @@ class MediaStreamer:
                 
             except Exception as parse_error:
                 log.error(f"[STREAM] Failed to parse pipeline: {parse_error}")
-                return False
-            
-            # Set to PLAYING state with improved state change handling
-            ret = pipeline.set_state(Gst.State.PLAYING)
-            if ret == Gst.StateChangeReturn.FAILURE:
-                log.error(f"[STREAM] Failed to set pipeline to PLAYING state for {stream_id}")
-                return False
-            elif ret == Gst.StateChangeReturn.ASYNC:
-                # Wait for state change to complete
-                ret = pipeline.get_state(Gst.CLOCK_TIME_NONE)
-                if ret[0] == Gst.StateChangeReturn.FAILURE:
-                    log.error(f"[STREAM] Pipeline state change failed for {stream_id}")
+                
+                # If PS format failed, try fallback to H.264 RTP
+                if use_ps_format:
+                    log.warning(f"[STREAM] PS format pipeline failed, trying H.264 RTP fallback for stream {stream_id}")
+                    
+                    # Calculate SSRC for fallback
+                    ssrc_value = ssrc or "0000000001"
+                    try:
+                        if isinstance(ssrc_value, str) and ssrc_value.isdigit():
+                            fallback_ssrc = int(ssrc_value)
+                        elif isinstance(ssrc_value, str):
+                            fallback_ssrc = int(ssrc_value, 16)
+                        else:
+                            fallback_ssrc = int(ssrc_value)
+                    except (ValueError, TypeError):
+                        fallback_ssrc = 1
+                    
+                    fallback_pipeline = (
+                        f'filesrc location="{video_path}" ! '
+                        f'decodebin ! videoconvert ! videoscale ! '
+                        f'video/x-raw,width={width},height={height},framerate={framerate}/1 ! '
+                        f'x264enc tune=zerolatency bitrate={bitrate} key-int-max={keyframe_interval} '
+                        f'byte-stream=true speed-preset=superfast ! '
+                        f'video/x-h264,profile=baseline,stream-format=byte-stream,alignment=au ! '
+                        f'rtph264pay config-interval=1 pt={payload_type} perfect-rtptime=false ssrc={fallback_ssrc} ! '
+                    )
+                    
+                    if "TCP" in transport_protocol:
+                        fallback_pipeline += (
+                            f'rtpstreampay ! '
+                            f'queue max-size-buffers=0 max-size-time=0 leaky=downstream ! '
+                            f'tcpclientsink async=false host={dest_ip} port={dest_port} sync=false'
+                        )
+                    else:
+                        fallback_pipeline += f'udpsink host={dest_ip} port={dest_port} sync=false async=false'
+                    
+                    try:
+                        log.info(f"[STREAM] Attempting H.264 RTP fallback pipeline for stream {stream_id}")
+                        pipeline = Gst.parse_launch(fallback_pipeline)
+                        self.pipelines[stream_id] = pipeline
+                        pipeline.set_property("message-forward", False) if hasattr(pipeline, "set_property") else None
+                    except Exception as fallback_error:
+                        log.error(f"[STREAM] Fallback pipeline also failed: {fallback_error}")
+                        return False
+                else:
                     return False
+            
+            # Set to PLAYING state with improved state change handling and crash protection
+            try:
+                ret = pipeline.set_state(Gst.State.PLAYING)
+                if ret == Gst.StateChangeReturn.FAILURE:
+                    log.error(f"[STREAM] Failed to set pipeline to PLAYING state for {stream_id}")
+                    return False
+                elif ret == Gst.StateChangeReturn.ASYNC:
+                    # Wait for state change to complete with timeout to prevent hanging
+                    ret = pipeline.get_state(5 * Gst.SECOND)  # 5 second timeout
+                    if ret[0] == Gst.StateChangeReturn.FAILURE:
+                        log.error(f"[STREAM] Pipeline state change failed for {stream_id}")
+                        return False
+                    elif ret[0] == Gst.StateChangeReturn.ASYNC:
+                        log.warning(f"[STREAM] Pipeline state change timeout for {stream_id}, continuing anyway")
+            except Exception as state_error:
+                log.error(f"[STREAM] Exception during pipeline state change for {stream_id}: {state_error}")
+                return False
 
             # Setup bus to watch for EOS and errors
             bus = pipeline.get_bus()

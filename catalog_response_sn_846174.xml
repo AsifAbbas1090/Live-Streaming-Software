@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="GB2312"?>
+<Response>
+<CmdType>Catalog</CmdType>
+<SN>846174</SN>
+<DeviceID>81000000462001888888</DeviceID>
+<Result>OK</Result>
+<SumNum>2</SumNum>
+<DeviceList Num="2">
+    <Item>
+      <DeviceID>81000000462001888888</DeviceID>
+      <Name>GB28181-Restreamer</Name>
+      <Manufacturer>GB28181-RestreamerProject</Manufacturer>
+      <Model>Restreamer-1.0</Model>
+      <Owner>gb28181-restreamer</Owner>
+      <CivilCode>810000</CivilCode>
+      <Block>81000000</Block>
+      <Address>gb28181-restreamer</Address>
+      <Parental>0</Parental>
+      <SafetyWay>0</SafetyWay>
+      <RegisterWay>1</RegisterWay>
+      <CertNum>1234567890</CertNum>
+      <Certifiable>1</Certifiable>
+      <ErrCode>0</ErrCode>
+      <EndTime></EndTime>
+      <Secrecy>0</Secrecy>
+      <IPAddress>172.31.7.94</IPAddress>
+      <Port>0</Port>
+      <Password></Password>
+      <Status>ON</Status>
+      <Longitude>0.0</Longitude>
+      <Latitude>0.0</Latitude>
+      <PTZType>0</PTZType>
+      <PositionType>0</PositionType>
+      <RoomType>0</RoomType>
+      <UseType>0</UseType>
+      <SupplyLightType>0</SupplyLightType>
+      <DirectionType>0</DirectionType>
+      <Resolution>640*480</Resolution>
+      <BusinessGroupID></BusinessGroupID>
+      <DownloadSpeed></DownloadSpeed>
+      <SVCSpaceSupportMode>0</SVCSpaceSupportMode>
+      <SVCTimeSupportMode>0</SVCTimeSupportMode>
+    </Item>
+    <Item>
+      <DeviceID>810000004620131000001</DeviceID>
+      <Name>00-10-10</Name>
+      <Manufacturer>GB28181-RestreamerProject</Manufacturer>
+      <Model>Virtual-Channel</Model>
+      <Owner>gb28181-restreamer</Owner>
+      <CivilCode>810000</CivilCode>
+      <Block>81000000</Block>
+      <Address>Channel 00-10-10</Address>
+      <Parental>1</Parental>
+      <ParentID>81000000462001888888</ParentID>
+      <SafetyWay>0</SafetyWay>
+      <RegisterWay>1</RegisterWay>
+      <Secrecy>0</Secrecy>
+      <IPAddress></IPAddress>
+      <Port>0</Port>
+      <Password></Password>
+      <Status>ON</Status>
+    </Item>
+</DeviceList>
+</Response>

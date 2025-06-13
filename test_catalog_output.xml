@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="GB2312"?>
+<Response>
+  <CmdType>Catalog</CmdType>
+  <SN>1749767923</SN>
+  <DeviceID>81000000465001000001</DeviceID>
+  <Result>OK</Result>
+  <SumNum>2</SumNum>
+  <DeviceList Num="2">
+    <Item>
+      <DeviceID>34020000001320000001</DeviceID>
+      <Name>Test RTSP Camera 1</Name>
+      <Manufacturer>Generic</Manufacturer>
+      <Model>IP Camera</Model>
+      <Owner>gb28181-restreamer</Owner>
+      <CivilCode>123456</CivilCode>
+      <Block>123456</Block>
+      <Address>Local</Address>
+      <Parental>0</Parental>
+      <ParentID>34020000002000000001</ParentID>
+      <SafetyWay>0</SafetyWay>
+      <RegisterWay>1</RegisterWay>
+      <Secrecy>0</Secrecy>
+      <Status>ON</Status>
+    </Item>
+    <Item>
+      <DeviceID>34020000001320000002</DeviceID>
+      <Name>Test RTSP Camera 2</Name>
+      <Manufacturer>Generic</Manufacturer>
+      <Model>IP Camera</Model>
+      <Owner>gb28181-restreamer</Owner>
+      <CivilCode>123456</CivilCode>
+      <Block>123456</Block>
+      <Address>Local</Address>
+      <Parental>0</Parental>
+      <ParentID>34020000002000000001</ParentID>
+      <SafetyWay>0</SafetyWay>
+      <RegisterWay>1</RegisterWay>
+      <Secrecy>0</Secrecy>
+      <Status>ON</Status>
+    </Item>
+
+  </DeviceList>
+</Response>

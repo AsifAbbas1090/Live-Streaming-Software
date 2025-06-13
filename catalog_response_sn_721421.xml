@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="GB2312"?>
+<Response>
+<CmdType>Catalog</CmdType>
+<SN>721421</SN>
+<DeviceID>81000000465001000001</DeviceID>
+<Result>OK</Result>
+<SumNum>5</SumNum>
+<DeviceList Num="5">
+    <Item><DeviceID>81000000465001000001</DeviceID><Name>Restreamer</Name><Status>ON</Status><Parental>0</Parental></Item>
+    <Item><DeviceID>81000000465001000001</DeviceID><Name>Front Door Camera</Name><Status>ON</Status><Parental>1</Parental><ParentID>81000000465001000001</ParentID></Item>
+    <Item><DeviceID>81000000465001000002</DeviceID><Name>Parking Lot Camera</Name><Status>ON</Status><Parental>1</Parental><ParentID>81000000465001000001</ParentID></Item>
+    <Item><DeviceID>81000000465001000003</DeviceID><Name>Wowza Test Stream</Name><Status>ON</Status><Parental>1</Parental><ParentID>81000000465001000001</ParentID></Item>
+    <Item><DeviceID>81000000465001000006</DeviceID><Name>00-10-10</Name><Status>ON</Status><Parental>1</Parental><ParentID>81000000465001000001</ParentID></Item>
+</DeviceList>
+</Response>

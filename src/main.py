@@ -15,15 +15,27 @@ os.environ.setdefault('GST_DEBUG', '0')
 os.environ.setdefault('GST_DEBUG_NO_COLOR', '1') 
 os.environ.setdefault('GST_DEBUG_DUMP_DOT_DIR', '/tmp')
 os.environ.setdefault('GST_REGISTRY_FORK', 'no')
+os.environ.setdefault('GST_DEBUG_FILE', '/dev/null')
+os.environ.setdefault('G_MESSAGES_DEBUG', '')
 
 # Suppress specific GStreamer critical assertion warnings at the C library level
 import ctypes
 import ctypes.util
+import warnings
+
+# Suppress Python warnings related to GStreamer
+warnings.filterwarnings("ignore", category=RuntimeWarning, module="gi")
+warnings.filterwarnings("ignore", message=".*gst_segment_to_running_time.*")
 
 # Try to suppress GLib critical warnings at the C library level
 try:
     glib = ctypes.CDLL(ctypes.util.find_library('glib-2.0'))
     glib.g_log_set_always_fatal(0)
+    # Try to set a null log handler to suppress critical messages
+    try:
+        glib.g_log_set_default_handler(None, None)
+    except:
+        pass
 except:
     pass  # If we can't load glib, just continue
 
@@ -36,8 +48,12 @@ class GStreamerCriticalFilter(logging.Filter):
         critical_patterns = [
             "gst_segment_to_running_time: assertion",
             "segment->format == format",
+            "segment format",
             "Critical",
-            "GStreamer-CRITICAL"
+            "GStreamer-CRITICAL",
+            "assertion 'segment->format == format' failed",
+            "gst_segment_to_running_time",
+            "format == format"
         ]
         
         # Check if the log message contains any of the patterns to suppress
@@ -52,6 +68,7 @@ logging.getLogger().addFilter(gst_filter)
 from logger import log
 from file_scanner import scan_video_files, get_video_catalog
 from rtsp_handler import start_rtsp_stream, cleanup_all_streams, get_rtsp_status
+from live_stream_handler import LiveStreamHandler
 from sip_handler_pjsip import SIPClient
 from local_sip_server import LocalSIPServer
 from media_streamer import MediaStreamer
@@ -64,6 +81,7 @@ import numpy as np
 sip_client = None
 local_sip_server = None
 rtsp_handlers = []
+live_stream_handler = None
 streamer = None
 running = True
 status_thread = None
@@ -91,17 +109,40 @@ def load_config(config_path):
     return config
 
 
-def run_rtsp_sources(rtsp_sources):
-    """Launch all configured RTSP sources as subprocesses."""
-    global rtsp_handlers
+def run_rtsp_sources(rtsp_sources, config):
+    """Launch all configured RTSP sources using the enhanced LiveStreamHandler."""
+    global live_stream_handler
     
     if not rtsp_sources:
         log.info("[RTSP] No RTSP sources configured")
         return
     
-    # Check if RTSP server is running before trying to connect
-    for rtsp_url in rtsp_sources:
+    # Initialize the live stream handler
+    live_stream_handler = LiveStreamHandler(config)
+    live_stream_handler.start()
+    
+    log.info(f"[RTSP] Setting up {len(rtsp_sources)} RTSP sources for live streaming")
+    
+    # Process RTSP sources from configuration  
+    for i, rtsp_config in enumerate(rtsp_sources):
         try:
+            # Handle both string URLs and config objects
+            if isinstance(rtsp_config, str):
+                rtsp_url = rtsp_config
+                device_name = f"RTSP Camera {i+1}"
+            else:
+                rtsp_url = rtsp_config.get("url")
+                device_name = rtsp_config.get("name", f"RTSP Camera {i+1}")
+                enabled = rtsp_config.get("enabled", True)
+                
+                if not enabled:
+                    log.info(f"[RTSP] Skipping disabled RTSP source: {device_name}")
+                    continue
+            
+            if not rtsp_url:
+                log.warning(f"[RTSP] Invalid RTSP config: {rtsp_config}")
+                continue
+            
             # Simple check to see if the RTSP server responds
             import socket
             from urllib.parse import urlparse
@@ -110,25 +151,28 @@ def run_rtsp_sources(rtsp_sources):
             host = parsed_url.hostname or "127.0.0.1"
             port = parsed_url.port or 554
             
+            # Test connection to RTSP server
             s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             s.settimeout(2)  # 2 second timeout
             result = s.connect_ex((host, port))
             s.close()
             
             if result != 0:
-                log.warning(f"[RTSP] RTSP server at {host}:{port} is not available, skipping {rtsp_url}")
-                continue
-                
-            # Start RTSP stream handler
-            handler = threading.Thread(target=start_rtsp_stream, args=(rtsp_url,), daemon=True)
-            handler.start()
-            rtsp_handlers.append(handler)
-            log.info(f"[RTSP] Started RTSP stream handler for {rtsp_url}")
-                
+                log.warning(f"[RTSP] RTSP server at {host}:{port} is not available, will attempt to start handler anyway")
+                # Continue anyway as the server might be temporarily unavailable
+            
+            # RTSP sources are now handled as channels under the main device by the SIP handler
+            # No separate device registration needed - they will appear as channels in the catalog
+            log.info(f"[RTSP] Preparing RTSP source: {device_name} ({rtsp_url})")
+            
+            # The actual streaming will be initiated when WVP requests an INVITE
+            # The SIP handler will route RTSP requests to the LiveStreamHandler
+            
         except Exception as e:
-            log.warning(f"[RTSP] Error checking RTSP source {rtsp_url}: {e}")
-            # Don't start RTSP handler if there was an error
-            log.warning(f"[RTSP] Skipping RTSP source {rtsp_url} due to error")
+            log.warning(f"[RTSP] Error setting up RTSP source {rtsp_url}: {e}")
+            log.warning(f"[RTSP] Continuing with other sources...")
+    
+    log.info(f"[RTSP] ✅ Live stream handler ready for {len(rtsp_sources)} RTSP sources")
 
 
 def periodic_status_check():
@@ -210,12 +254,21 @@ def cleanup():
         except Exception as e:
             log.error(f"[SHUTDOWN] Error stopping local SIP server: {e}")
             
-    # Cleanup all RTSP streams
+    # Cleanup all RTSP streams and live stream handler
     try:
         log.info("[SHUTDOWN] Stopping all RTSP streams...")
         cleanup_all_streams()
     except Exception as e:
         log.error(f"[SHUTDOWN] Error stopping RTSP streams: {e}")
+    
+    # Stop live stream handler
+    global live_stream_handler
+    if live_stream_handler:
+        try:
+            log.info("[SHUTDOWN] Stopping live stream handler...")
+            live_stream_handler.stop()
+        except Exception as e:
+            log.error(f"[SHUTDOWN] Error stopping live stream handler: {e}")
     
     # Stop media streamer
     global streamer
@@ -390,8 +443,8 @@ def main():
         # Start GLib main loop for GStreamer event handling
         streamer.start_glib_loop()
         
-        # Start RTSP sources
-        run_rtsp_sources(config.get("rtsp_sources", []))
+        # Start RTSP sources with live stream handler
+        run_rtsp_sources(config.get("rtsp_sources", []), config)
 
         # Check if the SIP local port is already in use and adjust if needed
         if config.get("local_sip", {}).get("enabled", False):

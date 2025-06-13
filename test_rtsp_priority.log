@@ -1,0 +1,1830 @@
+[2025-06-12 23:43:02] [INFO] [BOOT] Starting GB28181 Restreamer...
+INFO:gb28181-restreamer:[BOOT] Starting GB28181 Restreamer...
+[2025-06-12 23:43:02] [INFO] [CONFIG] Loaded configuration successfully.
+INFO:gb28181-restreamer:[CONFIG] Loaded configuration successfully.
+[2025-06-12 23:43:02] [INFO] [CATALOG] Performing quick video scan (full scan will happen in background)...
+INFO:gb28181-restreamer:[CATALOG] Performing quick video scan (full scan will happen in background)...
+[2025-06-12 23:43:02] [INFO] [CATALOG] Quick scan found 9 sample video files
+INFO:gb28181-restreamer:[CATALOG] Quick scan found 9 sample video files
+[2025-06-12 23:43:02] [INFO]   • 00-10-10.mp4
+INFO:gb28181-restreamer:  • 00-10-10.mp4
+[2025-06-12 23:43:02] [INFO]   • 14-32-14.mp4
+INFO:gb28181-restreamer:  • 14-32-14.mp4
+[2025-06-12 23:43:02] [INFO]   • 12-30-00.mp4
+INFO:gb28181-restreamer:  • 12-30-00.mp4
+[2025-06-12 23:43:02] [INFO]   • 01-20-30.mp4
+INFO:gb28181-restreamer:  • 01-20-30.mp4
+[2025-06-12 23:43:02] [INFO]   • filename_1996.mp4
+INFO:gb28181-restreamer:  • filename_1996.mp4
+[2025-06-12 23:43:02] [INFO]   ... and 4 more videos
+INFO:gb28181-restreamer:  ... and 4 more videos
+[2025-06-12 23:43:02] [INFO] [STREAM] Initializing media streamer with frame processing support
+INFO:gb28181-restreamer:[STREAM] Initializing media streamer with frame processing support
+INFO:media_streamer:[STREAM] GLib main loop started
+[2025-06-12 23:43:02] [INFO] [LIVE] LiveStreamHandler initialized
+INFO:gb28181-restreamer:[LIVE] LiveStreamHandler initialized
+[2025-06-12 23:43:02] [INFO] [LIVE] GLib main loop started
+INFO:gb28181-restreamer:[LIVE] GLib main loop started
+[2025-06-12 23:43:02] [INFO] [LIVE] Stream monitoring started
+INFO:gb28181-restreamer:[LIVE] Stream monitoring started
+[2025-06-12 23:43:02] [INFO] [LIVE] LiveStreamHandler started
+INFO:gb28181-restreamer:[LIVE] LiveStreamHandler started
+[2025-06-12 23:43:02] [INFO] [RTSP] Setting up 6 RTSP sources for live streaming
+INFO:gb28181-restreamer:[RTSP] Setting up 6 RTSP sources for live streaming
+[2025-06-12 23:43:04] [WARNING] [RTSP] RTSP server at 192.168.1.100:554 is not available, will attempt to start handler anyway
+WARNING:gb28181-restreamer:[RTSP] RTSP server at 192.168.1.100:554 is not available, will attempt to start handler anyway
+[2025-06-12 23:43:04] [INFO] [RTSP] Preparing RTSP source: Front Door Camera (rtsp://admin:password@192.168.1.100:554/stream1)
+INFO:gb28181-restreamer:[RTSP] Preparing RTSP source: Front Door Camera (rtsp://admin:password@192.168.1.100:554/stream1)
+[2025-06-12 23:43:06] [WARNING] [RTSP] RTSP server at 192.168.1.101:554 is not available, will attempt to start handler anyway
+WARNING:gb28181-restreamer:[RTSP] RTSP server at 192.168.1.101:554 is not available, will attempt to start handler anyway
+[2025-06-12 23:43:06] [INFO] [RTSP] Preparing RTSP source: Parking Lot Camera (rtsp://admin:password@192.168.1.101:554/stream1)
+INFO:gb28181-restreamer:[RTSP] Preparing RTSP source: Parking Lot Camera (rtsp://admin:password@192.168.1.101:554/stream1)
+[2025-06-12 23:43:06] [INFO] [RTSP] Preparing RTSP source: Wowza Test Stream (rtsp://807e9439d5ca.entrypoint.cloud.wowza.com:1935/app-rC94792j/068b9c9a_stream2)
+INFO:gb28181-restreamer:[RTSP] Preparing RTSP source: Wowza Test Stream (rtsp://807e9439d5ca.entrypoint.cloud.wowza.com:1935/app-rC94792j/068b9c9a_stream2)
+[2025-06-12 23:43:08] [WARNING] [RTSP] RTSP server at 170.93.143.139:554 is not available, will attempt to start handler anyway
+WARNING:gb28181-restreamer:[RTSP] RTSP server at 170.93.143.139:554 is not available, will attempt to start handler anyway
+[2025-06-12 23:43:08] [INFO] [RTSP] Preparing RTSP source: Highway Camera (rtsp://170.93.143.139/rtplive/470011e600ef003a004ee33696235daa)
+INFO:gb28181-restreamer:[RTSP] Preparing RTSP source: Highway Camera (rtsp://170.93.143.139/rtplive/470011e600ef003a004ee33696235daa)
+[2025-06-12 23:43:08] [INFO] [RTSP] Skipping disabled RTSP source: Local Test Video
+INFO:gb28181-restreamer:[RTSP] Skipping disabled RTSP source: Local Test Video
+[2025-06-12 23:43:08] [INFO] [RTSP] Preparing RTSP source: Virtual RTSP Stream (rtsp://localhost:8554/stream)
+INFO:gb28181-restreamer:[RTSP] Preparing RTSP source: Virtual RTSP Stream (rtsp://localhost:8554/stream)
+[2025-06-12 23:43:08] [INFO] [RTSP] ✅ Live stream handler ready for 6 RTSP sources
+INFO:gb28181-restreamer:[RTSP] ✅ Live stream handler ready for 6 RTSP sources
+INFO:media_streamer:[STREAM] Registered frame processor: grayscale
+INFO:media_streamer:[STREAM] Registered frame processor: edge
+INFO:media_streamer:[STREAM] Registered frame processor: blur
+INFO:media_streamer:[STREAM] Registered frame processor: text
+[2025-06-12 23:43:08] [INFO] [STREAM] Registered frame processors for video manipulation
+INFO:gb28181-restreamer:[STREAM] Registered frame processors for video manipulation
+[2025-06-12 23:43:08] [INFO] [SIP] Starting SIP client with priority (recording scan will happen in background)...
+INFO:gb28181-restreamer:[SIP] Starting SIP client with priority (recording scan will happen in background)...
+[2025-06-12 23:43:08] [INFO] [SIP] Determined local IP: 172.31.7.94
+INFO:gb28181-restreamer:[SIP] Determined local IP: 172.31.7.94
+[2025-06-12 23:43:08] [INFO] [SIP] 🚀 Launching GB28181 SIP client...
+INFO:gb28181-restreamer:[SIP] 🚀 Launching GB28181 SIP client...
+[2025-06-12 23:43:08] [INFO] [SIP] SIP client started in background thread
+INFO:gb28181-restreamer:[SIP] SIP client started in background thread
+[2025-06-12 23:43:08] [INFO] [SIP-SENDER] Started GB28181 SIP message sender thread
+INFO:gb28181-restreamer:[SIP-SENDER] Started GB28181 SIP message sender thread
+[2025-06-12 23:43:08] [INFO] [SIP] 🔧 Generating device catalog (thread-safe)...
+INFO:gb28181-restreamer:[SIP] 🔧 Generating device catalog (thread-safe)...
+[2025-06-12 23:43:08] [INFO] [SIP] 📁 Using stream directory: /home/ubuntu/rstp/gb28181-restreamer/recordings
+INFO:gb28181-restreamer:[SIP] 📁 Using stream directory: /home/ubuntu/rstp/gb28181-restreamer/recordings
+[2025-06-12 23:43:08] [INFO] [SIP] 🔍 Scanning videos in: /home/ubuntu/rstp/gb28181-restreamer/recordings
+INFO:gb28181-restreamer:[SIP] 🔍 Scanning videos in: /home/ubuntu/rstp/gb28181-restreamer/recordings
+[2025-06-12 23:43:08] [INFO] [SCAN] 📁 Scanning directory: /home/ubuntu/rstp/gb28181-restreamer/recordings
+INFO:gb28181-restreamer:[SCAN] 📁 Scanning directory: /home/ubuntu/rstp/gb28181-restreamer/recordings
+[2025-06-12 23:43:08] [DEBUG] [SCAN] 📂 Scanning subdirectory: /home/ubuntu/rstp/gb28181-restreamer/recordings
+DEBUG:gb28181-restreamer:[SCAN] 📂 Scanning subdirectory: /home/ubuntu/rstp/gb28181-restreamer/recordings
+[2025-06-12 23:43:08] [DEBUG] [SCAN] 📁 Found 2 subdirectories: ['2025-05-16', '2025-05-15']
+DEBUG:gb28181-restreamer:[SCAN] 📁 Found 2 subdirectories: ['2025-05-16', '2025-05-15']
+[2025-06-12 23:43:08] [DEBUG] [SCAN] 📄 Found 0 files
+DEBUG:gb28181-restreamer:[SCAN] 📄 Found 0 files
+[2025-06-12 23:43:08] [DEBUG] [SCAN] 📂 Scanning subdirectory: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-16
+DEBUG:gb28181-restreamer:[SCAN] 📂 Scanning subdirectory: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-16
+[2025-06-12 23:43:08] [DEBUG] [SCAN] 📁 Found 0 subdirectories: []
+DEBUG:gb28181-restreamer:[SCAN] 📁 Found 0 subdirectories: []
+[2025-06-12 23:43:08] [DEBUG] [SCAN] 📄 Found 4 files
+DEBUG:gb28181-restreamer:[SCAN] 📄 Found 4 files
+[2025-06-12 23:43:08] [DEBUG] [SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-16/00-10-10.mp4
+DEBUG:gb28181-restreamer:[SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-16/00-10-10.mp4
+[2025-06-12 23:43:08] [INFO] [SCAN] Found video: 00-10-10.mp4
+INFO:gb28181-restreamer:[SCAN] Found video: 00-10-10.mp4
+[2025-06-12 23:43:08] [DEBUG] [SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-16/14-32-14.mp4
+DEBUG:gb28181-restreamer:[SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-16/14-32-14.mp4
+[2025-06-12 23:43:08] [INFO] [SCAN] Found video: 14-32-14.mp4
+INFO:gb28181-restreamer:[SCAN] Found video: 14-32-14.mp4
+[2025-06-12 23:43:08] [DEBUG] [SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-16/12-30-00.mp4
+DEBUG:gb28181-restreamer:[SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-16/12-30-00.mp4
+[2025-06-12 23:43:08] [INFO] [SCAN] Found video: 12-30-00.mp4
+INFO:gb28181-restreamer:[SCAN] Found video: 12-30-00.mp4
+[2025-06-12 23:43:08] [DEBUG] [SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-16/01-20-30.mp4
+DEBUG:gb28181-restreamer:[SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-16/01-20-30.mp4
+[2025-06-12 23:43:08] [INFO] [SCAN] Found video: 01-20-30.mp4
+INFO:gb28181-restreamer:[SCAN] Found video: 01-20-30.mp4
+[2025-06-12 23:43:08] [DEBUG] [SCAN] 📂 Scanning subdirectory: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15
+DEBUG:gb28181-restreamer:[SCAN] 📂 Scanning subdirectory: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15
+[2025-06-12 23:43:08] [DEBUG] [SCAN] 📁 Found 0 subdirectories: []
+DEBUG:gb28181-restreamer:[SCAN] 📁 Found 0 subdirectories: []
+[2025-06-12 23:43:08] [DEBUG] [SCAN] 📄 Found 10 files
+DEBUG:gb28181-restreamer:[SCAN] 📄 Found 10 files
+[2025-06-12 23:43:08] [DEBUG] [SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/filename_1996.mp4
+DEBUG:gb28181-restreamer:[SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/filename_1996.mp4
+[2025-06-12 23:43:08] [INFO] [SCAN] Found video: filename_1996.mp4
+INFO:gb28181-restreamer:[SCAN] Found video: filename_1996.mp4
+[2025-06-12 23:43:08] [DEBUG] [SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/filename_1997.mp4
+DEBUG:gb28181-restreamer:[SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/filename_1997.mp4
+[2025-06-12 23:43:08] [INFO] [SCAN] Found video: filename_1997.mp4
+INFO:gb28181-restreamer:[SCAN] Found video: filename_1997.mp4
+[2025-06-12 23:43:08] [DEBUG] [SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/filename_1992.mp4
+DEBUG:gb28181-restreamer:[SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/filename_1992.mp4
+[2025-06-12 23:43:08] [INFO] [SCAN] Found video: filename_1992.mp4
+INFO:gb28181-restreamer:[SCAN] Found video: filename_1992.mp4
+[2025-06-12 23:43:08] [DEBUG] [SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/filename_1995.mp4
+DEBUG:gb28181-restreamer:[SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/filename_1995.mp4
+[2025-06-12 23:43:08] [INFO] [SCAN] Found video: filename_1995.mp4
+INFO:gb28181-restreamer:[SCAN] Found video: filename_1995.mp4
+[2025-06-12 23:43:08] [DEBUG] [SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/filename_1993.mp4
+DEBUG:gb28181-restreamer:[SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/filename_1993.mp4
+[2025-06-12 23:43:08] [INFO] [SCAN] Found video: filename_1993.mp4
+INFO:gb28181-restreamer:[SCAN] Found video: filename_1993.mp4
+[2025-06-12 23:43:08] [DEBUG] [SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/filename_1991.mp4
+DEBUG:gb28181-restreamer:[SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/filename_1991.mp4
+[2025-06-12 23:43:08] [INFO] [SCAN] Found video: filename_1991.mp4
+INFO:gb28181-restreamer:[SCAN] Found video: filename_1991.mp4
+[2025-06-12 23:43:08] [DEBUG] [SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/filename_1994.mp4
+DEBUG:gb28181-restreamer:[SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/filename_1994.mp4
+[2025-06-12 23:43:08] [INFO] [SCAN] ... (limiting log output, found many more videos)
+INFO:gb28181-restreamer:[SCAN] ... (limiting log output, found many more videos)
+[2025-06-12 23:43:08] [DEBUG] [SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/filename_1998.mp4
+DEBUG:gb28181-restreamer:[SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/filename_1998.mp4
+[2025-06-12 23:43:08] [DEBUG] [SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/filename_1999.mp4
+DEBUG:gb28181-restreamer:[SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/filename_1999.mp4
+[2025-06-12 23:43:08] [DEBUG] [SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/filename_2000.mp4
+DEBUG:gb28181-restreamer:[SCAN] ✅ Added video file: /home/ubuntu/rstp/gb28181-restreamer/recordings/2025-05-15/filename_2000.mp4
+[2025-06-12 23:43:08] [INFO] [SCAN] 📊 Scan complete: Found 14 video files out of 14 total files
+INFO:gb28181-restreamer:[SCAN] 📊 Scan complete: Found 14 video files out of 14 total files
+[2025-06-12 23:43:08] [INFO] [SIP] ✅ Video scanning complete: Found 14 video files
+INFO:gb28181-restreamer:[SIP] ✅ Video scanning complete: Found 14 video files
+[2025-06-12 23:43:08] [INFO] [SIP]   Video 1: 00-10-10.mp4
+INFO:gb28181-restreamer:[SIP]   Video 1: 00-10-10.mp4
+[2025-06-12 23:43:08] [INFO] [SIP]   Video 2: 14-32-14.mp4
+INFO:gb28181-restreamer:[SIP]   Video 2: 14-32-14.mp4
+[2025-06-12 23:43:08] [INFO] [SIP]   Video 3: 12-30-00.mp4
+INFO:gb28181-restreamer:[SIP]   Video 3: 12-30-00.mp4
+[2025-06-12 23:43:08] [INFO] [SIP] 📡 Creating channels from 6 RTSP sources
+INFO:gb28181-restreamer:[SIP] 📡 Creating channels from 6 RTSP sources
+[2025-06-12 23:43:08] [INFO] [SIP] 📺 Creating channels from 14 video files
+INFO:gb28181-restreamer:[SIP] 📺 Creating channels from 14 video files
+[2025-06-12 23:43:08] [INFO] [SIP] ✅ Generated device catalog with 18 channels
+INFO:gb28181-restreamer:[SIP] ✅ Generated device catalog with 18 channels
+[2025-06-12 23:43:08] [INFO] [SIP] 📊 Catalog summary:
+INFO:gb28181-restreamer:[SIP] 📊 Catalog summary:
+[2025-06-12 23:43:08] [INFO] [SIP]   • Total channels: 18
+INFO:gb28181-restreamer:[SIP]   • Total channels: 18
+[2025-06-12 23:43:08] [INFO] [SIP]   • Video file channels: 19
+INFO:gb28181-restreamer:[SIP]   • Video file channels: 19
+[2025-06-12 23:43:08] [INFO] [SIP]   • Ready for WVP platform: True
+INFO:gb28181-restreamer:[SIP]   • Ready for WVP platform: True
+[2025-06-12 23:43:08] [INFO] [SIP]   Channel 1: 81000000465001000001 - Front Door Camera
+INFO:gb28181-restreamer:[SIP]   Channel 1: 81000000465001000001 - Front Door Camera
+[2025-06-12 23:43:08] [INFO] [SIP]   Channel 2: 81000000465001000002 - Parking Lot Camera
+INFO:gb28181-restreamer:[SIP]   Channel 2: 81000000465001000002 - Parking Lot Camera
+[2025-06-12 23:43:08] [INFO] [SIP]   Channel 3: 81000000465001000003 - Wowza Test Stream
+INFO:gb28181-restreamer:[SIP]   Channel 3: 81000000465001000003 - Wowza Test Stream
+[2025-06-12 23:43:08] [INFO] [SIP]   ... and 15 more channels
+INFO:gb28181-restreamer:[SIP]   ... and 15 more channels
+[2025-06-12 23:43:08] [INFO] [SIP] Using transport: udp
+INFO:gb28181-restreamer:[SIP] Using transport: udp
+[2025-06-12 23:43:08] [INFO] [SIP] Device ID: 81000000465001000001
+INFO:gb28181-restreamer:[SIP] Device ID: 81000000465001000001
+[2025-06-12 23:43:08] [INFO] [SIP] Username: 81000000465001000001
+INFO:gb28181-restreamer:[SIP] Username: 81000000465001000001
+[2025-06-12 23:43:08] [INFO] [SIP] Server: ai-sip.x-stage.bull-b.com
+INFO:gb28181-restreamer:[SIP] Server: ai-sip.x-stage.bull-b.com
+[2025-06-12 23:43:08] [INFO] [SIP] Proxy: sip:ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP] Proxy: sip:ai-sip.x-stage.bull-b.com:5060
+[2025-06-12 23:43:08] [INFO] [SIP] Local port: 0
+INFO:gb28181-restreamer:[SIP] Local port: 0
+[2025-06-12 23:43:08] [INFO] [SIP] Starting pjsua process (attempt 1/3)
+INFO:gb28181-restreamer:[SIP] Starting pjsua process (attempt 1/3)
+[2025-06-12 23:43:08] [INFO] [SIP] Started PJSUA process with PID: 3359871
+INFO:gb28181-restreamer:[SIP] Started PJSUA process with PID: 3359871
+[2025-06-12 23:43:08] [INFO] [SIP] 🔍 Starting PJSUA output monitoring...
+INFO:gb28181-restreamer:[SIP] 🔍 Starting PJSUA output monitoring...
+23:43:08.740         sip_endpoint.c !.Module "mod-pjsua-log" registered
+23:43:08.740         sip_endpoint.c  .Module "mod-tsx-layer" registered
+23:43:08.740         sip_endpoint.c  .Module "mod-stateful-util" registered
+23:43:08.740         sip_endpoint.c  .Module "mod-ua" registered
+23:43:08.740         sip_endpoint.c  .Module "mod-100rel" registered
+23:43:08.740         sip_endpoint.c  .Module "mod-pjsua" registered
+23:43:08.740         sip_endpoint.c  .Module "mod-invite" registered
+23:43:08.741                  pjlib  ..select() I/O Queue created (0x6205ce17c898)
+23:43:08.746         sip_endpoint.c  .Module "mod-evsub" registered
+23:43:08.746         sip_endpoint.c  .Module "mod-presence" registered
+23:43:08.746         sip_endpoint.c  .Module "mod-dlg_even" registered
+23:43:08.746         sip_endpoint.c  .Module "mod-mwi" registered
+23:43:08.746         sip_endpoint.c  .Module "mod-refer" registered
+23:43:08.746         sip_endpoint.c  .Module "mod-pjsua-pres" registered
+23:43:08.747         sip_endpoint.c  .Module "mod-pjsua-im" registered
+23:43:08.747         sip_endpoint.c  .Module "mod-pjsua-options" registered
+23:43:08.747           pjsua_core.c  .4 SIP worker threads created
+23:43:08.747           pjsua_core.c  .pjsua version 2.15-dev for Linux-6.8.4.4/x86_64/glibc-2.39 initialized
+23:43:08.747           pjsua_core.c  .PJSUA state changed: CREATED --> INIT
+23:43:08.747         sip_endpoint.c  Module "mod-default-handler" registered
+23:43:08.747           conference.c  .Add port 1 (ringback) queued
+23:43:08.747           conference.c  .Add port 2 (ring) queued
+23:43:08.747           pjsua_core.c  SIP UDP socket reachable at 172.31.7.94:58534
+23:43:08.747      udp0x6205ce1da520  SIP UDP transport started, published address is 172.31.7.94:58534
+23:43:08.747            pjsua_acc.c  Adding account: id=<sip:172.31.7.94:58534>
+23:43:08.747            pjsua_acc.c  .Account <sip:172.31.7.94:58534> added with id 0
+23:43:08.747            pjsua_acc.c  Modifying account 0
+23:43:08.747            pjsua_acc.c  Acc 0: setting online status to 1..
+23:43:08.747            pjsua_acc.c  Adding account: id=sip:81000000465001000001@ai-sip.x-stage.bull-b.com
+23:43:08.747            pjsua_acc.c  .Account sip:81000000465001000001@ai-sip.x-stage.bull-b.com added with id 1
+23:43:08.747            pjsua_acc.c  .Acc 1: setting registration..
+23:43:08.747            pjsua_acc.c  ..Contact for acc 1 updated: <sip:81000000465001000001@172.31.7.94:58534;ob>
+23:43:08.748           pjsua_core.c  ...TX 647 bytes Request msg REGISTER/cseq=14529 (tdta0x6205ce1e0130) to UDP 203.142.93.131:5060:
+[2025-06-12 23:43:08] [DEBUG] [SIP] SIP traffic: 23:43:08.748           pjsua_core.c  ...TX 647 bytes Request msg REGISTER/cseq=14529 (tdta0x6205ce1e0130) to UDP 203.142.93.131:5060:
+DEBUG:gb28181-restreamer:[SIP] SIP traffic: 23:43:08.748           pjsua_core.c  ...TX 647 bytes Request msg REGISTER/cseq=14529 (tdta0x6205ce1e0130) to UDP 203.142.93.131:5060:
+REGISTER sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+Via: SIP/2.0/UDP 172.31.7.94:58534;rport;branch=z9hG4bKPj51943912-2add-48f5-a2a4-62d928d03d57
+Max-Forwards: 70
+From: <sip:81000000465001000001@ai-sip.x-stage.bull-b.com>;tag=255d6f05-22c9-4fc7-81bc-18db551e2033
+To: <sip:81000000465001000001@ai-sip.x-stage.bull-b.com>
+Call-ID: 532034d1-8462-459d-80bc-f272cffd96e3
+CSeq: 14529 REGISTER
+User-Agent: PJSUA/v2.15-dev Linux-6.8.4.4 x86_64 glibc-2.39
+Contact: <sip:81000000465001000001@172.31.7.94:58534;ob>
+Expires: 120
+Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+[2025-06-12 23:43:08] [INFO] [SIP] 🔍 DEBUG: MESSAGE line detected: Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+INFO:gb28181-restreamer:[SIP] 🔍 DEBUG: MESSAGE line detected: Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+Content-Length:  0
+
+
+--end msg--
+23:43:08.748            pjsua_acc.c  ..Acc 1: Registration sent
+23:43:08.748            pjsua_acc.c  Acc 1: setting online status to 1..
+[2025-06-12 23:43:08] [DEBUG] [SIP] Processed 50 lines from PJSUA
+DEBUG:gb28181-restreamer:[SIP] Processed 50 lines from PJSUA
+23:43:08.748            pjsua_aud.c  Setting null sound device..
+23:43:08.748            pjsua_app.c  .Turning sound device -99 -99 ON
+[2025-06-12 23:43:08] [DEBUG] [SIP] 🔍 DEBUG: pjsua_app.c line: 23:43:08.748            pjsua_app.c  .Turning sound device -99 -99 ON
+DEBUG:gb28181-restreamer:[SIP] 🔍 DEBUG: pjsua_app.c line: 23:43:08.748            pjsua_app.c  .Turning sound device -99 -99 ON
+23:43:08.748            pjsua_aud.c  .Opening null sound device..
+23:43:08.748           pjsua_core.c  PJSUA state changed: INIT --> STARTING
+23:43:08.748         sip_endpoint.c  .Module "mod-unsolicited-mwi" registered
+23:43:08.748           pjsua_core.c  .PJSUA state changed: STARTING --> RUNNING
+23:43:08.748                 main.c  Ready: Success
+>>>>
+Account list:
+[ 0] <sip:172.31.7.94:58534>: does not register
+Online status: Online
+*[ 1] sip:81000000465001000001@ai-sip.x-stage.bull-b.com: 100/In Progress (expires=0)
+Online status: Online
+Buddy list:
+-none-
+
++=============================================================================+
+|       Call Commands:         |   Buddy, IM & Presence:  |     Account:      |
+|                              |                          |                   |
+|  m  Make new call            | +b  Add new buddy        | +a  Add new accnt.|
+|  M  Make multiple calls      | -b  Delete buddy         | -a  Delete accnt. |
+|  a  Answer call              |  i  Send IM              | !a  Modify accnt. |
+|  h  Hangup call  (ha=all)    |  s  Subscribe presence   | rr  (Re-)register |
+|  H  Hold call                |  u  Unsubscribe presence | ru  Unregister    |
+|  o Toggle call SDP offer     |  D  Subscribe dlg event  |                   |
+|                              |  Du Unsub dlg event      |                   |
+|  v  re-inVite (release hold) |  t  Toggle online status |  >  Cycle next ac.|
+|  U  send UPDATE              |  T  Set online status    |  <  Cycle prev ac.|
+| ],[ Select next/prev call    +--------------------------+-------------------+
+|  x  Xfer call                |      Media Commands:     |  Status & Config: |
+|  X  Xfer with Replaces       |                          |                   |
+|  #  Send RFC 2833 DTMF       | cl  List ports           |  d  Dump status   |
+|  *  Send DTMF with INFO      | cc  Connect port         | dd  Dump detailed |
+| rt  Send real-time text      | cd  Disconnect port      | dc  Dump config   |
+| dq  Dump curr. call quality  |  V  Adjust audio Volume  |  f  Save config   |
+|  S  Send arbitrary REQUEST   | Cp  Codec priorities     |                   |
++-----------------------------------------------------------------------------+
+|  q  QUIT      L  ReLoad       I  IP change     n  detect NAT type           |
+|  sleep MS     echo [0|1|txt]                                                |
++=============================================================================+
+You have 0 active call
+[2025-06-12 23:43:10] [INFO] [RECORD] Starting recording manager (this will scan files in background)...
+INFO:gb28181-restreamer:[RECORD] Starting recording manager (this will scan files in background)...
+[2025-06-12 23:43:10] [INFO] [REC-MANAGER] Starting asynchronous recording scan
+INFO:gb28181-restreamer:[REC-MANAGER] Starting asynchronous recording scan
+[2025-06-12 23:43:10] [INFO] [REC-MANAGER] Starting async scan with CPU throttling for better SIP performance
+INFO:gb28181-restreamer:[REC-MANAGER] Starting async scan with CPU throttling for better SIP performance
+[2025-06-12 23:43:10] [INFO] [REC-MANAGER] Scanning recordings directory with CPU throttling
+INFO:gb28181-restreamer:[REC-MANAGER] Scanning recordings directory with CPU throttling
+[2025-06-12 23:43:10] [INFO] [RECORD] Recording manager initialized with async scanning
+INFO:gb28181-restreamer:[RECORD] Recording manager initialized with async scanning
+[2025-06-12 23:43:10] [INFO] [RECORD] Initial scan status: 0 files cached, scanning=True
+INFO:gb28181-restreamer:[RECORD] Initial scan status: 0 files cached, scanning=True
+[2025-06-12 23:43:10] [INFO] [STATUS] Starting periodic status monitoring
+INFO:gb28181-restreamer:[STATUS] Starting periodic status monitoring
+[2025-06-12 23:43:10] [INFO] [MAIN] Monitoring SIP client health...
+[2025-06-12 23:43:10] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[MAIN] Monitoring SIP client health...
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-06-12 23:43:10] [INFO] [STATUS] Recording scan in progress: 0 files found
+INFO:gb28181-restreamer:[STATUS] Recording scan in progress: 0 files found
+[2025-06-12 23:43:11] [INFO] [REC-MANAGER] Processing file 10: filename_1991.mp4
+INFO:gb28181-restreamer:[REC-MANAGER] Processing file 10: filename_1991.mp4
+[2025-06-12 23:43:12] [INFO] [REC-MANAGER] Scan complete: 14 total files, 14 processed, 0 skipped
+INFO:gb28181-restreamer:[REC-MANAGER] Scan complete: 14 total files, 14 processed, 0 skipped
+[2025-06-12 23:44:10] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-06-12 23:44:10] [INFO] [STATUS] Recording scan complete: 14 files cached
+INFO:gb28181-restreamer:[STATUS] Recording scan complete: 14 files cached
+>>> 23:43:08.767           conference.c !.Added port 1 (ringback), port count=2
+23:43:08.767           conference.c  .Added port 2 (ring), port count=3
+23:43:08.965           pjsua_core.c !.RX 530 bytes Response msg 401/REGISTER/cseq=14529 (rdata0x6205ce1dbfa8) from UDP 203.142.93.131:5060:
+[2025-06-12 23:45:04] [DEBUG] [SIP] SIP traffic: 23:43:08.965           pjsua_core.c !.RX 530 bytes Response msg 401/REGISTER/cseq=14529 (rdata0x6205ce1dbfa8) from UDP 203.142.93.131:5060:
+DEBUG:gb28181-restreamer:[SIP] SIP traffic: 23:43:08.965           pjsua_core.c !.RX 530 bytes Response msg 401/REGISTER/cseq=14529 (rdata0x6205ce1dbfa8) from UDP 203.142.93.131:5060:
+SIP/2.0 401 Unauthorized
+[2025-06-12 23:45:04] [DEBUG] [SIP] SIP response: SIP/2.0 401 Unauthorized
+DEBUG:gb28181-restreamer:[SIP] SIP response: SIP/2.0 401 Unauthorized
+CSeq: 14529 REGISTER
+Call-ID: 532034d1-8462-459d-80bc-f272cffd96e3
+From: <sip:81000000465001000001@ai-sip.x-stage.bull-b.com>;tag=255d6f05-22c9-4fc7-81bc-18db551e2033
+To: <sip:81000000465001000001@ai-sip.x-stage.bull-b.com>
+Via: SIP/2.0/UDP 172.31.7.94:58534;rport=58534;branch=z9hG4bKPj51943912-2add-48f5-a2a4-62d928d03d57;received=13.50.108.195
+[2025-06-12 23:45:04] [DEBUG] [SIP] Processed 100 lines from PJSUA
+DEBUG:gb28181-restreamer:[SIP] Processed 100 lines from PJSUA
+WWW-Authenticate: Digest realm="81000000",qop="auth",nonce="76b7a5f354740cb00b9939b96d2a468f",algorithm=MD5
+User-Agent: WVP-Pro
+Content-Length: 0
+
+
+--end msg--
+23:43:08.966           pjsua_core.c  ....TX 932 bytes Request msg REGISTER/cseq=14530 (tdta0x6205ce1e0130) to UDP 203.142.93.131:5060:
+[2025-06-12 23:45:04] [DEBUG] [SIP] SIP traffic: 23:43:08.966           pjsua_core.c  ....TX 932 bytes Request msg REGISTER/cseq=14530 (tdta0x6205ce1e0130) to UDP 203.142.93.131:5060:
+DEBUG:gb28181-restreamer:[SIP] SIP traffic: 23:43:08.966           pjsua_core.c  ....TX 932 bytes Request msg REGISTER/cseq=14530 (tdta0x6205ce1e0130) to UDP 203.142.93.131:5060:
+REGISTER sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+Via: SIP/2.0/UDP 13.50.108.195:58534;rport;branch=z9hG4bKPj078c4791-338e-4924-be73-9eee59095e6f
+Max-Forwards: 70
+From: <sip:81000000465001000001@ai-sip.x-stage.bull-b.com>;tag=255d6f05-22c9-4fc7-81bc-18db551e2033
+To: <sip:81000000465001000001@ai-sip.x-stage.bull-b.com>
+Call-ID: 532034d1-8462-459d-80bc-f272cffd96e3
+CSeq: 14530 REGISTER
+User-Agent: PJSUA/v2.15-dev Linux-6.8.4.4 x86_64 glibc-2.39
+Contact: <sip:81000000465001000001@172.31.7.94:58534;ob>
+Expires: 120
+Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+[2025-06-12 23:45:04] [INFO] [SIP] 🔍 DEBUG: MESSAGE line detected: Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+INFO:gb28181-restreamer:[SIP] 🔍 DEBUG: MESSAGE line detected: Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+Authorization: Digest username="81000000465001000001", realm="81000000", nonce="76b7a5f354740cb00b9939b96d2a468f", uri="sip:ai-sip.x-stage.bull-b.com:5060", response="3c6f71a960c83fd2e69c53eb49603050", algorithm=MD5, cnonce="479d9b2c3ab74add8370a8a708ea594c", qop=auth, nc=00000001
+Content-Length:  0
+
+
+--end msg--
+23:43:09.196           pjsua_core.c !.RX 516 bytes Response msg 200/REGISTER/cseq=14530 (rdata0x7dbe28001d78) from UDP 203.142.93.131:5060:
+[2025-06-12 23:45:04] [DEBUG] [SIP] SIP traffic: 23:43:09.196           pjsua_core.c !.RX 516 bytes Response msg 200/REGISTER/cseq=14530 (rdata0x7dbe28001d78) from UDP 203.142.93.131:5060:
+DEBUG:gb28181-restreamer:[SIP] SIP traffic: 23:43:09.196           pjsua_core.c !.RX 516 bytes Response msg 200/REGISTER/cseq=14530 (rdata0x7dbe28001d78) from UDP 203.142.93.131:5060:
+SIP/2.0 200 OK
+[2025-06-12 23:45:04] [DEBUG] [SIP] SIP response: SIP/2.0 200 OK
+DEBUG:gb28181-restreamer:[SIP] SIP response: SIP/2.0 200 OK
+CSeq: 14530 REGISTER
+Call-ID: 532034d1-8462-459d-80bc-f272cffd96e3
+From: <sip:81000000465001000001@ai-sip.x-stage.bull-b.com>;tag=255d6f05-22c9-4fc7-81bc-18db551e2033
+To: <sip:81000000465001000001@ai-sip.x-stage.bull-b.com>
+Via: SIP/2.0/UDP 13.50.108.195:58534;rport=58534;branch=z9hG4bKPj078c4791-338e-4924-be73-9eee59095e6f;received=13.50.108.195
+Date: 2025-06-13T07:43:09.078
+Contact: <sip:81000000465001000001@172.31.7.94:58534;ob>
+Expires: 120
+User-Agent: WVP-Pro
+Content-Length: 0
+
+
+--end msg--
+23:43:09.196            pjsua_acc.c  ....SIP outbound status for acc 1 is not active
+23:43:09.196            pjsua_acc.c  ....Service-Route updated for acc 1 with 0 URI(s)
+23:43:09.196            pjsua_acc.c  ....sip:81000000465001000001@ai-sip.x-stage.bull-b.com: registration success, status=200 (OK), will re-register in 120 seconds
+[2025-06-12 23:45:04] [INFO] [SIP] ✅ Registration completed successfully
+INFO:gb28181-restreamer:[SIP] ✅ Registration completed successfully
+[2025-06-12 23:45:04] [INFO] [SIP] 💓 Starting dedicated heartbeat thread for WVP platform
+INFO:gb28181-restreamer:[SIP] 💓 Starting dedicated heartbeat thread for WVP platform
+[2025-06-12 23:45:04] [INFO] [SIP] 💓 Heartbeat worker started - will send keepalive every 15s to prevent WVP timeout
+INFO:gb28181-restreamer:[SIP] 💓 Heartbeat worker started - will send keepalive every 15s to prevent WVP timeout
+[2025-06-12 23:45:04] [INFO] [SIP] 💓 Sending scheduled heartbeat to WVP platform
+INFO:gb28181-restreamer:[SIP] 💓 Sending scheduled heartbeat to WVP platform
+[2025-06-12 23:45:04] [INFO] [SIP] 💓 Sending WVP-compatible keepalive (SN: 71904) to prevent heartbeat timeout
+INFO:gb28181-restreamer:[SIP] 💓 Sending WVP-compatible keepalive (SN: 71904) to prevent heartbeat timeout
+[2025-06-12 23:45:04] [INFO] [SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 71904):
+INFO:gb28181-restreamer:[SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 71904):
+[2025-06-12 23:45:04] [INFO] [SIP]   • Message type: Keepalive
+INFO:gb28181-restreamer:[SIP]   • Message type: Keepalive
+[2025-06-12 23:45:04] [INFO] [SIP]   • Message size: 674 bytes
+INFO:gb28181-restreamer:[SIP]   • Message size: 674 bytes
+[2025-06-12 23:45:04] [INFO] [SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+[2025-06-12 23:45:04] [INFO] [SIP]   • Encoding: UTF-8
+INFO:gb28181-restreamer:[SIP]   • Encoding: UTF-8
+[2025-06-12 23:45:04] [DEBUG] [SIP] 📨 Message headers:
+DEBUG:gb28181-restreamer:[SIP] 📨 Message headers:
+[2025-06-12 23:45:04] [DEBUG] [SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+DEBUG:gb28181-restreamer:[SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+[2025-06-12 23:45:04] [DEBUG] [SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:0;rport;branch=z9hG4bK-ka-1749771904
+DEBUG:gb28181-restreamer:[SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:0;rport;branch=z9hG4bK-ka-1749771904
+[2025-06-12 23:45:04] [DEBUG] [SIP]   3: Max-Forwards: 70
+DEBUG:gb28181-restreamer:[SIP]   3: Max-Forwards: 70
+[2025-06-12 23:45:04] [DEBUG] [SIP]   4: From: <sip:81000000465001000001@172.31.7.94:0>;tag=katag1749771904
+DEBUG:gb28181-restreamer:[SIP]   4: From: <sip:81000000465001000001@172.31.7.94:0>;tag=katag1749771904
+[2025-06-12 23:45:04] [INFO] [SIP] 📋 Starting periodic catalog notification thread
+INFO:gb28181-restreamer:[SIP] 📋 Starting periodic catalog notification thread
+[2025-06-12 23:45:04] [DEBUG] [SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+DEBUG:gb28181-restreamer:[SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+[2025-06-12 23:45:04] [DEBUG] [SIP]   6: Call-ID: keepalive-71904-1749771904
+DEBUG:gb28181-restreamer:[SIP]   6: Call-ID: keepalive-71904-1749771904
+[2025-06-12 23:45:04] [DEBUG] [SIP]   7: CSeq: 3911 MESSAGE
+DEBUG:gb28181-restreamer:[SIP]   7: CSeq: 3911 MESSAGE
+[2025-06-12 23:45:04] [DEBUG] [SIP]   8: Contact: <sip:172.31.7.94:0>
+DEBUG:gb28181-restreamer:[SIP]   8: Contact: <sip:172.31.7.94:0>
+[2025-06-12 23:45:04] [DEBUG] [SIP]   9: User-Agent: GB28181-Restreamer/1.0
+DEBUG:gb28181-restreamer:[SIP]   9: User-Agent: GB28181-Restreamer/1.0
+[2025-06-12 23:45:04] [DEBUG] [SIP]   10: Content-Type: Application/MANSCDP+xml
+DEBUG:gb28181-restreamer:[SIP]   10: Content-Type: Application/MANSCDP+xml
+[2025-06-12 23:45:04] [DEBUG] [SIP]   ... and 13 more lines
+[2025-06-12 23:45:04] [INFO] [SIP] 💓 Sending immediate heartbeat after registration to update WVP keepaliveTime
+DEBUG:gb28181-restreamer:[SIP]   ... and 13 more lines
+INFO:gb28181-restreamer:[SIP] 💓 Sending immediate heartbeat after registration to update WVP keepaliveTime
+[2025-06-12 23:45:04] [INFO] [SIP] 📋 Catalog notification worker started - will send catalog every 60s
+INFO:gb28181-restreamer:[SIP] 📋 Catalog notification worker started - will send catalog every 60s
+[2025-06-12 23:45:04] [INFO] [SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+INFO:gb28181-restreamer:[SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+[2025-06-12 23:45:04] [INFO] [SIP] 🚀 Sending proactive catalog notification for immediate frontend visibility
+INFO:gb28181-restreamer:[SIP] 🚀 Sending proactive catalog notification for immediate frontend visibility
+[2025-06-12 23:45:04] [INFO] [SIP] ✅ UDP transmission SUCCESSFUL: 674/674 bytes
+INFO:gb28181-restreamer:[SIP] ✅ UDP transmission SUCCESSFUL: 674/674 bytes
+23:43:09.196            pjsua_acc.c  ....Keep-alive timer started for acc 1, destination:203.142.93.131:5060, interval:14s
+[2025-06-12 23:45:04] [DEBUG] [SIP] Keep-alive message
+DEBUG:gb28181-restreamer:[SIP] Keep-alive message
+23:43:09.748            pjsua_aud.c !Closing sound device after idle for 1 second(s)
+23:43:09.748            pjsua_app.c  .Turning sound device -99 -99 OFF
+[2025-06-12 23:45:04] [DEBUG] [SIP] 🔍 DEBUG: pjsua_app.c line: 23:43:09.748            pjsua_app.c  .Turning sound device -99 -99 OFF
+DEBUG:gb28181-restreamer:[SIP] 🔍 DEBUG: pjsua_app.c line: 23:43:09.748            pjsua_app.c  .Turning sound device -99 -99 OFF
+23:43:09.748            pjsua_aud.c  .Closing null sound device..
+23:45:04.196           pjsua_core.c !.TX 649 bytes Request msg REGISTER/cseq=14531 (tdta0x7dbe2c002b70) to UDP 203.142.93.131:5060:
+[2025-06-12 23:45:04] [DEBUG] [SIP] SIP traffic: 23:45:04.196           pjsua_core.c !.TX 649 bytes Request msg REGISTER/cseq=14531 (tdta0x7dbe2c002b70) to UDP 203.142.93.131:5060:
+DEBUG:gb28181-restreamer:[SIP] SIP traffic: 23:45:04.196           pjsua_core.c !.TX 649 bytes Request msg REGISTER/cseq=14531 (tdta0x7dbe2c002b70) to UDP 203.142.93.131:5060:
+REGISTER sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+Via: SIP/2.0/UDP 13.50.108.195:58534;rport;branch=z9hG4bKPj89735610-9c3c-445e-ae67-33a11908894c
+Max-Forwards: 70
+From: <sip:81000000465001000001@ai-sip.x-stage.bull-b.com>;tag=94f8f9f4-b7f4-4c1c-ad5c-44e6037a7c40
+[2025-06-12 23:45:04] [DEBUG] [SIP] Processed 150 lines from PJSUA
+DEBUG:gb28181-restreamer:[SIP] Processed 150 lines from PJSUA
+To: <sip:81000000465001000001@ai-sip.x-stage.bull-b.com>
+Call-ID: 532034d1-8462-459d-80bc-f272cffd96e3
+CSeq: 14531 REGISTER
+User-Agent: PJSUA/v2.15-dev Linux-6.8.4.4 x86_64 glibc-2.39
+Contact: <sip:81000000465001000001@172.31.7.94:58534;ob>
+Expires: 120
+Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+[2025-06-12 23:45:04] [INFO] [SIP] 🔍 DEBUG: MESSAGE line detected: Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+INFO:gb28181-restreamer:[SIP] 🔍 DEBUG: MESSAGE line detected: Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+Content-Length:  0
+
+
+--end msg--
+[2025-06-12 23:45:04] [INFO] [SIP] 💓 Keepalive message (SN: 71904) delivered successfully
+INFO:gb28181-restreamer:[SIP] 💓 Keepalive message (SN: 71904) delivered successfully
+[2025-06-12 23:45:04] [INFO] [SIP]   • Device should stay online for next 15-30 seconds
+INFO:gb28181-restreamer:[SIP]   • Device should stay online for next 15-30 seconds
+[2025-06-12 23:45:04] [INFO] [SIP] ✅ Keepalive sent successfully - device should stay online
+INFO:gb28181-restreamer:[SIP] ✅ Keepalive sent successfully - device should stay online
+[2025-06-12 23:45:04] [INFO] [SIP] 🔄 Proactive registration renewal for WVP platform - preventing device offline
+INFO:gb28181-restreamer:[SIP] 🔄 Proactive registration renewal for WVP platform - preventing device offline
+[2025-06-12 23:45:06] [INFO] [SIP] 💓 Sending WVP-compatible keepalive (SN: 71906) to prevent heartbeat timeout
+INFO:gb28181-restreamer:[SIP] 💓 Sending WVP-compatible keepalive (SN: 71906) to prevent heartbeat timeout
+[2025-06-12 23:45:06] [INFO] [SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 71906):
+INFO:gb28181-restreamer:[SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 71906):
+[2025-06-12 23:45:06] [INFO] [SIP]   • Message type: Keepalive
+INFO:gb28181-restreamer:[SIP]   • Message type: Keepalive
+[2025-06-12 23:45:06] [INFO] [SIP]   • Message size: 674 bytes
+INFO:gb28181-restreamer:[SIP]   • Message size: 674 bytes
+[2025-06-12 23:45:06] [INFO] [SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+[2025-06-12 23:45:06] [INFO] [SIP]   • Encoding: UTF-8
+INFO:gb28181-restreamer:[SIP]   • Encoding: UTF-8
+[2025-06-12 23:45:06] [DEBUG] [SIP] 📨 Message headers:
+DEBUG:gb28181-restreamer:[SIP] 📨 Message headers:
+[2025-06-12 23:45:06] [DEBUG] [SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+DEBUG:gb28181-restreamer:[SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+[2025-06-12 23:45:06] [DEBUG] [SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:0;rport;branch=z9hG4bK-ka-1749771906
+DEBUG:gb28181-restreamer:[SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:0;rport;branch=z9hG4bK-ka-1749771906
+[2025-06-12 23:45:06] [DEBUG] [SIP]   3: Max-Forwards: 70
+DEBUG:gb28181-restreamer:[SIP]   3: Max-Forwards: 70
+[2025-06-12 23:45:06] [DEBUG] [SIP]   4: From: <sip:81000000465001000001@172.31.7.94:0>;tag=katag1749771906
+DEBUG:gb28181-restreamer:[SIP]   4: From: <sip:81000000465001000001@172.31.7.94:0>;tag=katag1749771906
+[2025-06-12 23:45:06] [DEBUG] [SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+DEBUG:gb28181-restreamer:[SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+[2025-06-12 23:45:06] [DEBUG] [SIP]   6: Call-ID: keepalive-71906-1749771906
+DEBUG:gb28181-restreamer:[SIP]   6: Call-ID: keepalive-71906-1749771906
+[2025-06-12 23:45:06] [DEBUG] [SIP]   7: CSeq: 3913 MESSAGE
+DEBUG:gb28181-restreamer:[SIP]   7: CSeq: 3913 MESSAGE
+[2025-06-12 23:45:06] [DEBUG] [SIP]   8: Contact: <sip:172.31.7.94:0>
+DEBUG:gb28181-restreamer:[SIP]   8: Contact: <sip:172.31.7.94:0>
+[2025-06-12 23:45:06] [DEBUG] [SIP]   9: User-Agent: GB28181-Restreamer/1.0
+DEBUG:gb28181-restreamer:[SIP]   9: User-Agent: GB28181-Restreamer/1.0
+[2025-06-12 23:45:06] [DEBUG] [SIP]   10: Content-Type: Application/MANSCDP+xml
+DEBUG:gb28181-restreamer:[SIP]   10: Content-Type: Application/MANSCDP+xml
+[2025-06-12 23:45:06] [DEBUG] [SIP]   ... and 13 more lines
+DEBUG:gb28181-restreamer:[SIP]   ... and 13 more lines
+[2025-06-12 23:45:06] [INFO] [SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+INFO:gb28181-restreamer:[SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+[2025-06-12 23:45:06] [INFO] [SIP] ✅ UDP transmission SUCCESSFUL: 674/674 bytes
+INFO:gb28181-restreamer:[SIP] ✅ UDP transmission SUCCESSFUL: 674/674 bytes
+[2025-06-12 23:45:06] [INFO] [SIP] 💓 Keepalive message (SN: 71906) delivered successfully
+INFO:gb28181-restreamer:[SIP] 💓 Keepalive message (SN: 71906) delivered successfully
+[2025-06-12 23:45:06] [INFO] [SIP]   • Device should stay online for next 15-30 seconds
+INFO:gb28181-restreamer:[SIP]   • Device should stay online for next 15-30 seconds
+[2025-06-12 23:45:06] [INFO] [SIP] ✅ Keepalive sent successfully - device should stay online
+INFO:gb28181-restreamer:[SIP] ✅ Keepalive sent successfully - device should stay online
+[2025-06-12 23:45:07] [INFO] [SIP] 📋 Sending proactive catalog notification to WVP platform for immediate visibility
+INFO:gb28181-restreamer:[SIP] 📋 Sending proactive catalog notification to WVP platform for immediate visibility
+[2025-06-12 23:45:07] [INFO] [SIP] Catalog composition: 4 RTSP live streams, 14 video files
+INFO:gb28181-restreamer:[SIP] Catalog composition: 4 RTSP live streams, 14 video files
+[2025-06-12 23:45:07] [INFO] [SIP] Using cached catalog with 18 channels (RTSP streams prioritized)
+INFO:gb28181-restreamer:[SIP] Using cached catalog with 18 channels (RTSP streams prioritized)
+[2025-06-12 23:45:07] [INFO] [SIP] 🏗️ Building WVP-compatible catalog response (RTSP prioritized):
+INFO:gb28181-restreamer:[SIP] 🏗️ Building WVP-compatible catalog response (RTSP prioritized):
+[2025-06-12 23:45:07] [INFO] [SIP]   • Parent Device: 81000000465001000001 (GB28181-Restreamer)
+INFO:gb28181-restreamer:[SIP]   • Parent Device: 81000000465001000001 (GB28181-Restreamer)
+[2025-06-12 23:45:07] [INFO] [SIP]   • RTSP Live Streams: 4
+INFO:gb28181-restreamer:[SIP]   • RTSP Live Streams: 4
+[2025-06-12 23:45:07] [INFO] [SIP]   • Video File Channels: 14
+INFO:gb28181-restreamer:[SIP]   • Video File Channels: 14
+[2025-06-12 23:45:07] [INFO] [SIP]   • Total Items: 19
+INFO:gb28181-restreamer:[SIP]   • Total Items: 19
+[2025-06-12 23:45:07] [INFO] [SIP]   • Estimated size: 13530 bytes
+INFO:gb28181-restreamer:[SIP]   • Estimated size: 13530 bytes
+[2025-06-12 23:45:07] [WARNING] [SIP] ⚠️ Large response (13530 bytes) - applying RTSP-priority size limits
+WARNING:gb28181-restreamer:[SIP] ⚠️ Large response (13530 bytes) - applying RTSP-priority size limits
+[2025-06-12 23:45:07] [WARNING] [SIP] ⚠️ RTSP stream Front Door Camera too large for UDP - skipping
+WARNING:gb28181-restreamer:[SIP] ⚠️ RTSP stream Front Door Camera too large for UDP - skipping
+[2025-06-12 23:45:07] [WARNING] [SIP] ⚠️ RTSP stream Parking Lot Camera too large for UDP - skipping
+WARNING:gb28181-restreamer:[SIP] ⚠️ RTSP stream Parking Lot Camera too large for UDP - skipping
+[2025-06-12 23:45:07] [WARNING] [SIP] ⚠️ RTSP stream Wowza Test Stream too large for UDP - skipping
+WARNING:gb28181-restreamer:[SIP] ⚠️ RTSP stream Wowza Test Stream too large for UDP - skipping
+[2025-06-12 23:45:07] [WARNING] [SIP] ⚠️ RTSP stream Highway Camera too large for UDP - skipping
+WARNING:gb28181-restreamer:[SIP] ⚠️ RTSP stream Highway Camera too large for UDP - skipping
+[2025-06-12 23:45:07] [INFO] [SIP] 📦 RTSP-PRIORITY result: 0 RTSP streams + 0 video files (total: 1 items)
+INFO:gb28181-restreamer:[SIP] 📦 RTSP-PRIORITY result: 0 RTSP streams + 0 video files (total: 1 items)
+[2025-06-12 23:45:07] [INFO] [SIP] 🎯 ALL LIVE STREAMS INCLUDED: 0/4 RTSP channels
+INFO:gb28181-restreamer:[SIP] 🎯 ALL LIVE STREAMS INCLUDED: 0/4 RTSP channels
+[2025-06-12 23:45:07] [INFO] [SIP] 📊 Final WVP-compatible catalog response (RTSP-prioritized):
+INFO:gb28181-restreamer:[SIP] 📊 Final WVP-compatible catalog response (RTSP-prioritized):
+[2025-06-12 23:45:07] [INFO] [SIP]   • Message size: 1424 bytes
+INFO:gb28181-restreamer:[SIP]   • Message size: 1424 bytes
+[2025-06-12 23:45:07] [INFO] [SIP]   • SumNum: 1
+INFO:gb28181-restreamer:[SIP]   • SumNum: 1
+[2025-06-12 23:45:07] [INFO] [SIP]   • DeviceList Num: 1
+INFO:gb28181-restreamer:[SIP]   • DeviceList Num: 1
+[2025-06-12 23:45:07] [INFO] [SIP]   • Live streams preserved: RTSP channels prioritized over video files
+INFO:gb28181-restreamer:[SIP]   • Live streams preserved: RTSP channels prioritized over video files
+[2025-06-12 23:45:07] [INFO] [SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 121907):
+INFO:gb28181-restreamer:[SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 121907):
+[2025-06-12 23:45:07] [INFO] [SIP]   • Message type: Catalog
+INFO:gb28181-restreamer:[SIP]   • Message type: Catalog
+[2025-06-12 23:45:07] [INFO] [SIP]   • Message size: 1856 bytes
+INFO:gb28181-restreamer:[SIP]   • Message size: 1856 bytes
+[2025-06-12 23:45:07] [INFO] [SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+[2025-06-12 23:45:07] [INFO] [SIP]   • Encoding: UTF-8
+INFO:gb28181-restreamer:[SIP]   • Encoding: UTF-8
+[2025-06-12 23:45:07] [INFO] [SIP]   • XML <Item> count: 1
+INFO:gb28181-restreamer:[SIP]   • XML <Item> count: 1
+[2025-06-12 23:45:07] [INFO] [SIP]   • XML SumNum: 1
+INFO:gb28181-restreamer:[SIP]   • XML SumNum: 1
+[2025-06-12 23:45:07] [INFO] [SIP] ✅ XML integrity verified before transmission
+INFO:gb28181-restreamer:[SIP] ✅ XML integrity verified before transmission
+[2025-06-12 23:45:07] [WARNING] [SIP] ⚠️ Large UDP packet: 1856 bytes (may fragment)
+WARNING:gb28181-restreamer:[SIP] ⚠️ Large UDP packet: 1856 bytes (may fragment)
+[2025-06-12 23:45:07] [DEBUG] [SIP] 📨 Message headers:
+DEBUG:gb28181-restreamer:[SIP] 📨 Message headers:
+[2025-06-12 23:45:07] [DEBUG] [SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+DEBUG:gb28181-restreamer:[SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+[2025-06-12 23:45:07] [DEBUG] [SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:0;rport;branch=z9hG4bK-cat-1749771907
+DEBUG:gb28181-restreamer:[SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:0;rport;branch=z9hG4bK-cat-1749771907
+[2025-06-12 23:45:07] [DEBUG] [SIP]   3: Max-Forwards: 70
+DEBUG:gb28181-restreamer:[SIP]   3: Max-Forwards: 70
+[2025-06-12 23:45:07] [DEBUG] [SIP]   4: From: <sip:81000000465001000001@172.31.7.94:0>;tag=cattag1749771907
+DEBUG:gb28181-restreamer:[SIP]   4: From: <sip:81000000465001000001@172.31.7.94:0>;tag=cattag1749771907
+[2025-06-12 23:45:07] [DEBUG] [SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+DEBUG:gb28181-restreamer:[SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+[2025-06-12 23:45:07] [DEBUG] [SIP]   6: Call-ID: catalog-proactive-121907-1749771907
+DEBUG:gb28181-restreamer:[SIP]   6: Call-ID: catalog-proactive-121907-1749771907
+[2025-06-12 23:45:07] [DEBUG] [SIP]   7: CSeq: 6919 MESSAGE
+DEBUG:gb28181-restreamer:[SIP]   7: CSeq: 6919 MESSAGE
+[2025-06-12 23:45:07] [DEBUG] [SIP]   8: Contact: <sip:172.31.7.94:0>
+DEBUG:gb28181-restreamer:[SIP]   8: Contact: <sip:172.31.7.94:0>
+[2025-06-12 23:45:07] [DEBUG] [SIP]   9: User-Agent: GB28181-Restreamer/1.0
+DEBUG:gb28181-restreamer:[SIP]   9: User-Agent: GB28181-Restreamer/1.0
+[2025-06-12 23:45:07] [DEBUG] [SIP]   10: Content-Type: Application/MANSCDP+xml
+DEBUG:gb28181-restreamer:[SIP]   10: Content-Type: Application/MANSCDP+xml
+[2025-06-12 23:45:07] [DEBUG] [SIP]   ... and 47 more lines
+DEBUG:gb28181-restreamer:[SIP]   ... and 47 more lines
+[2025-06-12 23:45:07] [INFO] [SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+INFO:gb28181-restreamer:[SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+[2025-06-12 23:45:07] [INFO] [SIP] ✅ UDP transmission SUCCESSFUL: 1856/1856 bytes
+INFO:gb28181-restreamer:[SIP] ✅ UDP transmission SUCCESSFUL: 1856/1856 bytes
+[2025-06-12 23:45:07] [WARNING] [SIP] 📡 Large message sent - WVP platform may need time to reassemble
+WARNING:gb28181-restreamer:[SIP] 📡 Large message sent - WVP platform may need time to reassemble
+[2025-06-12 23:45:07] [INFO] [SIP] 📤 Catalog response (SN: 121907) delivered successfully
+INFO:gb28181-restreamer:[SIP] 📤 Catalog response (SN: 121907) delivered successfully
+[2025-06-12 23:45:07] [INFO] [SIP]   • Contains 1 devices
+INFO:gb28181-restreamer:[SIP]   • Contains 1 devices
+[2025-06-12 23:45:07] [INFO] [SIP]   • Total size: 1856 bytes
+INFO:gb28181-restreamer:[SIP]   • Total size: 1856 bytes
+[2025-06-12 23:45:07] [INFO] [SIP]   • WVP platform should process this within 30 seconds
+INFO:gb28181-restreamer:[SIP]   • WVP platform should process this within 30 seconds
+[2025-06-12 23:45:07] [INFO] [SIP] ✅ Proactive catalog notification sent successfully (SN: 121907)
+INFO:gb28181-restreamer:[SIP] ✅ Proactive catalog notification sent successfully (SN: 121907)
+[2025-06-12 23:45:07] [INFO] [SIP] 📱 WVP frontend should now show 18 available channels
+INFO:gb28181-restreamer:[SIP] 📱 WVP frontend should now show 18 available channels
+[2025-06-12 23:45:10] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-06-12 23:45:10] [INFO] [STATUS] Recording scan complete: 14 files cached
+INFO:gb28181-restreamer:[STATUS] Recording scan complete: 14 files cached
+[2025-06-12 23:45:14] [INFO] [SIP] 📋 Sending periodic catalog notification to maintain frontend visibility
+INFO:gb28181-restreamer:[SIP] 📋 Sending periodic catalog notification to maintain frontend visibility
+[2025-06-12 23:45:14] [INFO] [SIP] 📋 Sending proactive catalog notification to WVP platform for immediate visibility
+INFO:gb28181-restreamer:[SIP] 📋 Sending proactive catalog notification to WVP platform for immediate visibility
+[2025-06-12 23:45:14] [INFO] [SIP] Catalog composition: 4 RTSP live streams, 14 video files
+INFO:gb28181-restreamer:[SIP] Catalog composition: 4 RTSP live streams, 14 video files
+[2025-06-12 23:45:14] [INFO] [SIP] Using cached catalog with 18 channels (RTSP streams prioritized)
+INFO:gb28181-restreamer:[SIP] Using cached catalog with 18 channels (RTSP streams prioritized)
+[2025-06-12 23:45:14] [INFO] [SIP] 🏗️ Building WVP-compatible catalog response (RTSP prioritized):
+INFO:gb28181-restreamer:[SIP] 🏗️ Building WVP-compatible catalog response (RTSP prioritized):
+[2025-06-12 23:45:14] [INFO] [SIP]   • Parent Device: 81000000465001000001 (GB28181-Restreamer)
+INFO:gb28181-restreamer:[SIP]   • Parent Device: 81000000465001000001 (GB28181-Restreamer)
+[2025-06-12 23:45:14] [INFO] [SIP]   • RTSP Live Streams: 4
+INFO:gb28181-restreamer:[SIP]   • RTSP Live Streams: 4
+[2025-06-12 23:45:14] [INFO] [SIP]   • Video File Channels: 14
+INFO:gb28181-restreamer:[SIP]   • Video File Channels: 14
+[2025-06-12 23:45:14] [INFO] [SIP]   • Total Items: 19
+INFO:gb28181-restreamer:[SIP]   • Total Items: 19
+[2025-06-12 23:45:14] [INFO] [SIP]   • Estimated size: 13530 bytes
+INFO:gb28181-restreamer:[SIP]   • Estimated size: 13530 bytes
+[2025-06-12 23:45:14] [WARNING] [SIP] ⚠️ Large response (13530 bytes) - applying RTSP-priority size limits
+WARNING:gb28181-restreamer:[SIP] ⚠️ Large response (13530 bytes) - applying RTSP-priority size limits
+[2025-06-12 23:45:14] [WARNING] [SIP] ⚠️ RTSP stream Front Door Camera too large for UDP - skipping
+WARNING:gb28181-restreamer:[SIP] ⚠️ RTSP stream Front Door Camera too large for UDP - skipping
+[2025-06-12 23:45:14] [WARNING] [SIP] ⚠️ RTSP stream Parking Lot Camera too large for UDP - skipping
+WARNING:gb28181-restreamer:[SIP] ⚠️ RTSP stream Parking Lot Camera too large for UDP - skipping
+[2025-06-12 23:45:14] [WARNING] [SIP] ⚠️ RTSP stream Wowza Test Stream too large for UDP - skipping
+WARNING:gb28181-restreamer:[SIP] ⚠️ RTSP stream Wowza Test Stream too large for UDP - skipping
+[2025-06-12 23:45:14] [WARNING] [SIP] ⚠️ RTSP stream Highway Camera too large for UDP - skipping
+WARNING:gb28181-restreamer:[SIP] ⚠️ RTSP stream Highway Camera too large for UDP - skipping
+[2025-06-12 23:45:14] [INFO] [SIP] 📦 RTSP-PRIORITY result: 0 RTSP streams + 0 video files (total: 1 items)
+INFO:gb28181-restreamer:[SIP] 📦 RTSP-PRIORITY result: 0 RTSP streams + 0 video files (total: 1 items)
+[2025-06-12 23:45:14] [INFO] [SIP] 🎯 ALL LIVE STREAMS INCLUDED: 0/4 RTSP channels
+INFO:gb28181-restreamer:[SIP] 🎯 ALL LIVE STREAMS INCLUDED: 0/4 RTSP channels
+[2025-06-12 23:45:14] [INFO] [SIP] 📊 Final WVP-compatible catalog response (RTSP-prioritized):
+INFO:gb28181-restreamer:[SIP] 📊 Final WVP-compatible catalog response (RTSP-prioritized):
+[2025-06-12 23:45:14] [INFO] [SIP]   • Message size: 1424 bytes
+INFO:gb28181-restreamer:[SIP]   • Message size: 1424 bytes
+[2025-06-12 23:45:14] [INFO] [SIP]   • SumNum: 1
+INFO:gb28181-restreamer:[SIP]   • SumNum: 1
+[2025-06-12 23:45:14] [INFO] [SIP]   • DeviceList Num: 1
+INFO:gb28181-restreamer:[SIP]   • DeviceList Num: 1
+[2025-06-12 23:45:14] [INFO] [SIP]   • Live streams preserved: RTSP channels prioritized over video files
+INFO:gb28181-restreamer:[SIP]   • Live streams preserved: RTSP channels prioritized over video files
+[2025-06-12 23:45:14] [INFO] [SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 121914):
+INFO:gb28181-restreamer:[SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 121914):
+[2025-06-12 23:45:14] [INFO] [SIP]   • Message type: Catalog
+INFO:gb28181-restreamer:[SIP]   • Message type: Catalog
+[2025-06-12 23:45:14] [INFO] [SIP]   • Message size: 1856 bytes
+INFO:gb28181-restreamer:[SIP]   • Message size: 1856 bytes
+[2025-06-12 23:45:14] [INFO] [SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+[2025-06-12 23:45:14] [INFO] [SIP]   • Encoding: UTF-8
+INFO:gb28181-restreamer:[SIP]   • Encoding: UTF-8
+[2025-06-12 23:45:14] [INFO] [SIP]   • XML <Item> count: 1
+INFO:gb28181-restreamer:[SIP]   • XML <Item> count: 1
+[2025-06-12 23:45:14] [INFO] [SIP]   • XML SumNum: 1
+INFO:gb28181-restreamer:[SIP]   • XML SumNum: 1
+[2025-06-12 23:45:14] [INFO] [SIP] ✅ XML integrity verified before transmission
+INFO:gb28181-restreamer:[SIP] ✅ XML integrity verified before transmission
+[2025-06-12 23:45:14] [WARNING] [SIP] ⚠️ Large UDP packet: 1856 bytes (may fragment)
+WARNING:gb28181-restreamer:[SIP] ⚠️ Large UDP packet: 1856 bytes (may fragment)
+[2025-06-12 23:45:14] [DEBUG] [SIP] 📨 Message headers:
+DEBUG:gb28181-restreamer:[SIP] 📨 Message headers:
+[2025-06-12 23:45:14] [DEBUG] [SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+DEBUG:gb28181-restreamer:[SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+[2025-06-12 23:45:14] [DEBUG] [SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:0;rport;branch=z9hG4bK-cat-1749771914
+DEBUG:gb28181-restreamer:[SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:0;rport;branch=z9hG4bK-cat-1749771914
+[2025-06-12 23:45:14] [DEBUG] [SIP]   3: Max-Forwards: 70
+DEBUG:gb28181-restreamer:[SIP]   3: Max-Forwards: 70
+[2025-06-12 23:45:14] [DEBUG] [SIP]   4: From: <sip:81000000465001000001@172.31.7.94:0>;tag=cattag1749771914
+DEBUG:gb28181-restreamer:[SIP]   4: From: <sip:81000000465001000001@172.31.7.94:0>;tag=cattag1749771914
+[2025-06-12 23:45:14] [DEBUG] [SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+DEBUG:gb28181-restreamer:[SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+[2025-06-12 23:45:14] [DEBUG] [SIP]   6: Call-ID: catalog-proactive-121914-1749771914
+DEBUG:gb28181-restreamer:[SIP]   6: Call-ID: catalog-proactive-121914-1749771914
+[2025-06-12 23:45:14] [DEBUG] [SIP]   7: CSeq: 6926 MESSAGE
+DEBUG:gb28181-restreamer:[SIP]   7: CSeq: 6926 MESSAGE
+[2025-06-12 23:45:14] [DEBUG] [SIP]   8: Contact: <sip:172.31.7.94:0>
+DEBUG:gb28181-restreamer:[SIP]   8: Contact: <sip:172.31.7.94:0>
+[2025-06-12 23:45:14] [DEBUG] [SIP]   9: User-Agent: GB28181-Restreamer/1.0
+DEBUG:gb28181-restreamer:[SIP]   9: User-Agent: GB28181-Restreamer/1.0
+[2025-06-12 23:45:14] [DEBUG] [SIP]   10: Content-Type: Application/MANSCDP+xml
+DEBUG:gb28181-restreamer:[SIP]   10: Content-Type: Application/MANSCDP+xml
+[2025-06-12 23:45:14] [DEBUG] [SIP]   ... and 47 more lines
+DEBUG:gb28181-restreamer:[SIP]   ... and 47 more lines
+[2025-06-12 23:45:14] [INFO] [SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+INFO:gb28181-restreamer:[SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+[2025-06-12 23:45:14] [INFO] [SIP] ✅ UDP transmission SUCCESSFUL: 1856/1856 bytes
+INFO:gb28181-restreamer:[SIP] ✅ UDP transmission SUCCESSFUL: 1856/1856 bytes
+[2025-06-12 23:45:14] [WARNING] [SIP] 📡 Large message sent - WVP platform may need time to reassemble
+WARNING:gb28181-restreamer:[SIP] 📡 Large message sent - WVP platform may need time to reassemble
+[2025-06-12 23:45:14] [INFO] [SIP] 📤 Catalog response (SN: 121914) delivered successfully
+INFO:gb28181-restreamer:[SIP] 📤 Catalog response (SN: 121914) delivered successfully
+[2025-06-12 23:45:14] [INFO] [SIP]   • Contains 1 devices
+INFO:gb28181-restreamer:[SIP]   • Contains 1 devices
+[2025-06-12 23:45:14] [INFO] [SIP]   • Total size: 1856 bytes
+INFO:gb28181-restreamer:[SIP]   • Total size: 1856 bytes
+[2025-06-12 23:45:14] [INFO] [SIP]   • WVP platform should process this within 30 seconds
+INFO:gb28181-restreamer:[SIP]   • WVP platform should process this within 30 seconds
+[2025-06-12 23:45:14] [INFO] [SIP] ✅ Proactive catalog notification sent successfully (SN: 121914)
+INFO:gb28181-restreamer:[SIP] ✅ Proactive catalog notification sent successfully (SN: 121914)
+[2025-06-12 23:45:14] [INFO] [SIP] 📱 WVP frontend should now show 18 available channels
+INFO:gb28181-restreamer:[SIP] 📱 WVP frontend should now show 18 available channels
+[2025-06-12 23:45:14] [INFO] [SIP] ✅ Periodic catalog notification sent successfully
+INFO:gb28181-restreamer:[SIP] ✅ Periodic catalog notification sent successfully
+[2025-06-12 23:45:19] [INFO] [SIP] 💓 Sending scheduled heartbeat to WVP platform
+INFO:gb28181-restreamer:[SIP] 💓 Sending scheduled heartbeat to WVP platform
+[2025-06-12 23:45:19] [INFO] [SIP] 💓 Sending WVP-compatible keepalive (SN: 71919) to prevent heartbeat timeout
+INFO:gb28181-restreamer:[SIP] 💓 Sending WVP-compatible keepalive (SN: 71919) to prevent heartbeat timeout
+[2025-06-12 23:45:19] [INFO] [SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 71919):
+INFO:gb28181-restreamer:[SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 71919):
+[2025-06-12 23:45:19] [INFO] [SIP]   • Message type: Keepalive
+INFO:gb28181-restreamer:[SIP]   • Message type: Keepalive
+[2025-06-12 23:45:19] [INFO] [SIP]   • Message size: 674 bytes
+INFO:gb28181-restreamer:[SIP]   • Message size: 674 bytes
+[2025-06-12 23:45:19] [INFO] [SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+[2025-06-12 23:45:19] [INFO] [SIP]   • Encoding: UTF-8
+INFO:gb28181-restreamer:[SIP]   • Encoding: UTF-8
+[2025-06-12 23:45:19] [DEBUG] [SIP] 📨 Message headers:
+DEBUG:gb28181-restreamer:[SIP] 📨 Message headers:
+[2025-06-12 23:45:19] [DEBUG] [SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+DEBUG:gb28181-restreamer:[SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+[2025-06-12 23:45:19] [DEBUG] [SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:0;rport;branch=z9hG4bK-ka-1749771919
+DEBUG:gb28181-restreamer:[SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:0;rport;branch=z9hG4bK-ka-1749771919
+[2025-06-12 23:45:19] [DEBUG] [SIP]   3: Max-Forwards: 70
+DEBUG:gb28181-restreamer:[SIP]   3: Max-Forwards: 70
+[2025-06-12 23:45:19] [DEBUG] [SIP]   4: From: <sip:81000000465001000001@172.31.7.94:0>;tag=katag1749771919
+DEBUG:gb28181-restreamer:[SIP]   4: From: <sip:81000000465001000001@172.31.7.94:0>;tag=katag1749771919
+[2025-06-12 23:45:19] [DEBUG] [SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+DEBUG:gb28181-restreamer:[SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+[2025-06-12 23:45:19] [DEBUG] [SIP]   6: Call-ID: keepalive-71919-1749771919
+DEBUG:gb28181-restreamer:[SIP]   6: Call-ID: keepalive-71919-1749771919
+[2025-06-12 23:45:19] [DEBUG] [SIP]   7: CSeq: 3926 MESSAGE
+DEBUG:gb28181-restreamer:[SIP]   7: CSeq: 3926 MESSAGE
+[2025-06-12 23:45:19] [DEBUG] [SIP]   8: Contact: <sip:172.31.7.94:0>
+DEBUG:gb28181-restreamer:[SIP]   8: Contact: <sip:172.31.7.94:0>
+[2025-06-12 23:45:19] [DEBUG] [SIP]   9: User-Agent: GB28181-Restreamer/1.0
+DEBUG:gb28181-restreamer:[SIP]   9: User-Agent: GB28181-Restreamer/1.0
+[2025-06-12 23:45:19] [DEBUG] [SIP]   10: Content-Type: Application/MANSCDP+xml
+DEBUG:gb28181-restreamer:[SIP]   10: Content-Type: Application/MANSCDP+xml
+[2025-06-12 23:45:19] [DEBUG] [SIP]   ... and 13 more lines
+DEBUG:gb28181-restreamer:[SIP]   ... and 13 more lines
+[2025-06-12 23:45:19] [INFO] [SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+INFO:gb28181-restreamer:[SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+[2025-06-12 23:45:19] [INFO] [SIP] ✅ UDP transmission SUCCESSFUL: 674/674 bytes
+INFO:gb28181-restreamer:[SIP] ✅ UDP transmission SUCCESSFUL: 674/674 bytes
+[2025-06-12 23:45:19] [INFO] [SIP] 💓 Keepalive message (SN: 71919) delivered successfully
+INFO:gb28181-restreamer:[SIP] 💓 Keepalive message (SN: 71919) delivered successfully
+[2025-06-12 23:45:19] [INFO] [SIP]   • Device should stay online for next 15-30 seconds
+INFO:gb28181-restreamer:[SIP]   • Device should stay online for next 15-30 seconds
+[2025-06-12 23:45:19] [INFO] [SIP] ✅ Keepalive sent successfully - device should stay online
+INFO:gb28181-restreamer:[SIP] ✅ Keepalive sent successfully - device should stay online
+[2025-06-12 23:45:34] [INFO] [SIP] 💓 Sending scheduled heartbeat to WVP platform
+INFO:gb28181-restreamer:[SIP] 💓 Sending scheduled heartbeat to WVP platform
+[2025-06-12 23:45:34] [INFO] [SIP] 💓 Sending WVP-compatible keepalive (SN: 71934) to prevent heartbeat timeout
+INFO:gb28181-restreamer:[SIP] 💓 Sending WVP-compatible keepalive (SN: 71934) to prevent heartbeat timeout
+[2025-06-12 23:45:34] [INFO] [SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 71934):
+INFO:gb28181-restreamer:[SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 71934):
+[2025-06-12 23:45:34] [INFO] [SIP]   • Message type: Keepalive
+INFO:gb28181-restreamer:[SIP]   • Message type: Keepalive
+[2025-06-12 23:45:34] [INFO] [SIP]   • Message size: 674 bytes
+INFO:gb28181-restreamer:[SIP]   • Message size: 674 bytes
+[2025-06-12 23:45:34] [INFO] [SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+[2025-06-12 23:45:34] [INFO] [SIP]   • Encoding: UTF-8
+INFO:gb28181-restreamer:[SIP]   • Encoding: UTF-8
+[2025-06-12 23:45:34] [DEBUG] [SIP] 📨 Message headers:
+DEBUG:gb28181-restreamer:[SIP] 📨 Message headers:
+[2025-06-12 23:45:34] [DEBUG] [SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+DEBUG:gb28181-restreamer:[SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+[2025-06-12 23:45:34] [DEBUG] [SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:0;rport;branch=z9hG4bK-ka-1749771934
+DEBUG:gb28181-restreamer:[SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:0;rport;branch=z9hG4bK-ka-1749771934
+[2025-06-12 23:45:34] [DEBUG] [SIP]   3: Max-Forwards: 70
+DEBUG:gb28181-restreamer:[SIP]   3: Max-Forwards: 70
+[2025-06-12 23:45:34] [DEBUG] [SIP]   4: From: <sip:81000000465001000001@172.31.7.94:0>;tag=katag1749771934
+DEBUG:gb28181-restreamer:[SIP]   4: From: <sip:81000000465001000001@172.31.7.94:0>;tag=katag1749771934
+[2025-06-12 23:45:34] [DEBUG] [SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+DEBUG:gb28181-restreamer:[SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+[2025-06-12 23:45:34] [DEBUG] [SIP]   6: Call-ID: keepalive-71934-1749771934
+DEBUG:gb28181-restreamer:[SIP]   6: Call-ID: keepalive-71934-1749771934
+[2025-06-12 23:45:34] [DEBUG] [SIP]   7: CSeq: 3941 MESSAGE
+DEBUG:gb28181-restreamer:[SIP]   7: CSeq: 3941 MESSAGE
+[2025-06-12 23:45:34] [DEBUG] [SIP]   8: Contact: <sip:172.31.7.94:0>
+DEBUG:gb28181-restreamer:[SIP]   8: Contact: <sip:172.31.7.94:0>
+[2025-06-12 23:45:34] [DEBUG] [SIP]   9: User-Agent: GB28181-Restreamer/1.0
+DEBUG:gb28181-restreamer:[SIP]   9: User-Agent: GB28181-Restreamer/1.0
+[2025-06-12 23:45:34] [DEBUG] [SIP]   10: Content-Type: Application/MANSCDP+xml
+DEBUG:gb28181-restreamer:[SIP]   10: Content-Type: Application/MANSCDP+xml
+[2025-06-12 23:45:34] [DEBUG] [SIP]   ... and 13 more lines
+DEBUG:gb28181-restreamer:[SIP]   ... and 13 more lines
+[2025-06-12 23:45:34] [INFO] [SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+INFO:gb28181-restreamer:[SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+[2025-06-12 23:45:34] [INFO] [SIP] ✅ UDP transmission SUCCESSFUL: 674/674 bytes
+INFO:gb28181-restreamer:[SIP] ✅ UDP transmission SUCCESSFUL: 674/674 bytes
+[2025-06-12 23:45:34] [INFO] [SIP] 💓 Keepalive message (SN: 71934) delivered successfully
+INFO:gb28181-restreamer:[SIP] 💓 Keepalive message (SN: 71934) delivered successfully
+[2025-06-12 23:45:34] [INFO] [SIP]   • Device should stay online for next 15-30 seconds
+INFO:gb28181-restreamer:[SIP]   • Device should stay online for next 15-30 seconds
+[2025-06-12 23:45:34] [INFO] [SIP] ✅ Keepalive sent successfully - device should stay online
+INFO:gb28181-restreamer:[SIP] ✅ Keepalive sent successfully - device should stay online
+[2025-06-12 23:45:49] [INFO] [SIP] 💓 Sending scheduled heartbeat to WVP platform
+INFO:gb28181-restreamer:[SIP] 💓 Sending scheduled heartbeat to WVP platform
+[2025-06-12 23:45:49] [INFO] [SIP] 💓 Sending WVP-compatible keepalive (SN: 71949) to prevent heartbeat timeout
+INFO:gb28181-restreamer:[SIP] 💓 Sending WVP-compatible keepalive (SN: 71949) to prevent heartbeat timeout
+[2025-06-12 23:45:49] [INFO] [SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 71949):
+INFO:gb28181-restreamer:[SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 71949):
+[2025-06-12 23:45:49] [INFO] [SIP]   • Message type: Keepalive
+INFO:gb28181-restreamer:[SIP]   • Message type: Keepalive
+[2025-06-12 23:45:49] [INFO] [SIP]   • Message size: 674 bytes
+INFO:gb28181-restreamer:[SIP]   • Message size: 674 bytes
+[2025-06-12 23:45:49] [INFO] [SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+[2025-06-12 23:45:49] [INFO] [SIP]   • Encoding: UTF-8
+INFO:gb28181-restreamer:[SIP]   • Encoding: UTF-8
+[2025-06-12 23:45:49] [DEBUG] [SIP] 📨 Message headers:
+DEBUG:gb28181-restreamer:[SIP] 📨 Message headers:
+[2025-06-12 23:45:49] [DEBUG] [SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+DEBUG:gb28181-restreamer:[SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+[2025-06-12 23:45:49] [DEBUG] [SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:0;rport;branch=z9hG4bK-ka-1749771949
+DEBUG:gb28181-restreamer:[SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:0;rport;branch=z9hG4bK-ka-1749771949
+[2025-06-12 23:45:49] [DEBUG] [SIP]   3: Max-Forwards: 70
+DEBUG:gb28181-restreamer:[SIP]   3: Max-Forwards: 70
+[2025-06-12 23:45:49] [DEBUG] [SIP]   4: From: <sip:81000000465001000001@172.31.7.94:0>;tag=katag1749771949
+DEBUG:gb28181-restreamer:[SIP]   4: From: <sip:81000000465001000001@172.31.7.94:0>;tag=katag1749771949
+[2025-06-12 23:45:49] [DEBUG] [SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+DEBUG:gb28181-restreamer:[SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+[2025-06-12 23:45:49] [DEBUG] [SIP]   6: Call-ID: keepalive-71949-1749771949
+DEBUG:gb28181-restreamer:[SIP]   6: Call-ID: keepalive-71949-1749771949
+[2025-06-12 23:45:49] [DEBUG] [SIP]   7: CSeq: 3956 MESSAGE
+DEBUG:gb28181-restreamer:[SIP]   7: CSeq: 3956 MESSAGE
+[2025-06-12 23:45:49] [DEBUG] [SIP]   8: Contact: <sip:172.31.7.94:0>
+DEBUG:gb28181-restreamer:[SIP]   8: Contact: <sip:172.31.7.94:0>
+[2025-06-12 23:45:49] [DEBUG] [SIP]   9: User-Agent: GB28181-Restreamer/1.0
+DEBUG:gb28181-restreamer:[SIP]   9: User-Agent: GB28181-Restreamer/1.0
+[2025-06-12 23:45:49] [DEBUG] [SIP]   10: Content-Type: Application/MANSCDP+xml
+DEBUG:gb28181-restreamer:[SIP]   10: Content-Type: Application/MANSCDP+xml
+[2025-06-12 23:45:49] [DEBUG] [SIP]   ... and 13 more lines
+DEBUG:gb28181-restreamer:[SIP]   ... and 13 more lines
+[2025-06-12 23:45:49] [INFO] [SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+INFO:gb28181-restreamer:[SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+[2025-06-12 23:45:49] [INFO] [SIP] ✅ UDP transmission SUCCESSFUL: 674/674 bytes
+INFO:gb28181-restreamer:[SIP] ✅ UDP transmission SUCCESSFUL: 674/674 bytes
+[2025-06-12 23:45:49] [INFO] [SIP] 💓 Keepalive message (SN: 71949) delivered successfully
+INFO:gb28181-restreamer:[SIP] 💓 Keepalive message (SN: 71949) delivered successfully
+[2025-06-12 23:45:49] [INFO] [SIP]   • Device should stay online for next 15-30 seconds
+INFO:gb28181-restreamer:[SIP]   • Device should stay online for next 15-30 seconds
+[2025-06-12 23:45:49] [INFO] [SIP] ✅ Keepalive sent successfully - device should stay online
+INFO:gb28181-restreamer:[SIP] ✅ Keepalive sent successfully - device should stay online
+[2025-06-12 23:46:04] [INFO] [SIP] 💓 Sending scheduled heartbeat to WVP platform
+INFO:gb28181-restreamer:[SIP] 💓 Sending scheduled heartbeat to WVP platform
+[2025-06-12 23:46:04] [INFO] [SIP] 💓 Sending WVP-compatible keepalive (SN: 71964) to prevent heartbeat timeout
+INFO:gb28181-restreamer:[SIP] 💓 Sending WVP-compatible keepalive (SN: 71964) to prevent heartbeat timeout
+[2025-06-12 23:46:04] [INFO] [SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 71964):
+INFO:gb28181-restreamer:[SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 71964):
+[2025-06-12 23:46:04] [INFO] [SIP]   • Message type: Keepalive
+INFO:gb28181-restreamer:[SIP]   • Message type: Keepalive
+[2025-06-12 23:46:04] [INFO] [SIP]   • Message size: 674 bytes
+INFO:gb28181-restreamer:[SIP]   • Message size: 674 bytes
+[2025-06-12 23:46:04] [INFO] [SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+[2025-06-12 23:46:04] [INFO] [SIP]   • Encoding: UTF-8
+INFO:gb28181-restreamer:[SIP]   • Encoding: UTF-8
+[2025-06-12 23:46:04] [DEBUG] [SIP] 📨 Message headers:
+DEBUG:gb28181-restreamer:[SIP] 📨 Message headers:
+[2025-06-12 23:46:04] [DEBUG] [SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+DEBUG:gb28181-restreamer:[SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+[2025-06-12 23:46:04] [DEBUG] [SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:0;rport;branch=z9hG4bK-ka-1749771964
+DEBUG:gb28181-restreamer:[SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:0;rport;branch=z9hG4bK-ka-1749771964
+[2025-06-12 23:46:04] [DEBUG] [SIP]   3: Max-Forwards: 70
+DEBUG:gb28181-restreamer:[SIP]   3: Max-Forwards: 70
+[2025-06-12 23:46:04] [DEBUG] [SIP]   4: From: <sip:81000000465001000001@172.31.7.94:0>;tag=katag1749771964
+DEBUG:gb28181-restreamer:[SIP]   4: From: <sip:81000000465001000001@172.31.7.94:0>;tag=katag1749771964
+[2025-06-12 23:46:04] [DEBUG] [SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+DEBUG:gb28181-restreamer:[SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+[2025-06-12 23:46:04] [DEBUG] [SIP]   6: Call-ID: keepalive-71964-1749771964
+DEBUG:gb28181-restreamer:[SIP]   6: Call-ID: keepalive-71964-1749771964
+[2025-06-12 23:46:04] [DEBUG] [SIP]   7: CSeq: 3971 MESSAGE
+DEBUG:gb28181-restreamer:[SIP]   7: CSeq: 3971 MESSAGE
+[2025-06-12 23:46:04] [DEBUG] [SIP]   8: Contact: <sip:172.31.7.94:0>
+DEBUG:gb28181-restreamer:[SIP]   8: Contact: <sip:172.31.7.94:0>
+[2025-06-12 23:46:04] [DEBUG] [SIP]   9: User-Agent: GB28181-Restreamer/1.0
+DEBUG:gb28181-restreamer:[SIP]   9: User-Agent: GB28181-Restreamer/1.0
+[2025-06-12 23:46:04] [DEBUG] [SIP]   10: Content-Type: Application/MANSCDP+xml
+DEBUG:gb28181-restreamer:[SIP]   10: Content-Type: Application/MANSCDP+xml
+[2025-06-12 23:46:04] [DEBUG] [SIP]   ... and 13 more lines
+DEBUG:gb28181-restreamer:[SIP]   ... and 13 more lines
+[2025-06-12 23:46:04] [INFO] [SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+INFO:gb28181-restreamer:[SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+[2025-06-12 23:46:04] [INFO] [SIP] ✅ UDP transmission SUCCESSFUL: 674/674 bytes
+INFO:gb28181-restreamer:[SIP] ✅ UDP transmission SUCCESSFUL: 674/674 bytes
+[2025-06-12 23:46:04] [INFO] [SIP] 💓 Keepalive message (SN: 71964) delivered successfully
+INFO:gb28181-restreamer:[SIP] 💓 Keepalive message (SN: 71964) delivered successfully
+[2025-06-12 23:46:04] [INFO] [SIP]   • Device should stay online for next 15-30 seconds
+INFO:gb28181-restreamer:[SIP]   • Device should stay online for next 15-30 seconds
+[2025-06-12 23:46:04] [INFO] [SIP] ✅ Keepalive sent successfully - device should stay online
+INFO:gb28181-restreamer:[SIP] ✅ Keepalive sent successfully - device should stay online
+[2025-06-12 23:46:10] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-06-12 23:46:10] [INFO] [STATUS] Recording scan complete: 14 files cached
+INFO:gb28181-restreamer:[STATUS] Recording scan complete: 14 files cached
+[2025-06-12 23:46:14] [INFO] [SIP] 📋 Sending periodic catalog notification to maintain frontend visibility
+INFO:gb28181-restreamer:[SIP] 📋 Sending periodic catalog notification to maintain frontend visibility
+[2025-06-12 23:46:14] [INFO] [SIP] 📋 Sending proactive catalog notification to WVP platform for immediate visibility
+INFO:gb28181-restreamer:[SIP] 📋 Sending proactive catalog notification to WVP platform for immediate visibility
+[2025-06-12 23:46:14] [INFO] [SIP] Catalog composition: 4 RTSP live streams, 14 video files
+INFO:gb28181-restreamer:[SIP] Catalog composition: 4 RTSP live streams, 14 video files
+[2025-06-12 23:46:14] [INFO] [SIP] Using cached catalog with 18 channels (RTSP streams prioritized)
+INFO:gb28181-restreamer:[SIP] Using cached catalog with 18 channels (RTSP streams prioritized)
+[2025-06-12 23:46:14] [INFO] [SIP] 🏗️ Building WVP-compatible catalog response (RTSP prioritized):
+INFO:gb28181-restreamer:[SIP] 🏗️ Building WVP-compatible catalog response (RTSP prioritized):
+[2025-06-12 23:46:14] [INFO] [SIP]   • Parent Device: 81000000465001000001 (GB28181-Restreamer)
+INFO:gb28181-restreamer:[SIP]   • Parent Device: 81000000465001000001 (GB28181-Restreamer)
+[2025-06-12 23:46:14] [INFO] [SIP]   • RTSP Live Streams: 4
+INFO:gb28181-restreamer:[SIP]   • RTSP Live Streams: 4
+[2025-06-12 23:46:14] [INFO] [SIP]   • Video File Channels: 14
+INFO:gb28181-restreamer:[SIP]   • Video File Channels: 14
+[2025-06-12 23:46:14] [INFO] [SIP]   • Total Items: 19
+INFO:gb28181-restreamer:[SIP]   • Total Items: 19
+[2025-06-12 23:46:14] [INFO] [SIP]   • Estimated size: 13530 bytes
+INFO:gb28181-restreamer:[SIP]   • Estimated size: 13530 bytes
+[2025-06-12 23:46:14] [WARNING] [SIP] ⚠️ Large response (13530 bytes) - applying RTSP-priority size limits
+WARNING:gb28181-restreamer:[SIP] ⚠️ Large response (13530 bytes) - applying RTSP-priority size limits
+[2025-06-12 23:46:14] [WARNING] [SIP] ⚠️ RTSP stream Front Door Camera too large for UDP - skipping
+WARNING:gb28181-restreamer:[SIP] ⚠️ RTSP stream Front Door Camera too large for UDP - skipping
+[2025-06-12 23:46:14] [WARNING] [SIP] ⚠️ RTSP stream Parking Lot Camera too large for UDP - skipping
+WARNING:gb28181-restreamer:[SIP] ⚠️ RTSP stream Parking Lot Camera too large for UDP - skipping
+[2025-06-12 23:46:14] [WARNING] [SIP] ⚠️ RTSP stream Wowza Test Stream too large for UDP - skipping
+WARNING:gb28181-restreamer:[SIP] ⚠️ RTSP stream Wowza Test Stream too large for UDP - skipping
+[2025-06-12 23:46:14] [WARNING] [SIP] ⚠️ RTSP stream Highway Camera too large for UDP - skipping
+WARNING:gb28181-restreamer:[SIP] ⚠️ RTSP stream Highway Camera too large for UDP - skipping
+[2025-06-12 23:46:14] [INFO] [SIP] 📦 RTSP-PRIORITY result: 0 RTSP streams + 0 video files (total: 1 items)
+INFO:gb28181-restreamer:[SIP] 📦 RTSP-PRIORITY result: 0 RTSP streams + 0 video files (total: 1 items)
+[2025-06-12 23:46:14] [INFO] [SIP] 🎯 ALL LIVE STREAMS INCLUDED: 0/4 RTSP channels
+INFO:gb28181-restreamer:[SIP] 🎯 ALL LIVE STREAMS INCLUDED: 0/4 RTSP channels
+[2025-06-12 23:46:14] [INFO] [SIP] 📊 Final WVP-compatible catalog response (RTSP-prioritized):
+INFO:gb28181-restreamer:[SIP] 📊 Final WVP-compatible catalog response (RTSP-prioritized):
+[2025-06-12 23:46:14] [INFO] [SIP]   • Message size: 1424 bytes
+INFO:gb28181-restreamer:[SIP]   • Message size: 1424 bytes
+[2025-06-12 23:46:14] [INFO] [SIP]   • SumNum: 1
+INFO:gb28181-restreamer:[SIP]   • SumNum: 1
+[2025-06-12 23:46:14] [INFO] [SIP]   • DeviceList Num: 1
+INFO:gb28181-restreamer:[SIP]   • DeviceList Num: 1
+[2025-06-12 23:46:14] [INFO] [SIP]   • Live streams preserved: RTSP channels prioritized over video files
+INFO:gb28181-restreamer:[SIP]   • Live streams preserved: RTSP channels prioritized over video files
+[2025-06-12 23:46:14] [INFO] [SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 121974):
+INFO:gb28181-restreamer:[SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 121974):
+[2025-06-12 23:46:14] [INFO] [SIP]   • Message type: Catalog
+INFO:gb28181-restreamer:[SIP]   • Message type: Catalog
+[2025-06-12 23:46:14] [INFO] [SIP]   • Message size: 1856 bytes
+INFO:gb28181-restreamer:[SIP]   • Message size: 1856 bytes
+[2025-06-12 23:46:14] [INFO] [SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+[2025-06-12 23:46:14] [INFO] [SIP]   • Encoding: UTF-8
+INFO:gb28181-restreamer:[SIP]   • Encoding: UTF-8
+[2025-06-12 23:46:14] [INFO] [SIP]   • XML <Item> count: 1
+INFO:gb28181-restreamer:[SIP]   • XML <Item> count: 1
+[2025-06-12 23:46:14] [INFO] [SIP]   • XML SumNum: 1
+INFO:gb28181-restreamer:[SIP]   • XML SumNum: 1
+[2025-06-12 23:46:14] [INFO] [SIP] ✅ XML integrity verified before transmission
+INFO:gb28181-restreamer:[SIP] ✅ XML integrity verified before transmission
+[2025-06-12 23:46:14] [WARNING] [SIP] ⚠️ Large UDP packet: 1856 bytes (may fragment)
+WARNING:gb28181-restreamer:[SIP] ⚠️ Large UDP packet: 1856 bytes (may fragment)
+[2025-06-12 23:46:14] [DEBUG] [SIP] 📨 Message headers:
+DEBUG:gb28181-restreamer:[SIP] 📨 Message headers:
+[2025-06-12 23:46:14] [DEBUG] [SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+DEBUG:gb28181-restreamer:[SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+[2025-06-12 23:46:14] [DEBUG] [SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:0;rport;branch=z9hG4bK-cat-1749771974
+DEBUG:gb28181-restreamer:[SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:0;rport;branch=z9hG4bK-cat-1749771974
+[2025-06-12 23:46:14] [DEBUG] [SIP]   3: Max-Forwards: 70
+DEBUG:gb28181-restreamer:[SIP]   3: Max-Forwards: 70
+[2025-06-12 23:46:14] [DEBUG] [SIP]   4: From: <sip:81000000465001000001@172.31.7.94:0>;tag=cattag1749771974
+DEBUG:gb28181-restreamer:[SIP]   4: From: <sip:81000000465001000001@172.31.7.94:0>;tag=cattag1749771974
+[2025-06-12 23:46:14] [DEBUG] [SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+DEBUG:gb28181-restreamer:[SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+[2025-06-12 23:46:14] [DEBUG] [SIP]   6: Call-ID: catalog-proactive-121974-1749771974
+DEBUG:gb28181-restreamer:[SIP]   6: Call-ID: catalog-proactive-121974-1749771974
+[2025-06-12 23:46:14] [DEBUG] [SIP]   7: CSeq: 6986 MESSAGE
+DEBUG:gb28181-restreamer:[SIP]   7: CSeq: 6986 MESSAGE
+[2025-06-12 23:46:14] [DEBUG] [SIP]   8: Contact: <sip:172.31.7.94:0>
+DEBUG:gb28181-restreamer:[SIP]   8: Contact: <sip:172.31.7.94:0>
+[2025-06-12 23:46:14] [DEBUG] [SIP]   9: User-Agent: GB28181-Restreamer/1.0
+DEBUG:gb28181-restreamer:[SIP]   9: User-Agent: GB28181-Restreamer/1.0
+[2025-06-12 23:46:14] [DEBUG] [SIP]   10: Content-Type: Application/MANSCDP+xml
+DEBUG:gb28181-restreamer:[SIP]   10: Content-Type: Application/MANSCDP+xml
+[2025-06-12 23:46:14] [DEBUG] [SIP]   ... and 47 more lines
+DEBUG:gb28181-restreamer:[SIP]   ... and 47 more lines
+[2025-06-12 23:46:14] [INFO] [SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+INFO:gb28181-restreamer:[SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+[2025-06-12 23:46:14] [INFO] [SIP] ✅ UDP transmission SUCCESSFUL: 1856/1856 bytes
+INFO:gb28181-restreamer:[SIP] ✅ UDP transmission SUCCESSFUL: 1856/1856 bytes
+[2025-06-12 23:46:14] [WARNING] [SIP] 📡 Large message sent - WVP platform may need time to reassemble
+WARNING:gb28181-restreamer:[SIP] 📡 Large message sent - WVP platform may need time to reassemble
+[2025-06-12 23:46:14] [INFO] [SIP] 📤 Catalog response (SN: 121974) delivered successfully
+INFO:gb28181-restreamer:[SIP] 📤 Catalog response (SN: 121974) delivered successfully
+[2025-06-12 23:46:14] [INFO] [SIP]   • Contains 1 devices
+INFO:gb28181-restreamer:[SIP]   • Contains 1 devices
+[2025-06-12 23:46:14] [INFO] [SIP]   • Total size: 1856 bytes
+INFO:gb28181-restreamer:[SIP]   • Total size: 1856 bytes
+[2025-06-12 23:46:14] [INFO] [SIP]   • WVP platform should process this within 30 seconds
+INFO:gb28181-restreamer:[SIP]   • WVP platform should process this within 30 seconds
+[2025-06-12 23:46:14] [INFO] [SIP] ✅ Proactive catalog notification sent successfully (SN: 121974)
+INFO:gb28181-restreamer:[SIP] ✅ Proactive catalog notification sent successfully (SN: 121974)
+[2025-06-12 23:46:14] [INFO] [SIP] 📱 WVP frontend should now show 18 available channels
+INFO:gb28181-restreamer:[SIP] 📱 WVP frontend should now show 18 available channels
+[2025-06-12 23:46:14] [INFO] [SIP] ✅ Periodic catalog notification sent successfully
+INFO:gb28181-restreamer:[SIP] ✅ Periodic catalog notification sent successfully
+[2025-06-12 23:46:19] [INFO] [SIP] 💓 Sending scheduled heartbeat to WVP platform
+INFO:gb28181-restreamer:[SIP] 💓 Sending scheduled heartbeat to WVP platform
+[2025-06-12 23:46:19] [INFO] [SIP] 💓 Sending WVP-compatible keepalive (SN: 71979) to prevent heartbeat timeout
+INFO:gb28181-restreamer:[SIP] 💓 Sending WVP-compatible keepalive (SN: 71979) to prevent heartbeat timeout
+[2025-06-12 23:46:19] [INFO] [SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 71979):
+INFO:gb28181-restreamer:[SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 71979):
+[2025-06-12 23:46:19] [INFO] [SIP]   • Message type: Keepalive
+INFO:gb28181-restreamer:[SIP]   • Message type: Keepalive
+[2025-06-12 23:46:19] [INFO] [SIP]   • Message size: 674 bytes
+INFO:gb28181-restreamer:[SIP]   • Message size: 674 bytes
+[2025-06-12 23:46:19] [INFO] [SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+[2025-06-12 23:46:19] [INFO] [SIP]   • Encoding: UTF-8
+INFO:gb28181-restreamer:[SIP]   • Encoding: UTF-8
+[2025-06-12 23:46:19] [DEBUG] [SIP] 📨 Message headers:
+DEBUG:gb28181-restreamer:[SIP] 📨 Message headers:
+[2025-06-12 23:46:19] [DEBUG] [SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+DEBUG:gb28181-restreamer:[SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+[2025-06-12 23:46:19] [DEBUG] [SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:0;rport;branch=z9hG4bK-ka-1749771979
+DEBUG:gb28181-restreamer:[SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:0;rport;branch=z9hG4bK-ka-1749771979
+[2025-06-12 23:46:19] [DEBUG] [SIP]   3: Max-Forwards: 70
+DEBUG:gb28181-restreamer:[SIP]   3: Max-Forwards: 70
+[2025-06-12 23:46:19] [DEBUG] [SIP]   4: From: <sip:81000000465001000001@172.31.7.94:0>;tag=katag1749771979
+DEBUG:gb28181-restreamer:[SIP]   4: From: <sip:81000000465001000001@172.31.7.94:0>;tag=katag1749771979
+[2025-06-12 23:46:19] [DEBUG] [SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+DEBUG:gb28181-restreamer:[SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+[2025-06-12 23:46:19] [DEBUG] [SIP]   6: Call-ID: keepalive-71979-1749771979
+DEBUG:gb28181-restreamer:[SIP]   6: Call-ID: keepalive-71979-1749771979
+[2025-06-12 23:46:19] [DEBUG] [SIP]   7: CSeq: 3986 MESSAGE
+DEBUG:gb28181-restreamer:[SIP]   7: CSeq: 3986 MESSAGE
+[2025-06-12 23:46:19] [DEBUG] [SIP]   8: Contact: <sip:172.31.7.94:0>
+DEBUG:gb28181-restreamer:[SIP]   8: Contact: <sip:172.31.7.94:0>
+[2025-06-12 23:46:19] [DEBUG] [SIP]   9: User-Agent: GB28181-Restreamer/1.0
+DEBUG:gb28181-restreamer:[SIP]   9: User-Agent: GB28181-Restreamer/1.0
+[2025-06-12 23:46:19] [DEBUG] [SIP]   10: Content-Type: Application/MANSCDP+xml
+DEBUG:gb28181-restreamer:[SIP]   10: Content-Type: Application/MANSCDP+xml
+[2025-06-12 23:46:19] [DEBUG] [SIP]   ... and 13 more lines
+DEBUG:gb28181-restreamer:[SIP]   ... and 13 more lines
+[2025-06-12 23:46:19] [INFO] [SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+INFO:gb28181-restreamer:[SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+[2025-06-12 23:46:19] [INFO] [SIP] ✅ UDP transmission SUCCESSFUL: 674/674 bytes
+INFO:gb28181-restreamer:[SIP] ✅ UDP transmission SUCCESSFUL: 674/674 bytes
+[2025-06-12 23:46:19] [WARNING] [SIP] 🔄 Registration approaching expiry in 45s - will renew soon
+WARNING:gb28181-restreamer:[SIP] 🔄 Registration approaching expiry in 45s - will renew soon
+[2025-06-12 23:46:19] [INFO] [SIP] 💓 Keepalive message (SN: 71979) delivered successfully
+INFO:gb28181-restreamer:[SIP] 💓 Keepalive message (SN: 71979) delivered successfully
+[2025-06-12 23:46:19] [INFO] [SIP]   • Device should stay online for next 15-30 seconds
+INFO:gb28181-restreamer:[SIP]   • Device should stay online for next 15-30 seconds
+[2025-06-12 23:46:19] [INFO] [SIP] ✅ Keepalive sent successfully - device should stay online
+INFO:gb28181-restreamer:[SIP] ✅ Keepalive sent successfully - device should stay online
+[2025-06-12 23:46:20] [WARNING] [SIP] 🔄 Registration approaching expiry in 44s - will renew soon
+WARNING:gb28181-restreamer:[SIP] 🔄 Registration approaching expiry in 44s - will renew soon
+[2025-06-12 23:46:21] [WARNING] [SIP] 🔄 Registration approaching expiry in 43s - will renew soon
+WARNING:gb28181-restreamer:[SIP] 🔄 Registration approaching expiry in 43s - will renew soon
+[2025-06-12 23:46:22] [WARNING] [SIP] 🔄 Registration approaching expiry in 42s - will renew soon
+WARNING:gb28181-restreamer:[SIP] 🔄 Registration approaching expiry in 42s - will renew soon
+[2025-06-12 23:46:23] [WARNING] [SIP] 🔄 Registration approaching expiry in 41s - will renew soon
+WARNING:gb28181-restreamer:[SIP] 🔄 Registration approaching expiry in 41s - will renew soon
+[2025-06-12 23:46:24] [WARNING] [SIP] 🔄 Registration approaching expiry in 40s - will renew soon
+WARNING:gb28181-restreamer:[SIP] 🔄 Registration approaching expiry in 40s - will renew soon
+[2025-06-12 23:46:25] [WARNING] [SIP] 🔄 Registration approaching expiry in 39s - will renew soon
+WARNING:gb28181-restreamer:[SIP] 🔄 Registration approaching expiry in 39s - will renew soon
+[2025-06-12 23:46:26] [WARNING] [SIP] 🔄 Registration approaching expiry in 38s - will renew soon
+WARNING:gb28181-restreamer:[SIP] 🔄 Registration approaching expiry in 38s - will renew soon
+[2025-06-12 23:46:27] [WARNING] [SIP] 🔄 Registration approaching expiry in 37s - will renew soon
+WARNING:gb28181-restreamer:[SIP] 🔄 Registration approaching expiry in 37s - will renew soon
+[2025-06-12 23:46:28] [WARNING] [SIP] 🔄 Registration approaching expiry in 36s - will renew soon
+WARNING:gb28181-restreamer:[SIP] 🔄 Registration approaching expiry in 36s - will renew soon
+[2025-06-12 23:46:29] [WARNING] [SIP] 🔄 Registration approaching expiry in 35s - will renew soon
+WARNING:gb28181-restreamer:[SIP] 🔄 Registration approaching expiry in 35s - will renew soon
+[2025-06-12 23:46:30] [WARNING] [SIP] 🔄 Registration approaching expiry in 34s - will renew soon
+WARNING:gb28181-restreamer:[SIP] 🔄 Registration approaching expiry in 34s - will renew soon
+[2025-06-12 23:46:31] [WARNING] [SIP] 🔄 Registration approaching expiry in 33s - will renew soon
+WARNING:gb28181-restreamer:[SIP] 🔄 Registration approaching expiry in 33s - will renew soon
+[2025-06-12 23:46:32] [WARNING] [SIP] 🔄 Registration approaching expiry in 32s - will renew soon
+WARNING:gb28181-restreamer:[SIP] 🔄 Registration approaching expiry in 32s - will renew soon
+[2025-06-12 23:46:33] [WARNING] [SIP] 🔄 Registration approaching expiry in 31s - will renew soon
+WARNING:gb28181-restreamer:[SIP] 🔄 Registration approaching expiry in 31s - will renew soon
+[2025-06-12 23:46:34] [INFO] [SIP] 🔄 Proactive registration renewal for WVP platform - preventing device offline
+INFO:gb28181-restreamer:[SIP] 🔄 Proactive registration renewal for WVP platform - preventing device offline
+[2025-06-12 23:46:34] [INFO] [SIP] 💓 Sending scheduled heartbeat to WVP platform
+INFO:gb28181-restreamer:[SIP] 💓 Sending scheduled heartbeat to WVP platform
+[2025-06-12 23:46:34] [INFO] [SIP] 💓 Sending WVP-compatible keepalive (SN: 71994) to prevent heartbeat timeout
+INFO:gb28181-restreamer:[SIP] 💓 Sending WVP-compatible keepalive (SN: 71994) to prevent heartbeat timeout
+[2025-06-12 23:46:34] [INFO] [SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 71994):
+INFO:gb28181-restreamer:[SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 71994):
+[2025-06-12 23:46:34] [INFO] [SIP]   • Message type: Keepalive
+INFO:gb28181-restreamer:[SIP]   • Message type: Keepalive
+[2025-06-12 23:46:34] [INFO] [SIP]   • Message size: 674 bytes
+INFO:gb28181-restreamer:[SIP]   • Message size: 674 bytes
+[2025-06-12 23:46:34] [INFO] [SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+[2025-06-12 23:46:34] [INFO] [SIP]   • Encoding: UTF-8
+INFO:gb28181-restreamer:[SIP]   • Encoding: UTF-8
+[2025-06-12 23:46:34] [DEBUG] [SIP] 📨 Message headers:
+DEBUG:gb28181-restreamer:[SIP] 📨 Message headers:
+[2025-06-12 23:46:34] [DEBUG] [SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+DEBUG:gb28181-restreamer:[SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+[2025-06-12 23:46:34] [DEBUG] [SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:0;rport;branch=z9hG4bK-ka-1749771994
+DEBUG:gb28181-restreamer:[SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:0;rport;branch=z9hG4bK-ka-1749771994
+[2025-06-12 23:46:34] [DEBUG] [SIP]   3: Max-Forwards: 70
+DEBUG:gb28181-restreamer:[SIP]   3: Max-Forwards: 70
+[2025-06-12 23:46:34] [DEBUG] [SIP]   4: From: <sip:81000000465001000001@172.31.7.94:0>;tag=katag1749771994
+DEBUG:gb28181-restreamer:[SIP]   4: From: <sip:81000000465001000001@172.31.7.94:0>;tag=katag1749771994
+[2025-06-12 23:46:34] [DEBUG] [SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+DEBUG:gb28181-restreamer:[SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+[2025-06-12 23:46:34] [DEBUG] [SIP]   6: Call-ID: keepalive-71994-1749771994
+DEBUG:gb28181-restreamer:[SIP]   6: Call-ID: keepalive-71994-1749771994
+[2025-06-12 23:46:34] [DEBUG] [SIP]   7: CSeq: 4001 MESSAGE
+DEBUG:gb28181-restreamer:[SIP]   7: CSeq: 4001 MESSAGE
+[2025-06-12 23:46:34] [DEBUG] [SIP]   8: Contact: <sip:172.31.7.94:0>
+DEBUG:gb28181-restreamer:[SIP]   8: Contact: <sip:172.31.7.94:0>
+[2025-06-12 23:46:34] [DEBUG] [SIP]   9: User-Agent: GB28181-Restreamer/1.0
+DEBUG:gb28181-restreamer:[SIP]   9: User-Agent: GB28181-Restreamer/1.0
+[2025-06-12 23:46:34] [DEBUG] [SIP]   10: Content-Type: Application/MANSCDP+xml
+DEBUG:gb28181-restreamer:[SIP]   10: Content-Type: Application/MANSCDP+xml
+[2025-06-12 23:46:34] [DEBUG] [SIP]   ... and 13 more lines
+DEBUG:gb28181-restreamer:[SIP]   ... and 13 more lines
+[2025-06-12 23:46:34] [INFO] [SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+INFO:gb28181-restreamer:[SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+[2025-06-12 23:46:34] [INFO] [SIP] ✅ UDP transmission SUCCESSFUL: 674/674 bytes
+INFO:gb28181-restreamer:[SIP] ✅ UDP transmission SUCCESSFUL: 674/674 bytes
+[2025-06-12 23:46:34] [INFO] [SIP] 💓 Keepalive message (SN: 71994) delivered successfully
+INFO:gb28181-restreamer:[SIP] 💓 Keepalive message (SN: 71994) delivered successfully
+[2025-06-12 23:46:34] [INFO] [SIP]   • Device should stay online for next 15-30 seconds
+INFO:gb28181-restreamer:[SIP]   • Device should stay online for next 15-30 seconds
+[2025-06-12 23:46:34] [INFO] [SIP] ✅ Keepalive sent successfully - device should stay online
+INFO:gb28181-restreamer:[SIP] ✅ Keepalive sent successfully - device should stay online
+[2025-06-12 23:46:49] [INFO] [SIP] 💓 Sending scheduled heartbeat to WVP platform
+INFO:gb28181-restreamer:[SIP] 💓 Sending scheduled heartbeat to WVP platform
+[2025-06-12 23:46:49] [INFO] [SIP] 💓 Sending WVP-compatible keepalive (SN: 72009) to prevent heartbeat timeout
+INFO:gb28181-restreamer:[SIP] 💓 Sending WVP-compatible keepalive (SN: 72009) to prevent heartbeat timeout
+[2025-06-12 23:46:49] [INFO] [SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 72009):
+INFO:gb28181-restreamer:[SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 72009):
+[2025-06-12 23:46:49] [INFO] [SIP]   • Message type: Keepalive
+INFO:gb28181-restreamer:[SIP]   • Message type: Keepalive
+[2025-06-12 23:46:49] [INFO] [SIP]   • Message size: 674 bytes
+INFO:gb28181-restreamer:[SIP]   • Message size: 674 bytes
+[2025-06-12 23:46:49] [INFO] [SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+[2025-06-12 23:46:49] [INFO] [SIP]   • Encoding: UTF-8
+INFO:gb28181-restreamer:[SIP]   • Encoding: UTF-8
+[2025-06-12 23:46:49] [DEBUG] [SIP] 📨 Message headers:
+DEBUG:gb28181-restreamer:[SIP] 📨 Message headers:
+[2025-06-12 23:46:49] [DEBUG] [SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+DEBUG:gb28181-restreamer:[SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+[2025-06-12 23:46:49] [DEBUG] [SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:0;rport;branch=z9hG4bK-ka-1749772009
+DEBUG:gb28181-restreamer:[SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:0;rport;branch=z9hG4bK-ka-1749772009
+[2025-06-12 23:46:49] [DEBUG] [SIP]   3: Max-Forwards: 70
+DEBUG:gb28181-restreamer:[SIP]   3: Max-Forwards: 70
+[2025-06-12 23:46:49] [DEBUG] [SIP]   4: From: <sip:81000000465001000001@172.31.7.94:0>;tag=katag1749772009
+DEBUG:gb28181-restreamer:[SIP]   4: From: <sip:81000000465001000001@172.31.7.94:0>;tag=katag1749772009
+[2025-06-12 23:46:49] [DEBUG] [SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+DEBUG:gb28181-restreamer:[SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+[2025-06-12 23:46:49] [DEBUG] [SIP]   6: Call-ID: keepalive-72009-1749772009
+DEBUG:gb28181-restreamer:[SIP]   6: Call-ID: keepalive-72009-1749772009
+[2025-06-12 23:46:49] [DEBUG] [SIP]   7: CSeq: 4016 MESSAGE
+DEBUG:gb28181-restreamer:[SIP]   7: CSeq: 4016 MESSAGE
+[2025-06-12 23:46:49] [DEBUG] [SIP]   8: Contact: <sip:172.31.7.94:0>
+DEBUG:gb28181-restreamer:[SIP]   8: Contact: <sip:172.31.7.94:0>
+[2025-06-12 23:46:49] [DEBUG] [SIP]   9: User-Agent: GB28181-Restreamer/1.0
+DEBUG:gb28181-restreamer:[SIP]   9: User-Agent: GB28181-Restreamer/1.0
+[2025-06-12 23:46:49] [DEBUG] [SIP]   10: Content-Type: Application/MANSCDP+xml
+DEBUG:gb28181-restreamer:[SIP]   10: Content-Type: Application/MANSCDP+xml
+[2025-06-12 23:46:49] [DEBUG] [SIP]   ... and 13 more lines
+DEBUG:gb28181-restreamer:[SIP]   ... and 13 more lines
+[2025-06-12 23:46:49] [INFO] [SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+INFO:gb28181-restreamer:[SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+[2025-06-12 23:46:49] [INFO] [SIP] ✅ UDP transmission SUCCESSFUL: 674/674 bytes
+INFO:gb28181-restreamer:[SIP] ✅ UDP transmission SUCCESSFUL: 674/674 bytes
+[2025-06-12 23:46:49] [INFO] [SIP] 💓 Keepalive message (SN: 72009) delivered successfully
+INFO:gb28181-restreamer:[SIP] 💓 Keepalive message (SN: 72009) delivered successfully
+[2025-06-12 23:46:49] [INFO] [SIP]   • Device should stay online for next 15-30 seconds
+INFO:gb28181-restreamer:[SIP]   • Device should stay online for next 15-30 seconds
+[2025-06-12 23:46:49] [INFO] [SIP] ✅ Keepalive sent successfully - device should stay online
+INFO:gb28181-restreamer:[SIP] ✅ Keepalive sent successfully - device should stay online
+[2025-06-12 23:47:04] [INFO] [SIP] 💓 Sending scheduled heartbeat to WVP platform
+INFO:gb28181-restreamer:[SIP] 💓 Sending scheduled heartbeat to WVP platform
+[2025-06-12 23:47:04] [INFO] [SIP] 💓 Sending WVP-compatible keepalive (SN: 72024) to prevent heartbeat timeout
+INFO:gb28181-restreamer:[SIP] 💓 Sending WVP-compatible keepalive (SN: 72024) to prevent heartbeat timeout
+[2025-06-12 23:47:04] [INFO] [SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 72024):
+INFO:gb28181-restreamer:[SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 72024):
+[2025-06-12 23:47:04] [INFO] [SIP]   • Message type: Keepalive
+INFO:gb28181-restreamer:[SIP]   • Message type: Keepalive
+[2025-06-12 23:47:04] [INFO] [SIP]   • Message size: 674 bytes
+INFO:gb28181-restreamer:[SIP]   • Message size: 674 bytes
+[2025-06-12 23:47:04] [INFO] [SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+[2025-06-12 23:47:04] [INFO] [SIP]   • Encoding: UTF-8
+INFO:gb28181-restreamer:[SIP]   • Encoding: UTF-8
+[2025-06-12 23:47:04] [DEBUG] [SIP] 📨 Message headers:
+DEBUG:gb28181-restreamer:[SIP] 📨 Message headers:
+[2025-06-12 23:47:04] [DEBUG] [SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+DEBUG:gb28181-restreamer:[SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+[2025-06-12 23:47:04] [DEBUG] [SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:0;rport;branch=z9hG4bK-ka-1749772024
+DEBUG:gb28181-restreamer:[SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:0;rport;branch=z9hG4bK-ka-1749772024
+[2025-06-12 23:47:04] [DEBUG] [SIP]   3: Max-Forwards: 70
+DEBUG:gb28181-restreamer:[SIP]   3: Max-Forwards: 70
+[2025-06-12 23:47:04] [DEBUG] [SIP]   4: From: <sip:81000000465001000001@172.31.7.94:0>;tag=katag1749772024
+DEBUG:gb28181-restreamer:[SIP]   4: From: <sip:81000000465001000001@172.31.7.94:0>;tag=katag1749772024
+[2025-06-12 23:47:04] [DEBUG] [SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+DEBUG:gb28181-restreamer:[SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+[2025-06-12 23:47:04] [DEBUG] [SIP]   6: Call-ID: keepalive-72024-1749772024
+DEBUG:gb28181-restreamer:[SIP]   6: Call-ID: keepalive-72024-1749772024
+[2025-06-12 23:47:04] [DEBUG] [SIP]   7: CSeq: 4031 MESSAGE
+DEBUG:gb28181-restreamer:[SIP]   7: CSeq: 4031 MESSAGE
+[2025-06-12 23:47:04] [DEBUG] [SIP]   8: Contact: <sip:172.31.7.94:0>
+DEBUG:gb28181-restreamer:[SIP]   8: Contact: <sip:172.31.7.94:0>
+[2025-06-12 23:47:04] [DEBUG] [SIP]   9: User-Agent: GB28181-Restreamer/1.0
+DEBUG:gb28181-restreamer:[SIP]   9: User-Agent: GB28181-Restreamer/1.0
+[2025-06-12 23:47:04] [DEBUG] [SIP]   10: Content-Type: Application/MANSCDP+xml
+DEBUG:gb28181-restreamer:[SIP]   10: Content-Type: Application/MANSCDP+xml
+[2025-06-12 23:47:04] [DEBUG] [SIP]   ... and 13 more lines
+DEBUG:gb28181-restreamer:[SIP]   ... and 13 more lines
+[2025-06-12 23:47:04] [INFO] [SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+INFO:gb28181-restreamer:[SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+[2025-06-12 23:47:04] [INFO] [SIP] ✅ UDP transmission SUCCESSFUL: 674/674 bytes
+INFO:gb28181-restreamer:[SIP] ✅ UDP transmission SUCCESSFUL: 674/674 bytes
+[2025-06-12 23:47:04] [INFO] [SIP] 💓 Keepalive message (SN: 72024) delivered successfully
+INFO:gb28181-restreamer:[SIP] 💓 Keepalive message (SN: 72024) delivered successfully
+[2025-06-12 23:47:04] [INFO] [SIP]   • Device should stay online for next 15-30 seconds
+INFO:gb28181-restreamer:[SIP]   • Device should stay online for next 15-30 seconds
+[2025-06-12 23:47:04] [INFO] [SIP] ✅ Keepalive sent successfully - device should stay online
+INFO:gb28181-restreamer:[SIP] ✅ Keepalive sent successfully - device should stay online
+[2025-06-12 23:47:10] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-06-12 23:47:10] [INFO] [STATUS] Recording scan complete: 14 files cached
+INFO:gb28181-restreamer:[STATUS] Recording scan complete: 14 files cached
+[2025-06-12 23:47:14] [INFO] [SIP] 📋 Sending periodic catalog notification to maintain frontend visibility
+INFO:gb28181-restreamer:[SIP] 📋 Sending periodic catalog notification to maintain frontend visibility
+[2025-06-12 23:47:14] [INFO] [SIP] 📋 Sending proactive catalog notification to WVP platform for immediate visibility
+INFO:gb28181-restreamer:[SIP] 📋 Sending proactive catalog notification to WVP platform for immediate visibility
+[2025-06-12 23:47:14] [INFO] [SIP] Catalog composition: 4 RTSP live streams, 14 video files
+INFO:gb28181-restreamer:[SIP] Catalog composition: 4 RTSP live streams, 14 video files
+[2025-06-12 23:47:14] [INFO] [SIP] Using cached catalog with 18 channels (RTSP streams prioritized)
+INFO:gb28181-restreamer:[SIP] Using cached catalog with 18 channels (RTSP streams prioritized)
+[2025-06-12 23:47:14] [INFO] [SIP] 🏗️ Building WVP-compatible catalog response (RTSP prioritized):
+INFO:gb28181-restreamer:[SIP] 🏗️ Building WVP-compatible catalog response (RTSP prioritized):
+[2025-06-12 23:47:14] [INFO] [SIP]   • Parent Device: 81000000465001000001 (GB28181-Restreamer)
+INFO:gb28181-restreamer:[SIP]   • Parent Device: 81000000465001000001 (GB28181-Restreamer)
+[2025-06-12 23:47:14] [INFO] [SIP]   • RTSP Live Streams: 4
+INFO:gb28181-restreamer:[SIP]   • RTSP Live Streams: 4
+[2025-06-12 23:47:14] [INFO] [SIP]   • Video File Channels: 14
+INFO:gb28181-restreamer:[SIP]   • Video File Channels: 14
+[2025-06-12 23:47:14] [INFO] [SIP]   • Total Items: 19
+INFO:gb28181-restreamer:[SIP]   • Total Items: 19
+[2025-06-12 23:47:14] [INFO] [SIP]   • Estimated size: 13530 bytes
+INFO:gb28181-restreamer:[SIP]   • Estimated size: 13530 bytes
+[2025-06-12 23:47:14] [WARNING] [SIP] ⚠️ Large response (13530 bytes) - applying RTSP-priority size limits
+WARNING:gb28181-restreamer:[SIP] ⚠️ Large response (13530 bytes) - applying RTSP-priority size limits
+[2025-06-12 23:47:14] [WARNING] [SIP] ⚠️ RTSP stream Front Door Camera too large for UDP - skipping
+WARNING:gb28181-restreamer:[SIP] ⚠️ RTSP stream Front Door Camera too large for UDP - skipping
+[2025-06-12 23:47:14] [WARNING] [SIP] ⚠️ RTSP stream Parking Lot Camera too large for UDP - skipping
+WARNING:gb28181-restreamer:[SIP] ⚠️ RTSP stream Parking Lot Camera too large for UDP - skipping
+[2025-06-12 23:47:14] [WARNING] [SIP] ⚠️ RTSP stream Wowza Test Stream too large for UDP - skipping
+WARNING:gb28181-restreamer:[SIP] ⚠️ RTSP stream Wowza Test Stream too large for UDP - skipping
+[2025-06-12 23:47:14] [WARNING] [SIP] ⚠️ RTSP stream Highway Camera too large for UDP - skipping
+WARNING:gb28181-restreamer:[SIP] ⚠️ RTSP stream Highway Camera too large for UDP - skipping
+[2025-06-12 23:47:14] [INFO] [SIP] 📦 RTSP-PRIORITY result: 0 RTSP streams + 0 video files (total: 1 items)
+INFO:gb28181-restreamer:[SIP] 📦 RTSP-PRIORITY result: 0 RTSP streams + 0 video files (total: 1 items)
+[2025-06-12 23:47:14] [INFO] [SIP] 🎯 ALL LIVE STREAMS INCLUDED: 0/4 RTSP channels
+INFO:gb28181-restreamer:[SIP] 🎯 ALL LIVE STREAMS INCLUDED: 0/4 RTSP channels
+[2025-06-12 23:47:14] [INFO] [SIP] 📊 Final WVP-compatible catalog response (RTSP-prioritized):
+INFO:gb28181-restreamer:[SIP] 📊 Final WVP-compatible catalog response (RTSP-prioritized):
+[2025-06-12 23:47:14] [INFO] [SIP]   • Message size: 1424 bytes
+INFO:gb28181-restreamer:[SIP]   • Message size: 1424 bytes
+[2025-06-12 23:47:14] [INFO] [SIP]   • SumNum: 1
+INFO:gb28181-restreamer:[SIP]   • SumNum: 1
+[2025-06-12 23:47:14] [INFO] [SIP]   • DeviceList Num: 1
+INFO:gb28181-restreamer:[SIP]   • DeviceList Num: 1
+[2025-06-12 23:47:14] [INFO] [SIP]   • Live streams preserved: RTSP channels prioritized over video files
+INFO:gb28181-restreamer:[SIP]   • Live streams preserved: RTSP channels prioritized over video files
+[2025-06-12 23:47:14] [INFO] [SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 122034):
+INFO:gb28181-restreamer:[SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 122034):
+[2025-06-12 23:47:14] [INFO] [SIP]   • Message type: Catalog
+INFO:gb28181-restreamer:[SIP]   • Message type: Catalog
+[2025-06-12 23:47:14] [INFO] [SIP]   • Message size: 1856 bytes
+INFO:gb28181-restreamer:[SIP]   • Message size: 1856 bytes
+[2025-06-12 23:47:14] [INFO] [SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+[2025-06-12 23:47:14] [INFO] [SIP]   • Encoding: UTF-8
+INFO:gb28181-restreamer:[SIP]   • Encoding: UTF-8
+[2025-06-12 23:47:14] [INFO] [SIP]   • XML <Item> count: 1
+INFO:gb28181-restreamer:[SIP]   • XML <Item> count: 1
+[2025-06-12 23:47:14] [INFO] [SIP]   • XML SumNum: 1
+INFO:gb28181-restreamer:[SIP]   • XML SumNum: 1
+[2025-06-12 23:47:14] [INFO] [SIP] ✅ XML integrity verified before transmission
+INFO:gb28181-restreamer:[SIP] ✅ XML integrity verified before transmission
+[2025-06-12 23:47:14] [WARNING] [SIP] ⚠️ Large UDP packet: 1856 bytes (may fragment)
+WARNING:gb28181-restreamer:[SIP] ⚠️ Large UDP packet: 1856 bytes (may fragment)
+[2025-06-12 23:47:14] [DEBUG] [SIP] 📨 Message headers:
+DEBUG:gb28181-restreamer:[SIP] 📨 Message headers:
+[2025-06-12 23:47:14] [DEBUG] [SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+DEBUG:gb28181-restreamer:[SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+[2025-06-12 23:47:14] [DEBUG] [SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:0;rport;branch=z9hG4bK-cat-1749772034
+DEBUG:gb28181-restreamer:[SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:0;rport;branch=z9hG4bK-cat-1749772034
+[2025-06-12 23:47:14] [DEBUG] [SIP]   3: Max-Forwards: 70
+DEBUG:gb28181-restreamer:[SIP]   3: Max-Forwards: 70
+[2025-06-12 23:47:14] [DEBUG] [SIP]   4: From: <sip:81000000465001000001@172.31.7.94:0>;tag=cattag1749772034
+DEBUG:gb28181-restreamer:[SIP]   4: From: <sip:81000000465001000001@172.31.7.94:0>;tag=cattag1749772034
+[2025-06-12 23:47:14] [DEBUG] [SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+DEBUG:gb28181-restreamer:[SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+[2025-06-12 23:47:14] [DEBUG] [SIP]   6: Call-ID: catalog-proactive-122034-1749772034
+DEBUG:gb28181-restreamer:[SIP]   6: Call-ID: catalog-proactive-122034-1749772034
+[2025-06-12 23:47:14] [DEBUG] [SIP]   7: CSeq: 7046 MESSAGE
+DEBUG:gb28181-restreamer:[SIP]   7: CSeq: 7046 MESSAGE
+[2025-06-12 23:47:14] [DEBUG] [SIP]   8: Contact: <sip:172.31.7.94:0>
+DEBUG:gb28181-restreamer:[SIP]   8: Contact: <sip:172.31.7.94:0>
+[2025-06-12 23:47:14] [DEBUG] [SIP]   9: User-Agent: GB28181-Restreamer/1.0
+DEBUG:gb28181-restreamer:[SIP]   9: User-Agent: GB28181-Restreamer/1.0
+[2025-06-12 23:47:14] [DEBUG] [SIP]   10: Content-Type: Application/MANSCDP+xml
+DEBUG:gb28181-restreamer:[SIP]   10: Content-Type: Application/MANSCDP+xml
+[2025-06-12 23:47:14] [DEBUG] [SIP]   ... and 47 more lines
+DEBUG:gb28181-restreamer:[SIP]   ... and 47 more lines
+[2025-06-12 23:47:14] [INFO] [SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+INFO:gb28181-restreamer:[SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+[2025-06-12 23:47:14] [INFO] [SIP] ✅ UDP transmission SUCCESSFUL: 1856/1856 bytes
+INFO:gb28181-restreamer:[SIP] ✅ UDP transmission SUCCESSFUL: 1856/1856 bytes
+[2025-06-12 23:47:14] [WARNING] [SIP] 📡 Large message sent - WVP platform may need time to reassemble
+WARNING:gb28181-restreamer:[SIP] 📡 Large message sent - WVP platform may need time to reassemble
+[2025-06-12 23:47:14] [INFO] [SIP] 📤 Catalog response (SN: 122034) delivered successfully
+INFO:gb28181-restreamer:[SIP] 📤 Catalog response (SN: 122034) delivered successfully
+[2025-06-12 23:47:14] [INFO] [SIP]   • Contains 1 devices
+INFO:gb28181-restreamer:[SIP]   • Contains 1 devices
+[2025-06-12 23:47:14] [INFO] [SIP]   • Total size: 1856 bytes
+INFO:gb28181-restreamer:[SIP]   • Total size: 1856 bytes
+[2025-06-12 23:47:14] [INFO] [SIP]   • WVP platform should process this within 30 seconds
+INFO:gb28181-restreamer:[SIP]   • WVP platform should process this within 30 seconds
+[2025-06-12 23:47:14] [INFO] [SIP] ✅ Proactive catalog notification sent successfully (SN: 122034)
+INFO:gb28181-restreamer:[SIP] ✅ Proactive catalog notification sent successfully (SN: 122034)
+[2025-06-12 23:47:14] [INFO] [SIP] 📱 WVP frontend should now show 18 available channels
+INFO:gb28181-restreamer:[SIP] 📱 WVP frontend should now show 18 available channels
+[2025-06-12 23:47:14] [INFO] [SIP] ✅ Periodic catalog notification sent successfully
+INFO:gb28181-restreamer:[SIP] ✅ Periodic catalog notification sent successfully
+[2025-06-12 23:47:19] [INFO] [SIP] 💓 Sending scheduled heartbeat to WVP platform
+INFO:gb28181-restreamer:[SIP] 💓 Sending scheduled heartbeat to WVP platform
+[2025-06-12 23:47:19] [INFO] [SIP] 💓 Sending WVP-compatible keepalive (SN: 72039) to prevent heartbeat timeout
+INFO:gb28181-restreamer:[SIP] 💓 Sending WVP-compatible keepalive (SN: 72039) to prevent heartbeat timeout
+[2025-06-12 23:47:19] [INFO] [SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 72039):
+INFO:gb28181-restreamer:[SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 72039):
+[2025-06-12 23:47:19] [INFO] [SIP]   • Message type: Keepalive
+INFO:gb28181-restreamer:[SIP]   • Message type: Keepalive
+[2025-06-12 23:47:19] [INFO] [SIP]   • Message size: 674 bytes
+INFO:gb28181-restreamer:[SIP]   • Message size: 674 bytes
+[2025-06-12 23:47:19] [INFO] [SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+[2025-06-12 23:47:19] [INFO] [SIP]   • Encoding: UTF-8
+INFO:gb28181-restreamer:[SIP]   • Encoding: UTF-8
+[2025-06-12 23:47:19] [DEBUG] [SIP] 📨 Message headers:
+DEBUG:gb28181-restreamer:[SIP] 📨 Message headers:
+[2025-06-12 23:47:19] [DEBUG] [SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+DEBUG:gb28181-restreamer:[SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+[2025-06-12 23:47:19] [DEBUG] [SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:0;rport;branch=z9hG4bK-ka-1749772039
+DEBUG:gb28181-restreamer:[SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:0;rport;branch=z9hG4bK-ka-1749772039
+[2025-06-12 23:47:19] [DEBUG] [SIP]   3: Max-Forwards: 70
+DEBUG:gb28181-restreamer:[SIP]   3: Max-Forwards: 70
+[2025-06-12 23:47:19] [DEBUG] [SIP]   4: From: <sip:81000000465001000001@172.31.7.94:0>;tag=katag1749772039
+DEBUG:gb28181-restreamer:[SIP]   4: From: <sip:81000000465001000001@172.31.7.94:0>;tag=katag1749772039
+[2025-06-12 23:47:19] [DEBUG] [SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+DEBUG:gb28181-restreamer:[SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+[2025-06-12 23:47:19] [DEBUG] [SIP]   6: Call-ID: keepalive-72039-1749772039
+DEBUG:gb28181-restreamer:[SIP]   6: Call-ID: keepalive-72039-1749772039
+[2025-06-12 23:47:19] [DEBUG] [SIP]   7: CSeq: 4046 MESSAGE
+DEBUG:gb28181-restreamer:[SIP]   7: CSeq: 4046 MESSAGE
+[2025-06-12 23:47:19] [DEBUG] [SIP]   8: Contact: <sip:172.31.7.94:0>
+DEBUG:gb28181-restreamer:[SIP]   8: Contact: <sip:172.31.7.94:0>
+[2025-06-12 23:47:19] [DEBUG] [SIP]   9: User-Agent: GB28181-Restreamer/1.0
+DEBUG:gb28181-restreamer:[SIP]   9: User-Agent: GB28181-Restreamer/1.0
+[2025-06-12 23:47:19] [DEBUG] [SIP]   10: Content-Type: Application/MANSCDP+xml
+DEBUG:gb28181-restreamer:[SIP]   10: Content-Type: Application/MANSCDP+xml
+[2025-06-12 23:47:19] [DEBUG] [SIP]   ... and 13 more lines
+DEBUG:gb28181-restreamer:[SIP]   ... and 13 more lines
+[2025-06-12 23:47:19] [INFO] [SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+INFO:gb28181-restreamer:[SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+[2025-06-12 23:47:19] [INFO] [SIP] ✅ UDP transmission SUCCESSFUL: 674/674 bytes
+INFO:gb28181-restreamer:[SIP] ✅ UDP transmission SUCCESSFUL: 674/674 bytes
+[2025-06-12 23:47:19] [INFO] [SIP] 💓 Keepalive message (SN: 72039) delivered successfully
+INFO:gb28181-restreamer:[SIP] 💓 Keepalive message (SN: 72039) delivered successfully
+[2025-06-12 23:47:19] [INFO] [SIP]   • Device should stay online for next 15-30 seconds
+INFO:gb28181-restreamer:[SIP]   • Device should stay online for next 15-30 seconds
+[2025-06-12 23:47:19] [INFO] [SIP] ✅ Keepalive sent successfully - device should stay online
+INFO:gb28181-restreamer:[SIP] ✅ Keepalive sent successfully - device should stay online
+[2025-06-12 23:47:34] [INFO] [SIP] 💓 Sending scheduled heartbeat to WVP platform
+INFO:gb28181-restreamer:[SIP] 💓 Sending scheduled heartbeat to WVP platform
+[2025-06-12 23:47:34] [INFO] [SIP] 💓 Sending WVP-compatible keepalive (SN: 72054) to prevent heartbeat timeout
+INFO:gb28181-restreamer:[SIP] 💓 Sending WVP-compatible keepalive (SN: 72054) to prevent heartbeat timeout
+[2025-06-12 23:47:34] [INFO] [SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 72054):
+INFO:gb28181-restreamer:[SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 72054):
+[2025-06-12 23:47:34] [INFO] [SIP]   • Message type: Keepalive
+INFO:gb28181-restreamer:[SIP]   • Message type: Keepalive
+[2025-06-12 23:47:34] [INFO] [SIP]   • Message size: 674 bytes
+INFO:gb28181-restreamer:[SIP]   • Message size: 674 bytes
+[2025-06-12 23:47:34] [INFO] [SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+[2025-06-12 23:47:34] [INFO] [SIP]   • Encoding: UTF-8
+INFO:gb28181-restreamer:[SIP]   • Encoding: UTF-8
+[2025-06-12 23:47:34] [DEBUG] [SIP] 📨 Message headers:
+DEBUG:gb28181-restreamer:[SIP] 📨 Message headers:
+[2025-06-12 23:47:34] [DEBUG] [SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+DEBUG:gb28181-restreamer:[SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+[2025-06-12 23:47:34] [DEBUG] [SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:0;rport;branch=z9hG4bK-ka-1749772054
+DEBUG:gb28181-restreamer:[SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:0;rport;branch=z9hG4bK-ka-1749772054
+[2025-06-12 23:47:34] [DEBUG] [SIP]   3: Max-Forwards: 70
+DEBUG:gb28181-restreamer:[SIP]   3: Max-Forwards: 70
+[2025-06-12 23:47:34] [DEBUG] [SIP]   4: From: <sip:81000000465001000001@172.31.7.94:0>;tag=katag1749772054
+DEBUG:gb28181-restreamer:[SIP]   4: From: <sip:81000000465001000001@172.31.7.94:0>;tag=katag1749772054
+[2025-06-12 23:47:34] [DEBUG] [SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+DEBUG:gb28181-restreamer:[SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+[2025-06-12 23:47:34] [DEBUG] [SIP]   6: Call-ID: keepalive-72054-1749772054
+DEBUG:gb28181-restreamer:[SIP]   6: Call-ID: keepalive-72054-1749772054
+[2025-06-12 23:47:34] [DEBUG] [SIP]   7: CSeq: 4061 MESSAGE
+DEBUG:gb28181-restreamer:[SIP]   7: CSeq: 4061 MESSAGE
+[2025-06-12 23:47:34] [DEBUG] [SIP]   8: Contact: <sip:172.31.7.94:0>
+DEBUG:gb28181-restreamer:[SIP]   8: Contact: <sip:172.31.7.94:0>
+[2025-06-12 23:47:34] [DEBUG] [SIP]   9: User-Agent: GB28181-Restreamer/1.0
+DEBUG:gb28181-restreamer:[SIP]   9: User-Agent: GB28181-Restreamer/1.0
+[2025-06-12 23:47:34] [DEBUG] [SIP]   10: Content-Type: Application/MANSCDP+xml
+DEBUG:gb28181-restreamer:[SIP]   10: Content-Type: Application/MANSCDP+xml
+[2025-06-12 23:47:34] [DEBUG] [SIP]   ... and 13 more lines
+DEBUG:gb28181-restreamer:[SIP]   ... and 13 more lines
+[2025-06-12 23:47:34] [INFO] [SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+INFO:gb28181-restreamer:[SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+[2025-06-12 23:47:34] [INFO] [SIP] ✅ UDP transmission SUCCESSFUL: 674/674 bytes
+INFO:gb28181-restreamer:[SIP] ✅ UDP transmission SUCCESSFUL: 674/674 bytes
+[2025-06-12 23:47:35] [INFO] [SIP] 💓 Keepalive message (SN: 72054) delivered successfully
+INFO:gb28181-restreamer:[SIP] 💓 Keepalive message (SN: 72054) delivered successfully
+[2025-06-12 23:47:35] [INFO] [SIP]   • Device should stay online for next 15-30 seconds
+INFO:gb28181-restreamer:[SIP]   • Device should stay online for next 15-30 seconds
+[2025-06-12 23:47:35] [INFO] [SIP] ✅ Keepalive sent successfully - device should stay online
+INFO:gb28181-restreamer:[SIP] ✅ Keepalive sent successfully - device should stay online
+[2025-06-12 23:47:49] [WARNING] [SIP] 🔄 Registration approaching expiry in 45s - will renew soon
+WARNING:gb28181-restreamer:[SIP] 🔄 Registration approaching expiry in 45s - will renew soon
+[2025-06-12 23:47:50] [INFO] [SIP] 💓 Sending scheduled heartbeat to WVP platform
+INFO:gb28181-restreamer:[SIP] 💓 Sending scheduled heartbeat to WVP platform
+[2025-06-12 23:47:50] [INFO] [SIP] 💓 Sending WVP-compatible keepalive (SN: 72070) to prevent heartbeat timeout
+INFO:gb28181-restreamer:[SIP] 💓 Sending WVP-compatible keepalive (SN: 72070) to prevent heartbeat timeout
+[2025-06-12 23:47:50] [INFO] [SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 72070):
+INFO:gb28181-restreamer:[SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 72070):
+[2025-06-12 23:47:50] [INFO] [SIP]   • Message type: Keepalive
+INFO:gb28181-restreamer:[SIP]   • Message type: Keepalive
+[2025-06-12 23:47:50] [INFO] [SIP]   • Message size: 674 bytes
+INFO:gb28181-restreamer:[SIP]   • Message size: 674 bytes
+[2025-06-12 23:47:50] [INFO] [SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+[2025-06-12 23:47:50] [INFO] [SIP]   • Encoding: UTF-8
+INFO:gb28181-restreamer:[SIP]   • Encoding: UTF-8
+[2025-06-12 23:47:50] [DEBUG] [SIP] 📨 Message headers:
+DEBUG:gb28181-restreamer:[SIP] 📨 Message headers:
+[2025-06-12 23:47:50] [DEBUG] [SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+DEBUG:gb28181-restreamer:[SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+[2025-06-12 23:47:50] [DEBUG] [SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:0;rport;branch=z9hG4bK-ka-1749772070
+DEBUG:gb28181-restreamer:[SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:0;rport;branch=z9hG4bK-ka-1749772070
+[2025-06-12 23:47:50] [DEBUG] [SIP]   3: Max-Forwards: 70
+DEBUG:gb28181-restreamer:[SIP]   3: Max-Forwards: 70
+[2025-06-12 23:47:50] [DEBUG] [SIP]   4: From: <sip:81000000465001000001@172.31.7.94:0>;tag=katag1749772070
+DEBUG:gb28181-restreamer:[SIP]   4: From: <sip:81000000465001000001@172.31.7.94:0>;tag=katag1749772070
+[2025-06-12 23:47:50] [DEBUG] [SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+DEBUG:gb28181-restreamer:[SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+[2025-06-12 23:47:50] [DEBUG] [SIP]   6: Call-ID: keepalive-72070-1749772070
+DEBUG:gb28181-restreamer:[SIP]   6: Call-ID: keepalive-72070-1749772070
+[2025-06-12 23:47:50] [DEBUG] [SIP]   7: CSeq: 4077 MESSAGE
+DEBUG:gb28181-restreamer:[SIP]   7: CSeq: 4077 MESSAGE
+[2025-06-12 23:47:50] [DEBUG] [SIP]   8: Contact: <sip:172.31.7.94:0>
+DEBUG:gb28181-restreamer:[SIP]   8: Contact: <sip:172.31.7.94:0>
+[2025-06-12 23:47:50] [DEBUG] [SIP]   9: User-Agent: GB28181-Restreamer/1.0
+DEBUG:gb28181-restreamer:[SIP]   9: User-Agent: GB28181-Restreamer/1.0
+[2025-06-12 23:47:50] [DEBUG] [SIP]   10: Content-Type: Application/MANSCDP+xml
+DEBUG:gb28181-restreamer:[SIP]   10: Content-Type: Application/MANSCDP+xml
+[2025-06-12 23:47:50] [DEBUG] [SIP]   ... and 13 more lines
+DEBUG:gb28181-restreamer:[SIP]   ... and 13 more lines
+[2025-06-12 23:47:50] [INFO] [SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+INFO:gb28181-restreamer:[SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+[2025-06-12 23:47:50] [INFO] [SIP] ✅ UDP transmission SUCCESSFUL: 674/674 bytes
+INFO:gb28181-restreamer:[SIP] ✅ UDP transmission SUCCESSFUL: 674/674 bytes
+[2025-06-12 23:47:50] [INFO] [SIP] 💓 Keepalive message (SN: 72070) delivered successfully
+INFO:gb28181-restreamer:[SIP] 💓 Keepalive message (SN: 72070) delivered successfully
+[2025-06-12 23:47:50] [INFO] [SIP]   • Device should stay online for next 15-30 seconds
+INFO:gb28181-restreamer:[SIP]   • Device should stay online for next 15-30 seconds
+[2025-06-12 23:47:50] [INFO] [SIP] ✅ Keepalive sent successfully - device should stay online
+INFO:gb28181-restreamer:[SIP] ✅ Keepalive sent successfully - device should stay online
+[2025-06-12 23:47:50] [WARNING] [SIP] 🔄 Registration approaching expiry in 44s - will renew soon
+WARNING:gb28181-restreamer:[SIP] 🔄 Registration approaching expiry in 44s - will renew soon
+[2025-06-12 23:47:51] [WARNING] [SIP] 🔄 Registration approaching expiry in 43s - will renew soon
+WARNING:gb28181-restreamer:[SIP] 🔄 Registration approaching expiry in 43s - will renew soon
+[2025-06-12 23:47:52] [WARNING] [SIP] 🔄 Registration approaching expiry in 42s - will renew soon
+WARNING:gb28181-restreamer:[SIP] 🔄 Registration approaching expiry in 42s - will renew soon
+[2025-06-12 23:47:53] [WARNING] [SIP] 🔄 Registration approaching expiry in 41s - will renew soon
+WARNING:gb28181-restreamer:[SIP] 🔄 Registration approaching expiry in 41s - will renew soon
+[2025-06-12 23:47:54] [WARNING] [SIP] 🔄 Registration approaching expiry in 40s - will renew soon
+WARNING:gb28181-restreamer:[SIP] 🔄 Registration approaching expiry in 40s - will renew soon
+[2025-06-12 23:47:55] [WARNING] [SIP] 🔄 Registration approaching expiry in 39s - will renew soon
+WARNING:gb28181-restreamer:[SIP] 🔄 Registration approaching expiry in 39s - will renew soon
+[2025-06-12 23:47:56] [WARNING] [SIP] 🔄 Registration approaching expiry in 38s - will renew soon
+WARNING:gb28181-restreamer:[SIP] 🔄 Registration approaching expiry in 38s - will renew soon
+[2025-06-12 23:47:57] [WARNING] [SIP] 🔄 Registration approaching expiry in 37s - will renew soon
+WARNING:gb28181-restreamer:[SIP] 🔄 Registration approaching expiry in 37s - will renew soon
+[2025-06-12 23:47:58] [WARNING] [SIP] 🔄 Registration approaching expiry in 36s - will renew soon
+WARNING:gb28181-restreamer:[SIP] 🔄 Registration approaching expiry in 36s - will renew soon
+[2025-06-12 23:47:59] [WARNING] [SIP] 🔄 Registration approaching expiry in 35s - will renew soon
+WARNING:gb28181-restreamer:[SIP] 🔄 Registration approaching expiry in 35s - will renew soon
+[2025-06-12 23:48:00] [WARNING] [SIP] 🔄 Registration approaching expiry in 34s - will renew soon
+WARNING:gb28181-restreamer:[SIP] 🔄 Registration approaching expiry in 34s - will renew soon
+[2025-06-12 23:48:01] [WARNING] [SIP] 🔄 Registration approaching expiry in 33s - will renew soon
+WARNING:gb28181-restreamer:[SIP] 🔄 Registration approaching expiry in 33s - will renew soon
+[2025-06-12 23:48:02] [WARNING] [SIP] 🔄 Registration approaching expiry in 32s - will renew soon
+WARNING:gb28181-restreamer:[SIP] 🔄 Registration approaching expiry in 32s - will renew soon
+[2025-06-12 23:48:03] [WARNING] [SIP] 🔄 Registration approaching expiry in 31s - will renew soon
+WARNING:gb28181-restreamer:[SIP] 🔄 Registration approaching expiry in 31s - will renew soon
+[2025-06-12 23:48:04] [INFO] [SIP] 🔄 Proactive registration renewal for WVP platform - preventing device offline
+INFO:gb28181-restreamer:[SIP] 🔄 Proactive registration renewal for WVP platform - preventing device offline
+[2025-06-12 23:48:05] [INFO] [SIP] 💓 Sending scheduled heartbeat to WVP platform
+INFO:gb28181-restreamer:[SIP] 💓 Sending scheduled heartbeat to WVP platform
+[2025-06-12 23:48:05] [INFO] [SIP] 💓 Sending WVP-compatible keepalive (SN: 72085) to prevent heartbeat timeout
+INFO:gb28181-restreamer:[SIP] 💓 Sending WVP-compatible keepalive (SN: 72085) to prevent heartbeat timeout
+[2025-06-12 23:48:05] [INFO] [SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 72085):
+INFO:gb28181-restreamer:[SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 72085):
+[2025-06-12 23:48:05] [INFO] [SIP]   • Message type: Keepalive
+INFO:gb28181-restreamer:[SIP]   • Message type: Keepalive
+[2025-06-12 23:48:05] [INFO] [SIP]   • Message size: 674 bytes
+INFO:gb28181-restreamer:[SIP]   • Message size: 674 bytes
+[2025-06-12 23:48:05] [INFO] [SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+[2025-06-12 23:48:05] [INFO] [SIP]   • Encoding: UTF-8
+INFO:gb28181-restreamer:[SIP]   • Encoding: UTF-8
+[2025-06-12 23:48:05] [DEBUG] [SIP] 📨 Message headers:
+DEBUG:gb28181-restreamer:[SIP] 📨 Message headers:
+[2025-06-12 23:48:05] [DEBUG] [SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+DEBUG:gb28181-restreamer:[SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+[2025-06-12 23:48:05] [DEBUG] [SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:0;rport;branch=z9hG4bK-ka-1749772085
+DEBUG:gb28181-restreamer:[SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:0;rport;branch=z9hG4bK-ka-1749772085
+[2025-06-12 23:48:05] [DEBUG] [SIP]   3: Max-Forwards: 70
+DEBUG:gb28181-restreamer:[SIP]   3: Max-Forwards: 70
+[2025-06-12 23:48:05] [DEBUG] [SIP]   4: From: <sip:81000000465001000001@172.31.7.94:0>;tag=katag1749772085
+DEBUG:gb28181-restreamer:[SIP]   4: From: <sip:81000000465001000001@172.31.7.94:0>;tag=katag1749772085
+[2025-06-12 23:48:05] [DEBUG] [SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+DEBUG:gb28181-restreamer:[SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+[2025-06-12 23:48:05] [DEBUG] [SIP]   6: Call-ID: keepalive-72085-1749772085
+DEBUG:gb28181-restreamer:[SIP]   6: Call-ID: keepalive-72085-1749772085
+[2025-06-12 23:48:05] [DEBUG] [SIP]   7: CSeq: 4092 MESSAGE
+DEBUG:gb28181-restreamer:[SIP]   7: CSeq: 4092 MESSAGE
+[2025-06-12 23:48:05] [DEBUG] [SIP]   8: Contact: <sip:172.31.7.94:0>
+DEBUG:gb28181-restreamer:[SIP]   8: Contact: <sip:172.31.7.94:0>
+[2025-06-12 23:48:05] [DEBUG] [SIP]   9: User-Agent: GB28181-Restreamer/1.0
+DEBUG:gb28181-restreamer:[SIP]   9: User-Agent: GB28181-Restreamer/1.0
+[2025-06-12 23:48:05] [DEBUG] [SIP]   10: Content-Type: Application/MANSCDP+xml
+DEBUG:gb28181-restreamer:[SIP]   10: Content-Type: Application/MANSCDP+xml
+[2025-06-12 23:48:05] [DEBUG] [SIP]   ... and 13 more lines
+DEBUG:gb28181-restreamer:[SIP]   ... and 13 more lines
+[2025-06-12 23:48:05] [INFO] [SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+INFO:gb28181-restreamer:[SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+[2025-06-12 23:48:05] [INFO] [SIP] ✅ UDP transmission SUCCESSFUL: 674/674 bytes
+INFO:gb28181-restreamer:[SIP] ✅ UDP transmission SUCCESSFUL: 674/674 bytes
+[2025-06-12 23:48:05] [INFO] [SIP] 💓 Keepalive message (SN: 72085) delivered successfully
+INFO:gb28181-restreamer:[SIP] 💓 Keepalive message (SN: 72085) delivered successfully
+[2025-06-12 23:48:05] [INFO] [SIP]   • Device should stay online for next 15-30 seconds
+INFO:gb28181-restreamer:[SIP]   • Device should stay online for next 15-30 seconds
+[2025-06-12 23:48:05] [INFO] [SIP] ✅ Keepalive sent successfully - device should stay online
+INFO:gb28181-restreamer:[SIP] ✅ Keepalive sent successfully - device should stay online
+[2025-06-12 23:48:10] [INFO] [STATUS] Active streams: 0
+INFO:gb28181-restreamer:[STATUS] Active streams: 0
+[2025-06-12 23:48:10] [INFO] [STATUS] Recording scan complete: 14 files cached
+INFO:gb28181-restreamer:[STATUS] Recording scan complete: 14 files cached
+[2025-06-12 23:48:14] [INFO] [SIP] 📋 Sending periodic catalog notification to maintain frontend visibility
+INFO:gb28181-restreamer:[SIP] 📋 Sending periodic catalog notification to maintain frontend visibility
+[2025-06-12 23:48:14] [INFO] [SIP] 📋 Sending proactive catalog notification to WVP platform for immediate visibility
+INFO:gb28181-restreamer:[SIP] 📋 Sending proactive catalog notification to WVP platform for immediate visibility
+[2025-06-12 23:48:14] [INFO] [SIP] Catalog composition: 4 RTSP live streams, 14 video files
+INFO:gb28181-restreamer:[SIP] Catalog composition: 4 RTSP live streams, 14 video files
+[2025-06-12 23:48:14] [INFO] [SIP] Using cached catalog with 18 channels (RTSP streams prioritized)
+INFO:gb28181-restreamer:[SIP] Using cached catalog with 18 channels (RTSP streams prioritized)
+[2025-06-12 23:48:14] [INFO] [SIP] 🏗️ Building WVP-compatible catalog response (RTSP prioritized):
+INFO:gb28181-restreamer:[SIP] 🏗️ Building WVP-compatible catalog response (RTSP prioritized):
+[2025-06-12 23:48:14] [INFO] [SIP]   • Parent Device: 81000000465001000001 (GB28181-Restreamer)
+INFO:gb28181-restreamer:[SIP]   • Parent Device: 81000000465001000001 (GB28181-Restreamer)
+[2025-06-12 23:48:14] [INFO] [SIP]   • RTSP Live Streams: 4
+INFO:gb28181-restreamer:[SIP]   • RTSP Live Streams: 4
+[2025-06-12 23:48:14] [INFO] [SIP]   • Video File Channels: 14
+INFO:gb28181-restreamer:[SIP]   • Video File Channels: 14
+[2025-06-12 23:48:14] [INFO] [SIP]   • Total Items: 19
+INFO:gb28181-restreamer:[SIP]   • Total Items: 19
+[2025-06-12 23:48:14] [INFO] [SIP]   • Estimated size: 13530 bytes
+INFO:gb28181-restreamer:[SIP]   • Estimated size: 13530 bytes
+[2025-06-12 23:48:14] [WARNING] [SIP] ⚠️ Large response (13530 bytes) - applying RTSP-priority size limits
+WARNING:gb28181-restreamer:[SIP] ⚠️ Large response (13530 bytes) - applying RTSP-priority size limits
+[2025-06-12 23:48:14] [WARNING] [SIP] ⚠️ RTSP stream Front Door Camera too large for UDP - skipping
+WARNING:gb28181-restreamer:[SIP] ⚠️ RTSP stream Front Door Camera too large for UDP - skipping
+[2025-06-12 23:48:14] [WARNING] [SIP] ⚠️ RTSP stream Parking Lot Camera too large for UDP - skipping
+WARNING:gb28181-restreamer:[SIP] ⚠️ RTSP stream Parking Lot Camera too large for UDP - skipping
+[2025-06-12 23:48:14] [WARNING] [SIP] ⚠️ RTSP stream Wowza Test Stream too large for UDP - skipping
+WARNING:gb28181-restreamer:[SIP] ⚠️ RTSP stream Wowza Test Stream too large for UDP - skipping
+[2025-06-12 23:48:14] [WARNING] [SIP] ⚠️ RTSP stream Highway Camera too large for UDP - skipping
+WARNING:gb28181-restreamer:[SIP] ⚠️ RTSP stream Highway Camera too large for UDP - skipping
+[2025-06-12 23:48:14] [INFO] [SIP] 📦 RTSP-PRIORITY result: 0 RTSP streams + 0 video files (total: 1 items)
+INFO:gb28181-restreamer:[SIP] 📦 RTSP-PRIORITY result: 0 RTSP streams + 0 video files (total: 1 items)
+[2025-06-12 23:48:14] [INFO] [SIP] 🎯 ALL LIVE STREAMS INCLUDED: 0/4 RTSP channels
+INFO:gb28181-restreamer:[SIP] 🎯 ALL LIVE STREAMS INCLUDED: 0/4 RTSP channels
+[2025-06-12 23:48:14] [INFO] [SIP] 📊 Final WVP-compatible catalog response (RTSP-prioritized):
+INFO:gb28181-restreamer:[SIP] 📊 Final WVP-compatible catalog response (RTSP-prioritized):
+[2025-06-12 23:48:14] [INFO] [SIP]   • Message size: 1424 bytes
+INFO:gb28181-restreamer:[SIP]   • Message size: 1424 bytes
+[2025-06-12 23:48:14] [INFO] [SIP]   • SumNum: 1
+INFO:gb28181-restreamer:[SIP]   • SumNum: 1
+[2025-06-12 23:48:14] [INFO] [SIP]   • DeviceList Num: 1
+INFO:gb28181-restreamer:[SIP]   • DeviceList Num: 1
+[2025-06-12 23:48:14] [INFO] [SIP]   • Live streams preserved: RTSP channels prioritized over video files
+INFO:gb28181-restreamer:[SIP]   • Live streams preserved: RTSP channels prioritized over video files
+[2025-06-12 23:48:14] [INFO] [SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 122094):
+INFO:gb28181-restreamer:[SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 122094):
+[2025-06-12 23:48:14] [INFO] [SIP]   • Message type: Catalog
+INFO:gb28181-restreamer:[SIP]   • Message type: Catalog
+[2025-06-12 23:48:14] [INFO] [SIP]   • Message size: 1856 bytes
+INFO:gb28181-restreamer:[SIP]   • Message size: 1856 bytes
+[2025-06-12 23:48:14] [INFO] [SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+[2025-06-12 23:48:14] [INFO] [SIP]   • Encoding: UTF-8
+INFO:gb28181-restreamer:[SIP]   • Encoding: UTF-8
+[2025-06-12 23:48:14] [INFO] [SIP]   • XML <Item> count: 1
+INFO:gb28181-restreamer:[SIP]   • XML <Item> count: 1
+[2025-06-12 23:48:14] [INFO] [SIP]   • XML SumNum: 1
+INFO:gb28181-restreamer:[SIP]   • XML SumNum: 1
+[2025-06-12 23:48:14] [INFO] [SIP] ✅ XML integrity verified before transmission
+INFO:gb28181-restreamer:[SIP] ✅ XML integrity verified before transmission
+[2025-06-12 23:48:14] [WARNING] [SIP] ⚠️ Large UDP packet: 1856 bytes (may fragment)
+WARNING:gb28181-restreamer:[SIP] ⚠️ Large UDP packet: 1856 bytes (may fragment)
+[2025-06-12 23:48:14] [DEBUG] [SIP] 📨 Message headers:
+DEBUG:gb28181-restreamer:[SIP] 📨 Message headers:
+[2025-06-12 23:48:14] [DEBUG] [SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+DEBUG:gb28181-restreamer:[SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+[2025-06-12 23:48:14] [DEBUG] [SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:0;rport;branch=z9hG4bK-cat-1749772094
+DEBUG:gb28181-restreamer:[SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:0;rport;branch=z9hG4bK-cat-1749772094
+[2025-06-12 23:48:14] [DEBUG] [SIP]   3: Max-Forwards: 70
+DEBUG:gb28181-restreamer:[SIP]   3: Max-Forwards: 70
+[2025-06-12 23:48:14] [DEBUG] [SIP]   4: From: <sip:81000000465001000001@172.31.7.94:0>;tag=cattag1749772094
+DEBUG:gb28181-restreamer:[SIP]   4: From: <sip:81000000465001000001@172.31.7.94:0>;tag=cattag1749772094
+[2025-06-12 23:48:14] [DEBUG] [SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+DEBUG:gb28181-restreamer:[SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+[2025-06-12 23:48:14] [DEBUG] [SIP]   6: Call-ID: catalog-proactive-122094-1749772094
+DEBUG:gb28181-restreamer:[SIP]   6: Call-ID: catalog-proactive-122094-1749772094
+[2025-06-12 23:48:14] [DEBUG] [SIP]   7: CSeq: 7106 MESSAGE
+DEBUG:gb28181-restreamer:[SIP]   7: CSeq: 7106 MESSAGE
+[2025-06-12 23:48:14] [DEBUG] [SIP]   8: Contact: <sip:172.31.7.94:0>
+DEBUG:gb28181-restreamer:[SIP]   8: Contact: <sip:172.31.7.94:0>
+[2025-06-12 23:48:14] [DEBUG] [SIP]   9: User-Agent: GB28181-Restreamer/1.0
+DEBUG:gb28181-restreamer:[SIP]   9: User-Agent: GB28181-Restreamer/1.0
+[2025-06-12 23:48:14] [DEBUG] [SIP]   10: Content-Type: Application/MANSCDP+xml
+DEBUG:gb28181-restreamer:[SIP]   10: Content-Type: Application/MANSCDP+xml
+[2025-06-12 23:48:14] [DEBUG] [SIP]   ... and 47 more lines
+DEBUG:gb28181-restreamer:[SIP]   ... and 47 more lines
+[2025-06-12 23:48:14] [INFO] [SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+INFO:gb28181-restreamer:[SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+[2025-06-12 23:48:14] [INFO] [SIP] ✅ UDP transmission SUCCESSFUL: 1856/1856 bytes
+INFO:gb28181-restreamer:[SIP] ✅ UDP transmission SUCCESSFUL: 1856/1856 bytes
+[2025-06-12 23:48:14] [WARNING] [SIP] 📡 Large message sent - WVP platform may need time to reassemble
+WARNING:gb28181-restreamer:[SIP] 📡 Large message sent - WVP platform may need time to reassemble
+[2025-06-12 23:48:14] [INFO] [SIP] 📤 Catalog response (SN: 122094) delivered successfully
+INFO:gb28181-restreamer:[SIP] 📤 Catalog response (SN: 122094) delivered successfully
+[2025-06-12 23:48:14] [INFO] [SIP]   • Contains 1 devices
+INFO:gb28181-restreamer:[SIP]   • Contains 1 devices
+[2025-06-12 23:48:14] [INFO] [SIP]   • Total size: 1856 bytes
+INFO:gb28181-restreamer:[SIP]   • Total size: 1856 bytes
+[2025-06-12 23:48:14] [INFO] [SIP]   • WVP platform should process this within 30 seconds
+INFO:gb28181-restreamer:[SIP]   • WVP platform should process this within 30 seconds
+[2025-06-12 23:48:14] [INFO] [SIP] ✅ Proactive catalog notification sent successfully (SN: 122094)
+INFO:gb28181-restreamer:[SIP] ✅ Proactive catalog notification sent successfully (SN: 122094)
+[2025-06-12 23:48:14] [INFO] [SIP] 📱 WVP frontend should now show 18 available channels
+INFO:gb28181-restreamer:[SIP] 📱 WVP frontend should now show 18 available channels
+[2025-06-12 23:48:14] [INFO] [SIP] ✅ Periodic catalog notification sent successfully
+INFO:gb28181-restreamer:[SIP] ✅ Periodic catalog notification sent successfully
+[2025-06-12 23:48:20] [INFO] [SIP] 💓 Sending scheduled heartbeat to WVP platform
+INFO:gb28181-restreamer:[SIP] 💓 Sending scheduled heartbeat to WVP platform
+[2025-06-12 23:48:20] [INFO] [SIP] 💓 Sending WVP-compatible keepalive (SN: 72100) to prevent heartbeat timeout
+INFO:gb28181-restreamer:[SIP] 💓 Sending WVP-compatible keepalive (SN: 72100) to prevent heartbeat timeout
+[2025-06-12 23:48:20] [INFO] [SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 72100):
+INFO:gb28181-restreamer:[SIP] 📊 UDP TRANSMISSION ANALYSIS (SN: 72100):
+[2025-06-12 23:48:20] [INFO] [SIP]   • Message type: Keepalive
+INFO:gb28181-restreamer:[SIP]   • Message type: Keepalive
+[2025-06-12 23:48:20] [INFO] [SIP]   • Message size: 674 bytes
+INFO:gb28181-restreamer:[SIP]   • Message size: 674 bytes
+[2025-06-12 23:48:20] [INFO] [SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+INFO:gb28181-restreamer:[SIP]   • Target: ai-sip.x-stage.bull-b.com:5060
+[2025-06-12 23:48:20] [INFO] [SIP]   • Encoding: UTF-8
+INFO:gb28181-restreamer:[SIP]   • Encoding: UTF-8
+[2025-06-12 23:48:20] [DEBUG] [SIP] 📨 Message headers:
+DEBUG:gb28181-restreamer:[SIP] 📨 Message headers:
+[2025-06-12 23:48:20] [DEBUG] [SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+DEBUG:gb28181-restreamer:[SIP]   1: MESSAGE sip:ai-sip.x-stage.bull-b.com:5060 SIP/2.0
+[2025-06-12 23:48:20] [DEBUG] [SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:0;rport;branch=z9hG4bK-ka-1749772100
+DEBUG:gb28181-restreamer:[SIP]   2: Via: SIP/2.0/UDP 172.31.7.94:0;rport;branch=z9hG4bK-ka-1749772100
+[2025-06-12 23:48:20] [DEBUG] [SIP]   3: Max-Forwards: 70
+DEBUG:gb28181-restreamer:[SIP]   3: Max-Forwards: 70
+[2025-06-12 23:48:20] [DEBUG] [SIP]   4: From: <sip:81000000465001000001@172.31.7.94:0>;tag=katag1749772100
+DEBUG:gb28181-restreamer:[SIP]   4: From: <sip:81000000465001000001@172.31.7.94:0>;tag=katag1749772100
+[2025-06-12 23:48:20] [DEBUG] [SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+DEBUG:gb28181-restreamer:[SIP]   5: To: <sip:ai-sip.x-stage.bull-b.com:5060>
+[2025-06-12 23:48:20] [DEBUG] [SIP]   6: Call-ID: keepalive-72100-1749772100
+DEBUG:gb28181-restreamer:[SIP]   6: Call-ID: keepalive-72100-1749772100
+[2025-06-12 23:48:20] [DEBUG] [SIP]   7: CSeq: 4107 MESSAGE
+DEBUG:gb28181-restreamer:[SIP]   7: CSeq: 4107 MESSAGE
+[2025-06-12 23:48:20] [DEBUG] [SIP]   8: Contact: <sip:172.31.7.94:0>
+DEBUG:gb28181-restreamer:[SIP]   8: Contact: <sip:172.31.7.94:0>
+[2025-06-12 23:48:20] [DEBUG] [SIP]   9: User-Agent: GB28181-Restreamer/1.0
+DEBUG:gb28181-restreamer:[SIP]   9: User-Agent: GB28181-Restreamer/1.0
+[2025-06-12 23:48:20] [DEBUG] [SIP]   10: Content-Type: Application/MANSCDP+xml
+DEBUG:gb28181-restreamer:[SIP]   10: Content-Type: Application/MANSCDP+xml
+[2025-06-12 23:48:20] [DEBUG] [SIP]   ... and 13 more lines
+DEBUG:gb28181-restreamer:[SIP]   ... and 13 more lines
+[2025-06-12 23:48:20] [INFO] [SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+INFO:gb28181-restreamer:[SIP] 🚀 Sending UDP packet to ai-sip.x-stage.bull-b.com:5060...
+[2025-06-12 23:48:20] [INFO] [SIP] ✅ UDP transmission SUCCESSFUL: 674/674 bytes
+INFO:gb28181-restreamer:[SIP] ✅ UDP transmission SUCCESSFUL: 674/674 bytes
+[2025-06-12 23:48:20] [INFO] [SIP] 💓 Keepalive message (SN: 72100) delivered successfully
+INFO:gb28181-restreamer:[SIP] 💓 Keepalive message (SN: 72100) delivered successfully
+[2025-06-12 23:48:20] [INFO] [SIP]   • Device should stay online for next 15-30 seconds
+INFO:gb28181-restreamer:[SIP]   • Device should stay online for next 15-30 seconds
+[2025-06-12 23:48:20] [INFO] [SIP] ✅ Keepalive sent successfully - device should stay online
+INFO:gb28181-restreamer:[SIP] ✅ Keepalive sent successfully - device should stay online
+[2025-06-12 23:48:23] [WARNING] [SHUTDOWN] Caught signal 15. Initiating graceful shutdown...
+WARNING:gb28181-restreamer:[SHUTDOWN] Caught signal 15. Initiating graceful shutdown...
+[2025-06-12 23:48:23] [WARNING] [SHUTDOWN] Cleaning up resources...
+WARNING:gb28181-restreamer:[SHUTDOWN] Cleaning up resources...
+[2025-06-12 23:48:23] [INFO] [SHUTDOWN] Stopping SIP client...
+INFO:gb28181-restreamer:[SHUTDOWN] Stopping SIP client...
+[2025-06-12 23:48:23] [INFO] [SIP] Stopping all streams and SIP client...
+INFO:gb28181-restreamer:[SIP] Stopping all streams and SIP client...
+[2025-06-12 23:48:23] [INFO] [SIP] 🛑 Stopping heartbeat thread
+INFO:gb28181-restreamer:[SIP] 🛑 Stopping heartbeat thread
+[2025-06-12 23:48:23] [INFO] [SIP] 📋 Catalog notification worker stopped
+INFO:gb28181-restreamer:[SIP] 📋 Catalog notification worker stopped
+[2025-06-12 23:48:24] [INFO] [SIP] 💓 Heartbeat worker stopped
+INFO:gb28181-restreamer:[SIP] 💓 Heartbeat worker stopped
+[2025-06-12 23:48:24] [INFO] [SIP-SENDER] Stopped GB28181 SIP message sender thread
+INFO:gb28181-restreamer:[SIP-SENDER] Stopped GB28181 SIP message sender thread
+INFO:media_streamer:[STREAM] Media streamer shut down
+[2025-06-12 23:48:24] [INFO] [SIP] Attempting graceful pjsua termination...
+INFO:gb28181-restreamer:[SIP] Attempting graceful pjsua termination...
+[2025-06-12 23:48:24] [INFO] [SIP] PJSUA output handler finished after processing 161 lines
+INFO:gb28181-restreamer:[SIP] PJSUA output handler finished after processing 161 lines
+[2025-06-12 23:48:24] [WARNING] [SIP] pjsua process exited normally
+WARNING:gb28181-restreamer:[SIP] pjsua process exited normally
+[2025-06-12 23:48:24] [WARNING] [SIP] SIP client listen loop has ended
+WARNING:gb28181-restreamer:[SIP] SIP client listen loop has ended
+[2025-06-12 23:48:24] [INFO] [SIP] PJSUA process terminated gracefully
+INFO:gb28181-restreamer:[SIP] PJSUA process terminated gracefully
+[2025-06-12 23:48:24] [INFO] [SIP] SIP client stopped and cleanup completed
+INFO:gb28181-restreamer:[SIP] SIP client stopped and cleanup completed
+[2025-06-12 23:48:24] [INFO] [SHUTDOWN] Stopping all RTSP streams...
+INFO:gb28181-restreamer:[SHUTDOWN] Stopping all RTSP streams...
+[2025-06-12 23:48:24] [INFO] [RTSP] Stopping all 0 streams
+INFO:gb28181-restreamer:[RTSP] Stopping all 0 streams
+[2025-06-12 23:48:24] [INFO] [RTSP] All streams stopped
+INFO:gb28181-restreamer:[RTSP] All streams stopped
+[2025-06-12 23:48:24] [INFO] [SHUTDOWN] Stopping live stream handler...
+INFO:gb28181-restreamer:[SHUTDOWN] Stopping live stream handler...
+[2025-06-12 23:48:27] [INFO] [LIVE] LiveStreamHandler stopped
+INFO:gb28181-restreamer:[LIVE] LiveStreamHandler stopped
+[2025-06-12 23:48:27] [INFO] [SHUTDOWN] Stopping media streamer...
+INFO:gb28181-restreamer:[SHUTDOWN] Stopping media streamer...
+INFO:media_streamer:[STREAM] Media streamer shut down
+[2025-06-12 23:48:27] [INFO] [SHUTDOWN] Cleanup complete
+INFO:gb28181-restreamer:[SHUTDOWN] Cleanup complete
+[2025-06-12 23:48:27] [WARNING] [SHUTDOWN] Cleaning up resources...
+WARNING:gb28181-restreamer:[SHUTDOWN] Cleaning up resources...
+[2025-06-12 23:48:27] [INFO] [SHUTDOWN] Stopping SIP client...
+INFO:gb28181-restreamer:[SHUTDOWN] Stopping SIP client...
+[2025-06-12 23:48:27] [INFO] [SIP] Stopping all streams and SIP client...
+INFO:gb28181-restreamer:[SIP] Stopping all streams and SIP client...
+[2025-06-12 23:48:27] [INFO] [SIP] 🛑 Stopping heartbeat thread
+INFO:gb28181-restreamer:[SIP] 🛑 Stopping heartbeat thread
+[2025-06-12 23:48:27] [INFO] [SIP-SENDER] Stopped GB28181 SIP message sender thread
+INFO:gb28181-restreamer:[SIP-SENDER] Stopped GB28181 SIP message sender thread
+INFO:media_streamer:[STREAM] Media streamer shut down
+[2025-06-12 23:48:27] [DEBUG] [SIP] Error closing pipes: [Errno 9] Bad file descriptor
+DEBUG:gb28181-restreamer:[SIP] Error closing pipes: [Errno 9] Bad file descriptor
+[2025-06-12 23:48:27] [INFO] [SIP] SIP client stopped and cleanup completed
+INFO:gb28181-restreamer:[SIP] SIP client stopped and cleanup completed
+[2025-06-12 23:48:27] [INFO] [SHUTDOWN] Stopping all RTSP streams...
+INFO:gb28181-restreamer:[SHUTDOWN] Stopping all RTSP streams...
+[2025-06-12 23:48:27] [INFO] [RTSP] Stopping all 0 streams
+INFO:gb28181-restreamer:[RTSP] Stopping all 0 streams
+[2025-06-12 23:48:27] [INFO] [RTSP] All streams stopped
+INFO:gb28181-restreamer:[RTSP] All streams stopped
+[2025-06-12 23:48:27] [INFO] [SHUTDOWN] Stopping live stream handler...
+INFO:gb28181-restreamer:[SHUTDOWN] Stopping live stream handler...
+[2025-06-12 23:48:27] [INFO] [LIVE] LiveStreamHandler stopped
+INFO:gb28181-restreamer:[LIVE] LiveStreamHandler stopped
+[2025-06-12 23:48:27] [INFO] [SHUTDOWN] Stopping media streamer...
+INFO:gb28181-restreamer:[SHUTDOWN] Stopping media streamer...
+INFO:media_streamer:[STREAM] Media streamer shut down
+[2025-06-12 23:48:27] [INFO] [SHUTDOWN] Cleanup complete
+INFO:gb28181-restreamer:[SHUTDOWN] Cleanup complete

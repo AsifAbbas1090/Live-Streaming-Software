@@ -5,10 +5,17 @@
     "password": "admin123",
     "server": "ai-sip.x-stage.bull-b.com",
     "port": 5060,
-    "local_port": 5080,
+    "local_port": 0,
     "transport": "udp",
     "local_ip": "172.31.7.94",
-    "contact_ip": "13.50.108.195"
+    "contact_ip": "13.50.108.195",
+    "server_id": "34020000002000000001",
+    "server_domain": "3402000000",
+    "server_ip": "0.0.0.0",
+    "server_port": 5060,
+    "expires": 3600,
+    "heartbeat_interval": 60,
+    "max_heartbeat_timeout": 3
   },
   "local_sip": {
     "enabled": false,
@@ -16,7 +23,48 @@
     "transport": "udp"
   },
   "stream_directory": "/home/ubuntu/rstp/gb28181-restreamer/recordings",
-  "rtsp_sources": [],
+  "rtsp_sources": [
+    {
+      "url": "rtsp://admin:password@192.168.1.100:554/stream1",
+      "name": "Front Door Camera",
+      "channel_id": "81000000465001000001",
+      "enabled": true
+    },
+    {
+      "url": "rtsp://admin:password@192.168.1.101:554/stream1",
+      "name": "Parking Lot Camera",
+      "channel_id": "81000000465001000002",
+      "enabled": true
+    },
+    {
+      "name": "Wowza Test Stream",
+      "url": "rtsp://807e9439d5ca.entrypoint.cloud.wowza.com:1935/app-rC94792j/068b9c9a_stream2",
+      "channel_id": "81000000465001000003",
+      "enabled": true,
+      "description": "Professional RTSP test stream from Wowza - reliable for testing"
+    },
+    {
+      "name": "Highway Camera",
+      "url": "rtsp://170.93.143.139/rtplive/470011e600ef003a004ee33696235daa",
+      "channel_id": "81000000465001000004",
+      "enabled": true,
+      "description": "Public highway camera stream"
+    },
+    {
+      "name": "Local Test Video",
+      "url": "file:///home/ubuntu/rstp/gb28181-restreamer/test-videos/sample.mp4",
+      "channel_id": "81000000465001000005",
+      "enabled": false,
+      "description": "Local MP4 file for testing (enable after downloading test video)"
+    },
+    {
+      "name": "Virtual RTSP Stream",
+      "url": "rtsp://localhost:8554/stream",
+      "channel_id": "81000000465001000006",
+      "enabled": true,
+      "description": "Local virtual RTSP stream from test video - ready for testing"
+    }
+  ],
   "srtp": {
     "key": "313233343536373839303132333435363132333435363738393031323334"
   },
@@ -56,5 +104,13 @@
     "keepalive_interval": 60,
     "heartbeat_enabled": true,
     "heartbeat_interval": 120
+  },
+  "media": {
+    "rtp_port_range": [
+      10000,
+      20000
+    ],
+    "enable_tcp": true,
+    "enable_udp": true
   }
 }
